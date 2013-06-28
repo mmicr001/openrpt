@@ -21,13 +21,16 @@
 #ifndef __DOCUMENTSCENE_H__
 #define __DOCUMENTSCENE_H__
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QGraphicsScene>
 #include <QDomDocument>
 
 #include "querylist.h" 
 #include "parsexmlutils.h"
 #include "graphicssection.h"
+
+#define TRUE 1
+#define FALSE 0
 
 class ReportPageOptions;
 class ReportGridOptions;

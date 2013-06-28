@@ -1,0 +1,26 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+.DS_Store
+Makefile
+MetaSQL
+MetaSQL/*
+OpenRPT
+OpenRPT/*
+bin/
+common/Makefile
+common/qrc_OpenRPTCommon.cpp
+common/tmp/
+graph/Makefile
+graph/tmp/

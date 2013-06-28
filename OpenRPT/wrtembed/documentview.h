@@ -21,7 +21,7 @@
 #ifndef __DOCUMENTVIEW_H__
 #define __DOCUMENTVIEW_H__
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QGraphicsView>
 
 class DocumentScene;

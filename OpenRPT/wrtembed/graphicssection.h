@@ -21,13 +21,16 @@
 #ifndef __GRAPHICSSECTION_H__
 #define __GRAPHICSSECTION_H__
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsRectItem>
 #include <QDomDocument>
 #include <QList>
 
 #include <parsexmlutils.h>
+
+#define TRUE 1
+#define FALSE 0
 
 class ORGraphicsSectionItem;
 class DocumentScene;

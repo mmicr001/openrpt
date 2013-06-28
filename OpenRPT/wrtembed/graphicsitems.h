@@ -21,14 +21,14 @@
 #ifndef __GRAPHICSITEMS_H__
 #define __GRAPHICSITEMS_H__
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QGraphicsRectItem>
 #include <QDomDocument>
 
 #include <parsexmlutils.h>
 
-
-
+#define TRUE 1
+#define FALSE 0
 
 class ORResizeHandle : public QGraphicsRectItem
 {
