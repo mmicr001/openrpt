@@ -64,9 +64,9 @@ QSqlDatabase databaseFromURL( const QString& databaseURL )
 
   parseDatabaseURL( databaseURL, protocol, hostName, dbName, port );
   QSqlDatabase db;
-  if( "odbc" == protocol )
-    db = QSqlDatabase::addDatabase("QODBC");
-  else if ( "pgsql" == protocol || "psql" == protocol )
+ // if( "odbc" == protocol )
+ //   db = QSqlDatabase::addDatabase("QODBC");
+  if ( "pgsql" == protocol || "psql" == protocol )
     db = QSqlDatabase::addDatabase("QPSQL");
   else if ( "db2" == protocol )
     db = QSqlDatabase::addDatabase("QDB2");

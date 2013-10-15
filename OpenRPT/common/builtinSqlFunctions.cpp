@@ -52,10 +52,10 @@ static const char* __SqlTable[][3] = {
                                         "  FROM report "
                                         " WHERE (report_name=:report_name)"
                                         " ORDER BY report_grade HAVING ROWCOUNT < 1"},
-  {"fmt04",      "QODBC",         "SELECT report_grade, report_source "
+ /* {"fmt04",      "QODBC",         "SELECT report_grade, report_source "
                                         "  FROM report "
                                         " WHERE (report_name=:report_name)"
-                                        " ORDER BY report_grade DESC"},
+                                        " ORDER BY report_grade DESC"}, */
 // fmt05
   {"fmt05",      "QPSQL",          "SELECT login()"},
   {"fmt05",      "QOCI",          "SELECT 1 from dual"},

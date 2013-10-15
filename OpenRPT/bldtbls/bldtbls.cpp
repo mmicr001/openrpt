@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
       parseDatabaseURL(databaseURL, protocol, server, database, port);
 
       // treat odbc connections as a special case
-      if ( protocol == "odbc")
+     /* if ( protocol == "odbc")
       {
         if ( dbServer == QString::null )
         {
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
           out << "Protocol=" << protocol << ", Host=" << server << ", Database=" << database << ", port=" << port << endl;
           exit(EXIT_ERROR_DB_ENGINE);
         }
-      }
+      } */
 
       // Open the Database Driver
       db = databaseFromURL( databaseURL );
@@ -194,7 +194,7 @@ bool buildTable(QSqlDatabase &db, QTextStream &out, QString &dbServer)
 	 return result;
   }
 
-  if ( stDriver == "QODBC" ) 
+  /*if ( stDriver == "QODBC" ) 
   {
     if ( ! odbcSanityCheck(db, dbServer) ) 
     {
@@ -206,7 +206,7 @@ bool buildTable(QSqlDatabase &db, QTextStream &out, QString &dbServer)
 	  return result;
     }
 	stDriver = dbServer;
-  }
+  } */
 
   if (stDriver == "QOCI")
   {
@@ -281,12 +281,12 @@ bool odbcSanityCheck(QSqlDatabase &db, QString &dbServer)
 
   if ( db.driverName() == "QODBC" )
   {
-    if( "odbc" == dbServer )    // An ODBC connection to an ODBC database
+   /* if( "odbc" == dbServer )    // An ODBC connection to an ODBC database
     {                           // danger of disappearing up own orifice
       dbServer = "QODBC";       
       result = false;
-    }
-    else if ( "pgsql" == dbServer || "psql" == dbServer )
+    } */
+    if ( "pgsql" == dbServer || "psql" == dbServer )
       dbServer = "QPSQL";
     else if ( "db2" == dbServer )
       dbServer = "QDB2";
@@ -328,15 +328,15 @@ bool execTableBuild(QString &qryStr, QTextStream &out)
 }
 
 
-bool isValidProtocol(const QString &protocol, const bool allowOdbc = true)
+bool isValidProtocol(const QString &protocol, const bool allowOdbc = false)
 {
-  if ( protocol == "odbc" )
+  /*if ( protocol == "odbc" )
   {
     if ( allowOdbc )
       return true;
     else
       return false;
-  }
+  } */
 
   if (
       ( "pgsql"   == protocol || "psql" == protocol ) ||

@@ -49,8 +49,8 @@ class DriverInfo {
 };
 
 const DriverInfo _driverInfoList[] = {
-  DriverInfo("QODBC",  "ODBC", "odbc"),
-  DriverInfo("QODBC3", "ODBC"), // same as QODBC
+  //DriverInfo("QODBC",  "ODBC", "odbc"),
+  //DriverInfo("QODBC3", "ODBC"), // same as QODBC
   DriverInfo("QPSQL",  "PostgreSQL", "psql", "pgsql"),
   DriverInfo("QPSQL7", "PostgreSQL"), // same as QPSQL
 
