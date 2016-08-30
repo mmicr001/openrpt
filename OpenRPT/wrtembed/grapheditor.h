@@ -72,6 +72,10 @@ public slots:
     virtual void setValueFont( QFont fnt );
     virtual bool getUseValueFont();
     virtual void setUseValueFont( bool yes );
+    virtual int getHPadding();
+    virtual void setHPadding( int hPadding );
+    virtual int getVPadding();
+    virtual void setVPadding( int vPadding );
     virtual bool getAutoMinMax();
     virtual void setAutoMinMax( bool yes );
     virtual double getMinValue();
