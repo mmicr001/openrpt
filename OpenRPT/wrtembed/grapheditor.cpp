@@ -293,6 +293,26 @@ void GraphEditor::setUseValueFont( bool yes )
     _cbValueUseBase->setChecked(!yes);
 }
 
+int GraphEditor::getHPadding()
+{
+    return _hPadSpinbox->value();
+}
+
+void GraphEditor::setHPadding( int hPadding )
+{
+    _hPadSpinbox->setValue(hPadding);
+}
+
+int GraphEditor::getVPadding()
+{
+    return _vPadSpinbox->value();
+}
+
+void GraphEditor::setVPadding( int vPadding )
+{
+    _vPadSpinbox->setValue(vPadding);
+}
+
 bool GraphEditor::getAutoMinMax()
 {
     return _cbAutoMinMax->isChecked();

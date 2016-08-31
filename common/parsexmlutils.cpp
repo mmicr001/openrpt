@@ -862,6 +862,38 @@ bool parseReportValueAxisData(const QDomElement & elemSource, ORValueAxisData & 
   return true;
 }
 
+bool parseReportPaddingData(const QDomElement & elemSource, ORPaddingData & paddingTarget)
+{
+  if(elemSource.tagName() != "padding")
+    return false;
+
+  int ival = 5;
+  bool valid = false;
+
+  paddingTarget.horizontal = 5;
+  paddingTarget.vertical = 5;
+
+  QDomNodeList nlist = elemSource.childNodes();
+  for(int nodeCounter = 0; nodeCounter < nlist.count(); nodeCounter++)
+  {
+    QDomElement elemThis = nlist.item(nodeCounter).toElement();
+    if(elemThis.tagName() == "horizontal")
+    {
+      ival = elemThis.text().toInt(&valid);
+      if(valid)
+        paddingTarget.horizontal = ival;
+    }
+    else if(elemThis.tagName() == "vertical")
+    {
+      ival = elemThis.text().toInt(&valid);
+      if(valid)
+        paddingTarget.vertical = ival;
+    }
+  }
+
+  return true;
+}
+
 bool parseReportSeriesData(const QDomElement & elemSource, ORSeriesData & seriesTarget)
 {
   if(elemSource.tagName() != "series")
@@ -924,6 +956,8 @@ bool parseReportGraphData(const QDomElement & elemSource, ORGraphData & graphTar
   graphTarget.valueaxis.max = 100;
   graphTarget.valueaxis.autominmax = true;
   graphTarget.valueaxis.font_defined = false;
+  graphTarget.padding.horizontal = 5;
+  graphTarget.padding.vertical = 5;
 
   //graphTarget.series.setAutoDelete(true);
 
@@ -958,6 +992,14 @@ bool parseReportGraphData(const QDomElement & elemSource, ORGraphData & graphTar
         graphTarget.valueaxis.max = 100;
         graphTarget.valueaxis.autominmax = true;
         graphTarget.valueaxis.font_defined = false;
+      }
+    }
+    else if(elemThis.tagName() == "padding")
+    {
+      if(!parseReportPaddingData(elemThis, graphTarget.padding))
+      {
+        graphTarget.padding.horizontal = 5;
+        graphTarget.padding.vertical = 5;
       }
     }
     else if(elemThis.tagName() == "series")

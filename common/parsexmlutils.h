@@ -135,6 +135,12 @@ class ORValueAxisData
     QFont font;
     bool font_defined;
 };
+class ORPaddingData
+{
+  public:
+    int horizontal;
+    int vertical;
+};
 
 class ORCrossTabQueryData
 {
@@ -339,6 +345,8 @@ class ORGraphData : public ORObject
     ORTitleData title;
     ORDataAxisData dataaxis;
     ORValueAxisData valueaxis;
+
+    ORPaddingData padding;
 
     QList<ORSeriesData*> series;
 
@@ -576,6 +584,7 @@ bool parseReportTitleData(const QDomElement &, ORTitleData &);
 bool parseReportStyleData(const QDomElement &, ORStyleData &);
 bool parseReportDataAxisData(const QDomElement &, ORDataAxisData &);
 bool parseReportValueAxisData(const QDomElement &, ORValueAxisData &);
+bool parseReportPaddingData(const QDomElement &, ORPaddingData &);
 bool parseReportSeriesData(const QDomElement &, ORSeriesData &);
 
 bool parseReportSection(const QDomElement &, ORSectionData &);

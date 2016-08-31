@@ -561,9 +561,9 @@ void tGraph::draw(QPainter & paint) {
 
     paint.setFont(valueFont());
     int tfa = Qt::AlignTop | Qt::AlignRight;
-    paint.drawText(gx1 - fm.width(min_str), gy_min, fm.width(min_str), fm.height(), tfa, min_str);
+    paint.drawText(gx1 - (fm.width(min_str)+1), gy_min, fm.width(min_str)+1, fm.height(), tfa, min_str);
     paint.drawLine(gx1 - 3, gy_min, gx1 + 2, gy_min);
-    paint.drawText(gx1 - fm.width(max_str), gy_max, fm.width(max_str), fm.height(), tfa, max_str);
+    paint.drawText(gx1 - (fm.width(max_str)+1), gy_max, fm.width(max_str)+1, fm.height(), tfa, max_str);
     paint.drawLine(gx1 - 3, gy_max, gx1 + 2, gy_max);
     int gheight = gy2 - gy1;
     double grng = maxValue() - minValue();
@@ -771,6 +771,9 @@ void renderGraph(QPainter & paint, const QRect & rect, ORGraphData & gData, XSql
             graph.setValueLabelFont(&fnt);
         }
     }
+
+    graph.setHPadding(gData.padding.horizontal);
+    graph.setVPadding(gData.padding.vertical);
 
     // setup the sets/series
     int snum = 0;

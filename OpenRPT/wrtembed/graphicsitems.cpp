@@ -2549,6 +2549,24 @@ void ORGraphicsGraphItem::buildXML(QDomDocument & doc, QDomElement & parent)
     entity.appendChild(valueaxis);
   }
 
+  if(_graphData.padding.horizontal!=5 || _graphData.padding.vertical!=5)
+  {
+    QDomElement padding = doc.createElement("padding");
+    if(_graphData.padding.horizontal!=5)
+    {
+      elem = doc.createElement("horizontal");
+      elem.appendChild(doc.createTextNode(QString::number(_graphData.padding.horizontal)));
+      padding.appendChild(elem);
+    }
+    if(_graphData.padding.vertical!=5)
+    {
+      elem = doc.createElement("vertical");
+      elem.appendChild(doc.createTextNode(QString::number(_graphData.padding.vertical)));
+      padding.appendChild(elem);
+    }
+    entity.appendChild(padding);
+  }
+
   for(int snum = 0; snum < _graphData.series.count(); snum++) {
     ORSeriesData * series = _graphData.series.at(snum);
     if(series) {
@@ -2649,6 +2667,9 @@ void ORGraphicsGraphItem::properties(QWidget * parent)
     le->setUseDataTitleFont(true);
   }
 
+  le->setHPadding(_graphData.padding.horizontal);
+  le->setVPadding(_graphData.padding.vertical);
+
   le->setMinValue(_graphData.valueaxis.min);
   le->setMaxValue(_graphData.valueaxis.max);
   le->setAutoMinMax(_graphData.valueaxis.autominmax);
@@ -2700,6 +2721,8 @@ void ORGraphicsGraphItem::properties(QWidget * parent)
     _graphData.valueaxis.title.string = le->getValueTitle();
     _graphData.valueaxis.title.font = le->getValueTitleFont();
     _graphData.valueaxis.title.font_defined = le->getUseValueTitleFont();
+    _graphData.padding.horizontal = le->getHPadding();
+    _graphData.padding.vertical = le->getVPadding();
 
     sd1 = sd2 = 0;
     _graphData.series.clear();
@@ -2749,6 +2772,7 @@ void ORGraphicsGraphItem::copyData(ORGraphData & gData)
   gData.title = _graphData.title;
   gData.dataaxis = _graphData.dataaxis;
   gData.valueaxis = _graphData.valueaxis;
+  gData.padding = _graphData.padding;
   gData.series.clear();
   for(int i = 0; i < _graphData.series.count(); i++) {
       ORSeriesData * sd = new ORSeriesData();
