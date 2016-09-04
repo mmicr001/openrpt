@@ -32,7 +32,7 @@ OBJECTS_DIR = tmp
 QT += xml sql widgets printsupport
 
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -ldmtx -lopenrptcommon -lrenderer
+LIBS += -ldmtx -lopenrptcommon -lrenderer -lqzint
 
 FORMS   += labeleditor.ui \
            labeldefinitions.ui \

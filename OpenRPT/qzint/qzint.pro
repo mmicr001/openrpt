@@ -1,4 +1,6 @@
-QT       += core
+include( ../../global.pri )
+
+QT       += core gui uitools
 
 LIBS += -lpng12 -lz -lfontconfig
 
@@ -27,7 +29,6 @@ HEADERS  += barcodeitem.h \
     common.h \
     font.h \
     large.h \
-    libzint.rc \
     pdf417.h \
     zint.h \
     qr.h \

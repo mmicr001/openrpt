@@ -31,6 +31,7 @@ SUBDIRS = common \
           MetaSQL/metasql_gui \
           MetaSQL/importmql_gui \
           $$DMTX_SRC \
+          OpenRPT/qzint \
           OpenRPT/renderer \
           OpenRPT/wrtembed \
           OpenRPT/writer \
