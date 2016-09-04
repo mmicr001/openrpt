@@ -35,6 +35,8 @@ win32 {
 macx {
   CONFIG -= dll
   CONFIG += staticlib
+  # for qzint
+  DEFINES += NO_PNG
 }
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
