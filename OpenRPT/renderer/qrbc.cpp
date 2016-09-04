@@ -24,9 +24,11 @@
 #include <QPen>
 #include <QBrush>
 #include <QDebug>
+#if QT_VERSION >= 0x050000
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
+#endif
 
 #include "parsexmlutils.h"
 #include "renderobjects.h"
@@ -35,6 +37,7 @@
 
 void renderQR(QPainter *painter, int /*dpi*/, const QRectF &r, const QString &_str, OROBarcode *bc)
 {
+  #if QT_VERSION >= 0x050000
   QByteArray ba = QByteArray(bc->format().toStdString().c_str(), bc->format().toStdString().length());
   QJsonDocument doc = QJsonDocument::fromJson(ba);
   QJsonObject obj = doc.object();
@@ -68,5 +71,6 @@ void renderQR(QPainter *painter, int /*dpi*/, const QRectF &r, const QString &_s
   bci.update();
 
   painter->restore();
+  #endif
   return;
 }

@@ -25,9 +25,11 @@
 #include <QValidator>
 #include <QRegExp>
 #include <QDebug>
+#if QT_VERSION >= 0x050000
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
+#endif
 
 BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
     : QDialog(parent, fl)
@@ -250,6 +252,7 @@ void BarcodeEditor::setDatamatrixEditor(QString format)
 
 void BarcodeEditor::setPDF417Editor(QString format)
 {
+    #if QT_VERSION >= 0x050000
     QByteArray ba = QByteArray(format.toStdString().c_str(), format.toStdString().length());
     QJsonDocument doc = QJsonDocument::fromJson(ba);
     QJsonObject obj = doc.object();
@@ -268,10 +271,12 @@ void BarcodeEditor::setPDF417Editor(QString format)
         this->rbAlignCenter->setChecked(true);
     if(alignment.toString() == "_R")
         this->rbAlignRight->setChecked(true);
+    #endif
 }
 
 void BarcodeEditor::setQREditor(QString format)
 {
+    #if QT_VERSION >= 0x050000
     QByteArray ba = QByteArray(format.toStdString().c_str(), format.toStdString().length());
     QJsonDocument doc = QJsonDocument::fromJson(ba);
     QJsonObject obj = doc.object();
@@ -295,4 +300,5 @@ void BarcodeEditor::setQREditor(QString format)
         this->rbAlignCenter->setChecked(true);
     if(alignment.toString() == "_R")
         this->rbAlignRight->setChecked(true);
+    #endif
 }
