@@ -29,6 +29,8 @@ CONFIG += release dll
 win32 {
   CONFIG -= dll
   CONFIG += staticlib
+  # for qzint
+  DEFINES += NO_PNG
 }
 macx {
   CONFIG -= dll
