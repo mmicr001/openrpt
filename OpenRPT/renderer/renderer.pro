@@ -32,7 +32,7 @@ UI_DIR = tmp
 INCLUDEPATH += ../common ../../common ../qzint
 
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -ldmtx -lopenrptcommon -lMetaSQL -lpng12 -lz -lfontconfig -lqzint
+LIBS += -ldmtx -lopenrptcommon -lMetaSQL -lqzint
 
 HEADERS = openreports.h \
           barcodes.h \
@@ -85,33 +85,6 @@ SOURCES = openreports.cpp \
           datamatrix.cpp \
           pdf417bc.cpp \
           qrbc.cpp
-
-#qzint
-#HEADERS += qzint/barcodeitem.h \
-#    qzint/qzint.h \
-#    qzint/common.h \
-#    qzint/font.h \
-#    qzint/large.h \
-#    qzint/pdf417.h \
-#    qzint/zint.h \
-#    qzint/qr.h \
-#    qzint/reedsol.h \
-#    qzint/gs1.h
-
-#SOURCES += qzint/barcodeitem.cpp \
-#    qzint/qzint.cpp \
-#    qzint/common.c \
-#    qzint/dllversion.c \
-#    qzint/large.c \
-#    qzint/library.c \
-#    qzint/pdf417.c \
-#    qzint/png.c \
-#    qzint/ps.c \
-#    qzint/render.c \
-#    qzint/svg.c \
-#    qzint/qr.c \
-#    qzint/reedsol.c \
-#    qzint/gs1.c
 
 QT += xml sql gui network printsupport core
 
