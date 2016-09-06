@@ -25,6 +25,11 @@
 #include <QValidator>
 #include <QRegExp>
 #include <QDebug>
+#if QT_VERSION >= 0x050000
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#endif
 
 BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
     : QDialog(parent, fl)
@@ -32,7 +37,7 @@ BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
     setupUi(this);
 
     this->dBarcode = new DBarcodeConfig(this);
-    this->dBarcode->setVisible(true);
+    this->dBarcode->setVisible(false);
 
     this->dMatrixRect = new DMatrixRectConfig(this);
     this->dMatrixRect->setVisible(false);
@@ -40,7 +45,13 @@ BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
     this->dMatrixSquare = new DMatrixSquareConfig(this);
     this->dMatrixSquare->setVisible(false);
 
-    this->cbFormat_ViewConfig(0);
+    this->pdf417conf = new PDF417Config(this);
+    this->pdf417conf->setVisible(false);
+
+    this->qrconf = new QRConfig(this);
+    this->qrconf->setVisible(false);
+
+    //this->cbFormat_ViewConfig(0);
     // signals and slots connections
     connect(cbFormat,       SIGNAL(activated(int)),     this,               SLOT(cbFormat_activated(int)));
     connect(cbFormat,       SIGNAL(activated(int)),     this,               SLOT(cbFormat_ViewConfig(int)));
@@ -63,6 +74,8 @@ BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
 
     iDatamatrix_square = cbFormat->findText(tr("Datamatrix square"));
     iDatamatrix_rect = cbFormat->findText(tr("Datamatrix rectangle"));
+    iPDF417 = cbFormat->findText(tr("PDF417"));
+    iQR = cbFormat->findText(tr("QR"));
 }
 
 BarcodeEditor::~BarcodeEditor()
@@ -71,6 +84,8 @@ BarcodeEditor::~BarcodeEditor()
     delete this->dBarcode;
     delete this->dMatrixRect;
     delete this->dMatrixSquare;
+    delete this->pdf417conf;
+    delete this->qrconf;
 }
 
 void BarcodeEditor::languageChange()
@@ -103,18 +118,27 @@ QString BarcodeEditor::format()
     }
 
 
-    if(!this->cbFormat->currentText().contains("datamatrix",Qt::CaseInsensitive))
+    if(this->cbFormat->currentIndex() == iPDF417)
     {
-        return this->cbFormat->currentText();
+        return this->pdf417conf->format(qsAlign);
+    }
+    if(this->cbFormat->currentIndex() == iQR)
+    {
+        return this->qrconf->format(qsAlign);
     }
     else if(this->cbFormat->currentIndex() == iDatamatrix_square)
     {
         return this->dMatrixSquare->format() + qsAlign;
     }
-    else // then it's a rectangular datamatrix
+    else if(this->cbFormat->currentIndex() == iDatamatrix_rect)
     {
         return this->dMatrixRect->format() + qsAlign;
     }
+    else
+    {
+        return this->cbFormat->currentText();
+    }
+
 }
 
 void BarcodeEditor::cbFormat_ViewConfig(int i)
@@ -128,6 +152,8 @@ void BarcodeEditor::cbFormat_ViewConfig(int i)
         this->dMatrixSquare->setVisible(true);
         this->dMatrixRect->setVisible2(false);
         this->dBarcode->setVisible(false);
+        this->pdf417conf->setVisible(false);
+        this->qrconf->setVisible(false);
     }
     else if(i==iDatamatrix_rect)
     {
@@ -138,6 +164,32 @@ void BarcodeEditor::cbFormat_ViewConfig(int i)
         this->dMatrixSquare->setVisible2(false);
         this->dMatrixRect->setVisible(true);
         this->dBarcode->setVisible(false);
+        this->pdf417conf->setVisible(false);
+        this->qrconf->setVisible(false);
+     }
+     else if (i==iPDF417)
+     {
+        this->leNarrowBarWidth->setVisible(false);
+        this->lnarrowBar->setVisible(false);
+
+        this->_princpalLayout->insertWidget(1,this->pdf417conf);
+        this->dMatrixSquare->setVisible2(false);
+        this->dMatrixRect->setVisible(false);
+        this->dBarcode->setVisible(false);
+        this->pdf417conf->setVisible(true);
+        this->qrconf->setVisible(false);
+     }
+     else if (i ==iQR)
+     {
+        this->leNarrowBarWidth->setVisible(false);
+        this->lnarrowBar->setVisible(false);
+
+        this->_princpalLayout->insertWidget(1,this->qrconf);
+        this->dMatrixSquare->setVisible2(false);
+        this->dMatrixRect->setVisible(false);
+        this->dBarcode->setVisible(false);
+        this->pdf417conf->setVisible(false);
+        this->qrconf->setVisible(true);
      }
      else
      {
@@ -148,6 +200,8 @@ void BarcodeEditor::cbFormat_ViewConfig(int i)
         this->dMatrixSquare->setVisible2(false);
         this->dMatrixRect->setVisible2(false);
         this->dBarcode->setVisible(true);
+        this->pdf417conf->setVisible(false);
+        this->qrconf->setVisible(false);
     }
 }
 
@@ -167,6 +221,8 @@ void BarcodeEditor::closeEvent(QCloseEvent *)
     this->dMatrixSquare->setVisible2(false);
     this->dMatrixRect->close();
     this->dMatrixSquare->close();
+    this->pdf417conf->close();
+    this->qrconf->close();
 }
 
 void BarcodeEditor::setDatamatrixEditor(QString format)
@@ -192,4 +248,57 @@ void BarcodeEditor::setDatamatrixEditor(QString format)
         this->rbAlignCenter->setChecked(true);
     if(dmtxInfos.align == "R")
         this->rbAlignRight->setChecked(true);
+}
+
+void BarcodeEditor::setPDF417Editor(QString format)
+{
+    #if QT_VERSION >= 0x050000
+    QByteArray ba = QByteArray(format.toStdString().c_str(), format.toStdString().length());
+    QJsonDocument doc = QJsonDocument::fromJson(ba);
+    QJsonObject obj = doc.object();
+    QJsonValue codewords = obj.value("codewords");
+    QJsonValue columns = obj.value("columns");
+    QJsonValue errorCorrection = obj.value("errorCorrection");
+    QJsonValue alignment = obj.value("alignment");
+
+    this->pdf417conf->setCodewords(codewords.toInt());
+    this->pdf417conf->setColumns(columns.toInt());
+    this->pdf417conf->setErrorCorrecton(errorCorrection.toInt());
+
+    if(alignment.toString() == "_L")
+        this->rbAlignLeft->setChecked(true);
+    if(alignment.toString() == "_C")
+        this->rbAlignCenter->setChecked(true);
+    if(alignment.toString() == "_R")
+        this->rbAlignRight->setChecked(true);
+    #endif
+}
+
+void BarcodeEditor::setQREditor(QString format)
+{
+    #if QT_VERSION >= 0x050000
+    QByteArray ba = QByteArray(format.toStdString().c_str(), format.toStdString().length());
+    QJsonDocument doc = QJsonDocument::fromJson(ba);
+    QJsonObject obj = doc.object();
+    QJsonValue size = obj.value("size");
+    QJsonValue autosize = obj.value("autosize");
+    QJsonValue errorCorrection = obj.value("errorCorrection");
+    QJsonValue alignment = obj.value("alignment");
+
+    this->qrconf->setQRSize(size.toInt());
+
+    // trying to figure out why toBool() never worked killed 45 minutes
+    // so here we are
+    if (autosize.toString() == "true") {
+        this->qrconf->setAutoSize(true);
+    }
+    this->qrconf->setErrorCorrection(errorCorrection.toInt());
+
+    if(alignment.toString() == "_L")
+        this->rbAlignLeft->setChecked(true);
+    if(alignment.toString() == "_C")
+        this->rbAlignCenter->setChecked(true);
+    if(alignment.toString() == "_R")
+        this->rbAlignRight->setChecked(true);
+    #endif
 }

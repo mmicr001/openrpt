@@ -62,6 +62,18 @@ void renderCodeUPCE(QPainter *, int, const QRectF &, const QString &, OROBarcode
 
 void renderCodeDatamatrix(QPainter *, const QRectF &, const QString &, OROBarcode * bc);
 
+//
+// PDF417
+//
+
+void renderPDF417(QPainter *, int, const QRectF &, const QString &, OROBarcode * bc);
+
+//
+// QR
+//
+
+void renderQR(QPainter *, int, const QRectF &, const QString &, OROBarcode * bc);
+
 typedef struct DmtxInfos_struct {
    int type;
    int xSize;

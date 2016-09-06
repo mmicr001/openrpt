@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2015 by OpenMFG, LLC
+# Copyright (C) 2001-2016 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -29,10 +29,14 @@ CONFIG += release dll
 win32 {
   CONFIG -= dll
   CONFIG += staticlib
+  # for qzint
+  DEFINES += NO_PNG
 }
 macx {
   CONFIG -= dll
   CONFIG += staticlib
+  # for qzint
+  DEFINES += NO_PNG
 }
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0

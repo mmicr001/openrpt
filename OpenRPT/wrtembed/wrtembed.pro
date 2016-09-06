@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2014 by OpenMFG, LLC
+# Copyright (C) 2001-2016 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -30,12 +30,10 @@ MOC_DIR = tmp
 UI_DIR = tmp
 OBJECTS_DIR = tmp
 QT += xml sql widgets printsupport
-#VERSION = 0.1.0
 
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -ldmtx -lopenrptcommon -lrenderer
+LIBS += -ldmtx -lopenrptcommon -lrenderer -lqzint
 
-#The following line was changed from FORMS to FORMS3 by qt3to4
 FORMS   += labeleditor.ui \
            labeldefinitions.ui \
            labeldefinitioneditor.ui \
@@ -63,7 +61,9 @@ FORMS   += labeleditor.ui \
            dmatrixrectconfig.ui \
            dbarcodeconfig.ui \
            dmatrixpreview.ui \
-           patheditor.ui
+           patheditor.ui \
+           pdf417config.ui \
+           qrconfig.ui
 
 HEADERS += reportgridoptions.h\
            reporthandler.h \
@@ -101,7 +101,9 @@ HEADERS += reportgridoptions.h\
            dmatrixrectconfig.h \
            dbarcodeconfig.h \
            dmatrixpreview.h \
-           patheditor.h
+           patheditor.h \
+           pdf417config.h \
+           qrconfig.h
 
 SOURCES += reportgridoptions.cpp\
            reporthandler.cpp \
@@ -139,7 +141,9 @@ SOURCES += reportgridoptions.cpp\
            dmatrixrectconfig.cpp \
            dbarcodeconfig.cpp \
            dmatrixpreview.cpp \
-           patheditor.cpp
+           patheditor.cpp \
+           pdf417config.cpp \
+           qrconfig.cpp
 
 RESOURCES += ../images/OpenRPTWrtembed.qrc
 

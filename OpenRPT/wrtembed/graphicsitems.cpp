@@ -1995,6 +1995,16 @@ void ORGraphicsBarcodeItem::properties(QWidget * parent)
   {
       le->setDatamatrixEditor(format());
   }
+  else if (format().contains("PDF417", Qt::CaseInsensitive)) {
+      le->setPDF417Editor(format());
+      le->cbFormat->setCurrentIndex(le->cbFormat->findText("PDF417"));
+      le->cbFormat_ViewConfig(le->cbFormat->findText("PDF417"));
+  }
+  else if (format().contains("QR", Qt::CaseInsensitive)) {
+      le->setQREditor(format());
+      le->cbFormat->setCurrentIndex(le->cbFormat->findText("QR"));
+      le->cbFormat_ViewConfig(le->cbFormat->findText("QR"));
+  }
   else
       le->cbFormat->insertItem(le->cbFormat->count(),format());
 
@@ -2163,7 +2173,7 @@ void ORGraphicsBarcodeItem::setMaxLength(int i)
       _min_width_total = 0.90;
       _min_height = 0.25;
     }
-    else if(_frmt.contains("datamatrix"))
+    else if(_frmt.contains("datamatrix") || _frmt.contains("PDF417") || _frmt.contains("QR"))
     {}
     else
     {

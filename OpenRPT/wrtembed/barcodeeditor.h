@@ -30,6 +30,8 @@
 #include "dbarcodeconfig.h"
 #include "dmatrixrectconfig.h"
 #include "dmatrixsquareconfig.h"
+#include "pdf417config.h"
+#include "qrconfig.h"
 
 class BarcodeEditor : public QDialog, public Ui::BarcodeEditor
 {
@@ -44,6 +46,8 @@ public:
     int getCBSlideMaxValue();
 
     void setDatamatrixEditor(QString format);
+    void setPDF417Editor(QString format);
+    void setQREditor(QString format);
 
 public slots:
     virtual void cbFormat_activated(int);
@@ -60,9 +64,13 @@ private:
     DMatrixSquareConfig* dMatrixSquare;
     DMatrixRectConfig* dMatrixRect;
     DBarcodeConfig* dBarcode;
+    PDF417Config* pdf417conf;
+    QRConfig* qrconf;
 
     int iDatamatrix_square;
     int iDatamatrix_rect;
+    int iPDF417;
+    int iQR;
 };
 
 #endif // BARCODEEDITOR_H
