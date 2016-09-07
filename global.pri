@@ -29,17 +29,14 @@ CONFIG += release dll
 win32 {
   CONFIG -= dll
   CONFIG += staticlib
-  # for qzint
-  DEFINES += NO_PNG
 }
 macx {
   CONFIG -= dll
   CONFIG += staticlib
-  # for qzint
-  DEFINES += NO_PNG
 }
 
-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
+# NO_PNG removes dependency on libpng for Zint
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0 NO_PNG
 
 LIBEXT = $${QMAKE_EXTENSION_SHLIB}
 win32-g++:LIBEXT = a
