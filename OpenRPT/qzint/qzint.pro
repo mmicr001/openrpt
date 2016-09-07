@@ -2,7 +2,7 @@ include( ../../global.pri )
 
 QT       += core gui uitools
 
-LIBS += -lpng12 -lz -lfontconfig
+LIBS += -lz -lfontconfig
 
 TARGET = qzint
 TEMPLATE = lib
