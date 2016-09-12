@@ -1105,7 +1105,7 @@ void ORGraphicsLabelItem::paint(QPainter * painter, const QStyleOptionGraphicsIt
 void ORGraphicsLabelItem::properties(QWidget * parent)
 {
   LabelEditor * le = new LabelEditor(parent);
-  le->labelPreview->setFont(font());
+  le->setFont(font());
   le->tbText->setText(text());
   le->setLabelFlags(textFlags());
   double dx = pos().x() / 100.0;
@@ -1117,9 +1117,9 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
   double dh = rect().height() / 100.0;
   le->leHeight->setText(QString::number(dh,'g',3));
   if(le->exec() == QDialog::Accepted) {
-      setFont(le->labelPreview->font());
-      setText(le->labelPreview->text());
-      setTextFlags(le->labelPreview->alignment());
+      setFont(le->font());
+      setText(le->text());
+      setTextFlags(le->alignment());
 
       double dt;
       bool ok;
@@ -1995,6 +1995,16 @@ void ORGraphicsBarcodeItem::properties(QWidget * parent)
   {
       le->setDatamatrixEditor(format());
   }
+  else if (format().contains("PDF417", Qt::CaseInsensitive)) {
+      le->setPDF417Editor(format());
+      le->cbFormat->setCurrentIndex(le->cbFormat->findText("PDF417"));
+      le->cbFormat_ViewConfig(le->cbFormat->findText("PDF417"));
+  }
+  else if (format().contains("QR", Qt::CaseInsensitive)) {
+      le->setQREditor(format());
+      le->cbFormat->setCurrentIndex(le->cbFormat->findText("QR"));
+      le->cbFormat_ViewConfig(le->cbFormat->findText("QR"));
+  }
   else
       le->cbFormat->insertItem(le->cbFormat->count(),format());
 
@@ -2163,7 +2173,7 @@ void ORGraphicsBarcodeItem::setMaxLength(int i)
       _min_width_total = 0.90;
       _min_height = 0.25;
     }
-    else if(_frmt.contains("datamatrix"))
+    else if(_frmt.contains("datamatrix") || _frmt.contains("PDF417") || _frmt.contains("QR"))
     {}
     else
     {
@@ -2549,6 +2559,24 @@ void ORGraphicsGraphItem::buildXML(QDomDocument & doc, QDomElement & parent)
     entity.appendChild(valueaxis);
   }
 
+  if(_graphData.padding.horizontal!=5 || _graphData.padding.vertical!=5)
+  {
+    QDomElement padding = doc.createElement("padding");
+    if(_graphData.padding.horizontal!=5)
+    {
+      elem = doc.createElement("horizontal");
+      elem.appendChild(doc.createTextNode(QString::number(_graphData.padding.horizontal)));
+      padding.appendChild(elem);
+    }
+    if(_graphData.padding.vertical!=5)
+    {
+      elem = doc.createElement("vertical");
+      elem.appendChild(doc.createTextNode(QString::number(_graphData.padding.vertical)));
+      padding.appendChild(elem);
+    }
+    entity.appendChild(padding);
+  }
+
   for(int snum = 0; snum < _graphData.series.count(); snum++) {
     ORSeriesData * series = _graphData.series.at(snum);
     if(series) {
@@ -2649,6 +2677,9 @@ void ORGraphicsGraphItem::properties(QWidget * parent)
     le->setUseDataTitleFont(true);
   }
 
+  le->setHPadding(_graphData.padding.horizontal);
+  le->setVPadding(_graphData.padding.vertical);
+
   le->setMinValue(_graphData.valueaxis.min);
   le->setMaxValue(_graphData.valueaxis.max);
   le->setAutoMinMax(_graphData.valueaxis.autominmax);
@@ -2700,6 +2731,8 @@ void ORGraphicsGraphItem::properties(QWidget * parent)
     _graphData.valueaxis.title.string = le->getValueTitle();
     _graphData.valueaxis.title.font = le->getValueTitleFont();
     _graphData.valueaxis.title.font_defined = le->getUseValueTitleFont();
+    _graphData.padding.horizontal = le->getHPadding();
+    _graphData.padding.vertical = le->getVPadding();
 
     sd1 = sd2 = 0;
     _graphData.series.clear();
@@ -2749,6 +2782,7 @@ void ORGraphicsGraphItem::copyData(ORGraphData & gData)
   gData.title = _graphData.title;
   gData.dataaxis = _graphData.dataaxis;
   gData.valueaxis = _graphData.valueaxis;
+  gData.padding = _graphData.padding;
   gData.series.clear();
   for(int i = 0; i < _graphData.series.count(); i++) {
       ORSeriesData * sd = new ORSeriesData();
