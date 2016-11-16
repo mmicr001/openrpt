@@ -67,15 +67,15 @@ bool ORPrintRender::setupPrinter(ORODocument * pDocument, QPrinter * pPrinter)
     // only reason psi would be null is if it is set to Custom, else it will resolve
     // to one of the entries defined in PageSizeInfo
     if (pDocument->pageOptions().getPageSize() == "Custom") {
-        #if QT_VERSION >= 0x050000
-        pPrinter->setPageSize(QPageSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
-                                               pDocument->pageOptions().getCustomHeight()),
-                                        QPageSize::Inch));
-        #else
-        pPrinter->setPaperSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
-                                      pDocument->pageOptions().getCustomHeight()),
-                               QPrinter::Inch);
-        #endif
+      #if QT_VERSION >= 0x050000
+      pPrinter->setPageSize(QPageSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
+                                             pDocument->pageOptions().getCustomHeight()),
+                                      QPageSize::Inch));
+      #else
+      pPrinter->setPaperSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
+                                    pDocument->pageOptions().getCustomHeight()),
+                             QPrinter::Inch);
+      #endif
     }
     else {
       // fall back to letter if we get something unexpected
