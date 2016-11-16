@@ -88,7 +88,7 @@ bool ORPrintRender::setupPrinter(ORODocument * pDocument, QPrinter * pPrinter)
   }
   else
   {
-    // user must have chosen a value for the page size, use the width and heigh defined within
+    // user must have chosen a value for the page size, use the width and height defined within
     #if QT_VERSION >= 0x050000
     pPrinter->setPageSize(QPageSize(QSizeF(psi.width()  / 100.0,
                                            psi.height() / 100.0), QPageSize::Inch));
