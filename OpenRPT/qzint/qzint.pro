@@ -1,6 +1,6 @@
 include( ../../global.pri )
 
-QT       += core gui uitools
+QT       += core gui uitools widgets
 
 LIBS += -lz -lfontconfig
 
