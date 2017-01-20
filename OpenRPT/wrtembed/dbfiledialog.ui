@@ -22,7 +22,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>506</width>
+    <width>652</width>
     <height>291</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
      <item>
       <widget class="QTreeWidget" name="_list" >
        <property name="columnCount" >
-        <number>2</number>
+        <number>3</number>
        </property>
        <column>
         <property name="text" >
@@ -45,6 +45,11 @@
        <column>
         <property name="text" >
          <string>Grade</string>
+        </property>
+       </column>
+       <column>
+        <property name="text" >
+         <string>Package</string>
         </property>
        </column>
       </widget>
@@ -95,6 +100,16 @@
           <number>-1</number>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="_packageLit" >
+         <property name="text" >
+          <string>Package:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="_package" />
        </item>
       </layout>
      </item>

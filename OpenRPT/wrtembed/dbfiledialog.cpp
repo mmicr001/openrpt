@@ -39,19 +39,29 @@ DBFileDialog::DBFileDialog(QWidget* parent, Qt::WindowFlags fl)
     connect(_name, SIGNAL(textChanged(const QString&)), this, SLOT(sNameChanged(const QString&)));
     connect(_list, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(accept()));
     connect(_grade, SIGNAL(valueChanged(int)), this, SLOT(sGradeChanged(int)));
+    connect(_package, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(sPackageChanged(const QString&)));
 
-    _list->setColumnCount(2);
+    _list->setColumnCount(3);
     QStringList cnames;
-    cnames << tr("Name") << tr("Grade");
+    cnames << tr("Name") << tr("Grade") << tr("Package");
     QTreeWidgetItem * item = new QTreeWidgetItem(_list, cnames);
     item->setData(1, Qt::TextAlignmentRole, Qt::AlignLeft);
     item->setData(2, Qt::TextAlignmentRole, Qt::AlignRight);
+    item->setData(3, Qt::TextAlignmentRole, Qt::AlignRight);
 
     XSqlQuery qry(getSqlFromTag("fmt12", QSqlDatabase::database().driverName()));
     while(qry.next())
     {
-      QTreeWidgetItem * item = new QTreeWidgetItem(_list, QStringList() << qry.value("report_name").toString() << qry.value("report_grade").toString());
+      QTreeWidgetItem * item = new QTreeWidgetItem(_list, QStringList() << qry.value("report_name").toString() << qry.value("report_grade").toString() << qry.value("package").toString());
       item->setData(0, Qt::UserRole, qry.value("report_id"));
+    }
+
+    _package->addItem("");
+
+    qry.exec(getSqlFromTag("fmt21", QSqlDatabase::database().driverName()));
+    while(qry.next())
+    {
+      _package->addItem(qry.value("package").toString());
     }
 }
 
@@ -82,6 +92,11 @@ QString DBFileDialog::getName()
 int DBFileDialog::getGrade()
 {
   return _grade->value();
+}
+
+QString DBFileDialog::getPackage()
+{
+  return _package->currentText();
 }
 
 QString DBFileDialog::getSource()
@@ -128,32 +143,54 @@ int DBFileDialog::getGradeById()
   return -1;
 }
 
+QString DBFileDialog::getPackageById()
+{
+  int rid = getId();
+  if(rid != -1)
+  {
+          XSqlQuery src_qry;
+    src_qry.prepare(getSqlFromTag("fmt20", QSqlDatabase::database().driverName())); // MANU
+    src_qry.bindValue(":report_id", rid);
+    src_qry.exec();
+          if(src_qry.first())
+            return src_qry.value("package").toString();
+  }
+  return QString::null;
+}
+
 void DBFileDialog::sSelectedReport()
 {
   _name->setText(getNameById());
   _name->end(false);
   _grade->setValue(getGradeById());
+  _package->setCurrentText(getPackageById());
 }
 
 void DBFileDialog::sNameChanged( const QString & )
 {
-  sNameGradeChanged();
+  sNameGradePackageChanged();
 }
 
 void DBFileDialog::sGradeChanged( int )
 {
-  sNameGradeChanged();
+  sNameGradePackageChanged();
 }
 
-void DBFileDialog::sNameGradeChanged()
+void DBFileDialog::sPackageChanged( const QString & )
+{
+  sNameGradePackageChanged();
+}
+
+void DBFileDialog::sNameGradePackageChanged()
 {
   QString name  = getName();
   QString grade = QString("%1").arg(getGrade());
+  QString package = getPackage();
   QTreeWidgetItem * item = 0;
   for(int i = 0; i < _list->topLevelItemCount(); i++)
   {
     item = _list->topLevelItem(i);
-    if(item->text(0) == name && item->text(1) == grade)
+    if(item->text(0) == name && item->text(1) == grade && item->text(2) == package)
     {
       _list->setCurrentItem(item);
       return;

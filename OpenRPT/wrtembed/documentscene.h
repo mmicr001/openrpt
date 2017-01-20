@@ -133,6 +133,7 @@ class DocumentScene : public QGraphicsScene
     bool lastSaveToDb;
     QString dbRecordName;
     int dbRecordGrade;
+    QString dbRecordPackage;
 
     void addColorDef(QString, QColor);
 

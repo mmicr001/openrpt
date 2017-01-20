@@ -38,9 +38,11 @@ public slots:
     virtual int getId();
     virtual QString getName();
     virtual int getGrade();
+    virtual QString getPackage();
     virtual QString getSource();
     virtual QString getNameById();
     virtual int getGradeById();
+    virtual QString getPackageById();
     virtual void sGradeChanged( int );
 
 protected slots:
@@ -48,7 +50,8 @@ protected slots:
 
     virtual void sSelectedReport();
     virtual void sNameChanged( const QString & text );
-    virtual void sNameGradeChanged();
+    virtual void sPackageChanged( const QString & text );
+    virtual void sNameGradePackageChanged();
 
 
 };

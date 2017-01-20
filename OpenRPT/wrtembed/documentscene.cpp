@@ -1119,14 +1119,17 @@ bool DocumentScene::saveToDb(QWidget * parent)
     rptDiag._name->setText(reportName());
   }
   rptDiag._grade->setValue(dbRecordGrade);
+  rptDiag._package->setCurrentText(dbRecordPackage);
   if(rptDiag.exec() == QDialog::Accepted)
   {
     QString name = rptDiag.getName();
     QString desc = reportDescription();
     QString src  = document().toString();
     int grade = rptDiag.getGrade();
+    QString package = rptDiag.getPackage();
 
     XSqlQuery q;
+    XSqlQuery q2;
     XSqlQuery qry;
 
     q.prepare(getSqlFromTag("fmt09", QSqlDatabase::database().driverName()));
@@ -1135,17 +1138,51 @@ bool DocumentScene::saveToDb(QWidget * parent)
     q.exec();
     if(q.first())
     {
-      // update old record
-      qry.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));
-      qry.bindValue(":report_desc", desc);
-      qry.bindValue(":report_src", src);
-      qry.bindValue(":report_id", q.value("report_id").toInt());
-      qry.bindValue(":report_name", name);
+      QString oldPackage;
+      q2.prepare(getSqlFromTag("fmt20", QSqlDatabase::database().driverName()));
+      q2.bindValue(":report_id", q.value("report_id").toInt());
+      q2.exec();
+      if(q2.first())
+        oldPackage = q2.value("package").toString();
+
+      if(package==oldPackage)
+      {
+        // update old record
+        qry.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));
+        qry.bindValue(":report_desc", desc);
+        qry.bindValue(":report_src", src);
+        qry.bindValue(":report_id", q.value("report_id").toInt());
+        qry.bindValue(":report_name", name);
+      }
+      else
+      {
+        //move record
+        QString tablename;
+        q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+        q2.bindValue(":package", package);
+        q2.exec();
+        if(q2.first())
+          tablename = q2.value("tablename").toString();
+
+        qry.prepare(getSqlFromTag("fmt23", QSqlDatabase::database().driverName()).arg(tablename));
+        qry.bindValue(":report_id", q.value("report_id").toInt());
+        qry.bindValue(":report_name", name);
+        qry.bindValue(":report_desc", desc);
+        qry.bindValue(":report_src", src);
+        qry.bindValue(":report_grade", grade);
+      }
     }
     else
     {
       // insert new record
-      qry.prepare(getSqlFromTag("fmt11", QSqlDatabase::database().driverName()));
+      QString tablename;
+      q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+      q2.bindValue(":package", package);
+      q2.exec();
+      if(q2.first())
+        tablename = q2.value("tablename").toString();
+
+      qry.prepare(getSqlFromTag("fmt24", QSqlDatabase::database().driverName()).arg(tablename));
       qry.bindValue(":report_name", name);
       qry.bindValue(":report_desc", desc);
       qry.bindValue(":report_src", src);
@@ -1158,6 +1195,7 @@ bool DocumentScene::saveToDb(QWidget * parent)
       setModified(false);
       dbRecordName = name;
       dbRecordGrade = grade;
+      dbRecordPackage = package;
       if(_handler)
       {
         q.exec();
