@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2016 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -62,42 +62,28 @@ bool ORPrintRender::setupPrinter(ORODocument * pDocument, QPrinter * pPrinter)
   pPrinter->setPageOrder(QPrinter::FirstPageFirst);
 
   PageSizeInfo psi = PageSizeInfo::getByName(pDocument->pageOptions().getPageSize());
-  if (psi.isNull())
-  {
-    // only reason psi would be null is if it is set to Custom, else it will resolve
-    // to one of the entries defined in PageSizeInfo
-    if (pDocument->pageOptions().getPageSize() == "Custom") {
-      #if QT_VERSION >= 0x050000
-      pPrinter->setPageSize(QPageSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
-                                             pDocument->pageOptions().getCustomHeight()),
-                                      QPageSize::Inch));
-      #else
-      pPrinter->setPaperSize(QSizeF(pDocument->pageOptions().getCustomWidth(),
-                                    pDocument->pageOptions().getCustomHeight()),
-                             QPrinter::Inch);
-      #endif
-    }
-    else {
-      // fall back to letter if we get something unexpected
-      #if QT_VERSION >= 0x050000
-      pPrinter->setPageSize(QPageSize(QPageSize::Letter));
-      #else
-      pPrinter->setPaperSize(QPrinter::Letter);
-      #endif
-    }
-  }
+  QSizeF       pagesize;
+
+  if (! psi.isNull())
+    pagesize = QSizeF(psi.width() / 100.0, psi.height() / 100.0);
+  else if (pDocument->pageOptions().getPageSize() == "Custom")
+    pagesize = QSizeF(pDocument->pageOptions().getCustomWidth(),
+                      pDocument->pageOptions().getCustomHeight());
   else
   {
-    // user must have chosen a value for the page size, use the width and height defined within
-    #if QT_VERSION >= 0x050000
-    pPrinter->setPageSize(QPageSize(QSizeF(psi.width()  / 100.0,
-                                           psi.height() / 100.0), QPageSize::Inch));
-    #else
-    pPrinter->setPaperSize(QSizeF(psi.width()  / 100.0,
-                                  psi.height() / 100.0),
-                           QPrinter::Inch);
-    #endif
+#if QT_VERSION >= 0x050000
+    pagesize = QPageSize(QPageSize::Letter).size(QPageSize::Inch);
+#else
+    pPrinter->setPaperSize(QPrinter::Letter);
+    pagesize = pPrinter->paperSize(QPrinter::Inch);
+#endif
   }
+
+#if QT_VERSION >= 0x050000
+  pPrinter->setPageSize(QPageSize(pagesize, QPageSize::Inch));
+#else
+  pPrinter->setPaperSize(pagesize, QPrinter::Inch);
+#endif
 
   return true;
 }
