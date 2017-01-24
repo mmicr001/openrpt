@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2016 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -62,20 +62,28 @@ bool ORPrintRender::setupPrinter(ORODocument * pDocument, QPrinter * pPrinter)
   pPrinter->setPageOrder(QPrinter::FirstPageFirst);
 
   PageSizeInfo psi = PageSizeInfo::getByName(pDocument->pageOptions().getPageSize());
-  if(psi.isNull())
+  QSizeF       pagesize;
+
+  if (! psi.isNull())
+    pagesize = QSizeF(psi.width() / 100.0, psi.height() / 100.0);
+  else if (pDocument->pageOptions().getPageSize() == "Custom")
+    pagesize = QSizeF(pDocument->pageOptions().getCustomWidth(),
+                      pDocument->pageOptions().getCustomHeight());
+  else
   {
-    pPrinter->setPaperSize(QSizeF(pDocument->pageOptions().getCustomWidth(), pDocument->pageOptions().getCustomHeight()), QPrinter::Inch);
+#if QT_VERSION >= 0x050000
+    pagesize = QPageSize(QPageSize::Letter).size(QPageSize::Inch);
+#else
+    pPrinter->setPaperSize(QPrinter::Letter);
+    pagesize = pPrinter->paperSize(QPrinter::Inch);
+#endif
   }
-  else 
-  {
-    #if defined(Q_WS_MAC) && (QT_VERSION < 0x040801) // QTBUG-20882
-      pPrinter->setPageSize((QPrinter::PageSize)psi.qpValue());
-    #else
-      if (pDocument->pageOptions().getPageSize() == "Custom")
-        pPrinter->setPaperSize(QSizeF(psi.width()  / 100.0,
-                                      psi.height() / 100.0), QPrinter::Inch);
-    #endif
-  }
+
+#if QT_VERSION >= 0x050000
+  pPrinter->setPageSize(QPageSize(pagesize, QPageSize::Inch));
+#else
+  pPrinter->setPaperSize(pagesize, QPrinter::Inch);
+#endif
 
   return true;
 }
@@ -95,6 +103,17 @@ bool ORPrintRender::render(ORODocument * pDocument)
     return false;
 
   _printer->setFullPage(true);
+
+#ifdef Q_OS_WIN
+  // Issue 28914 - Margin calculation wrong on windows
+  // Works around https://bugreports.qt.io/browse/QTBUG-5363
+  // page rectangle is wrong after calling setFullPage above,
+  // this resets it to the correct value
+  _printer->setPageMargins(QMarginsF(pDocument->pageOptions().getMarginLeft(),
+                                     pDocument->pageOptions().getMarginRight(),
+                                     pDocument->pageOptions().getMarginTop(),
+                                     pDocument->pageOptions().getMarginBottom()));
+#endif
 
   bool deleteWhenComplete = false;
   bool endWhenComplete = false;
