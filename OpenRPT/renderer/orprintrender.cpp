@@ -104,6 +104,17 @@ bool ORPrintRender::render(ORODocument * pDocument)
 
   _printer->setFullPage(true);
 
+#ifdef Q_OS_WIN
+  // Issue 28914 - Margin calculation wrong on windows
+  // Works around https://bugreports.qt.io/browse/QTBUG-5363
+  // page rectangle is wrong after calling setFullPage above,
+  // this resets it to the correct value
+  _printer->setPageMargins(QMarginsF(pDocument->pageOptions().getMarginLeft(),
+                                     pDocument->pageOptions().getMarginRight(),
+                                     pDocument->pageOptions().getMarginTop(),
+                                     pDocument->pageOptions().getMarginBottom()));
+#endif
+
   bool deleteWhenComplete = false;
   bool endWhenComplete = false;
 
