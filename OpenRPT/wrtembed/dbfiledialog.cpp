@@ -163,7 +163,11 @@ void DBFileDialog::sSelectedReport()
   _name->setText(getNameById());
   _name->end(false);
   _grade->setValue(getGradeById());
+#if QT_VERSION >= 0x050000
   _package->setCurrentText(getPackageById());
+#else
+  _package->setCurrentIndex(_package->findText(getPackageById()));
+#endif
 }
 
 void DBFileDialog::sNameChanged( const QString & )
