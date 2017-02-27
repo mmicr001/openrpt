@@ -104,8 +104,13 @@ static const char* __SqlTable[][__fieldCount] = {
                                         "       (report_name, report_descrip, report_source, report_grade) "
                                         " VALUES (:report_name, :report_desc, :report_src, :report_grade)"},
 // fmt12
-  {"fmt12",      "QPSQL",          "SELECT report_id, report_name, report_grade "
+  {"fmt12",      "QPSQL",          "SELECT report_id, report_name, report_grade, "
+                                        "  CASE WHEN n.nspname='public' THEN '' "
+                                        "  ELSE n.nspname "
+                                        "  END AS package "
                                         "  FROM report "
+                                        "  JOIN pg_class c ON report.tableoid=c.oid "
+                                        "  JOIN pg_namespace n ON c.relnamespace=n.oid "
                                         "ORDER BY report_name, report_grade"},
 // fmt13
   {"fmt13",      "QPSQL",          "SELECT report_source "
@@ -146,6 +151,42 @@ static const char* __SqlTable[][__fieldCount] = {
   {"fmt19",      "QSQLITE2",       "SELECT 'default' AS nspname;" },
   {"fmt19",      "QODBC",          "SELECT 'default' AS nspname;" },
   {"fmt19",      "QMYSQL",         "SELECT 'default' AS nspname;" },
+
+// fmt20
+  {"fmt20",      "QPSQL",          "SELECT CASE WHEN n.nspname='public' THEN '' "
+                                        "  ELSE n.nspname "
+                                        "  END AS package "
+                                        "  FROM report "
+                                        "  JOIN pg_class c ON report.tableoid=c.oid "
+                                        "  JOIN pg_namespace n ON c.relnamespace=n.oid "
+                                        " WHERE (report_id=:report_id)"},
+
+// fmt21
+  {"fmt21",      "QPSQL",          "SELECT DISTINCT n.nspname AS package "
+                                        "  FROM pg_class c "
+                                        "  JOIN pg_namespace n ON c.relnamespace=n.oid "
+                                        " WHERE (c.relname='report' "
+                                        "        OR c.relname='pkgreport') "
+                                        " AND n.nspname!='public'"},
+// fmt22
+  {"fmt22",      "QPSQL",          "SELECT n.nspname || '.' || c.relname AS tablename "
+                                        "  FROM pg_class c "
+                                        "  JOIN pg_namespace n ON c.relnamespace=n.oid "
+                                        " WHERE (c.relname='report' "
+                                        "        OR c.relname='pkgreport') "
+                                        " AND n.nspname=COALESCE(:package, 'public') "
+                                        " ORDER BY c.relname"},
+// fmt23
+  {"fmt23",      "QPSQL",          "DELETE FROM report "
+                                        " WHERE report_id=:report_id; "
+                                   "INSERT INTO %1 "
+                                        "       (report_name, report_descrip, report_source, report_grade) "
+                                        " VALUES (:report_name, :report_desc, :report_src, :report_grade)"},
+
+// fmt24
+  {"fmt24",      "QPSQL",          "INSERT INTO %1 "
+                                        "       (report_name, report_descrip, report_source, report_grade) "
+                                        " VALUES (:report_name, :report_desc, :report_src, :report_grade)"},
 
 
 

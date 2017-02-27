@@ -53,7 +53,7 @@ DocumentScene::DocumentScene(bool newDoc, ReportHandler *handler, QObject * pare
   lastSaveToDb = false;
   dbRecordGrade = -1;
   _pageOptions = 0;
-  
+
   initData();
 
   if(newDoc) {
@@ -116,7 +116,7 @@ void DocumentScene::initData()
     _pageMargin = addRect(0, 0, 0, 0, p);
     _pageMargin->setZValue(-1);
 
-    if(!_pageOptions) {    
+    if(!_pageOptions) {
         _pageOptions = new ReportPageOptions;
         connect(_pageOptions, SIGNAL(pageOptionsChanged()), this, SLOT(pageOptionsChanged()));
     }
@@ -231,7 +231,7 @@ void DocumentScene::pageOptionsChanged()
 
   QRectF r = _pageShadow->rect();
   r.setSize(QSize(width, height));
-  if(_pageShadow->rect() != r) 
+  if(_pageShadow->rect() != r)
   {
     _pageShadow->setRect(r);
     isModified = true;
@@ -239,7 +239,7 @@ void DocumentScene::pageOptionsChanged()
 
   r = _page->rect();
   r.setSize(QSize(width, height));
-  if(_page->rect() != r) 
+  if(_page->rect() != r)
   {
     _page->setRect(r);
     isModified = true;
@@ -251,7 +251,7 @@ void DocumentScene::pageOptionsChanged()
   r.setBottom(r.bottom() - (_pageOptions->getMarginBottom() * dpiX));
   if(_pageMargin->rect() != r)
   {
-      _pageMargin->setRect(r);  
+      _pageMargin->setRect(r);
       isModified = true;
   }
 
@@ -381,7 +381,7 @@ void DocumentScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
         tr("You must place an object inside a section on the report.") );
       QGraphicsScene::mousePressEvent(mouseEvent);
       return;
-    } 
+    }
     switch(_handler->insertItemCode())
     {
       case 0: // No Item
@@ -623,7 +623,7 @@ void DocumentScene::recordSnapshot()
 {
     // cut off the snapshots list after current position, in case of undo not followed by redo
     while(_snapshots.size() > _undoIndex+1) {
-        _snapshots.removeLast(); 
+        _snapshots.removeLast();
     }
 
     _snapshots.append(document());
@@ -1119,14 +1119,21 @@ bool DocumentScene::saveToDb(QWidget * parent)
     rptDiag._name->setText(reportName());
   }
   rptDiag._grade->setValue(dbRecordGrade);
+#if QT_VERSION >= 0x050000
+  rptDiag._package->setCurrentText(dbRecordPackage);
+#else
+  rptDiag._package->setCurrentIndex(rptDiag._package->findText(dbRecordPackage));
+#endif
   if(rptDiag.exec() == QDialog::Accepted)
   {
     QString name = rptDiag.getName();
     QString desc = reportDescription();
     QString src  = document().toString();
     int grade = rptDiag.getGrade();
+    QString package = rptDiag.getPackage();
 
     XSqlQuery q;
+    XSqlQuery q2;
     XSqlQuery qry;
 
     q.prepare(getSqlFromTag("fmt09", QSqlDatabase::database().driverName()));
@@ -1135,17 +1142,51 @@ bool DocumentScene::saveToDb(QWidget * parent)
     q.exec();
     if(q.first())
     {
-      // update old record
-      qry.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));
-      qry.bindValue(":report_desc", desc);
-      qry.bindValue(":report_src", src);
-      qry.bindValue(":report_id", q.value("report_id").toInt());
-      qry.bindValue(":report_name", name);
+      QString oldPackage;
+      q2.prepare(getSqlFromTag("fmt20", QSqlDatabase::database().driverName()));
+      q2.bindValue(":report_id", q.value("report_id").toInt());
+      q2.exec();
+      if(q2.first())
+        oldPackage = q2.value("package").toString();
+
+      if(package==oldPackage)
+      {
+        // update old record
+        qry.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));
+        qry.bindValue(":report_desc", desc);
+        qry.bindValue(":report_src", src);
+        qry.bindValue(":report_id", q.value("report_id").toInt());
+        qry.bindValue(":report_name", name);
+      }
+      else
+      {
+        //move record
+        QString tablename;
+        q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+        q2.bindValue(":package", package);
+        q2.exec();
+        if(q2.first())
+          tablename = q2.value("tablename").toString();
+
+        qry.prepare(getSqlFromTag("fmt23", QSqlDatabase::database().driverName()).arg(tablename));
+        qry.bindValue(":report_id", q.value("report_id").toInt());
+        qry.bindValue(":report_name", name);
+        qry.bindValue(":report_desc", desc);
+        qry.bindValue(":report_src", src);
+        qry.bindValue(":report_grade", grade);
+      }
     }
     else
     {
       // insert new record
-      qry.prepare(getSqlFromTag("fmt11", QSqlDatabase::database().driverName()));
+      QString tablename;
+      q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+      q2.bindValue(":package", package);
+      q2.exec();
+      if(q2.first())
+        tablename = q2.value("tablename").toString();
+
+      qry.prepare(getSqlFromTag("fmt24", QSqlDatabase::database().driverName()).arg(tablename));
       qry.bindValue(":report_name", name);
       qry.bindValue(":report_desc", desc);
       qry.bindValue(":report_src", src);
@@ -1158,6 +1199,7 @@ bool DocumentScene::saveToDb(QWidget * parent)
       setModified(false);
       dbRecordName = name;
       dbRecordGrade = grade;
+      dbRecordPackage = package;
       if(_handler)
       {
         q.exec();
@@ -1329,19 +1371,19 @@ QDomDocument DocumentScene::document()
 
     root.appendChild(bg);
   }
-  
+
   // Grid
   if(_gridOptions)
   {
       QDomElement grid = doc.createElement("grid");
-      root.appendChild(grid);    
+      root.appendChild(grid);
 
-      if(_gridOptions->isSnap()) 
+      if(_gridOptions->isSnap())
       {
           QDomElement gridSnap = doc.createElement("snap");
           grid.appendChild(gridSnap);
       }
-      if(_gridOptions->isVisible()) 
+      if(_gridOptions->isVisible())
       {
           QDomElement gridShow = doc.createElement("show");
           grid.appendChild(gridShow);
@@ -1601,9 +1643,9 @@ void DocumentScene::setWatermarkFont(QFont f)
   if(_wmFont != f)
   {
     _wmFont = f;
-    if(!watermarkUseDefaultFont()) 
+    if(!watermarkUseDefaultFont())
     {
-        setModified(true);    
+        setModified(true);
     }
   }
 }
@@ -1631,9 +1673,9 @@ void DocumentScene::setWatermarkText(QString str)
   if(_wmText != str)
   {
     _wmText = str;
-    if(watermarkUseStaticText()) 
+    if(watermarkUseStaticText())
     {
-      setModified(true);    
+      setModified(true);
     }
   }
 }
@@ -1652,7 +1694,7 @@ void DocumentScene::setWatermarkQuery(QString str)
   if(_wmQuery != str)
   {
     _wmQuery = str;
-    if(!watermarkUseStaticText()) 
+    if(!watermarkUseStaticText())
     {
       setModified(true);
     }
@@ -1691,7 +1733,7 @@ void DocumentScene::setBgQuery(QString str)
   if(_bgQuery != str)
   {
     _bgQuery = str;
-    if(!bgStatic()) 
+    if(!bgStatic())
     {
         setModified(true);
     }
@@ -1935,11 +1977,11 @@ void DocumentScene::refreshFontToolBox()
     for(int i = 0; i < selList.count(); i++)
     {
         QString itemFont = getItemFontFamily(selList.at(i));
-        if(font.isEmpty()) 
+        if(font.isEmpty())
         {
             font = itemFont;
         }
-        else if(itemFont != font && !itemFont.isEmpty()) 
+        else if(itemFont != font && !itemFont.isEmpty())
         {
             font.clear();
             break;
@@ -1949,11 +1991,11 @@ void DocumentScene::refreshFontToolBox()
     for(int i = 0; i < selList.count(); i++)
     {
         QString itemSize = getItemFontSize(selList.at(i));
-        if(size.isEmpty()) 
+        if(size.isEmpty())
         {
             size = itemSize;
         }
-        else if(itemSize != size && !itemSize.isEmpty()) 
+        else if(itemSize != size && !itemSize.isEmpty())
         {
             size.clear();
             break;
@@ -1965,11 +2007,11 @@ void DocumentScene::refreshFontToolBox()
         if(getItemFontFamily(selList.at(i)).isEmpty())
             continue;
 
-        if (getItemFontWeight(selList.at(i))) 
+        if (getItemFontWeight(selList.at(i)))
         {
             bold = true;
         }
-        else 
+        else
         {
             bold = false;
             break;
@@ -1981,11 +2023,11 @@ void DocumentScene::refreshFontToolBox()
         if(getItemFontFamily(selList.at(i)).isEmpty())
             continue;
 
-       if (getItemFontStyle(selList.at(i))) 
+       if (getItemFontStyle(selList.at(i)))
         {
             italic = true;
         }
-        else 
+        else
         {
             italic = false;
             break;
@@ -2079,16 +2121,16 @@ void DocumentScene::loadDocument(const QDomElement &root, QWidget *parent, bool 
                 QDomNodeList section = it.toElement().childNodes();
                 for(int nodeCounter = 0; nodeCounter < section.count(); nodeCounter++) {
                     QDomElement elt = section.item(nodeCounter).toElement();
-                    if(elt.tagName() == "snap") {   
+                    if(elt.tagName() == "snap") {
                         _gridOptions->setSnap(true);
                     };
-                    if(elt.tagName() == "show") {   
+                    if(elt.tagName() == "show") {
                         _gridOptions->setVisible();
                     };
-                    if(elt.tagName() == "x") {   
+                    if(elt.tagName() == "x") {
                         _gridOptions->setXInterval(elt.firstChild().nodeValue().toDouble());
                     };
-                    if(elt.tagName() == "y") {   
+                    if(elt.tagName() == "y") {
                         _gridOptions->setYInterval(elt.firstChild().nodeValue().toDouble());
                     };
                 }

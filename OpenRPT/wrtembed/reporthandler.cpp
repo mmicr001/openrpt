@@ -1484,6 +1484,7 @@ void ReportHandler::dbLoadDoc() {
         rptDiag.setWindowTitle(tr("Load Report from Database"));
         rptDiag._name->setReadOnly(true);
         rptDiag._grade->setEnabled(false);
+        rptDiag._package->setEnabled(false);
         if(rptDiag.exec() == QDialog::Accepted) {
             QDomDocument doc;
             QString errMsg;
@@ -1497,6 +1498,7 @@ void ReportHandler::dbLoadDoc() {
                   rw->_scene->lastSaveToDb = true;
                   rw->_scene->dbRecordName = rptDiag.getNameById();
                   rw->_scene->dbRecordGrade = rptDiag.getGradeById();
+                  rw->_scene->dbRecordPackage = rptDiag.getPackageById();
                 }
             } else {
                 QMessageBox::warning(0, tr("Error Loading Report"),

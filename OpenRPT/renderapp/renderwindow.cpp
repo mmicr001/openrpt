@@ -234,6 +234,7 @@ void RenderWindow::fileLoad()
   rptDiag.setWindowTitle(tr("Load Report from Database"));
   rptDiag._name->setReadOnly(true);
   rptDiag._grade->setEnabled(false);
+  rptDiag._package->setEnabled(false);
   if(rptDiag.exec() == QDialog::Accepted)
     fileLoad(rptDiag.getName());
 }
