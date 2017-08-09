@@ -57,7 +57,7 @@ static const char* __SqlTable[][__fieldCount] = {
                                         " WHERE (report_name=:report_name)"
                                         " ORDER BY report_grade DESC"},
 // fmt05
-  {"fmt05",      "QPSQL",          "SELECT login()"},
+  {"fmt05",      "QPSQL",          "SELECT login(true)"},
   {"fmt05",      "QOCI",          "SELECT 1 from dual"},
 
 // fmt06

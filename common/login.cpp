@@ -29,6 +29,7 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include "dbtools.h"
+#include "builtinSqlFunctions.h"
 #include "xsqlquery.h"
 #include "loginOptions.h"
 #include "login.h"
@@ -208,6 +209,8 @@ void login::sLogin()
     _password->setText("");
     return;
   }
+
+  QSqlQuery().exec(getSqlFromTag("fmt05", db.driverName()));
 
   if (_splash)
   {
