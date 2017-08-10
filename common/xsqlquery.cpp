@@ -136,9 +136,11 @@ XSqlQuery::XSqlQuery(const QString &pSql, QSqlDatabase db) :
   QSqlQuery(QString::null, db)
 {
   _data = new XSqlQueryPrivate(this);
-  qApp->setOverrideCursor(Qt::WaitCursor);
+  if (qApp->inherits("QGuiApplication"))
+    qApp->setOverrideCursor(Qt::WaitCursor);
   exec(pSql.toLatin1().data());
-  qApp->restoreOverrideCursor();
+  if (qApp->inherits("QGuiApplication"))
+    qApp->restoreOverrideCursor();
 }
 
 XSqlQuery::XSqlQuery(const QSqlQuery & other) :
@@ -220,7 +222,8 @@ int XSqlQuery::count()
 
 bool XSqlQuery::exec()
 {
-  qApp->setOverrideCursor(Qt::WaitCursor);
+  if (qApp->inherits("QGuiApplication"))
+    qApp->setOverrideCursor(Qt::WaitCursor);
   bool returnValue = false;
 
   if(_data && _data->_emulatePrepare)
@@ -236,7 +239,8 @@ bool XSqlQuery::exec()
   }
   else
     returnValue = QSqlQuery::exec();
-  qApp->restoreOverrideCursor();
+  if (qApp->inherits("QGuiApplication"))
+    qApp->restoreOverrideCursor();
 
   if (_data)
     _data->_currRecord = record();
@@ -249,9 +253,11 @@ bool XSqlQuery::exec()
 
 bool XSqlQuery::exec(const QString &pSql)
 {
-  qApp->setOverrideCursor(Qt::WaitCursor);
+  if (qApp->inherits("QGuiApplication"))
+    qApp->setOverrideCursor(Qt::WaitCursor);
   bool returnValue = QSqlQuery::exec(pSql);
-  qApp->restoreOverrideCursor();
+  if (qApp->inherits("QGuiApplication"))
+    qApp->restoreOverrideCursor();
 
   if (_data)
     _data->_currRecord = record();

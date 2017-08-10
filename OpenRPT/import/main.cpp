@@ -28,8 +28,8 @@
 #include <QFile>
 #include <QtXml>
 #include <QSqlError>
-#include <QSqlQuery>
 #include <QTextStream>
+#include "xsqlquery.h"
 
 #include <dbtools.h>
 
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 
     QString xml_file = QString::null;
     int     report_grade = 0;
+    QString package;
 
     for (int counter = 1; counter < argc; counter++)
     {
@@ -66,6 +67,8 @@ int main(int argc, char *argv[])
         xml_file = arguments.right(arguments.length() - 3);
       else if (arguments.startsWith("-grade=", Qt::CaseInsensitive))
         report_grade = (arguments.right(arguments.length() - 7)).toInt();
+      else if (arguments.startsWith("-package=", Qt::CaseInsensitive))
+        package = arguments.right(arguments.length() - 9);
       else if(!arguments.startsWith("-"))
         xml_file = arguments;
     }
@@ -138,30 +141,67 @@ int main(int argc, char *argv[])
         exit(-1);
       }
 
-      QSqlQuery().exec(getSqlFromTag("fmt05", db.driverName()));		// MANU
+      XSqlQuery().exec(getSqlFromTag("fmt05", db.driverName()));		// MANU
 
       // first we need to determine if there is already a report in the database of the same
       // name and if so then we will perform an update instead of an insert
-      QSqlQuery qry;
+      XSqlQuery qry;
       qry.prepare(getSqlFromTag("fmt09", db.driverName()));		// MANU
       qry.bindValue(":report_name", report_name);
       qry.bindValue(":report_grade", report_grade);
       qry.exec();
-      QSqlQuery query;
+      XSqlQuery qry2;
+      XSqlQuery query;
       if(qry.first()) {
+        QString oldPackage;
+        qry2.prepare(getSqlFromTag("fmt20", QSqlDatabase::database().driverName()));
+        qry2.bindValue(":report_id", qry.value(0));
+        qry2.exec();
+        if(qry2.first())
+          oldPackage = qry2.value("package").toString();
+
+        if(package==oldPackage)
+        {
           // update
           query.prepare(getSqlFromTag("fmt10", db.driverName()));		// MANU
           query.bindValue(":report_desc", report_desc);
           query.bindValue(":report_src", report_src);
           query.bindValue(":report_id", qry.value(0));
           query.bindValue(":report_name", report_name);
-      } else {
-          // insert
-          query.prepare(getSqlFromTag("fmt11", db.driverName()));		// MANU
+        }
+        else
+        {
+          //move record
+          QString tablename;
+          qry2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+          if (!package.isEmpty())
+            qry2.bindValue(":package", package);
+          qry2.exec();
+          if(qry2.first())
+            tablename = qry2.value("tablename").toString();
+
+          query.prepare(getSqlFromTag("fmt23", QSqlDatabase::database().driverName()).arg(tablename));
+          query.bindValue(":report_id", qry.value(0));
           query.bindValue(":report_name", report_name);
           query.bindValue(":report_desc", report_desc);
           query.bindValue(":report_src", report_src);
           query.bindValue(":report_grade", report_grade);
+        }
+      } else {
+        // insert
+        QString tablename;
+        qry2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+        if (!package.isEmpty())
+          qry2.bindValue(":package", package);
+        qry2.exec();
+        if(qry2.first())
+          tablename = qry2.value("tablename").toString();
+
+        query.prepare(getSqlFromTag("fmt24", QSqlDatabase::database().driverName()).arg(tablename));
+        query.bindValue(":report_name", report_name);
+        query.bindValue(":report_desc", report_desc);
+        query.bindValue(":report_src", report_src);
+        query.bindValue(":report_grade", report_grade);
       }
       
       if(!query.exec()) {
@@ -180,6 +220,6 @@ int main(int argc, char *argv[])
       out << "You must specify a Database Password by using the -passwd= parameter." << endl;
   }
   else
-    out << "Usage: import -databaseURL='$' -username='$' -passwd='$' -grade=# -f='$'" << endl;
+    out << "Usage: import -databaseURL='$' -username='$' -passwd='$' -grade=# -package='$' -f='$'" << endl;
   return 0;
 }
