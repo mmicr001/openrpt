@@ -1163,7 +1163,8 @@ bool DocumentScene::saveToDb(QWidget * parent)
         //move record
         QString tablename;
         q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
-        q2.bindValue(":package", package);
+        if (!package.isEmpty())
+          q2.bindValue(":package", package);
         q2.exec();
         if(q2.first())
           tablename = q2.value("tablename").toString();
@@ -1181,7 +1182,8 @@ bool DocumentScene::saveToDb(QWidget * parent)
       // insert new record
       QString tablename;
       q2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
-      q2.bindValue(":package", package);
+      if (!package.isEmpty())
+        q2.bindValue(":package", package);
       q2.exec();
       if(q2.first())
         tablename = q2.value("tablename").toString();

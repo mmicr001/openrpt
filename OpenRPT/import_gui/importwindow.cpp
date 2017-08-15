@@ -19,10 +19,8 @@
  */
 
 #include "importwindow.h"
-
 #include <QInputDialog>
 #include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QSqlError>
 #include <QTimerEvent>
 #include <QFileDialog>
@@ -31,10 +29,10 @@
 #include <QStringList>
 #include <QDomNode>
 
+#include "xsqlquery.h"
 #include "data.h"
 
 #include "builtinSqlFunctions.h"
-
 
 ImportWindow::ImportWindow(QWidget* parent, Qt::WindowFlags fl)
     : QMainWindow(parent, fl)
@@ -56,6 +54,15 @@ ImportWindow::ImportWindow(QWidget* parent, Qt::WindowFlags fl)
 
   _reports->clear();
   _dbTimerId = startTimer(60000);
+
+  _package->addItem("");
+
+  XSqlQuery qry;
+  qry.exec(getSqlFromTag("fmt21", QSqlDatabase::database().driverName()));
+  while(qry.next())
+  {
+    _package->addItem(qry.value("package").toString());
+  }
 }
 
 ImportWindow::~ImportWindow()
@@ -158,8 +165,9 @@ void ImportWindow::sImport()
 
             if(!report_name.isEmpty())
             {
-              QSqlQuery qry;
-              QSqlQuery query;
+              XSqlQuery qry;
+              XSqlQuery qry2;
+              XSqlQuery query;
 
               qry.prepare(getSqlFromTag("fmt09", QSqlDatabase::database().driverName()));	// MANU
               qry.bindValue(":report_name",  report_name);	// MANU
@@ -167,17 +175,53 @@ void ImportWindow::sImport()
               qry.exec();
               if(qry.first())
               {
-                // update
-                query.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));	// MANU
-                query.bindValue(":report_desc", report_desc);		// MANU
-                query.bindValue(":report_src",   report_src);		// MANU
-                query.bindValue(":report_id", qry.value(0));		// MANU
-                query.bindValue(":report_name",  report_name);	// MANU
+                QString oldPackage;
+                qry2.prepare(getSqlFromTag("fmt20", QSqlDatabase::database().driverName()));
+                qry2.bindValue(":report_id", qry.value(0));
+                qry2.exec();
+                if(qry2.first())
+                  oldPackage = qry2.value("package").toString();
+
+                if(_package->currentText()==oldPackage)
+                {
+                  // update
+                  query.prepare(getSqlFromTag("fmt10", QSqlDatabase::database().driverName()));   // MANU
+                  query.bindValue(":report_desc", report_desc);           // MANU
+                  query.bindValue(":report_src",   report_src);           // MANU
+                  query.bindValue(":report_id", qry.value(0));            // MANU
+                  query.bindValue(":report_name",  report_name);  // MANU
+                }
+                else
+                {
+                  //move record
+                  QString tablename;
+                  qry2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+                  if (!_package->currentText().isEmpty())
+                    qry2.bindValue(":package", _package->currentText());
+                  qry2.exec();
+                  if(qry2.first())
+                    tablename = qry2.value("tablename").toString();
+
+                  query.prepare(getSqlFromTag("fmt23", QSqlDatabase::database().driverName()).arg(tablename));
+                  query.bindValue(":report_id", qry.value(0));
+                  query.bindValue(":report_name", report_name);
+                  query.bindValue(":report_desc",report_desc);
+                  query.bindValue(":report_src", report_src);
+                  query.bindValue(":report_grade", report_grade);
+                }
               }
               else
               {
                 // insert
-                query.prepare(getSqlFromTag("fmt11", QSqlDatabase::database().driverName()));	// MANU
+                QString tablename;
+                qry2.prepare(getSqlFromTag("fmt22", QSqlDatabase::database().driverName()));
+                if (!_package->currentText().isEmpty())
+                  qry2.bindValue(":package", _package->currentText());
+                qry2.exec();
+                if(qry2.first())
+                  tablename = qry2.value("tablename").toString();
+
+                query.prepare(getSqlFromTag("fmt24", QSqlDatabase::database().driverName()).arg(tablename));
                 query.bindValue(":report_name",  report_name);	// MANU
                 query.bindValue(":report_desc", report_desc);		// MANU
                 query.bindValue(":report_src",   report_src);		// MANU
