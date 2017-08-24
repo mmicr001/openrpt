@@ -419,27 +419,27 @@ qreal ORPreRenderPrivate::finishCurPage(bool lastPage)
   _subtotContextPageFooter = true;
   if(lastPage && _reportData->pgfoot_last != 0)
   {
-    _yOffset = offset - renderSectionSize(*(_reportData->pgfoot_last));
+    _yOffset = qMax(offset - renderSectionSize(*(_reportData->pgfoot_last)), _yOffset);
     retval = renderSection(*(_reportData->pgfoot_last));
   }
   else if(_pageCounter == 1 && _reportData->pgfoot_first)
   {
-    _yOffset = offset - renderSectionSize(*(_reportData->pgfoot_first));
+    _yOffset = qMax(offset - renderSectionSize(*(_reportData->pgfoot_first)), _yOffset);
     retval = renderSection(*(_reportData->pgfoot_first));
   }
   else if((_pageCounter % 2) == 1 && _reportData->pgfoot_odd)
   {
-    _yOffset = offset - renderSectionSize(*(_reportData->pgfoot_odd));
+    _yOffset = qMax(offset - renderSectionSize(*(_reportData->pgfoot_odd)), _yOffset);
     retval = renderSection(*(_reportData->pgfoot_odd));
   }
   else if((_pageCounter % 2) == 0 && _reportData->pgfoot_even)
   {
-    _yOffset = offset - renderSectionSize(*(_reportData->pgfoot_even));
+    _yOffset = qMax(offset - renderSectionSize(*(_reportData->pgfoot_even)), _yOffset);
     retval = renderSection(*(_reportData->pgfoot_even));
   }
   else if(_reportData->pgfoot_any != 0)
   {
-    _yOffset = offset - renderSectionSize(*(_reportData->pgfoot_any));
+    _yOffset = qMax(offset - renderSectionSize(*(_reportData->pgfoot_any)), _yOffset);
     retval = renderSection(*(_reportData->pgfoot_any));
   }
   _subtotContextPageFooter = false;
@@ -1116,7 +1116,7 @@ qreal ORPreRenderPrivate::renderTextElements(QList<ORObject*> elemList, qreal se
             if (splitter->textBottomRelativePos() > sectionHeight)
                 sectionHeight = splitter->textBottomRelativePos();
 
-            if(splitter->endOfText())
+            if(splitter->endOfText() || _subtotContextPageFooter)
             {
                 splitters.removeAt(i);
                 i--;
@@ -1549,11 +1549,13 @@ ORODocument* ORPreRender::generate()
       if(_internal->_reportData->sections.at(i) != 0)
         _internal->renderDetailSection(*(_internal->_reportData->sections.at(i)));
 
-    qreal rptfootSize = (_internal->_reportData->rptfoot != 0) ? _internal->renderSectionSize(*(_internal->_reportData->rptfoot), true) : 0;
-    if(rptfootSize + _internal->finishCurPageSize(true) + _internal->_bottomMargin + _internal->_yOffset >= _internal->_maxHeight)
-      _internal->createNewPage();
     if(_internal->_reportData->rptfoot != 0)
+    {
+      qreal rptfootSize = (_internal->_reportData->rptfoot != 0) ? _internal->renderSectionSize(*(_internal->_reportData->rptfoot), true) : 0;
+      if(rptfootSize + _internal->finishCurPageSize(true) + _internal->_bottomMargin + _internal->_yOffset >= _internal->_maxHeight)
+        _internal->createNewPage();
       _internal->renderSection(*(_internal->_reportData->rptfoot));
+    }
   }
   _internal->finishCurPage(true);
 
