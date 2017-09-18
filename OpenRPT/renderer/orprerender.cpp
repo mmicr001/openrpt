@@ -151,6 +151,7 @@ ORPreRenderPrivate::ORPreRenderPrivate()
   _wmText = QString::null;
   _wmData.query = QString::null;
   _wmData.column = QString::null;
+  _wmUseDefaultFont = true;
   _wmFont = QFont("Helvetic");
   _wmOpacity = 25;
 
@@ -1626,6 +1627,7 @@ bool ORPreRender::setDom(const QDomDocument & docReport)
       _internal->_wmText = QString::null;
       _internal->_wmData.query = QString::null;
       _internal->_wmData.column = QString::null;
+      _internal->_wmUseDefaultFont = true;
       _internal->_wmFont = QFont("Arial");
       _internal->_wmOpacity = 25;
 
