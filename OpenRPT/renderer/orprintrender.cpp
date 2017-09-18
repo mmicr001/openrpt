@@ -28,7 +28,7 @@
 #include <QPaintEngine>
 
 static void renderBackground(QImage &, const QImage &, const QRect &, bool, Qt::AspectRatioMode, int, unsigned int);
-static void renderWatermark(QImage &, const QString &, const QFont &, const unsigned int, double, double, double, double);
+static void renderWatermark(QImage &, const QString &, bool, const QFont &, const unsigned int, double, double, double, double);
 
 ORPrintRender::ORPrintRender()
 {
@@ -223,7 +223,7 @@ void renderBackground(QImage & dest, const QImage & bgImage, const QRect & bgRec
 #include <QFontDatabase>
 
 // margin is in the same units as the image
-void renderWatermark(QImage & image, const QString & wmText, const QFont & wmFont, const unsigned int wmOpacity, double leftMargin, double rightMargin, double topMargin, double bottomMargin)
+void renderWatermark(QImage & image, const QString & wmText, bool wmUseDefaultFont, const QFont & wmFont, const unsigned int wmOpacity, double leftMargin, double rightMargin, double topMargin, double bottomMargin)
 {
   const double pi = 3.14159265358979323846;
 
@@ -255,6 +255,10 @@ void renderWatermark(QImage & image, const QString & wmText, const QFont & wmFon
     if(fm.boundingRect(wmText).width() < l2)
       break;
   }
+
+  if(!wmUseDefaultFont && wmFont.pointSize() < fnt.pointSize())
+    fnt.setPointSize(wmFont.pointSize());
+
   int fh = fm.height();
 
   y = y - (fh/2);
@@ -350,7 +354,8 @@ void ORPrintRender::renderPage(ORODocument * pDocument, int pageNb, QPainter *pa
     if((!p->watermarkText().isEmpty()) && (p->watermarkOpacity() != 0))
     {
       doBgWm = true;
-      renderWatermark(image, p->watermarkText(), p->watermarkFont(), p->watermarkOpacity(),
+      renderWatermark(image, p->watermarkText(), p->watermarkUseDefaultFont(),
+                      p->watermarkFont(), p->watermarkOpacity(),
                       pDocument->pageOptions().getMarginLeft()   * resolution,
                       pDocument->pageOptions().getMarginRight()  * resolution,
                       pDocument->pageOptions().getMarginTop()    * resolution,

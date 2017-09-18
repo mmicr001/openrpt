@@ -98,10 +98,12 @@ class OROPage
     void addPrimitive(OROPrimitive*);
 
     void setWatermarkText(const QString &);
+    void setWatermarkUseDefaultFont(bool);
     void setWatermarkFont(const QFont &);
     void setWatermarkOpacity(unsigned char); // 0..255 : default 25
 
     QString watermarkText() const { return _wmText; };
+    bool watermarkUseDefaultFont() const { return _wmUseDefaultFont; };
     QFont watermarkFont() const { return _wmFont; };
     unsigned char watermarkOpacity() const { return _wmOpacity; };
 
@@ -126,6 +128,7 @@ class OROPage
     QList<OROPrimitive*> _primitives;
 
     QString _wmText;
+    bool _wmUseDefaultFont;
     QFont _wmFont;
     unsigned char _wmOpacity;
 

@@ -133,6 +133,11 @@ void OROPage::setWatermarkText(const QString & txt)
   _wmText = txt;
 }
 
+void OROPage::setWatermarkUseDefaultFont(bool useDefault)
+{
+  _wmUseDefaultFont = useDefault;
+}
+
 void OROPage::setWatermarkFont(const QFont & fnt)
 {
   _wmFont = fnt;
