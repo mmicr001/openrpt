@@ -80,6 +80,7 @@ class ORPreRenderPrivate {
                          // pulled from a query source
     QString _wmText;     // the text that is to be rendered as a watermark
     ORDataData _wmData;  // the dynamic source for the watermark text
+    bool _wmUseDefaultFont; // the default font is being used
     QFont   _wmFont;     // the font to use when rendering the _wmText value
                          // on the background of the page. For purposes of
                          // fit, pointSize() of font is ignored and the largest
@@ -150,6 +151,7 @@ ORPreRenderPrivate::ORPreRenderPrivate()
   _wmText = QString::null;
   _wmData.query = QString::null;
   _wmData.column = QString::null;
+  _wmUseDefaultFont = true;
   _wmFont = QFont("Helvetic");
   _wmOpacity = 25;
 
@@ -284,6 +286,7 @@ void ORPreRenderPrivate::renderWatermark(OROPage * p)
     return;
 
   p->setWatermarkText(wmText);
+  p->setWatermarkUseDefaultFont(_wmUseDefaultFont);
   p->setWatermarkFont(_wmFont);
   p->setWatermarkOpacity(_wmOpacity);
 }
@@ -1624,6 +1627,7 @@ bool ORPreRender::setDom(const QDomDocument & docReport)
       _internal->_wmText = QString::null;
       _internal->_wmData.query = QString::null;
       _internal->_wmData.column = QString::null;
+      _internal->_wmUseDefaultFont = true;
       _internal->_wmFont = QFont("Arial");
       _internal->_wmOpacity = 25;
 
@@ -1637,6 +1641,7 @@ bool ORPreRender::setDom(const QDomDocument & docReport)
           _internal->_wmData.query = _internal->_reportData->wmData.data.query;
           _internal->_wmData.column = _internal->_reportData->wmData.data.column;
         }
+        _internal->_wmUseDefaultFont = _internal->_reportData->wmData.useDefaultFont;
         if(!_internal->_reportData->wmData.useDefaultFont)
           _internal->_wmFont = _internal->_reportData->wmData.font;
         _internal->_wmOpacity = _internal->_reportData->wmData.opacity;
