@@ -1,6 +1,1684 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0" language="fr">
+<context>
+    <name>BoolEdit</name>
+    <message>
+        <source>Bool</source>
+        <translation type="obsolete">Booleano</translation>
+    </message>
+    <message>
+        <source>name</source>
+        <translation type="obsolete">nome</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation type="obsolete">Valore:</translation>
+    </message>
+    <message>
+        <source>True</source>
+        <translation type="obsolete">Vero</translation>
+    </message>
+    <message>
+        <source>False</source>
+        <translation type="obsolete">Falso</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="obsolete">Attivo</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt+O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+</context>
+<context>
+    <name>DoubleEdit</name>
+    <message>
+        <source>Double</source>
+        <translation type="obsolete">Reale</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation type="obsolete">Valore:</translation>
+    </message>
+    <message>
+        <source>name</source>
+        <translation type="obsolete">nome</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="obsolete">Attivo</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt-O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+</context>
+<context>
+    <name>IntEdit</name>
+    <message>
+        <source>Int</source>
+        <translation type="obsolete">Intero</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation type="obsolete">Valore:</translation>
+    </message>
+    <message>
+        <source>name</source>
+        <translation type="obsolete">nome</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="obsolete">Attivo</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt+O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+</context>
+<context>
+    <name>LanguageOptions</name>
+    <message>
+        <location filename="languageoptions.cpp" line="74"/>
+        <source>Default</source>
+        <translation>Predefinito</translation>
+    </message>
+</context>
+<context>
+    <name>ListEdit</name>
+    <message>
+        <source>String</source>
+        <translation type="obsolete">Stringa</translation>
+    </message>
+    <message>
+        <source>Int</source>
+        <translation type="obsolete">Intero</translation>
+    </message>
+    <message>
+        <source>Double</source>
+        <translation type="obsolete">Reale</translation>
+    </message>
+    <message>
+        <source>Bool</source>
+        <translation type="obsolete">Booleano</translation>
+    </message>
+    <message>
+        <source>List</source>
+        <translation type="obsolete">Lista</translation>
+    </message>
+    <message>
+        <source>Unknown Type</source>
+        <translation type="obsolete">Tipo sconosciuto</translation>
+    </message>
+    <message>
+        <source>I do not understand the type %1.</source>
+        <translation type="obsolete">Non riconosco il tipo %1.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="obsolete">Attenzione</translation>
+    </message>
+    <message>
+        <source>I do not know how to edit QVariant type %1.</source>
+        <translation type="obsolete">Non so come modificare il tipo QVariant %1.</translation>
+    </message>
+    <message>
+        <source>The item you selected is not a QListBoxVariant item. I do not know what to do.</source>
+        <translation type="obsolete">L&apos;elemento selezionato non è un QListBoxVariant. Non so cosa fare.</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="obsolete">Attivo</translation>
+    </message>
+    <message>
+        <source>Values:</source>
+        <translation type="obsolete">Valori:</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>name</source>
+        <translation type="obsolete">nome</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt+O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+    <message>
+        <source>&amp;New</source>
+        <translation type="obsolete">&amp;Nuovo</translation>
+    </message>
+    <message>
+        <source>Alt+N</source>
+        <translation type="obsolete">Alt+N</translation>
+    </message>
+    <message>
+        <source>Move &amp;Up</source>
+        <translation type="obsolete">&amp;Sposta Sù</translation>
+    </message>
+    <message>
+        <source>Alt+U</source>
+        <translation type="obsolete">Alt+S</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation type="obsolete">&amp;Modifica</translation>
+    </message>
+    <message>
+        <source>Alt+E</source>
+        <translation type="obsolete">Alt+M</translation>
+    </message>
+    <message>
+        <source>Move &amp;Down</source>
+        <translation type="obsolete">Sposta &amp;Giù</translation>
+    </message>
+    <message>
+        <source>Alt+D</source>
+        <translation type="obsolete">Alt+G</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="obsolete">Elimina</translation>
+    </message>
+</context>
+<context>
+    <name>NewVariant</name>
+    <message>
+        <source>New Variant</source>
+        <translation type="obsolete">Nouveau type (Variant)</translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation type="obsolete">Tipo:</translation>
+    </message>
+    <message>
+        <source>String</source>
+        <translation type="obsolete">Stringa</translation>
+    </message>
+    <message>
+        <source>Int</source>
+        <translation type="obsolete">Intero</translation>
+    </message>
+    <message>
+        <source>Double</source>
+        <translation type="obsolete">Reale</translation>
+    </message>
+    <message>
+        <source>Bool</source>
+        <translation type="obsolete">Booleano</translation>
+    </message>
+    <message>
+        <source>List</source>
+        <translation type="obsolete">Lista</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt+O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+</context>
+<context>
+    <name>ParamListEdit</name>
+    <message>
+        <location filename="paramlistedit.ui" line="30"/>
+        <source>List</source>
+        <translation>Lista</translation>
+    </message>
+    <message>
+        <location filename="paramlistedit.ui" line="41"/>
+        <source>List:</source>
+        <translation>Lista:</translation>
+    </message>
+    <message>
+        <location filename="paramlistedit.ui" line="64"/>
+        <source>Select</source>
+        <translation>Seleziona</translation>
+    </message>
+    <message>
+        <location filename="paramlistedit.ui" line="71"/>
+        <source>Cancel</source>
+        <translation>Annulla</translation>
+    </message>
+</context>
+<context>
+    <name>ParameterEdit</name>
+    <message>
+        <location filename="parameteredit.ui" line="38"/>
+        <source>Active</source>
+        <translation>Attivo</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="43"/>
+        <source>Name</source>
+        <translation>Nome</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="48"/>
+        <source>Type</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="53"/>
+        <source>Value</source>
+        <translation>Valore</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.cpp" line="187"/>
+        <source>Name already exists</source>
+        <translation>Il nome esiste già</translation>
+    </message>
+    <message>
+        <source>The name for the parameter you specified already exists in the list.</source>
+        <translation type="obsolete">Il nome del parametro esiste già nella lista.</translation>
+    </message>
+    <message>
+        <source>String</source>
+        <translation type="obsolete">Stringa</translation>
+    </message>
+    <message>
+        <source>Int</source>
+        <translation type="obsolete">Intero</translation>
+    </message>
+    <message>
+        <source>Double</source>
+        <translation type="obsolete">Reale</translation>
+    </message>
+    <message>
+        <source>Bool</source>
+        <translation type="obsolete">Booleano</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="113"/>
+        <source>List</source>
+        <translation>Lista</translation>
+    </message>
+    <message>
+        <source>Unknown Type</source>
+        <translation type="obsolete">Tipo sconosciuto</translation>
+    </message>
+    <message>
+        <source>I do not understand the type %1.</source>
+        <translation type="obsolete">Non riconosco il tipo %1.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="obsolete">Attenzione</translation>
+    </message>
+    <message>
+        <source>I do not know how to edit QVariant type %1.</source>
+        <translation type="obsolete">Non so come modificare il tipo QVariant %1.</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="31"/>
+        <source>Parameter List</source>
+        <translation>Lista dei parametri</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="63"/>
+        <source>&amp;OK</source>
+        <translation>&amp;OK</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="66"/>
+        <source>Alt+O</source>
+        <translation>Alt+O</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="73"/>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annulla</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="76"/>
+        <source>Alt+C</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="93"/>
+        <source>&amp;New</source>
+        <translation>&amp;Nuovo</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="96"/>
+        <source>Alt+N</source>
+        <translation>Alt+N</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="103"/>
+        <source>&amp;Edit</source>
+        <translation>&amp;Modifica</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="106"/>
+        <location filename="parameteredit.ui" line="116"/>
+        <source>Alt+E</source>
+        <translation>Alt+M</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.ui" line="123"/>
+        <source>Delete</source>
+        <translation>Elimina</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.cpp" line="75"/>
+        <source>Not a Valid Report</source>
+        <translation>Report non valido</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.cpp" line="76"/>
+        <source>The report definition does not appear to be a valid report.
+
+The root node is not &apos;report&apos;.</source>
+        <translation>La definizione del report non sembra essere un report valido.
+
+La nodo radice non è &apos;report&apos;.</translation>
+    </message>
+    <message>
+        <location filename="parameteredit.cpp" line="188"/>
+        <source>&lt;p&gt;The name for the parameter you specified already exists in the list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ParameterProperties</name>
+    <message>
+        <location filename="parameterproperties.ui" line="14"/>
+        <source>Parameter Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="20"/>
+        <source>Type:</source>
+        <translation type="unfinished">Tipo:</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="34"/>
+        <location filename="parameterproperties.cpp" line="107"/>
+        <location filename="parameterproperties.cpp" line="207"/>
+        <location filename="parameterproperties.cpp" line="274"/>
+        <location filename="parameterproperties.cpp" line="301"/>
+        <source>String</source>
+        <translation type="unfinished">Stringa</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="39"/>
+        <location filename="parameterproperties.cpp" line="95"/>
+        <location filename="parameterproperties.cpp" line="198"/>
+        <location filename="parameterproperties.cpp" line="280"/>
+        <location filename="parameterproperties.cpp" line="307"/>
+        <source>Bool</source>
+        <translation type="unfinished">Booleano</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="44"/>
+        <location filename="parameterproperties.cpp" line="99"/>
+        <location filename="parameterproperties.cpp" line="201"/>
+        <location filename="parameterproperties.cpp" line="276"/>
+        <location filename="parameterproperties.cpp" line="303"/>
+        <source>Int</source>
+        <translation type="unfinished">Intero</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="49"/>
+        <location filename="parameterproperties.cpp" line="103"/>
+        <location filename="parameterproperties.cpp" line="204"/>
+        <location filename="parameterproperties.cpp" line="278"/>
+        <location filename="parameterproperties.cpp" line="305"/>
+        <source>Double</source>
+        <translation type="unfinished">Reale</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="54"/>
+        <location filename="parameterproperties.cpp" line="111"/>
+        <location filename="parameterproperties.cpp" line="210"/>
+        <location filename="parameterproperties.cpp" line="282"/>
+        <location filename="parameterproperties.cpp" line="309"/>
+        <source>List</source>
+        <translation type="unfinished">Lista</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="72"/>
+        <source>Name:</source>
+        <translation type="unfinished">Nome:</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="95"/>
+        <location filename="parameterproperties.ui" line="115"/>
+        <location filename="parameterproperties.ui" line="155"/>
+        <location filename="parameterproperties.ui" line="175"/>
+        <source>Value:</source>
+        <translation type="unfinished">Valore:</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="135"/>
+        <source>False</source>
+        <translation type="unfinished">Falso</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="140"/>
+        <source>True</source>
+        <translation type="unfinished">Vero</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="192"/>
+        <source>Values:</source>
+        <translation type="unfinished">Valori:</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="210"/>
+        <source>&amp;New</source>
+        <translation type="unfinished">&amp;Nuovo</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="213"/>
+        <source>Alt+N</source>
+        <translation type="unfinished">Alt+N</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="230"/>
+        <source>Move &amp;Up</source>
+        <translation type="unfinished">&amp;Sposta Sù</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="233"/>
+        <source>Alt+U</source>
+        <translation type="unfinished">Alt+S</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="240"/>
+        <source>&amp;Edit</source>
+        <translation type="unfinished">&amp;Modifica</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="243"/>
+        <source>Alt+E</source>
+        <translation type="unfinished">Alt+M</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="250"/>
+        <source>Move &amp;Down</source>
+        <translation type="unfinished">Sposta &amp;Giù</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="253"/>
+        <source>Alt+D</source>
+        <translation type="unfinished">Alt+G</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="270"/>
+        <source>Delete</source>
+        <translation type="unfinished">Elimina</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.ui" line="299"/>
+        <source>Active</source>
+        <translation type="unfinished">Attivo</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.cpp" line="115"/>
+        <location filename="parameterproperties.cpp" line="188"/>
+        <location filename="parameterproperties.cpp" line="213"/>
+        <source>Warning</source>
+        <translation type="unfinished">Attenzione</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.cpp" line="116"/>
+        <source>I do not know how to edit QVariant type %1.</source>
+        <translation type="unfinished">Non so come modificare il tipo QVariant %1.</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.cpp" line="189"/>
+        <location filename="parameterproperties.cpp" line="214"/>
+        <source>I do not recognize type %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.cpp" line="285"/>
+        <location filename="parameterproperties.cpp" line="312"/>
+        <source>Unknown Type</source>
+        <translation type="unfinished">Tipo sconosciuto</translation>
+    </message>
+    <message>
+        <location filename="parameterproperties.cpp" line="286"/>
+        <location filename="parameterproperties.cpp" line="313"/>
+        <source>I do not understand the type %1.</source>
+        <translation type="unfinished">Non riconosco il tipo %1.</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="data.cpp" line="25"/>
+        <source>%1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="data.cpp" line="26"/>
+        <source>Copyright (c) 2002-2012, OpenMFG, LLC.</source>
+        <oldsource>Copyright (c) 2002-2011, OpenMFG, LLC.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="data.cpp" line="28"/>
+        <source>3.3.4</source>
+        <oldsource>3.3.1</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StringEdit</name>
+    <message>
+        <source>String</source>
+        <translation type="obsolete">Stringa</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation type="obsolete">Valore:</translation>
+    </message>
+    <message>
+        <source>name</source>
+        <translation type="obsolete">nome</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="obsolete">Attivo</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation type="obsolete">Nome:</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>Alt+O</source>
+        <translation type="obsolete">Alt+O</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">&amp;Annulla</translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="obsolete">Alt+A</translation>
+    </message>
+</context>
+<context>
+    <name>login</name>
+    <message>
+        <location filename="login.cpp" line="146"/>
+        <source>Initializing the Database Connector</source>
+        <translation>Inizializzazione connessione Database</translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="159"/>
+        <source>No Database Driver</source>
+        <translation>Driver Database mancante</translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="160"/>
+        <source>A connection could not be established with the specified
+Database as the Proper Database Drivers have not been installed.
+Contact your Systems Administrator.
+</source>
+        <translation>Impossibile stabilire una connessione con il database specificato
+in quanto i driver necessari al database non sono stati installati.
+Contatta l&apos;amministratore di sistema.
+      </translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="180"/>
+        <source>Connecting to the Database</source>
+        <translation>Connessione al Database</translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="193"/>
+        <source>Cannot Connect to Database Server</source>
+        <translation>Impossibile connettersi con il Database Server</translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="194"/>
+        <source>A connection to the specified Database Server cannot be made.  This may be due to an
+incorrect Username and/or Password or that the Database Server in question cannot
+support anymore connections.
+
+Please verify your Username and Password and try again or wait until the specified
+Database Server is less busy.
+
+System Error &apos;%1&apos;
+%2</source>
+        <translation>
+        La connexion à la base spécifiée est impossible. Ceci peut être dû à un nom d&apos;utilisateur
+        ou un mot de passe incorrect ou bien que le serveur en question n&apos;accepte pas de
+        connexions supplémentaires.
+
+        Veuillez vérifier votre nom d&apos;utilisateur et mot de passe et réessayer ou attendez que le
+        serveur soit moins occupé.
+
+        Erreur système &apos;%1&apos;
+        %2
+      </translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="214"/>
+        <source>Logging into the Database</source>
+        <translation>Autenticazione in corso</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="31"/>
+        <source>Log In</source>
+        <translation>Autenticazione</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2010"/>
+        <source>Build: </source>
+        <translation>Build: </translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2538"/>
+        <source>&amp;Username:</source>
+        <translation>&amp;Utente:</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2551"/>
+        <source>&amp;Password:</source>
+        <translation>&amp;Password:</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2637"/>
+        <source>S&amp;erver:</source>
+        <translation>S&amp;erver:</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2650"/>
+        <source>&amp;Database:</source>
+        <translation>&amp;Database:</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2781"/>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annulla</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2788"/>
+        <source>&amp;Login</source>
+        <translation>&amp;Accedi</translation>
+    </message>
+    <message>
+        <location filename="login.ui" line="2801"/>
+        <source>&amp;Options</source>
+        <translation>&amp;Opzioni</translation>
+    </message>
+    <message>
+        <location filename="login.cpp" line="112"/>
+        <source>Version </source>
+        <translation>Versione </translation>
+    </message>
+</context>
+<context>
+    <name>loginOptions</name>
+    <message>
+        <location filename="loginOptions.ui" line="31"/>
+        <source>Login Options</source>
+        <translation>Opzioni di accesso</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="87"/>
+        <source>&amp;Database:</source>
+        <translation>&amp;Database:</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="194"/>
+        <source>S&amp;erver:</source>
+        <translation>&amp;Server:</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="219"/>
+        <source>&amp;Port:</source>
+        <translation>&amp;Porta:</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="246"/>
+        <source>Driver:</source>
+        <translation>Driver:</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="309"/>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annulla</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="316"/>
+        <source>&amp;Save</source>
+        <translation>&amp;Salva</translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="260"/>
+        <source>PostgreSQL</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="loginOptions.ui" line="265"/>
+        <source>ODBC</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>GraphWindow</name>
+    <message>
+        <location filename="graphwindow.ui" line="30"/>
+        <source>Graph Window</source>
+        <translation>Finestra del Grafico</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="102"/>
+        <source>Labels</source>
+        <translation>Etichette</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="114"/>
+        <source>Data:</source>
+        <translation>Dati:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="127"/>
+        <source>Title:</source>
+        <translation>Titolo:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="140"/>
+        <source>Value:</source>
+        <translation>Valore:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="186"/>
+        <source>Padding (in pixels)</source>
+        <translation>Bordo (in pixel)</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="198"/>
+        <source>Vertical:</source>
+        <translation>Verticale:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="211"/>
+        <source>Horizontal:</source>
+        <translation>Orizzontale:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="253"/>
+        <source>Value Range</source>
+        <translation>Intervallo Valori</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="265"/>
+        <source>Max:</source>
+        <translation>Max:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="278"/>
+        <source>Min:</source>
+        <translation>Min:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="329"/>
+        <source>Clear All</source>
+        <translation>Cancella Tutto</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="340"/>
+        <source>Graph Style</source>
+        <translation>Stile del Grafico</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="352"/>
+        <source>Bars</source>
+        <translation>Barre</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="362"/>
+        <source>Lines</source>
+        <translation>Linee</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="369"/>
+        <source>Points</source>
+        <translation>Punti</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="393"/>
+        <source>Number of Sets:</source>
+        <translation>Numero di Set:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="419"/>
+        <source>Number of References:</source>
+        <translation>Numero di Referenze:</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="462"/>
+        <source>Label</source>
+        <translation>Etichetta</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="485"/>
+        <source>Populate with SQL</source>
+        <translation>Popola con SQL</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="524"/>
+        <source>Execute</source>
+        <translation>Esegui</translation>
+    </message>
+</context>
+<context>
+    <name>LogOutput</name>
+    <message>
+        <location filename="logoutput.ui" line="30"/>
+        <source>Log Output</source>
+        <translation>Registro eventi</translation>
+    </message>
+</context>
+<context>
+    <name>MQLEdit</name>
+    <message>
+        <location filename="mqledit.cpp" line="257"/>
+        <location filename="mqledit.cpp" line="263"/>
+        <location filename="mqledit.cpp" line="269"/>
+        <source>Not Yet Implemented</source>
+        <translation>Non implementato</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="258"/>
+        <location filename="mqledit.cpp" line="264"/>
+        <location filename="mqledit.cpp" line="270"/>
+        <source>This function has not been implemented.</source>
+        <translation>Questa funzione non è stata implementata.</translation>
+    </message>
+    <message>
+        <source>About MetaSQL Editor</source>
+        <translation type="obsolete">Informazioni su MetaSQL Editor</translation>
+    </message>
+    <message>
+        <source>About MetaSQL Editor version 2.3.0</source>
+        <translation type="obsolete">Informazioni su MetaSQL Editor version 2.3.0</translation>
+    </message>
+    <message>
+        <source>About MetaSQL Editor version 3.3.0</source>
+        <translation type="obsolete">Informazioni su MetaSQL Editor version 3.3.0</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="102"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="196"/>
+        <source>Database only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="197"/>
+        <source>File only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="198"/>
+        <source>Database and File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="275"/>
+        <source>About %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="276"/>
+        <source>%1 version %2
+%3
+Build: %4
+
+%5 is a tool for editing and testing MetaSQL statements.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="295"/>
+        <source>Document Modified!</source>
+        <translation>Documento Modificato!</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="296"/>
+        <source>Would you like to save your changes before continuing?</source>
+        <translation>Vuoi salvare i cambiamenti prima di procedere ?</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="309"/>
+        <source>Warning</source>
+        <translation>Attenzione</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="310"/>
+        <source>Encountered an unknown response. No action will be taken.</source>
+        <translation>Incontrata una risposta sconosciuta. Nessuna azione sarà intrapresa.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="327"/>
+        <source>No file Specified</source>
+        <translation>Nessun file specificato</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="328"/>
+        <source>No file was specified to save to.</source>
+        <translation>Nessun file specificato su cui salvare.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="340"/>
+        <source>Error Saving file</source>
+        <translation>Errore nel salvataggio del file</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="341"/>
+        <source>There was an error while trying to save the file.</source>
+        <translation>Errore riscontrato durante il salvataggio del file.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="360"/>
+        <source>Save MetaSQL File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="362"/>
+        <source>MetaSQL Files (*.mql);;Text Files (*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="369"/>
+        <location filename="mqledit.cpp" line="880"/>
+        <source>[*]%1 - File: %2 (%3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="476"/>
+        <location filename="mqledit.cpp" line="562"/>
+        <location filename="mqledit.cpp" line="629"/>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="477"/>
+        <source>&lt;p&gt;Trying to read the MetaSQL statement, the database server returned an error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="484"/>
+        <source>Not Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="485"/>
+        <source>&lt;p&gt;Could not find the MetaSQL statement with id %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="563"/>
+        <source>&lt;p&gt;There was a problem saving the MetaSQL statement. Only database administrators may change grade 0 statements. Either %1 and choose a different grade or log in as a database administrator to make your changes.&lt;/p&gt;&lt;pre&gt;%2&lt;/pre&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="603"/>
+        <source>Save to %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="604"/>
+        <source>&lt;p&gt;Do you also want to save this MetaSQL statement to %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="614"/>
+        <location filename="mqledit.cpp" line="620"/>
+        <source>Could not save MetaSQL statement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="615"/>
+        <source>&lt;p&gt;Trying to save the MetaSQL statement, saveMetasql returned the error code %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="621"/>
+        <source>&lt;p&gt;Trying to save the MetaSQL statement, the database server returned an error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="630"/>
+        <source>&lt;p&gt;There was a problem resetting triggers.Please manually enable the %1 trigger on the %2 table.&lt;/p&gt;&lt;pre&gt;%3&lt;/pre&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="656"/>
+        <location filename="mqledit.cpp" line="682"/>
+        <source>---- Parsing Query ----
+</source>
+        <translation>---- Analisi della Query  ----
+</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="660"/>
+        <location filename="mqledit.cpp" line="687"/>
+        <source>Query parsed.</source>
+        <translation>Analisi query completata.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="662"/>
+        <location filename="mqledit.cpp" line="725"/>
+        <source>ERROR: Invalid query!</source>
+        <translation>ERRORE: Query non valida!</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="671"/>
+        <source>Not Connected</source>
+        <translation>Non Connesso</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="672"/>
+        <source>You must be connected to a database in order to execute a query.</source>
+        <translation>Devi connetterti al database per poter eseguire la query.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="688"/>
+        <source>---- Executing Query ----</source>
+        <translation>---- Esecuzione della Query ----</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="715"/>
+        <source>Failed to execute query.</source>
+        <translation>Fallita esecuzione della query.</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="859"/>
+        <source>Save (File)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="863"/>
+        <source>Save (Database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="884"/>
+        <source>[*]%1 - Group: %2 Name: %3 Grade: %4 (%5)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="56"/>
+        <source>MetaSQL Editor</source>
+        <translation>MetaSQL Editor</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="45"/>
+        <source>&amp;Tools</source>
+        <translation>&amp;Strumenti</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="56"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Aiuto</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="65"/>
+        <source>&amp;View</source>
+        <translation>&amp;Visualizza</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="74"/>
+        <source>&amp;Edit</source>
+        <translation>&amp;Modifica</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="87"/>
+        <source>&amp;File</source>
+        <translation>&amp;File</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="194"/>
+        <source>Save &amp;As... (File)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="354"/>
+        <location filename="mqledit.ui" line="357"/>
+        <source>Database</source>
+        <translation>Database</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="153"/>
+        <source>&amp;New</source>
+        <translation>&amp;Nuovo</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="32"/>
+        <source>[*]MetaSQL Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="156"/>
+        <source>New</source>
+        <translation>Nuovo</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="159"/>
+        <source>Ctrl+N</source>
+        <translation>Ctrl+N</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="168"/>
+        <source>&amp;Open...</source>
+        <translation>&amp;Apri...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="171"/>
+        <source>Open</source>
+        <translation>Apri</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="174"/>
+        <source>Ctrl+O</source>
+        <translation>Ctlr+A</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="183"/>
+        <source>&amp;Save</source>
+        <translation>&amp;Salva</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="186"/>
+        <location filename="mqledit.cpp" line="868"/>
+        <location filename="mqledit.cpp" line="890"/>
+        <source>Save</source>
+        <translation>Salva</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="189"/>
+        <source>Ctrl+S</source>
+        <translation>Ctrl+S</translation>
+    </message>
+    <message>
+        <source>Save &amp;As...</source>
+        <translation type="obsolete">Salva &amp;come...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="197"/>
+        <source>Save As</source>
+        <translation>Salva come</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="209"/>
+        <source>&amp;Print...</source>
+        <translation>Stam&amp;pa...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="212"/>
+        <source>Print</source>
+        <translation>Stampa</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="215"/>
+        <source>Ctrl+P</source>
+        <translation>Ctrl+P</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="220"/>
+        <source>E&amp;xit</source>
+        <translation>&amp;Esci</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="223"/>
+        <source>Exit</source>
+        <translation>Esci</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="235"/>
+        <source>&amp;Undo</source>
+        <translation>&amp;Annulla</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="238"/>
+        <source>Undo</source>
+        <translation>Annulla</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="241"/>
+        <source>Ctrl+Z</source>
+        <translation>Ctrl+Z</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="246"/>
+        <source>&amp;Redo</source>
+        <translation>&amp;Ripeti</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="249"/>
+        <source>Redo</source>
+        <translation>Ripeti</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="252"/>
+        <source>Ctrl+Y</source>
+        <translation>Ctrl+Y</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="261"/>
+        <source>&amp;Cut</source>
+        <translation>&amp;Taglia</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="264"/>
+        <source>Cut</source>
+        <translation>Taglia</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="267"/>
+        <source>Ctrl+X</source>
+        <translation>Ctrl+X</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="276"/>
+        <source>C&amp;opy</source>
+        <translation>&amp;Copia</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="279"/>
+        <source>Copy</source>
+        <translation>Copia</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="282"/>
+        <source>Ctrl+C</source>
+        <translation>Ctrl+C</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="291"/>
+        <source>&amp;Paste</source>
+        <translation>&amp;Incolla</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="294"/>
+        <source>Paste</source>
+        <translation>Incolla</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="297"/>
+        <source>Ctrl+V</source>
+        <translation>Ctrl+V</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="306"/>
+        <source>&amp;Find...</source>
+        <translation>&amp;Trova...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="309"/>
+        <source>Find</source>
+        <translation>Trova</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="312"/>
+        <source>Ctrl+F</source>
+        <translation>Ctrl+F</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="317"/>
+        <source>&amp;Contents...</source>
+        <translation>&amp;Contenuti...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="320"/>
+        <source>Contents</source>
+        <translation>Contanuti</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="328"/>
+        <source>&amp;Index...</source>
+        <translation>&amp;Indice...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="331"/>
+        <source>Index</source>
+        <translation>Indice</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="343"/>
+        <source>&amp;About</source>
+        <translation>Informazioni s&amp;u</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="346"/>
+        <source>About</source>
+        <translation>Informazioni su</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="362"/>
+        <source>Connect to Database...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="365"/>
+        <source>Connect...</source>
+        <translation>Connetti...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="370"/>
+        <source>Disconnect From Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="373"/>
+        <source>Disconnect</source>
+        <translation>Disconnetti</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="378"/>
+        <location filename="mqledit.ui" line="381"/>
+        <source>Unnamed</source>
+        <translation>Senza nome</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="386"/>
+        <location filename="mqledit.ui" line="389"/>
+        <source>Parameter List...</source>
+        <translation>Lista dei parametri...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="394"/>
+        <location filename="mqledit.ui" line="397"/>
+        <source>Log Output...</source>
+        <translation>Registro eventi...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="402"/>
+        <location filename="mqledit.ui" line="405"/>
+        <source>Results...</source>
+        <translation>Risultati...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="410"/>
+        <location filename="mqledit.ui" line="413"/>
+        <source>Parse Query</source>
+        <translation>Analizza Query</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="418"/>
+        <location filename="mqledit.ui" line="421"/>
+        <source>Execute Query</source>
+        <translation>Esegui Query</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="426"/>
+        <location filename="mqledit.ui" line="429"/>
+        <source>Executed SQL...</source>
+        <translation>SQL Eseguiti...</translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="434"/>
+        <source>Open... (Database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="439"/>
+        <source>Save As... (Database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="450"/>
+        <source>Test Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mqledit.ui" line="455"/>
+        <source>Search For Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MetaSQLSaveParameters</name>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="14"/>
+        <source>MetaSQL Save Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="22"/>
+        <source>Schema:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="29"/>
+        <source>Group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="36"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="59"/>
+        <source>Grade:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="66"/>
+        <source>##</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.ui" line="100"/>
+        <source>Notes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="metasqlsaveparameters.cpp" line="158"/>
+        <source>Database Errror</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="mqledit.cpp" line="748"/>
+        <source>MQLEdit for Windows</source>
+        <translation>MQLEdit per Windows</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="750"/>
+        <source>MQLEdit for Linux</source>
+        <translation>MQLEdit per Linux</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="752"/>
+        <source>MQLEdit for OS X</source>
+        <translation>MQLEdit per OS X</translation>
+    </message>
+    <message>
+        <location filename="mqledit.cpp" line="754"/>
+        <source>MQLEdit</source>
+        <translation>MQLEdit</translation>
+    </message>
+    <message>
+        <source>Copyright (c) 2002-2011, OpenMFG, LLC.</source>
+        <translation type="obsolete">Copyright (c) 2002-2011, OpenMFG, LLC.</translation>
+    </message>
+    <message>
+        <source>Can not load database driver</source>
+        <translation type="obsolete">Impossibile caricare il driver del database</translation>
+    </message>
+    <message>
+        <source>Unable to load the database driver. Please contact your systems administrator.</source>
+        <translation type="obsolete">Impossibile caricare il driver del database. Contatta l&apos;amministratore di sistema.</translation>
+    </message>
+    <message>
+        <source>Unable to connect to database</source>
+        <translation type="obsolete">Impossibile connettersi al database</translation>
+    </message>
+    <message>
+        <source>Unable to connect to the database with the given information.</source>
+        <translation type="obsolete">Impossibile connettersi al database con le informazioni specificate.</translation>
+    </message>
+    <message>
+        <location filename="mqlutil.cpp" line="140"/>
+        <source>Could not open file &apos;%1&apos;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ResultsOutput</name>
+    <message>
+        <location filename="resultsoutput.ui" line="31"/>
+        <source>Results Output</source>
+        <translation>Risultati</translation>
+    </message>
+    <message>
+        <location filename="resultsoutput.cpp" line="37"/>
+        <source>Copy All</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SelectMQL</name>
+    <message>
+        <location filename="selectmql.ui" line="14"/>
+        <source>Choose a MetaSQL Query</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="selectmql.ui" line="20"/>
+        <source>Schema or Package:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="selectmql.cpp" line="160"/>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ReportWriterWindow</name>
+    <message>
+        <source>OpenMFG: Report Writer</source>
+        <translation type="obsolete">OpenRPT: Editor dei report</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="63"/>
+        <source>E&amp;xit</source>
+        <translation>&amp;Esci</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="76"/>
+        <source>&amp;Windows</source>
+        <translation>&amp;Finestra</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="155"/>
+        <source>Version</source>
+        <translation>Versione</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="174"/>
+        <source>%1 - %2 on %3/%4 AS %5</source>
+        <translation>%1 - %2 di %3/%4 come %5</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="190"/>
+        <source>&amp;Cascade</source>
+        <translation>&amp;Cascata</translation>
+    </message>
+    <message>
+        <location filename="reportwriterwindow.cpp" line="191"/>
+        <source>&amp;Tile</source>
+        <translation>&amp;Titolo</translation>
+    </message>
+</context>
 <context>
     <name>BarcodeEditor</name>
     <message>
@@ -3506,6 +5184,418 @@ Vuoi salvare le modifiche prima di uscire?</translation>
         <location filename="texteditor.ui" line="482"/>
         <source>&amp;Font...</source>
         <translation>&amp;Carattere...</translation>
+    </message>
+</context>
+<context>
+    <name>DBFileDialog</name>
+    <message>
+        <source>Name</source>
+        <translation>Nome</translation>
+    </message>
+    <message>
+        <source>Grade</source>
+        <translation>Livello</translation>
+    </message>
+    <message>
+        <source>Database File</source>
+        <translation type="unfinished">File del database</translation>
+    </message>
+    <message>
+        <source>Report Name:</source>
+        <translation type="unfinished">Nome del report:</translation>
+    </message>
+    <message>
+        <source>Grade:</source>
+        <translation type="unfinished">Livello:</translation>
+    </message>
+    <message>
+        <source>##</source>
+        <translation type="unfinished">##</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="unfinished">&amp;OK</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished">&amp;Annulla</translation>
+    </message>
+</context>
+<context>
+    <name>NewVariant</name>
+    <message>
+        <source>String</source>
+        <translation type="obsolete">Stringa</translation>
+    </message>
+    <message>
+        <source>Int</source>
+        <translation type="obsolete">Intero</translation>
+    </message>
+    <message>
+        <source>Double</source>
+        <translation type="obsolete">Reale</translation>
+    </message>
+    <message>
+        <source>Bool</source>
+        <translation type="obsolete">Booleano</translation>
+    </message>
+    <message>
+        <source>List</source>
+        <translation type="obsolete">Lista</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Copyright (c) 2002-2011, OpenMFG, LLC.</source>
+        <translation type="obsolete">Copyright (c) 2002-2011, OpenMFG, LLC.</translation>
+    </message>
+    <message>
+        <source>Can not load database driver</source>
+        <translation>Impossibile caricare il driver del database</translation>
+    </message>
+    <message>
+        <source>Unable to load the database driver. Please contact your systems administrator.</source>
+        <translation>Impossibile caricare il driver del database. Contatta l&apos;amministratore di sistema.</translation>
+    </message>
+    <message>
+        <source>Unable to connect to database</source>
+        <translation>Impossibile connettersi al database</translation>
+    </message>
+    <message>
+        <source>Unable to connect to the database with the given information.</source>
+        <translation>Impossibile connettersi al database con queste impostazioni.</translation>
+    </message>
+</context>
+<context>
+    <name>RenderWindow</name>
+    <message>
+        <source>About %1</source>
+        <translation>Informazioni su %1</translation>
+    </message>
+    <message>
+        <source>%1 version %2
+
+%3 is a tool for printing report definition files against a database.
+
+%4, All Rights Reserved</source>
+        <translation type="obsolete">%1 version %2
+
+%3 è uno strumento per la stampa di report su un database.
+%4, Tutti i diritti riservati</translation>
+    </message>
+    <message>
+        <source>XML (*.xml);;All Files (*)</source>
+        <translation>XML (*.xml);;Tutti i files (*)</translation>
+    </message>
+    <message>
+        <source>Error Loading File</source>
+        <translation>Errore durante il caricamento del file</translation>
+    </message>
+    <message>
+        <source>There was an error opening the file %1.
+
+%2 on line %3 column %4.</source>
+        <translation>Riscontrato un errore aprendo il file %1.
+%2 riga %3 colonna %4.</translation>
+    </message>
+    <message>
+        <source>Not a Valid File</source>
+        <translation>File non valido</translation>
+    </message>
+    <message>
+        <source>The file %1 does not appear to be a valid file.
+
+The root node is not &apos;report&apos;.</source>
+        <translation>Il file %1 non sembra essere un file valido.
+
+Il nodo alla radice non è &apos;report&apos;.</translation>
+    </message>
+    <message>
+        <source>Not a Valid Report</source>
+        <translation>Report non valido</translation>
+    </message>
+    <message>
+        <source>The report definition does not appear to be a valid report.
+
+The root node is not &apos;report&apos;.</source>
+        <translation>La definizione del report non sembra essere valida.
+
+Il nodo radice non è &apos;report&apos;.</translation>
+    </message>
+    <message>
+        <source>Load Report from Database</source>
+        <translation>Carica Report dal Database</translation>
+    </message>
+    <message>
+        <source>Report Name:</source>
+        <translation type="obsolete">Nome del report:</translation>
+    </message>
+    <message>
+        <source>Error Loading Report</source>
+        <translation>Errore nel caricamento del Report</translation>
+    </message>
+    <message>
+        <source>There was an error loading the report from the database.</source>
+        <translation>Riscontrato un errore durante il caricamento del report dal database.</translation>
+    </message>
+    <message>
+        <source>There was an error opening the report %1.
+
+%2 on line %3 column %4.</source>
+        <translation>Errore durante il caricamento del report %1.
+
+%2 riga %3 colonna %4.</translation>
+    </message>
+    <message>
+        <source>Choose filename to save</source>
+        <translation>Seleziona il file da salvare</translation>
+    </message>
+    <message>
+        <source>print.pdf</source>
+        <translation>print.pdf</translation>
+    </message>
+    <message>
+        <source>Pdf (*.pdf)</source>
+        <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+        <source>Name already exists</source>
+        <translation>Il nome esiste già</translation>
+    </message>
+    <message>
+        <source>The name for the parameter you specified already exists in the list.</source>
+        <translation type="obsolete">Il nome del parametro specificato esiste già nella lista.</translation>
+    </message>
+    <message>
+        <source>Unknown Type</source>
+        <translation type="obsolete">Tipo sconosciuto</translation>
+    </message>
+    <message>
+        <source>I do not understand the type %1.</source>
+        <translation type="obsolete">Non capisco il tipo %1.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="obsolete">Attenzione</translation>
+    </message>
+    <message>
+        <source>I do not know how to edit QVariant type %1.</source>
+        <translation type="obsolete">Non so come modificare il tipo QVariant: %1.</translation>
+    </message>
+    <message>
+        <source>OpenRPT Renderer</source>
+        <translation>OpenRPT Renderer</translation>
+    </message>
+    <message>
+        <source>Report Definition:</source>
+        <translation>Definizione del Report:</translation>
+    </message>
+    <message>
+        <source>Not Loaded</source>
+        <translation>Non Caricato</translation>
+    </message>
+    <message>
+        <source>Report Information</source>
+        <translation>Informazioni sul report</translation>
+    </message>
+    <message>
+        <source>Description:</source>
+        <translation>Descrizione:</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation>Nome:</translation>
+    </message>
+    <message>
+        <source>Title:</source>
+        <translation>Titolo:</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation>Parametri</translation>
+    </message>
+    <message>
+        <source>&amp;Add</source>
+        <translation>&amp;Aggiungi</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Modifica</translation>
+    </message>
+    <message>
+        <source>Alt+E</source>
+        <translation>Alt+M</translation>
+    </message>
+    <message>
+        <source>&amp;List</source>
+        <translation>&amp;Lista</translation>
+    </message>
+    <message>
+        <source>Alt+L</source>
+        <translation>Alt+L</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Elimina</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>Aiut&amp;o</translation>
+    </message>
+    <message>
+        <source>&amp;File</source>
+        <translation>&amp;File</translation>
+    </message>
+    <message>
+        <source>&amp;Open...</source>
+        <translation>&amp;Apri...</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Apri</translation>
+    </message>
+    <message>
+        <source>Ctrl+O</source>
+        <translation>Ctrl+O</translation>
+    </message>
+    <message>
+        <source>&amp;Print...</source>
+        <translation>&amp;Stampa...</translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation>Stampa</translation>
+    </message>
+    <message>
+        <source>Ctrl+P</source>
+        <translation>Ctrl+S</translation>
+    </message>
+    <message>
+        <source>E&amp;xit</source>
+        <translation>&amp;Esci</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Esci</translation>
+    </message>
+    <message>
+        <source>&amp;About</source>
+        <translation>&amp;Informazioni su</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Informazioni su</translation>
+    </message>
+    <message>
+        <source>Print to PDF...</source>
+        <translation>Stampa su PDF...</translation>
+    </message>
+    <message>
+        <source>Load from Database...</source>
+        <translation>Carica dal Database...</translation>
+    </message>
+    <message>
+        <source>Print Preview...</source>
+        <translation>Anteprima...</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation>Attivo</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nome:</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Tipo</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Valore</translation>
+    </message>
+    <message>
+        <source>%1 version %2
+%3, All Rights Reserved
+Build: %4
+
+%5 is a tool for printing reports from a database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;p&gt;The name for the parameter you specified already exists in the list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PreviewDialog</name>
+    <message>
+        <location filename="previewdialog.cpp" line="46"/>
+        <source>Print Preview</source>
+        <translation>Anteprima di Stampa</translation>
+    </message>
+    <message>
+        <location filename="previewdialog.cpp" line="63"/>
+        <location filename="previewdialog.cpp" line="64"/>
+        <source>Print</source>
+        <translation>Stampa</translation>
+    </message>
+    <message>
+        <location filename="previewdialog.cpp" line="65"/>
+        <source>Cancel</source>
+        <translation>Annulla</translation>
+    </message>
+    <message>
+        <location filename="previewdialog.cpp" line="52"/>
+        <location filename="previewdialog.cpp" line="53"/>
+        <source>Zoom in</source>
+        <translation>Ingrandisci</translation>
+    </message>
+    <message>
+        <location filename="previewdialog.cpp" line="57"/>
+        <location filename="previewdialog.cpp" line="58"/>
+        <source>Zoom out</source>
+        <translation>Riduci</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Missing Report Parameter</source>
+        <translation type="obsolete">Parametro del Report mancance</translation>
+    </message>
+    <message>
+        <source>Enter in a value for the parameter &quot;%1&quot;:</source>
+        <translation type="obsolete">Inserisci il valore per il parametro &quot;%1&quot;:</translation>
+    </message>
+    <message>
+        <location filename="openreports.cpp" line="578"/>
+        <source>Report Definition Not Found</source>
+        <translation>Definizione del Report non trovata</translation>
+    </message>
+    <message>
+        <location filename="openreports.cpp" line="579"/>
+        <source>The report definition for this report, &quot;%1&quot; cannot be found.
+Please contact your Systems Administrator and report this issue.</source>
+        <translation>Impossibile trovare la definizione del report &quot;%1&quot;.
+Contatta l&apos;Amministratore del sistema riportando questo messaggio.</translation>
+    </message>
+    <message>
+        <location filename="openreports.cpp" line="583"/>
+        <source>Unknown Error</source>
+        <translation>Incontrato Errore Sconosciuto</translation>
+    </message>
+    <message>
+        <location filename="openreports.cpp" line="584"/>
+        <source>An unknown error was encountered while processing your request.
+Please contact your Systems Administrator and report this issue.</source>
+        <translation>Durante l&apos;esecuzione del processo richiesto è stato riscontrato un errore sconosciuto.
+Contatta l&apos;Amministratore di Sistema e riportaa questo messaggio.</translation>
     </message>
 </context>
 </TS>

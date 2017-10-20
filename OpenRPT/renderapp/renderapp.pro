@@ -62,4 +62,3 @@ SOURCES += ../wrtembed/dbfiledialog.cpp \
 RESOURCES += renderapp.qrc
 
 QT += xml sql network widgets printsupport
-TRANSLATIONS    = renderapp_fr.ts renderapp_it.ts renderapp_ru.ts renderapp_es.ts renderapp_ar.ts
