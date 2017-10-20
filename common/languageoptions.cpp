@@ -6,6 +6,7 @@
 #include <QStandardPaths>
 
 #include "languageoptions.h"
+#include "xsqlquery.h"
 
 
 LanguageOptions::LanguageOptions(QObject *parent)
@@ -110,9 +111,9 @@ void LanguageOptions::addTranslationToDefault(QString file)
 
   foreach (QString testDir, paths)
   {
-    QFile test(testDir + filename + ".qm");
+    QFile test(testDir + file + ".qm");
     if (test.exists())
-      addTranslation(_defaultLanguage, testDir + filename);
+      addTranslation(_defaultLanguage, testDir + file);
   }
 }
 
@@ -156,8 +157,8 @@ void LanguageOptions::login()
   {
     foreach (QString l, lang)
     {
-      addTranslationToDefault((f.second().isEmpty() ? "" : f.first() + "-" + f.second() + "/") +
-                              f.first() + "." + l);
+      addTranslationToDefault((f.second.isEmpty() ? "" : f.first + "-" + f.second + "/") +
+                              f.first + "." + l);
     }
   }
 }
