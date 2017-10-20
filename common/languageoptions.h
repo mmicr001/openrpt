@@ -23,6 +23,7 @@ public:
 	void select(QString languageID);
 	void installLanguage(QString languageID);
 	void installSelected(void);
+        void login();
 	QStringList languageTitlesList(void);
 	QString selectedTitle();
 	void selectFromTitle(QString title);
