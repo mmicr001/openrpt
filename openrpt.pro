@@ -42,3 +42,6 @@ SUBDIRS = common \
 
 CONFIG += ordered
 
+macx {
+  QMAKE_INFO_PLIST = Info.plist
+}
