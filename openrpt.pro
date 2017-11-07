@@ -47,4 +47,8 @@ TRANSLATIONS = dict/openrpt.ar.ts \
                dict/openrpt.es.ts \
                dict/openrpt.fr.ts \
                dict/openrpt.it.ts \
-               dict/openrpt.ru.ts \
+               dict/openrpt.ru.ts
+
+macx {
+  QMAKE_INFO_PLIST = Info.plist
+}
