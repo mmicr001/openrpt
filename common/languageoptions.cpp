@@ -104,6 +104,10 @@ void LanguageOptions::addTranslationToDefault(QString file)
   paths << QApplication::applicationDirPath();
 #endif
 
+#if defined Q_OS_LINUX
+  paths << QApplication::applicationDirPath() + "/locales";
+#endif
+
   (void)paths.removeDuplicates();
 
   for (int i=0; i < paths.length(); i++)
