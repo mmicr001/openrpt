@@ -66,5 +66,4 @@ SOURCES += logoutput.cpp \
            resultsoutput.cpp \
            selectmql.cpp \
 
-RESOURCES += ../OpenRPT/images/OpenRPTMetaSQL.qrc \
-           metasql.qrc
+RESOURCES += ../OpenRPT/images/OpenRPTMetaSQL.qrc

@@ -59,6 +59,4 @@ SOURCES += ../wrtembed/dbfiledialog.cpp \
            main.cpp
 
 
-RESOURCES += renderapp.qrc
-
 QT += xml sql network widgets printsupport
