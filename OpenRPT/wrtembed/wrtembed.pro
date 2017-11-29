@@ -147,8 +147,6 @@ SOURCES += reportgridoptions.cpp\
 
 RESOURCES += ../images/OpenRPTWrtembed.qrc
 
-TRANSLATIONS    = wrtembed_fr.ts wrtembed_it.ts wrtembed_ru.ts wrtembed_es.ts wrtembed_ar.ts
-
 bundled_dmtx {
   INCLUDEPATH += ../Dmtx_Library
 }

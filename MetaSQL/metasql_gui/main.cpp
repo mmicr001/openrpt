@@ -113,8 +113,6 @@ int main(int argc, char *argv[])
 
   }
 
-  OpenRPT::languages.addTranslationToDefault(":/common.qm");
-  OpenRPT::languages.addTranslationToDefault(":/metasql.qm");
   OpenRPT::languages.installSelected();
 
   MQLEdit mainwin;

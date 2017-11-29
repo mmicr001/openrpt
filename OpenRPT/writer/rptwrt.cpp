@@ -64,15 +64,6 @@ int main(int argc, char** argv) {
 
     app.addLibraryPath(".");
 
-    // Qt translations
-    QTranslator qtTranslator;
-    qtTranslator.load("qt_" + QLocale::system().name());
-    app.installTranslator(&qtTranslator);
-
-    OpenRPT::languages.addTranslationToDefault(":/common.qm");
-    OpenRPT::languages.addTranslationToDefault(":/wrtembed.qm");
-    OpenRPT::languages.addTranslationToDefault(":/renderer.qm");
-    OpenRPT::languages.addTranslationToDefault(":/writer.qm");
     OpenRPT::languages.installSelected();
 
     ReportWriterWindow rwf;

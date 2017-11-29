@@ -115,10 +115,6 @@ int main(int argc, char *argv[])
   QApplication app(argc, argv);
   app.addLibraryPath(".");
 
-  OpenRPT::languages.addTranslationToDefault(":/common.qm");
-  OpenRPT::languages.addTranslationToDefault(":/wrtembed.qm");
-  OpenRPT::languages.addTranslationToDefault(":/renderer.qm");
-  OpenRPT::languages.addTranslationToDefault(":/renderapp.qm");
   OpenRPT::languages.installSelected();
 
   if (argc > 1)
@@ -322,73 +318,8 @@ int main(int argc, char *argv[])
   // The following is code that works specifically with the xTuple ERP database
   // This should be expanded to be usefull when not connecting to an xTuple ERP
   // database as well. Command line option maybe?
-  XSqlQuery langq("SELECT * "
-                  "FROM usr, locale LEFT OUTER JOIN"
-                  "     lang ON (locale_lang_id=lang_id) LEFT OUTER JOIN"
-                  "     country ON (locale_country_id=country_id) "
-                  "WHERE ( (usr_username=CURRENT_USER)"
-                  " AND (usr_locale_id=locale_id) );" );
-  if (langq.first())
-  {
-    QStringList paths;
-    paths << "dict";
-    paths << "";
-    paths << "../dict";
-    paths << app.applicationDirPath() + "/dict";
-    paths << app.applicationDirPath();
-    paths << app.applicationDirPath() + "/../dict";
-#if defined Q_WS_MACX
-    paths << app.applicationDirPath() + "/../../../dict";
-    paths << app.applicationDirPath() + "/../../..";
-#endif
-
-    QStringList files;
-    if (!langq.value("locale_lang_file").toString().isEmpty())
-      files << langq.value("locale_lang_file").toString();
-
-    QString langext;
-    if (!langq.value("lang_abbr2").toString().isEmpty() &&
-        !langq.value("country_abbr").toString().isEmpty())
-    {
-      langext = langq.value("lang_abbr2").toString() + "_" +
-                langq.value("country_abbr").toString().toLower();
-    }
-    else if (!langq.value("lang_abbr2").toString().isEmpty())
-    {
-      langext = langq.value("lang_abbr2").toString();
-    }
-
-    if(!langext.isEmpty())
-    {
-      files << "reports." + langext;
-
-      XSqlQuery pkglist("SELECT pkghead_name FROM pkghead WHERE packageIsEnabled(pkghead_name);");
-      while(pkglist.next())
-      {
-        files << pkglist.value("pkghead_name").toString() + "." + langext;
-      }
-    }
-
-    if (files.size() > 0)
-    {
-      QTranslator *translator = new QTranslator(&app);
-      for (QStringList::Iterator fit = files.begin(); fit != files.end(); ++fit)
-      {
-        for(QStringList::Iterator pit = paths.begin(); pit != paths.end(); ++pit)
-        {
-          qDebug("looking for %s in %s", (*fit).toLatin1().data(), (*pit).toLatin1().data());
-          if (translator->load(*fit, *pit))
-          {
-            app.installTranslator(translator);
-            qDebug("installed %s/%s", (*pit).toLatin1().data(), (*fit).toLatin1().data());
-            translator = new QTranslator(&app);
-            break;
-          }
-        }
-      }
-    }
-  }
-  // END language loading code
+  OpenRPT::languages.login();
+  OpenRPT::languages.installSelected();
 
   RenderWindow mainwin;
 
