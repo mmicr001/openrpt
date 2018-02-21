@@ -95,7 +95,7 @@ class MetaSQLInfoDefault : public MetaSQLInfo {
             std::list<std::string>::iterator strlit = find(list.begin(), list.end(), name);
             std::string v;
             if(strlit != list.end()) {
-                v = _values[name].at((pos != -1 ? getValuePos(name) : pos));
+                v = _values[name].at((pos == -1 ? getValuePos(name) : pos));
             }
             if(param) {
                 std::string n = "'";
