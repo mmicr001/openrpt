@@ -20,9 +20,8 @@
 
 #include "metasqlqueryparser.h"
 
-#include "regex/regex.h"
-
 #include <algorithm>
+#include <regex>
 #include <string>
 #include <vector>
 
