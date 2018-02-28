@@ -20,9 +20,8 @@
 
 #include "metasqlqueryparser.h"
 
-#include "regex/regex.h"
-
 #include <algorithm>
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -159,7 +158,7 @@ class MetaSQLFunction : public MetaSQLOutput {
                 std::string str;
                 std::list<std::string> list;
                 std::list<std::string>::iterator strlit;
-                regex_t re;
+                std::regex re(_params[0]);
                 switch(_func) {
                     case FunctionValue:
                     case FunctionLiteral:
@@ -172,15 +171,12 @@ class MetaSQLFunction : public MetaSQLOutput {
                         val = ( strlit != list.end() ? mif->trueValue() : mif->falseValue() );
                         break;
                     case FunctionReExists:
-                        if(regcomp(&re, _params[0].c_str(), REG_EXTENDED|REG_NOSUB) == 0) {
-                            list = mif->enumerateNames();
-                            for(strlit = list.begin(); strlit != list.end(); strlit++) {
-                                if(regexec(&re, (*strlit).c_str(), (std::size_t)0, NULL, 0) == 0) {
-                                    val = mif->trueValue();
-                                    break;
-                                }
+                        list = mif->enumerateNames();
+                        for(strlit = list.begin(); strlit != list.end(); strlit++) {
+                            if(regex_match((*strlit), re)) {
+                                val = mif->trueValue();
+                                break;
                             }
-                            regfree(&re);
                         }
                         break;
                     case FunctionIsFirst:
