@@ -1,5 +1,5 @@
 <RCC version="1.0">
   <qresource prefix="/images">
-    <file>../images/openrpt.png</file>
+    <file>../images/openrpt_login.png</file>
   </qresource>
 </RCC>
