@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -21,18 +21,21 @@
 include( ../../global.pri )
 
 TEMPLATE = app
-CONFIG += qt warn_on
-INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common ../renderer
-
-TARGET = RPTrender
+TARGET   = RPTrender
 unix:TARGET = rptrender
 
-OBJECTS_DIR = tmp
+CONFIG  += qt warn_on
+
+QT += xml sql network widgets printsupport
+
+DESTDIR     = ../../bin
 MOC_DIR     = tmp
+OBJECTS_DIR = tmp
 UI_DIR      = tmp
 
+INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common ../renderer
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -lrenderer -lopenrptcommon -ldmtx -lMetaSQL -lqzint
+LIBS        += -lrenderer -lopenrptcommon -ldmtx -lMetaSQL -lqzint
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/renderer.$${LIBEXT} \
@@ -42,10 +45,8 @@ win32-msvc* {
                     ../../lib/libopenrptcommon.$${LIBEXT}
 }
 
-DESTDIR = ../../bin
-
 RC_FILE = renderapp.rc
-macx:RC_FILE = ../images/OpenRPT.icns
+macx:RC_FILE = ../images/OpenRPT-print.icns
 
 # Input
 FORMS   += renderwindow.ui \
@@ -57,6 +58,3 @@ HEADERS += ../wrtembed/dbfiledialog.h \
 SOURCES += ../wrtembed/dbfiledialog.cpp \
            renderwindow.cpp \
            main.cpp
-
-
-QT += xml sql network widgets printsupport
