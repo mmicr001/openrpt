@@ -595,7 +595,13 @@ int png_plot(struct zint_symbol *symbol, int rotate_angle, int data_type)
 	int error_number;
 	int default_text_posn;
 	int next_yposn;
-	uint8_t local_text[ustrlen(symbol->text) + 1];
+	
+	// Check if compiler is MSVC 
+	#ifdef _MSC_VER
+		uint8_t* local_text = malloc( (ustrlen(symbol->text)+1) * sizeof(uint8_t) );
+	#else
+		uint8_t local_text[ustrlen(symbol->text) + 1];
+	#endif
 
 	if(symbol->show_hrt != 0) {
 		to_latin1(symbol->text, local_text);
@@ -696,6 +702,7 @@ int png_plot(struct zint_symbol *symbol, int rotate_angle, int data_type)
 
 	if (!(pixelbuf = (char *) malloc(image_width * image_height))) {
 		printf("Insufficient memory for pixel buffer");
+		free(local_text);
 		return ZERROR_ENCODING_PROBLEM;
 	} else {
 		for(i = 0; i < (image_width * image_height); i++) {
@@ -979,6 +986,7 @@ int png_plot(struct zint_symbol *symbol, int rotate_angle, int data_type)
 
 	error_number=png_to_file(symbol, image_height, image_width, pixelbuf, rotate_angle, data_type);
 	free(pixelbuf);
+	free(local_text);
 	return error_number;
 }
 

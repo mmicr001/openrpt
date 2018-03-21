@@ -301,7 +301,12 @@ int reduced_charset(struct zint_symbol *symbol, uint8_t *source, int length)
 	/* These are the "norm" standards which only support Latin-1 at most */
 	int error_number = 0;
 
-	uint8_t preprocessed[length + 1];
+	// Check if compiler is MSVC 
+	#ifdef _MSC_VER
+		uint8_t* preprocessed = malloc( (length+1) * sizeof(uint8_t) );
+	#else
+		uint8_t preprocessed[length + 1];
+	#endif
 
 	if(symbol->symbology == BARCODE_CODE16K) {
 		symbol->whitespace_width = 16;
@@ -323,7 +328,10 @@ int reduced_charset(struct zint_symbol *symbol, uint8_t *source, int length)
 			break;
 		case UNICODE_MODE:
 			error_number = latin1_process(symbol, source, preprocessed, &length);
-			if(error_number != 0) { return error_number; }
+			if(error_number != 0) {
+				free(preprocessed);				
+				return error_number; 
+			}
 			break;
 	}
 
@@ -332,7 +340,8 @@ int reduced_charset(struct zint_symbol *symbol, uint8_t *source, int length)
 		case BARCODE_PDF417TRUNC: error_number = pdf417enc(symbol, preprocessed, length); break;
 		case BARCODE_MICROPDF417: error_number = micro_pdf417(symbol, preprocessed, length); break;
 	}
-
+	
+	free(preprocessed);
 	return error_number;
 }
 
@@ -354,8 +363,13 @@ int ZBarcode_Encode(struct zint_symbol *symbol, uint8_t *source, int length)
 		strcpy(symbol->outfile, "out.png");
 	}
 
-        uint8_t local_source[length + 1];
-
+    // Check if compiler is MSVC 
+	#ifdef _MSC_VER
+		uint8_t* local_source = malloc( (length+1) * sizeof(uint8_t) );
+	#else
+		uint8_t local_source[length + 1];
+	#endif
+	
 	/* First check the symbology field */
 	if(symbol->symbology < 1) { strcpy(symbol->errtxt, "Symbology out of range, using Code 128"); symbol->symbology = BARCODE_CODE128; error_number = ZWARN_INVALID_OPTION; }
 
@@ -397,6 +411,7 @@ int ZBarcode_Encode(struct zint_symbol *symbol, uint8_t *source, int length)
 
 	if(error_number > 4) {
 		error_tag(symbol->errtxt, error_number);
+		free(local_source);
 		return error_number;
 	} else {
 		error_buffer = error_number;
@@ -408,15 +423,17 @@ int ZBarcode_Encode(struct zint_symbol *symbol, uint8_t *source, int length)
 		for(i = 0; i < length; i++) {
 			if(source[i] == '\0') {
 				strcpy(symbol->errtxt, "NULL characters not permitted in GS1 mode");
+				free(local_source);
 				return ZERROR_INVALID_DATA;
 			}
 		}
 		if(gs1_compliant(symbol->symbology) == 1) {
 			error_number = ugs1_verify(symbol, source, length, local_source);
-			if(error_number != 0) { return error_number; }
+			if(error_number != 0) { free(local_source); return error_number; }
 			length = ustrlen(local_source);
 		} else {
 			strcpy(symbol->errtxt, "Selected symbology does not support GS1 mode");
+			free(local_source);
 			return ZERROR_INVALID_OPTION;
 		}
 	} else {
@@ -450,6 +467,7 @@ int ZBarcode_Encode(struct zint_symbol *symbol, uint8_t *source, int length)
 	}
 	error_tag(symbol->errtxt, error_number);
 	/*printf("%s\n",symbol->text);*/
+	free(local_source);
 	return error_number;
 }
 

@@ -40,9 +40,10 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0 NO_PNG
 
 LIBEXT = $${QMAKE_EXTENSION_SHLIB}
 win32-g++:LIBEXT = a
+win32-msvc*:LIBEXT = a
 macx:LIBEXT      = a
 isEmpty( LIBEXT ) {
-  win32:LIBEXT = a
+  #win32:LIBEXT = lib
   unix:LIBEXT  = so
 }
 

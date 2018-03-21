@@ -24,6 +24,7 @@
 
 #include <algorithm>
 #include <string>
+#include <functional>
 #include <vector>
 
 static const char * __wordchars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
