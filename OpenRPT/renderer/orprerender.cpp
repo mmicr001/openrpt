@@ -20,6 +20,9 @@
 
 #include <QtGui>
 
+#include <iostream>
+#include <string>
+
 #include "orprerender.h"
 #include "renderobjects.h"
 #include "orutils.h"
@@ -364,7 +367,7 @@ qreal ORPreRenderPrivate::maxDetailSectionY()
 
 //
 // calculateRemainingPageSize
-//   Calculate the remaining space on the page after printing the fo oters and
+//   Calculate the remaining space on the page after printing the footers and
 //   applying the margins
 //
 // ToDo: How to handle last page when this function is used to calculate a
@@ -501,6 +504,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         else keyValues.append(QString());
         _subtotContextMap = &(grp->_subtotCheckPoints);
         if(grp->head)
+          std::cout << "\n\n ^^^^^^^^^^^^^^^^^^^^^  HEADER 1   ^^^^^^^^^^^^^^^^^^^^^\n";
           renderSection(*(grp->head));
         _subtotContextMap = 0;
       }
@@ -521,6 +525,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         }
 
         // Render this section
+        std::cout << "\n ^^^^^^^^^^^^^^^^^^^^^  SECTION   ^^^^^^^^^^^^^^^^^^^^^\n";
         renderSection(*(detailData.detail));
 
 
@@ -560,6 +565,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                 {
                   if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
                     createNewPage();
+                  std::cout << "\n ^^^^^^^^^^^^^^^^^^^^^  FOOTER  1 ^^^^^^^^^^^^^^^^^^^^^\n";
                   renderSection(*(grp->foot));
                 }
                 _subtotContextMap = 0;
@@ -597,6 +603,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                       createNewPage();
                       query->next();
                     }
+                    std::cout << "\n\n ^^^^^^^^^^^^^^^^^^^^^  HEADER 2   ^^^^^^^^^^^^^^^^^^^^^\n";
                     renderSection(*(grp->head));
                   }
                   _subtotContextMap = 0;
@@ -632,7 +639,9 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
           {
             if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
               createNewPage();
+            std::cout << "\n ^^^^^^^^^^^^^^^^^^^^^  FOOTER 2  ^^^^^^^^^^^^^^^^^^^^^\n";
             renderSection(*(grp->foot));
+            
           }
           _subtotContextMap = 0;
           // reset the sub-total values for this group
@@ -705,6 +714,28 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
   bool recallMask = !ReportPrinter::getRecallMask(_printerParams).isEmpty();
   bool storeMask = !ReportPrinter::getStoreMask(_printerParams).isEmpty();
 
+  // IF ALL SECTION FIELD QUERIES RETURN NOTHING WE 
+  // DO NOT WANT TO ALLOCATE ANY SPACE ON THE PAGE
+  bool allFieldsNull = true;
+
+  /*for(int it = 0; it < sectionData.objects.size(); ++it)
+  {
+    elemThis = sectionData.objects.at(it);
+    if (elemThis->isField()){
+      QString colorStr = QString::null;
+      QString text = evaluateField(elemThis->toField(), &colorStr);
+      if (text != NULL)
+        allFieldsNull = false;
+    }
+  }
+
+  if (allFieldsNull == true){
+    std::cout << "\n~@~@~@~@~@~@~@~@~@~   ALL FIELDS ARE NULL   ~@~@~@~@~@~@~@~@~@~\n";
+    return 1;
+  }
+*/
+    
+
   for(int it = 0; it < sectionData.objects.size(); ++it)
   {
     elemThis = sectionData.objects.at(it);
@@ -769,10 +800,10 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
           qreal x = startX +  cell.first*(size.width() + xSpacing);
           qreal y = startY + cell.second*(size.height() + ySpacing);
-		  XSqlQuery * xqry = getQuerySource(f->data.query)->getQuery();
+		      XSqlQuery * xqry = getQuerySource(f->data.query)->getQuery();
           if (!xqry)
             break;
-
+          
           if (xqry->isValid() || (nbOfCol == 1 && nbOfLines == 1))
           {
             QString colorStr = QString::null;
