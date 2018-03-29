@@ -299,7 +299,12 @@ int ugs1_verify(struct zint_symbol *symbol, uint8_t source[], const unsigned int
 	int error_number;
 
 	error_number = gs1_verify(symbol, source, src_len, temp);
-	if(error_number != 0) { free(temp); return error_number; }
+	if(error_number != 0) { 
+#ifdef _MSC_VER	
+		free(temp); 
+#endif	
+		return error_number; 
+	}
 
 	if (strlen(temp) < src_len + 5) {
 		ustrcpy(reduced, (uint8_t*)temp);
