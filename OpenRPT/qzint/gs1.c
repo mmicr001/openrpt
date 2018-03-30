@@ -308,7 +308,9 @@ int ugs1_verify(struct zint_symbol *symbol, uint8_t source[], const unsigned int
 
 	if (strlen(temp) < src_len + 5) {
 		ustrcpy(reduced, (uint8_t*)temp);
+#ifdef _MSC_VER
 		free(temp);
+#endif
 		return 0;
 	}
 	strcpy(symbol->errtxt, "ugs1_verify overflow");
