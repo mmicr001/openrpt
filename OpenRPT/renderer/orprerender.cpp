@@ -20,10 +20,7 @@
 
 #include <QtGui>
 
- //for debugging
 #include <iostream>
- #include <QDebug>
-
 
 #include "orprerender.h"
 #include "renderobjects.h"
@@ -125,7 +122,8 @@ class ORPreRenderPrivate {
 
     void renderDetailSection(ORDetailSectionData &);
     qreal renderSection(const ORSectionData &);
-    qreal renderTextElements(QList<ORObject*> elemList, qreal sectionHeight);
+    int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis );
+	qreal renderTextElements(QList<ORObject*> elemList, qreal sectionHeight);
     void addTextPrimitive(ORObject *element, QPointF pos, QSizeF size, int align, QString text, QFont font = QFont(), QString color = QString());
     QString evaluateField(ORFieldData* f, QString* outColorStr);
     qreal renderSectionSize(const ORSectionData &, bool = false);
@@ -479,9 +477,9 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
     if (orqThis->getQuery() && ((query = orqThis->getQuery())->size()))
     {
       bool hasRecords = query->first();
-    if(!hasRecords) {
-      return; // No records => don't print the section
-    }
+	  if(!hasRecords) {
+	    return; // No records => don't print the section
+	  }
 
       _detailQuery = query;
       QStringList keys;
@@ -506,7 +504,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         else keyValues.append(QString());
         _subtotContextMap = &(grp->_subtotCheckPoints);
         if(grp->head)
-          //std::cout <<"\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  RENDERING HEADER 1 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
           renderSection(*(grp->head));
         _subtotContextMap = 0;
       }
@@ -527,7 +524,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         }
 
         // Render this section
-        std::cout <<"\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  RENDERING DETAIL  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
         renderSection(*(detailData.detail));
 
 
@@ -567,7 +563,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                 {
                   if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
                     createNewPage();
-                  //std::cout <<"\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  RENDERING FOOTER 1 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
                   renderSection(*(grp->foot));
                 }
                 _subtotContextMap = 0;
@@ -605,7 +600,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                       createNewPage();
                       query->next();
                     }
-                    //std::cout <<"\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  RENDERING HEADER 2 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
                     renderSection(*(grp->head));
                   }
                   _subtotContextMap = 0;
@@ -618,16 +612,16 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         }
       } while (status == true);
 
-    if(query->at()==QSql::AfterLastRow)
-    {
-    query->prev(); // move back to a valid record -- this keeps the records accessible and the (sub)totals still valid as well
+	  if(query->at()==QSql::AfterLastRow)
+	  {
+		query->prev(); // move back to a valid record -- this keeps the records accessible and the (sub)totals still valid as well
               if(!query->isValid())
               {
                   query->first();
                   for(int i = 1; i < rowCnt; i++)
                       query->next();
               }
-    }
+	  }
 
       if(keys.size() > 0 && query->isValid ())
       {
@@ -641,7 +635,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
           {
             if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
               createNewPage();
-            //std::cout <<"\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  RENDERING FOOTER 2  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
             renderSection(*(grp->foot));
           }
           _subtotContextMap = 0;
@@ -674,7 +667,6 @@ qreal ORPreRenderPrivate::renderSectionSize(const ORSectionData & sectionData, b
   if(sectionData.objects.count() == 0 || ignoreTextArea)
     return sectionHeight;
 
-
   for(int it = 0; it < sectionData.objects.size(); ++it)
   {
     ORObject * element = sectionData.objects.at(it);
@@ -702,6 +694,58 @@ qreal ORPreRenderPrivate::renderSectionSize(const ORSectionData & sectionData, b
   return sectionHeight;
 }
 
+// Returning int lets the caller know if the ORObject is at the same 
+// height as the rect (belonging to a field or textarea) passed in 
+// -1: same height, 0: not same height, 1: same height but NULL
+int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){
+  
+  QPointF targetPos = rect.topLeft();
+  QSizeF targetSize = rect.size();
+  
+  if (elemThis->isField())
+  {
+	ORFieldData * f = elemThis->toField();
+	QPointF pos = f->rect.topLeft();
+    QSizeF size = f->rect.size();
+	
+	if( pos.y() > targetPos.y() && pos.y() > targetPos.y()+targetSize.height() )
+	  return 0;
+	else if (pos.y() < targetPos.y() && targetPos.y() > pos.y()+size.height())
+	  return 0;
+	else
+	{
+	  QString colorStr = QString::null;
+	  QString text = evaluateField(elemThis->toField(), &colorStr);
+	  if (text != NULL)
+	    return -1;
+	  else 
+	    return 1;
+	}
+  }
+  
+  if (elemThis->isText())
+  {
+	orData       dataThis;
+	ORTextData * t = elemThis->toText();
+	QPointF pos = t->rect.topLeft();
+    QSizeF size = t->rect.size();
+
+	populateData(t->data, dataThis);
+	
+	if( pos.y() > targetPos.y() && pos.y() > targetPos.y()+targetSize.height() )
+	  return 0;
+	else if (pos.y() < targetPos.y() && targetPos.y() > pos.y()+size.height())
+	  return 0;
+	else
+	{
+	  if (dataThis.getValue() != NULL)
+	    return -1;
+	  else 
+	    return 0;
+	}
+  }	
+}
+
 qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 {
   qreal intHeight = sectionData.height / 100.0;
@@ -716,9 +760,12 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
   bool recallMask = !ReportPrinter::getRecallMask(_printerParams).isEmpty();
   bool storeMask = !ReportPrinter::getStoreMask(_printerParams).isEmpty();
 
+  
+  //=================================================================================
   // IF ALL SECTION FIELD QUERIES RETURN NOTHING WE 
-  // DO NOT WANT TO ALLOCATE ANY SPACE ON THE PAGE
-  bool allFieldsNull = true;
+  // DO NOT WANT TO ALLOCATE ANY SPACE ON THE PAGE.
+  // SAME GOES FOR TEXTAREA OBJECTS
+/*   bool allFieldsNull = true;
   bool noFields = true;
 
   bool allTextNull = true;
@@ -740,25 +787,18 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
       ORTextData * t = elemThis->toText();
 
       populateData(t->data, dataThis);
-      if (dataThis.getValue() != NULL){
-         
-         std::cout <<"\n******************************  found textarea   ******************************\n";
-        allTextNull = false;
-      }
+      if (dataThis.getValue() != NULL)
+        allTextNull = false;     
     } 
   }
 
-  if (allFieldsNull == true and noFields == false){
-    std::cout << "\n~@~@~@~@~@~@~@~@~@~   ALL FIELDS ARE NULL   ~@~@~@~@~@~@~@~@~@~\n";
-    return 1;
-  }
-
-   if (allTextNull == true and noTextareas == false){
-    std::cout << "\n~@~@~@~@~@~@~@~@~@~   ALL textareas ARE NULL   ~@~@~@~@~@~@~@~@~@~\n";
-    return 1;
-  }
-
-
+  if (allFieldsNull == true && noFields == false)
+    return 0;
+  if (allTextNull == true && noTextareas == false)
+    return 0; */
+  //=================================================================================
+  
+  
   for(int it = 0; it < sectionData.objects.size(); ++it)
   {
     elemThis = sectionData.objects.at(it);
@@ -823,7 +863,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
           qreal x = startX +  cell.first*(size.width() + xSpacing);
           qreal y = startY + cell.second*(size.height() + ySpacing);
-          XSqlQuery * xqry = getQuerySource(f->data.query)->getQuery();
+		  XSqlQuery * xqry = getQuerySource(f->data.query)->getQuery();
           if (!xqry)
             break;
 
@@ -831,8 +871,26 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
           {
             QString colorStr = QString::null;
             QString text = evaluateField(elemThis->toField(), &colorStr);
-            addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr);
-          }
+			if (text != NULL)
+			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr);
+			else
+			{
+			  bool sameHeightObject = false;
+			  int objCnt = 1;
+			  for(int i = 0; i < sectionData.objects.size(); ++i)
+			  {
+			    if (i != it)
+				{
+				  elemThis = sectionData.objects.at(i); 
+				  if (checkHorizontal (f->rect, elemThis) == -1)
+					sameHeightObject = true; 
+				  objCnt += checkHorizontal (f->rect, elemThis);
+			    }
+			  }
+			  if (sameHeightObject == false)
+				_yOffset -= size.height()/objCnt;
+			} 
+		  }
           else 
             break;
 
@@ -964,7 +1022,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
       size /= 100.0;
       id->setPosition(pos);
       id->setSize(size);
-    id->setRotation(im->rotation());
+	  id->setRotation(im->rotation());
       _page->addPrimitive(id);
     }
     else if (elemThis->isGraph())
@@ -983,7 +1041,6 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 // 100dpi to render the graph to. All the original code is usable this way
 // as we just need to setup a painter for the image and pass that along to
 // the graph drawing code.
-
       QImage gImage(rect.size(), QImage::Format_RGB32);
       gImage.setDotsPerMeterX(3937); // should be 100dpi
       gImage.setDotsPerMeterY(3937); // should be 100dpi
@@ -1002,7 +1059,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
         id->setScaled(true);
         id->setAspectRatioMode(Qt::KeepAspectRatio);
         id->setTransformationMode(Qt::SmoothTransformation);
-    id->setRotation(gData->rotation());
+		id->setRotation(gData->rotation());
         _page->addPrimitive(id);
 
       }
@@ -1161,9 +1218,6 @@ qreal ORPreRenderPrivate::renderTextElements(QList<ORObject*> elemList, qreal se
             while (!splitter->endOfText() && !splitter->endOfPage())
             {
                 splitter->nextLine();
-
-                if (splitter->currentLine() == NULL)
-                  std::cout <<"\n******************************  textarea NULL   ******************************\n";
 
                 addTextPrimitive(splitter->element(),
                                  splitter->currentLineRect().topLeft(),
@@ -1475,13 +1529,13 @@ ORODocument* ORPreRender::generate()
   while(!_internal->_lstQueries.isEmpty())
     delete _internal->_lstQueries.takeFirst();
 
-  _internal->_lstQueries.append( new orQuery( "Context Query",      // MANU
+  _internal->_lstQueries.append( new orQuery( "Context Query",			// MANU
         getSqlFromTag("fmt03", _internal->_database.driverName()),
       ParameterList(), true, _internal->_database ));
 
-  QString tQuery = getSqlFromTag("fmt01",_internal->_database.driverName() ); // MANU
+  QString tQuery = getSqlFromTag("fmt01",_internal->_database.driverName() );	// MANU
   if(_internal->_database.driverName()== "QOCI")
-    tQuery.replace("from dual","");
+	  tQuery.replace("from dual","");
 
   QString val = QString::null;
   QRegExp re("'");
@@ -1492,8 +1546,8 @@ ORODocument* ORPreRender::generate()
     val = val.replace(re, "''");
     if (_internal->_database.driverName() == "QMYSQL")
       tQuery += QString().sprintf(", \"%s\" AS \"%d\"", val.toLatin1().data(), t + 1);
-  else if (_internal->_database.driverName() == "QOCI")
-    tQuery += QString().sprintf(", '%s' AS \"%d\"", val.toLatin1().data(), t + 1);
+	else if (_internal->_database.driverName() == "QOCI")
+		tQuery += QString().sprintf(", '%s' AS \"%d\"", val.toLatin1().data(), t + 1);
     else
       tQuery += QString().sprintf(", text('%s') AS \"%d\"", val.toLatin1().data(), t + 1);
 
@@ -1501,14 +1555,14 @@ ORODocument* ORPreRender::generate()
     {
       if (_internal->_database.driverName() == "QMYSQL" )
         tQuery += QString().sprintf(", \"%s\" AS \"%s\"", val.toLatin1().data(), p.name().toLatin1().data());
-    else if ( _internal->_database.driverName() == "QOCI")
-      tQuery += QString().sprintf(", '%s' AS \"%s\"", val.toLatin1().data(), p.name().toLatin1().data());
+	  else if ( _internal->_database.driverName() == "QOCI")
+		  tQuery += QString().sprintf(", '%s' AS \"%s\"", val.toLatin1().data(), p.name().toLatin1().data());
       else
         tQuery += QString().sprintf(", text('%s') AS \"%s\"", val.toLatin1().data(), p.name().toLatin1().data());
     }
   }
   if(_internal->_database.driverName() == "QOCI")
-  tQuery.push_back(" from dual");
+	tQuery.push_back(" from dual");
 
   _internal->_lstQueries.append(new orQuery("Parameter Query", tQuery, ParameterList(), true, _internal->_database));
   
