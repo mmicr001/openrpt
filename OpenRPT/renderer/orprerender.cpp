@@ -122,7 +122,8 @@ class ORPreRenderPrivate {
 
     void renderDetailSection(ORDetailSectionData &);
     qreal renderSection(const ORSectionData &);
-    int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis );
+    int checkHorizontal(QRect rect, ORObject * elemThis );
+	bool allQueriesNull(const ORSectionData & sectionData);
 	qreal renderTextElements(QList<ORObject*> elemList, qreal sectionHeight);
     void addTextPrimitive(ORObject *element, QPointF pos, QSizeF size, int align, QString text, QFont font = QFont(), QString color = QString());
     QString evaluateField(ORFieldData* f, QString* outColorStr);
@@ -695,10 +696,9 @@ qreal ORPreRenderPrivate::renderSectionSize(const ORSectionData & sectionData, b
 }
 
 // Returning int lets the caller know if the ORObject is at the same 
-// height as the rect (belonging to a field or textarea) passed in 
+// height as the rect (belonging to a field or textarea) passed in. 
 // -1: same height, 0: not same height, 1: same height but NULL
-int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){
-  
+int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){ 
   QPointF targetPos = rect.topLeft();
   QSizeF targetSize = rect.size();
   
@@ -708,11 +708,7 @@ int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){
 	QPointF pos = f->rect.topLeft();
     QSizeF size = f->rect.size();
 	
-	if( pos.y() > targetPos.y() && pos.y() > targetPos.y()+targetSize.height() )
-	  return 0;
-	else if (pos.y() < targetPos.y() && targetPos.y() > pos.y()+size.height())
-	  return 0;
-	else
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
 	{
 	  QString colorStr = QString::null;
 	  QString text = evaluateField(elemThis->toField(), &colorStr);
@@ -721,6 +717,8 @@ int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){
 	  else 
 	    return 1;
 	}
+	else 
+	  return 0;
   }
   
   if (elemThis->isText())
@@ -729,21 +727,126 @@ int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis ){
 	ORTextData * t = elemThis->toText();
 	QPointF pos = t->rect.topLeft();
     QSizeF size = t->rect.size();
-
-	populateData(t->data, dataThis);
 	
-	if( pos.y() > targetPos.y() && pos.y() > targetPos.y()+targetSize.height() )
-	  return 0;
-	else if (pos.y() < targetPos.y() && targetPos.y() > pos.y()+size.height())
-	  return 0;
-	else
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
 	{
-	  if (dataThis.getValue() != NULL)
+	  if(dataThis.getValue() != NULL)
 	    return -1;
 	  else 
-	    return 0;
+	    return 1;
 	}
-  }	
+	else 
+	  return 0;
+  }
+
+  if (elemThis->isLabel()) 
+  {
+	ORLabelData * l = elemThis->toLabel();
+	QPointF pos = l->rect.topLeft();
+	QSizeF size = l->rect.size();
+
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  if (elemThis->isLine())
+  {
+	ORLineData * l = elemThis->toLine();
+	if( (targetPos.y() < l->yEnd)  && (l->yStart < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  if (elemThis->isRect())
+  {
+	ORRectData * r = elemThis->toRect();
+	if( (targetPos.y() < r->y + r->height)  && (r->y < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  if (elemThis->isBarcode())
+  {
+	ORBarcodeData * bc = elemThis->toBarcode();
+	QPointF pos = bc->rect.topLeft();
+	QSizeF size = bc->rect.size();
+	
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  if (elemThis->isImage())
+  {
+	ORImageData * im = elemThis->toImage();
+	QPointF pos = im->rect.topLeft();
+    QSizeF size = im->rect.size();
+	
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  if (elemThis->isGraph())
+  {
+	ORGraphData * gData = elemThis->toGraph();
+	QPointF pos = gData->rect.topLeft();
+	QSizeF size = gData->rect.size();
+	
+	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
+	  return -1;
+	else 
+	  return 0;
+  }
+  
+  return -1;
+}
+
+// Returning bool lets the caller know if all the fields and textareas
+// of a section return NULL 
+bool ORPreRenderPrivate::allQueriesNull(const ORSectionData & sectionData)
+{
+  ORObject * elemThis;
+  bool allFieldsNull = true;
+  bool noFields = true;
+  bool allTextNull = true;
+  bool noTextareas = true;
+
+  for(int it = 0; it < sectionData.objects.size(); ++it)
+  {
+    elemThis = sectionData.objects.at(it);
+    if (elemThis->isField())
+	{
+      noFields = false;
+      QString colorStr = QString::null;
+      QString text = evaluateField(elemThis->toField(), &colorStr);
+      if (text != NULL)
+        allFieldsNull = false;
+    }
+    if (elemThis->isText())
+	{
+      noTextareas = false;
+      orData       dataThis;
+      ORTextData * t = elemThis->toText();
+
+      populateData(t->data, dataThis);
+      if (dataThis.getValue() != NULL)
+        allTextNull = false;     
+    } 
+  }
+
+  if (allFieldsNull == true && noFields == false && noTextareas == true)
+    return true;
+  if (allTextNull == true && noTextareas == false && noFields == true)
+    return true;
+
+  return false;
 }
 
 qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
@@ -760,44 +863,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
   bool recallMask = !ReportPrinter::getRecallMask(_printerParams).isEmpty();
   bool storeMask = !ReportPrinter::getStoreMask(_printerParams).isEmpty();
 
-  
-  //=================================================================================
-  // IF ALL SECTION FIELD QUERIES RETURN NOTHING WE 
-  // DO NOT WANT TO ALLOCATE ANY SPACE ON THE PAGE.
-  // SAME GOES FOR TEXTAREA OBJECTS
-/*   bool allFieldsNull = true;
-  bool noFields = true;
-
-  bool allTextNull = true;
-  bool noTextareas = true;
-
-  for(int it = 0; it < sectionData.objects.size(); ++it)
-  {
-    elemThis = sectionData.objects.at(it);
-    if (elemThis->isField()){
-      noFields = false;
-      QString colorStr = QString::null;
-      QString text = evaluateField(elemThis->toField(), &colorStr);
-      if (text != NULL)
-        allFieldsNull = false;
-    }
-    if (elemThis->isText()){
-      noTextareas = false;
-      orData       dataThis;
-      ORTextData * t = elemThis->toText();
-
-      populateData(t->data, dataThis);
-      if (dataThis.getValue() != NULL)
-        allTextNull = false;     
-    } 
-  }
-
-  if (allFieldsNull == true && noFields == false)
-    return 0;
-  if (allTextNull == true && noTextareas == false)
-    return 0; */
-  //=================================================================================
-  
+  if (allQueriesNull(sectionData))
+	return 0;
   
   for(int it = 0; it < sectionData.objects.size(); ++it)
   {
@@ -886,6 +953,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 					sameHeightObject = true; 
 				  objCnt += checkHorizontal (f->rect, elemThis);
 			    }
+				if (sameHeightObject == true)
+					break;
 			  }
 			  if (sameHeightObject == false)
 				_yOffset -= size.height()/objCnt;
@@ -910,7 +979,29 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
     }
     else if (elemThis->isText())
     {
-      textelem.append(elemThis);
+      orData       dataThis;
+      ORTextData * t = elemThis->toText();
+
+      populateData(t->data, dataThis);
+      if (dataThis.getValue() != NULL)
+        textelem.append(elemThis);
+	  else 
+	  {
+		bool sameHeightObject = false;
+		int objCnt = 1;
+		for(int i = 0; i < sectionData.objects.size(); ++i)
+		{
+			if (i != it)
+			{
+			elemThis = sectionData.objects.at(i); 
+			if (checkHorizontal (t->rect, elemThis) == -1)
+				sameHeightObject = true; 
+			objCnt += checkHorizontal (t->rect, elemThis);
+			}
+		}
+		if (sameHeightObject == false)
+			_yOffset -= (t->rect.size().height()/100.0)/objCnt;
+	  }      
     }
     else if (elemThis->isLine())
     {
