@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#pragma comment(linker, "/SUBSYSTEM:CONSOLE")
 #include <iostream>
 
 #include "orprerender.h"
@@ -54,7 +55,7 @@ class ORPreRenderPrivate {
   public:
     ORPreRenderPrivate();
     virtual ~ORPreRenderPrivate();
-
+	
     bool _valid;
     QDomDocument _docReport;
     ParameterList _lstParameters;
@@ -64,6 +65,7 @@ class ORPreRenderPrivate {
     OROPage*     _page;
     ORReportData* _reportData;
 
+	qreal _adjustment;   // How much we shifted up the contents of a section
     qreal _yOffset;      // how far down the current page are we in inches. That way we can use dpi.
     qreal _topMargin;    // value stored in the correct units
     qreal _bottomMargin; // -- same as above --
@@ -124,7 +126,8 @@ class ORPreRenderPrivate {
     qreal renderSection(const ORSectionData &);
     int checkHorizontal(QRect rect, ORObject * elemThis );
 	bool allQueriesNull(const ORSectionData & sectionData);
-	qreal renderTextElements(QList<ORObject*> elemList, qreal sectionHeight);
+	QList<ORObject *> sortObjects(QList<ORObject *> objects);
+	qreal renderTextElements(QList<QPair<ORObject*,qreal>> elemList, qreal sectionHeight);
     void addTextPrimitive(ORObject *element, QPointF pos, QSizeF size, int align, QString text, QFont font = QFont(), QString color = QString());
     QString evaluateField(ORFieldData* f, QString* outColorStr);
     qreal renderSectionSize(const ORSectionData &, bool = false);
@@ -472,6 +475,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
   {
     orQuery *orqThis = getQuerySource(detailData.key.query);
     XSqlQuery *query;
+	_adjustment = 0;
 
     _subtotContextDetail = &detailData;
 
@@ -505,7 +509,8 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
         else keyValues.append(QString());
         _subtotContextMap = &(grp->_subtotCheckPoints);
         if(grp->head)
-          renderSection(*(grp->head));
+		{std::cout << "\n ### head 1 ### \n";	
+		renderSection(*(grp->head));}
         _subtotContextMap = 0;
       }
 
@@ -564,6 +569,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                 {
                   if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
                     createNewPage();
+				  std::cout << "\n ### foot 1 ### \n";
                   renderSection(*(grp->foot));
                 }
                 _subtotContextMap = 0;
@@ -595,13 +601,16 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
                   _subtotContextMap = &(grp->_subtotCheckPoints);
                   if(grp->head)
                   {
+					//_yOffset += _adjustment;
                     if ( renderSectionSize(*(grp->head)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
                     {
                       query->prev();
                       createNewPage();
                       query->next();
                     }
+					std::cout << "\n ### head 2 ### \n";
                     renderSection(*(grp->head));
+					//_yOffset -= _adjustment;
                   }
                   _subtotContextMap = 0;
                   if(!keys[i].isEmpty())
@@ -636,6 +645,7 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
           {
             if ( renderSectionSize(*(grp->foot)) + finishCurPageSize() + _bottomMargin + _yOffset >= _maxHeight)
               createNewPage();
+		    std::cout << "\n ### foot 2 ### \n";
             renderSection(*(grp->foot));
           }
           _subtotContextMap = 0;
@@ -845,8 +855,52 @@ bool ORPreRenderPrivate::allQueriesNull(const ORSectionData & sectionData)
     return true;
   if (allTextNull == true && noTextareas == false && noFields == true)
     return true;
+  if (allTextNull == true && noTextareas == false && 
+      allFieldsNull == true && noFields == false)
+    return true;
 
   return false;
+}
+
+QList<ORObject *> ORPreRenderPrivate::sortObjects(QList<ORObject *> objects)
+{
+  QList<QPair<int,double>> sorted;
+  QPair<int,double> p;
+  
+  for(int it = 0; it < objects.size(); ++it)
+  {
+	ORObject * elemThis = objects.at(it);
+	p = qMakePair(it,elemThis->rect.topLeft().y());
+	
+	if (elemThis->isLine())
+	{
+	  ORLineData * l = elemThis->toLine();
+	  p = qMakePair(it,l->yStart);
+	}
+	else if (elemThis->isRect())
+	{
+	  ORRectData * r = elemThis->toRect();
+	  p = qMakePair(it, r->y);
+	}
+
+	sorted.push_front(p);
+	int j = 0;
+	for (int i=0; i<sorted.size(); i++)
+	{
+	  if (p.second > sorted.at(i).second  )
+	  {
+		sorted.swap(i,j);
+		j = i;
+	  }
+	}	 
+  }  
+  std::cout << "\n";
+  QList<ORObject *> ordered;
+  for (int i=0; i<sorted.size(); ++i)
+	{ordered.push_back(objects.at(sorted.at(i).first));
+	std::cout << sorted.at(i).second << "|"; }
+  std::cout << "\n";
+  return ordered; 
 }
 
 qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
@@ -855,20 +909,21 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
   if(sectionData.objects.count() == 0)
     return 0;
+  if (allQueriesNull(sectionData))
+	return 0;
+  QList<ORObject *> objects = sortObjects(sectionData.objects);
+  
 
   ORObject * elemThis;
-  QList<ORObject*> textelem;
+  QList<QPair<ORObject*,qreal>> textelem;
   bool newPageRequested = false;
 
   bool recallMask = !ReportPrinter::getRecallMask(_printerParams).isEmpty();
   bool storeMask = !ReportPrinter::getStoreMask(_printerParams).isEmpty();
 
-  if (allQueriesNull(sectionData))
-	return 0;
-  
-  for(int it = 0; it < sectionData.objects.size(); ++it)
+  for(int it = 0; it < objects.size(); ++it)
   {
-    elemThis = sectionData.objects.at(it);
+    elemThis = objects.at(it);
 
     if((storeMask && !elemThis->isStatic()) || (recallMask && elemThis->isStatic()))
     {
@@ -877,6 +932,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
     if (elemThis->isLabel())
     {
+		std::cout << "\n 				*** label ***\n";
       ORLabelData * l = elemThis->toLabel();
       QPointF pos = l->rect.topLeft();
       QSizeF size = l->rect.size();
@@ -888,6 +944,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
     }
     else if (elemThis->isField())
     {
+		std::cout << "\n 				*** field ***\n";
         ORFieldData *f = elemThis->toField();
 
         int nbOfLines = f->lines;
@@ -942,9 +999,10 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr);
 			else
 			{
+			  std::cout << "\n 				*** field is null ***\n";
 			  bool sameHeightObject = false;
 			  int objCnt = 1;
-			  for(int i = 0; i < sectionData.objects.size(); ++i)
+			  for(int i = 0; i < objects.size(); ++i)
 			  {
 			    if (i != it)
 				{
@@ -958,6 +1016,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 			  }
 			  if (sameHeightObject == false)
 				_yOffset -= size.height()/objCnt;
+				_adjustment += size.height()/objCnt;
+				startY -= size.height()/objCnt;
 			} 
 		  }
           else 
@@ -979,21 +1039,23 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
     }
     else if (elemThis->isText())
     {
+	  std::cout << "\n 				*** text ***\n";
       orData       dataThis;
       ORTextData * t = elemThis->toText();
 
       populateData(t->data, dataThis);
       if (dataThis.getValue() != NULL)
-        textelem.append(elemThis);
+        textelem.append(QPair<ORObject*,qreal>(elemThis,_yOffset));
 	  else 
 	  {
+		std::cout << "\n 				*** text is null ***\n";
 		bool sameHeightObject = false;
 		int objCnt = 1;
-		for(int i = 0; i < sectionData.objects.size(); ++i)
+		for(int i = 0; i < objects.size(); ++i)
 		{
 			if (i != it)
 			{
-			elemThis = sectionData.objects.at(i); 
+			elemThis = objects.at(i); 
 			if (checkHorizontal (t->rect, elemThis) == -1)
 				sameHeightObject = true; 
 			objCnt += checkHorizontal (t->rect, elemThis);
@@ -1001,6 +1063,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 		}
 		if (sameHeightObject == false)
 			_yOffset -= (t->rect.size().height()/100.0)/objCnt;
+			_adjustment += (t->rect.size().height()/100.0)/objCnt;
 	  }      
     }
     else if (elemThis->isLine())
@@ -1283,19 +1346,20 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
   return intHeight;
 }
 
-qreal ORPreRenderPrivate::renderTextElements(QList<ORObject*> elemList, qreal sectionHeight)
+qreal ORPreRenderPrivate::renderTextElements(QList<QPair<ORObject*,qreal>> elemList, qreal sectionHeight)
 {
     QList<TextElementSplitter> splitters;
 
-    foreach (ORObject *elem, elemList)
+    //foreach (QPair<ORObject*,qreal> elem, elemList)
+	for (int i=0; i<elemList.size(); i++)
     {
         orData       dataThis;
-        ORTextData * t = elem->toText();
+        ORTextData * t = elemList[i].first->toText();
 
         populateData(t->data, dataThis);
 
-        splitters.append(TextElementSplitter(elem, dataThis.getValue(),
-                                                 _leftMargin, _yOffset, maxDetailSectionY()));
+        splitters.append(TextElementSplitter(elemList[i].first, dataThis.getValue(),
+                                                 _leftMargin, elemList[i].second , maxDetailSectionY()));
     }
 
     while (!splitters.isEmpty())

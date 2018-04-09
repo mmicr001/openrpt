@@ -222,6 +222,8 @@ class ORObject
     void setBorder(QPen p) {_border = p;}
 
     bool isStatic();
+	
+	QRect rect;
 
 private:
     QPen    _pen;
@@ -253,7 +255,7 @@ public:
 class ORLabelData : public ORObject
 {
   public:
-    QRect rect;
+    //QRect rect;
     QFont font;
     int align;
     QString string;
@@ -265,7 +267,7 @@ class ORLabelData : public ORObject
 class ORFieldData : public ORObject
 {
   public:
-    QRect rect;
+    //QRect rect;
     QFont font;
     int align;
     ORDataData data;
@@ -289,7 +291,7 @@ class ORFieldData : public ORObject
 class ORTextData : public ORObject
 {
   public:
-    QRect rect;
+    //QRect rect;
     QFont font;
     int align;
     ORDataData data;
@@ -302,7 +304,7 @@ class ORTextData : public ORObject
 class ORBarcodeData : public ORObject
 {
   public:
-    QRect rect;
+    //QRect rect;
     QString format;
     int maxlength;
     ORDataData data;
@@ -318,7 +320,7 @@ class ORBarcodeData : public ORObject
 class ORImageData : public ORObject
 {
   public:
-    QRect rect;
+    //QRect rect;
 
     QString mode;
 
@@ -340,7 +342,7 @@ class ORGraphData : public ORObject
     ORDataData data;
 
     QFont font;
-    QRect rect;
+    //QRect rect;
 
     ORTitleData title;
     ORDataAxisData dataaxis;
@@ -361,7 +363,7 @@ class ORCrossTabData : public ORObject
     ORDataData data;
 
     QFont font;
-    QRect rect;
+    //QRect rect;
 
     // Table properties
     ORCrossTabTablePropertiesData m_tableProperties;
