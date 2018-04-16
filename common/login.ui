@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <comment> * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,7 +23,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
+    <width>601</width>
     <height>244</height>
    </rect>
   </property>
@@ -34,7 +34,16 @@
    <property name="spacing">
     <number>7</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>5</number>
+   </property>
+   <property name="topMargin">
+    <number>5</number>
+   </property>
+   <property name="rightMargin">
+    <number>5</number>
+   </property>
+   <property name="bottomMargin">
     <number>5</number>
    </property>
    <item>
@@ -42,36 +51,15 @@
      <property name="spacing">
       <number>5</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item>
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
        <item>
         <widget class="QLabel" name="_logo">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
          <property name="pixmap">
           <pixmap resource="../OpenRPT/images/OpenRPTCommon.qrc">:/login/openrpt_login.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -1048,9 +1036,6 @@
        <item>
         <layout class="QHBoxLayout">
          <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="margin">
           <number>0</number>
          </property>
          <item>
@@ -2505,31 +2490,19 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
        <item>
         <layout class="QHBoxLayout">
          <property name="spacing">
           <number>20</number>
-         </property>
-         <property name="margin">
-          <number>0</number>
          </property>
          <item>
           <layout class="QHBoxLayout">
            <property name="spacing">
             <number>5</number>
            </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
            <item>
             <layout class="QVBoxLayout">
              <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="margin">
               <number>0</number>
              </property>
              <item>
@@ -2563,9 +2536,6 @@
            <item>
             <layout class="QVBoxLayout">
              <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="margin">
               <number>0</number>
              </property>
              <item>
@@ -2612,23 +2582,14 @@
            <property name="spacing">
             <number>0</number>
            </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
            <item>
             <layout class="QHBoxLayout">
              <property name="spacing">
               <number>5</number>
              </property>
-             <property name="margin">
-              <number>0</number>
-             </property>
              <item>
               <layout class="QVBoxLayout">
                <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -2662,9 +2623,6 @@
              <item>
               <layout class="QVBoxLayout">
                <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -2748,9 +2706,6 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item>
       <spacer>
        <property name="orientation">
@@ -2771,9 +2726,6 @@
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>5</number>
-       </property>
-       <property name="margin">
-        <number>0</number>
        </property>
        <item>
         <widget class="QPushButton" name="_close">

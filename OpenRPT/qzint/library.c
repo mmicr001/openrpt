@@ -330,7 +330,7 @@ int reduced_charset(struct zint_symbol *symbol, uint8_t *source, int length)
 			if(error_number != 0) {
 #ifdef _MSC_VER	
 				free(preprocessed);				
-#ifdef
+#endif
 				return error_number; 
 			}
 			break;
