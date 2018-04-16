@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -27,14 +27,16 @@ unix:TARGET = openrpt
 CONFIG += qt warn_on
 CONFIG -= staticlib
 
+QT += xml sql network widgets printsupport
+
 DESTDIR     = ../../bin
 MOC_DIR     = tmp
-UI_DIR      = tmp
 OBJECTS_DIR = tmp
+UI_DIR      = tmp
 
 INCLUDEPATH += ../../common ../common ../images
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -lwrtembed -lopenrptcommon -lrenderer -ldmtx -lMetaSQL -lqzint
+LIBS        += -lwrtembed -lopenrptcommon -lrenderer -ldmtx -lMetaSQL -lqzint
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/wrtembed.$${LIBEXT}       \
@@ -46,16 +48,11 @@ win32-msvc* {
                     ../../lib/librenderer.$${LIBEXT}
 }
 
-RC_FILE = writer.rc
+RC_FILE      = writer.rc
 macx:RC_FILE = ../images/OpenRPT.icns
+RESOURCES   += writer.qrc
 
 HEADERS += reportwriterwindow.h \
 
 SOURCES += rptwrt.cpp\
            reportwriterwindow.cpp
-
-QT += xml sql network widgets printsupport
-
-RESOURCES += writer.qrc
-
-TRANSLATIONS = writer_fr.ts writer_it.ts writer_ru.ts writer_es.ts writer_ar.ts

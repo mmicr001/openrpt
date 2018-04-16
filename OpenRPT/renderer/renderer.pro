@@ -88,8 +88,6 @@ SOURCES = openreports.cpp \
 
 QT += xml sql gui network printsupport core
 
-TRANSLATIONS    = renderer_fr.ts renderer_it.ts renderer_ru.ts renderer_es.ts renderer_ar.ts
-
 bundled_dmtx {
   INCLUDEPATH += ../Dmtx_Library
 }
