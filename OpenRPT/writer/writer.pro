@@ -25,6 +25,7 @@ TARGET   = OpenRPT
 unix:TARGET = openrpt
 
 CONFIG += qt warn_on
+CONFIG -= staticlib
 
 QT += xml sql network widgets printsupport
 

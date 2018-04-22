@@ -23,6 +23,7 @@ include( ../global.pri )
 TEMPLATE = app
 
 CONFIG += qt warn_on
+CONFIG -= staticlib
 
 QT +=  sql widgets
 

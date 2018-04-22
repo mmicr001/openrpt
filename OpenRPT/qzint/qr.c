@@ -163,7 +163,12 @@ void qr_binary(int datastream[], int version, int target_binlen, char mode[], in
 	int current_binlen, current_bytes;
 	int toggle, percent;
 
-	char binary[est_binlen + 12];
+#ifdef _MSC_VER
+	char* binary = malloc( (est_binlen+12) * sizeof(char) );
+#else
+	char binary[est_binlen + 12];	
+#endif
+	
 	strcpy(binary, "");
 
 	if(gs1) {
@@ -426,6 +431,10 @@ void qr_binary(int datastream[], int version, int target_binlen, char mode[], in
 		}
 		printf("\n");
 	}
+#ifdef _MSC_VER
+	free(binary);
+#endif
+	
 }
 
 void add_ecc(int fullstream[], int datastream[], int version, int data_cw, int blocks)
@@ -438,12 +447,18 @@ void add_ecc(int fullstream[], int datastream[], int version, int data_cw, int b
 	int ecc_block_length = ecc_cw / blocks;
 	int i, j, length_this_block, posn, debug = 0;
 
-
+#ifdef _MSC_VER
+	uint8_t* data_block = malloc( (short_data_block_length + 2) * sizeof(uint8_t) );	
+	uint8_t* ecc_block = malloc( (ecc_block_length+2) * sizeof(uint8_t) );
+	int* interleaved_data = malloc( (data_cw + 2) * sizeof(int) );
+	int* interleaved_ecc = malloc( (ecc_cw + 2) * sizeof(int) );
+#else
 	uint8_t data_block[short_data_block_length + 2];
 	uint8_t ecc_block[ecc_block_length + 2];
 	int interleaved_data[data_cw + 2];
 	int interleaved_ecc[ecc_cw + 2];
-
+#endif
+	
 	posn = 0;
 
 	for(i = 0; i < blocks; i++) {
@@ -506,6 +521,13 @@ void add_ecc(int fullstream[], int datastream[], int version, int data_cw, int b
 		}
 		printf("\n");
 	}
+
+#ifdef _MSC_VER	
+	free(data_block);
+	free(ecc_block);
+	free(interleaved_data);
+	free(interleaved_ecc);
+#endif
 }
 
 void place_finder(uint8_t grid[], int size, int x, int y)
@@ -703,7 +725,12 @@ int evaluate(uint8_t *grid, int size, int pattern)
 	int dark_mods;
 	int percentage, k;
 
+	
+#ifdef _MSC_VER
+	char* local = malloc( (size * size) * sizeof(char) );
+#else
 	char local[size * size];
+#endif
 
 	for(x = 0; x < size; x++) {
 		for(y = 0; y < size; y++) {
@@ -816,6 +843,10 @@ int evaluate(uint8_t *grid, int size, int pattern)
 
 	result += 10 * k;
 
+#ifdef _MSC_VER
+	free(local);
+#endif	
+	
 	return result;
 }
 
@@ -828,9 +859,15 @@ int apply_bitmask(uint8_t *grid, int size)
 	int best_val, best_pattern;
 	int bit;
 
+// Check if compiler is MSVC 
+#ifdef _MSC_VER
+	uint8_t* mask = malloc( (size * size) * sizeof(uint8_t) );
+	uint8_t* eval = malloc( (size * size) * sizeof(uint8_t) );
+#else
 	uint8_t mask[size * size];
 	uint8_t eval[size * size];
-
+#endif
+	
 	/* Perform data masking */
 	for(x = 0; x < size; x++) {
 		for(y = 0; y < size; y++) {
@@ -896,6 +933,11 @@ int apply_bitmask(uint8_t *grid, int size)
 		}
 	}
 
+#ifdef _MSC_VER
+	free(mask);
+	free(eval);
+#endif	
+
 	return best_pattern;
 }
 
@@ -958,9 +1000,15 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 	int ecc_level, autosize, version, max_cw, target_binlen, blocks, size;
 	int bitmask, gs1;
 
+#ifdef _MSC_VER
+	int* utfdata = malloc( (length + 1) * sizeof(int) );
+	int* jisdata = malloc( (length + 1) * sizeof(int) );
+	char* mode = malloc( (length + 1) * sizeof(char) );
+#else
 	int utfdata[length + 1];
 	int jisdata[length + 1];
 	char mode[length + 1];
+#endif
 
 	gs1 = (symbol->input_mode == GS1_MODE);
     int i;
@@ -973,7 +1021,14 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 		default:
 			/* Convert Unicode input to Shift-JIS */
 			error_number = utf8toutf16(symbol, source, utfdata, &length);
-			if(error_number != 0) { return error_number; }
+			if(error_number != 0) { 
+#ifdef _MSC_VER			
+				free(utfdata);
+				free(jisdata);
+				free(mode);
+#endif
+				return error_number; 
+			}
 
             for(i = 0; i < length; i++) {
 				if(utfdata[i] <= 0xff) {
@@ -989,6 +1044,11 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 					} while ((j < 6843) && (glyph == 0));
 					if(glyph == 0) {
 						strcpy(symbol->errtxt, "Invalid character in input data");
+#ifdef _MSC_VER
+						free(utfdata);
+						free(jisdata);
+						free(mode);
+#endif
 						return ZERROR_INVALID_DATA;
 					}
 					jisdata[i] = glyph;
@@ -1013,6 +1073,11 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 
 	if(est_binlen > (8 * max_cw)) {
 		strcpy(symbol->errtxt, "Input too long for selected error correction level");
+#ifdef _MSC_VER
+		free(utfdata);
+		free(jisdata);
+		free(mode);
+#endif
 		return ZERROR_TOO_LONG;
 	}
 
@@ -1064,14 +1129,20 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 		case LEVEL_H: target_binlen = qr_data_codewords_H[version - 1]; blocks = qr_blocks_H[version - 1]; break;
 	}
 
+
+#ifdef _MSC_VER
+	int* datastream = malloc( (target_binlen + 1) * sizeof(int) );
+	int* fullstream = malloc( (qr_total_codewords[version - 1] + 1) * sizeof(int) );
+	uint8_t* grid = malloc( (size * size) * sizeof(uint8_t) );
+#else
 	int datastream[target_binlen + 1];
 	int fullstream[qr_total_codewords[version - 1] + 1];
-
+	uint8_t grid[size * size];
+#endif
+	
 	qr_binary(datastream, version, target_binlen, mode, jisdata, length, gs1, est_binlen);
 	add_ecc(fullstream, datastream, version, target_binlen, blocks);
-
-	size = qr_sizes[version - 1];
-	uint8_t grid[size * size];
+	
     int j;
     for (i = 0; i < size; i++) {
         for(j = 0; j < size; j++) {
@@ -1098,7 +1169,14 @@ int qr_code(struct zint_symbol *symbol, uint8_t source[], int length)
 		}
 		symbol->row_height[i] = 1;
 	}
-
+#ifdef _MSC_VER
+	free(utfdata);
+	free(jisdata);
+	free(mode);
+	free(datastream);
+	free(fullstream);
+	free(grid);
+#endif
 	return 0;
 }
 
@@ -1850,10 +1928,15 @@ int micro_apply_bitmask(uint8_t *grid, int size)
 	int pattern, value[8];
 	int best_val, best_pattern;
 	int bit;
-
+	
+#ifdef _MSC_VER
+	uint8_t* mask = malloc( (size * size) * sizeof(uint8_t) );
+	uint8_t* eval = malloc( (size * size) * sizeof(uint8_t) );
+#else
 	uint8_t mask[size * size];
 	uint8_t eval[size * size];
-
+#endif
+	
 	/* Perform data masking */
 	for(x = 0; x < size; x++) {
 		for(y = 0; y < size; y++) {
@@ -1921,7 +2004,10 @@ int micro_apply_bitmask(uint8_t *grid, int size)
 			}
 		}
 	}
-
+#ifdef _MSC_VER	
+	free(mask);
+	free(eval);
+#endif
 	return best_pattern;
 }
 
@@ -2105,7 +2191,13 @@ int microqr(struct zint_symbol *symbol, uint8_t source[], int length)
 	}
 
 	size = micro_qr_sizes[version];
+	
+#ifdef _MSC_VER
+	uint8_t* grid = malloc( (size * size) * sizeof(uint8_t) );
+#else
 	uint8_t grid[size * size];
+#endif
+	
     int j;
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
@@ -2167,6 +2259,8 @@ int microqr(struct zint_symbol *symbol, uint8_t source[], int length)
 		}
 		symbol->row_height[i] = 1;
 	}
-
+#ifdef _MSC_VER	
+	free(grid);
+#endif
 	return 0;
 }

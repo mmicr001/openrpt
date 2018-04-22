@@ -24,7 +24,7 @@ TEMPLATE = app
 TARGET   = metasql
 
 CONFIG += qt warn_on
-
+CONFIG -= staticlib
 QT     +=  sql xml widgets  printsupport
 
 DESTDIR     = ../../bin

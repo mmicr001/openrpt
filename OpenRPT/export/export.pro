@@ -21,6 +21,8 @@
 include( ../../global.pri )
 
 TEMPLATE = app
+CONFIG += warn_on console
+CONFIG -= staticlib
 TARGET   = exportrpt
 
 CONFIG += warn_on console

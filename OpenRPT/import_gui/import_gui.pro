@@ -24,6 +24,8 @@ TEMPLATE = app
 TARGET   = importrptgui
 
 CONFIG += qt warn_on
+CONFIG -= staticlib
+INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common .
 
 QT += xml sql widgets
 

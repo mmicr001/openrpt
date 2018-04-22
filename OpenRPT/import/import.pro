@@ -24,6 +24,7 @@ TEMPLATE = app
 TARGET = importrpt
 
 CONFIG += warn_on console
+CONFIG -= staticlib
 
 QT += xml sql
 

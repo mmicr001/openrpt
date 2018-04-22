@@ -21,7 +21,11 @@
 include( ../../global.pri )
 
 TEMPLATE = app
-TARGET   = RPTrender
+CONFIG += qt warn_on
+CONFIG -= staticlib
+INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common ../renderer
+
+win:TARGET  = RPTrender
 unix:TARGET = rptrender
 
 CONFIG  += qt warn_on
