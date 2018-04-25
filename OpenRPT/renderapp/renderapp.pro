@@ -25,7 +25,7 @@ CONFIG += qt warn_on
 CONFIG -= staticlib
 INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common ../renderer
 
-win:TARGET  = RPTrender
+win*:TARGET  = RPTrender
 unix:TARGET = rptrender
 
 CONFIG  += qt warn_on
