@@ -42,6 +42,7 @@ class ReportWriterWindow : public QMainWindow {
     public:
         ReportWriterWindow();
         ~ReportWriterWindow();
+		
 
     public slots:
         virtual void setCaption();

@@ -25,6 +25,7 @@ TARGET   = OpenRPT
 unix:TARGET = openrpt
 
 CONFIG += qt warn_on
+CONFIG -= staticlib
 
 DESTDIR     = ../../bin
 MOC_DIR     = tmp

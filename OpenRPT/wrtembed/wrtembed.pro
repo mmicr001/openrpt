@@ -95,6 +95,7 @@ HEADERS += reportgridoptions.h\
            editpreferences.h \
            dbfiledialog.h \
            crosstabeditor.h \
+		   buddycombobox.h \
            querycombobox.h \
            fontutils.h \
            dmatrixsquareconfig.h \
@@ -135,6 +136,7 @@ SOURCES += reportgridoptions.cpp\
            editpreferences.cpp \
            dbfiledialog.cpp \
            crosstabeditor.cpp \
+		   buddycombobox.cpp \
            querycombobox.cpp \
            fontutils.cpp \
            dmatrixsquareconfig.cpp \

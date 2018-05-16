@@ -496,6 +496,8 @@ bool parseReportLabel(const QDomElement & elemSource, ORLabelData & labelTarget)
       labelTarget.string = elemParam.text();
       valid_string = true;
     }
+	else if (elemParam.tagName() == "buddy")
+	  labelTarget.buddy = elemParam.text();
     else if (elemParam.tagName() == "left")
       labelTarget.align |= Qt::AlignLeft;
     else if (elemParam.tagName() == "right")

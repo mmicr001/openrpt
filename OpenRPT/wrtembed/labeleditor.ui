@@ -1,5 +1,5 @@
-<ui version="4.0" >
- <author></author>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <comment> * OpenRPT report writer and rendering engine
  * Copyright (C) 2001-2014 by OpenMFG, LLC
  *
@@ -17,374 +17,274 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  * Please contact info@openmfg.com with any questions on this license.</comment>
- <exportmacro></exportmacro>
  <class>LabelEditor</class>
- <widget class="QDialog" name="LabelEditor" >
-  <property name="geometry" >
+ <widget class="QDialog" name="LabelEditor">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>447</height>
+    <width>584</width>
+    <height>473</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>1</vsizetype>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Properties (Label)</string>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QHBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="4" column="0" colspan="5">
+    <widget class="QGroupBox" name="GroupBox1">
+     <property name="title">
+      <string>Position/Size</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="TextLabel1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>1</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text" >
-          <string>Text:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="tbText" />
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QGroupBox" name="bgHAlign" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>1</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title" >
-          <string>HAlign</string>
-         </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QRadioButton" name="rbHAlignNone" >
-            <property name="text" >
-             <string>None</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbHAlignLeft" >
-            <property name="text" >
-             <string>Left</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbHAlignCenter" >
-            <property name="text" >
-             <string>Center</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbHAlignRight" >
-            <property name="text" >
-             <string>Right</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="bgVAlign" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>1</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title" >
-          <string>VAlign</string>
-         </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>11</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QRadioButton" name="rbVAlignNone" >
-            <property name="text" >
-             <string>None</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbVAlignTop" >
-            <property name="text" >
-             <string>Top</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbVAlignMiddle" >
-            <property name="text" >
-             <string>Middle</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="rbVAlignBottom" >
-            <property name="text" >
-             <string>Bottom</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="GroupBox1" >
-       <property name="title" >
-        <string>Position/Size</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>11</number>
+     <layout class="QGridLayout">
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <property name="bottomMargin">
+       <number>11</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="leHeight">
+        <property name="text">
+         <string>0.01</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="leWidth">
+        <property name="text">
+         <string>0.01</string>
         </property>
-        <item row="1" column="3" >
-         <widget class="QLineEdit" name="leHeight" >
-          <property name="text" >
-           <string>0.01</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3" >
-         <widget class="QLineEdit" name="leWidth" >
-          <property name="text" >
-           <string>0.01</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="TextLabel2" >
-          <property name="text" >
-           <string>Y:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2" >
-         <widget class="QLabel" name="TextLabel4" >
-          <property name="text" >
-           <string>Height:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="TextLabel1_3" >
-          <property name="text" >
-           <string>X:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2" >
-         <widget class="QLabel" name="TextLabel3" >
-          <property name="text" >
-           <string>Width:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3" >
-         <widget class="QLabel" name="TextLabel5" >
-          <property name="font" >
-           <font>
-            <family>Helvetica [Cronyx]</family>
-            <pointsize>6</pointsize>
-            <weight>50</weight>
-            <italic>true</italic>
-            <bold>false</bold>
-            <underline>false</underline>
-            <strikeout>false</strikeout>
-           </font>
-          </property>
-          <property name="text" >
-           <string>in inches</string>
-          </property>
-          <property name="textFormat" >
-           <enum>Qt::AutoText</enum>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="leYPos" >
-          <property name="text" >
-           <string>0.00</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QLineEdit" name="leXPos" >
-          <property name="text" >
-           <string>0.00</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="TextLabel1_2" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>1</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Preview:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="labelPreview" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>7</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize" >
-        <size>
-         <width>0</width>
-         <height>42</height>
-        </size>
-       </property>
-       <property name="frameShape" >
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Sunken</enum>
-       </property>
-       <property name="text" >
-        <string>Preview Area</string>
-       </property>
-       <property name="alignment" >
-        <set>Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="TextLabel2">
+        <property name="text">
+         <string>Y:</string>
+        </property>
+        <property name="buddy">
+         <cstring>leYPos</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="TextLabel4">
+        <property name="text">
+         <string>Height:</string>
+        </property>
+        <property name="buddy">
+         <cstring>leHeight</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="TextLabel1_3">
+        <property name="text">
+         <string>X:</string>
+        </property>
+        <property name="buddy">
+         <cstring>leXPos</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="TextLabel3">
+        <property name="text">
+         <string>Width:</string>
+        </property>
+        <property name="buddy">
+         <cstring>leWidth</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="TextLabel5">
+        <property name="font">
+         <font>
+          <family>Helvetica [Cronyx]</family>
+          <pointsize>6</pointsize>
+          <weight>50</weight>
+          <italic>true</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>in inches</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="leYPos">
+        <property name="text">
+         <string>0.00</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leXPos">
+        <property name="text">
+         <string>0.00</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
-   <item>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="1" column="2">
+    <widget class="BuddyComboBox" name="cbBuddy">
+     <property name="enabled">
+      <bool>true</bool>
      </property>
-     <property name="spacing" >
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="5">
+    <widget class="QLabel" name="labelPreview">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>42</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="text">
+      <string>Preview Area</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="TextLabel1">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Text:</string>
+     </property>
+     <property name="buddy">
+      <cstring>tbText</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="buddyLabel">
+     <property name="text">
+      <string>Buddy:</string>
+     </property>
+     <property name="buddy">
+      <cstring>cbBuddy</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QLabel" name="TextLabel1_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Preview:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="7" rowspan="7">
+    <layout class="QVBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QPushButton" name="buttonOk" >
-       <property name="text" >
+      <widget class="QPushButton" name="buttonOk">
+       <property name="text">
         <string>&amp;OK</string>
        </property>
-       <property name="shortcut" >
+       <property name="shortcut">
         <string>Alt+O</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>true</bool>
        </property>
-       <property name="default" >
+       <property name="default">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="buttonCancel" >
-       <property name="text" >
+      <widget class="QPushButton" name="buttonCancel">
+       <property name="text">
         <string>&amp;Cancel</string>
        </property>
-       <property name="shortcut" >
+       <property name="shortcut">
         <string>Alt+C</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -393,19 +293,195 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btnFont" >
-       <property name="text" >
+      <widget class="QPushButton" name="btnFont">
+       <property name="text">
         <string>&amp;Font...</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
+   <item row="2" column="0" colspan="5">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="bgHAlign">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>HAlign</string>
+       </property>
+       <layout class="QVBoxLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="leftMargin">
+         <number>11</number>
+        </property>
+        <property name="topMargin">
+         <number>11</number>
+        </property>
+        <property name="rightMargin">
+         <number>11</number>
+        </property>
+        <property name="bottomMargin">
+         <number>11</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="rbHAlignNone">
+          <property name="text">
+           <string>None</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbHAlignLeft">
+          <property name="text">
+           <string>Left</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbHAlignCenter">
+          <property name="text">
+           <string>Center</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbHAlignRight">
+          <property name="text">
+           <string>Right</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="bgVAlign">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>VAlign</string>
+       </property>
+       <layout class="QVBoxLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="leftMargin">
+         <number>11</number>
+        </property>
+        <property name="topMargin">
+         <number>11</number>
+        </property>
+        <property name="rightMargin">
+         <number>11</number>
+        </property>
+        <property name="bottomMargin">
+         <number>11</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="rbVAlignNone">
+          <property name="text">
+           <string>None</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbVAlignTop">
+          <property name="text">
+           <string>Top</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbVAlignMiddle">
+          <property name="text">
+           <string>Middle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbVAlignBottom">
+          <property name="text">
+           <string>Bottom</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLineEdit" name="tbText"/>
+   </item>
+   <item row="1" column="4" alignment="Qt::AlignLeft">
+    <widget class="QLabel" name="queryPreview">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Preview</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="4" colspan="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>BuddyComboBox</class>
+   <extends>QComboBox</extends>
+   <header>buddycombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>tbText</tabstop>
+  <tabstop>cbBuddy</tabstop>
   <tabstop>rbHAlignNone</tabstop>
   <tabstop>rbHAlignLeft</tabstop>
   <tabstop>rbHAlignCenter</tabstop>
@@ -415,8 +491,8 @@
   <tabstop>rbVAlignMiddle</tabstop>
   <tabstop>rbVAlignBottom</tabstop>
   <tabstop>leXPos</tabstop>
-  <tabstop>leWidth</tabstop>
   <tabstop>leYPos</tabstop>
+  <tabstop>leWidth</tabstop>
   <tabstop>leHeight</tabstop>
   <tabstop>btnFont</tabstop>
   <tabstop>buttonOk</tabstop>
@@ -430,11 +506,11 @@
    <receiver>LabelEditor</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
-     <x>20</x>
-     <y>20</y>
+    <hint type="sourcelabel">
+     <x>496</x>
+     <y>32</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>
@@ -446,11 +522,11 @@
    <receiver>LabelEditor</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
-     <x>20</x>
-     <y>20</y>
+    <hint type="sourcelabel">
+     <x>496</x>
+     <y>66</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
     </hint>

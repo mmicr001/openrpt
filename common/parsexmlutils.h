@@ -259,6 +259,7 @@ class ORLabelData : public ORObject
     QFont font;
     int align;
     QString string;
+	QString buddy;
 
     virtual bool isLabel();
     virtual ORLabelData * toLabel();
@@ -355,7 +356,6 @@ class ORGraphData : public ORObject
     virtual bool isGraph();
     virtual ORGraphData * toGraph();
 };
-
 
 class ORCrossTabData : public ORObject
 {

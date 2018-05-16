@@ -716,7 +716,10 @@ DocumentWindow* ReportHandler::createDocument(bool newDoc)
   }
   if(_placeToolbarsOnWindows)
     docToolBars(view);
-
+	
+  view->_scene->setFont(QFont()); 
+  ORGraphicsRectItem::setDefaultEntityFont(view->_scene->getFont());
+  
   addDocumentWindow(view);
   view->showMaximized();
   return view;
@@ -793,6 +796,7 @@ DocumentWindow * ReportHandler::fileOpen(const QDomDocument & doc)
     rw->loadDocument(root, _parentWindow);
     __dosnap = true;
 
+
     return dv;
 }
 
@@ -821,6 +825,7 @@ void ReportHandler::fileClose()
   DocumentWindow * gw = activeDocumentWindow();
   if(gw)
     gw->close();
+	
 }
 
 //
@@ -1534,6 +1539,7 @@ void ReportHandler::dbSaveDoc()
 //
 DocumentWindow * ReportHandler::activeDocumentWindow()
 {
+  //ORGraphicsRectItem::setDefaultEntityFont(dw->_scene->getFont());
   if(_mdiParentWindow)
   {
     // returns the topmost window, even if not active
@@ -1549,6 +1555,7 @@ DocumentWindow * ReportHandler::activeDocumentWindow()
         return gw;
     }
   }
+  
   return 0;
 }
 
@@ -1567,6 +1574,12 @@ void ReportHandler::removeReportWindow(QObject * obj)
   DocumentWindow * gw = static_cast<DocumentWindow *>(obj);
   if(gw)
     gwList.removeAll(gw);
+  
+  // update the default font 
+  gw = activeDocumentWindow();
+  if (gwList.size()>0) 
+	ORGraphicsRectItem::setDefaultEntityFont(gw->_scene->getFont());
+  
 }
 
 //
@@ -1714,6 +1727,12 @@ void ReportHandler::onWinChanged(QMdiSubWindow *w)
   grpGrid->setEnabled(show);
   grpDoc->setEnabled(show);
   grpFont->setEnabled(show);
+ 
+  DocumentWindow* dw;
+  dw = activeDocumentWindow();
+  if (gwList.size()>1) 
+	ORGraphicsRectItem::setDefaultEntityFont(dw->_scene->getFont());
+  
 }
 
 QString ReportHandler::name()

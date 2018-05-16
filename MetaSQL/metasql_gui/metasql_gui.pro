@@ -22,6 +22,7 @@ include( ../../global.pri )
 
 TEMPLATE = app
 CONFIG += qt warn_on
+CONFIG -= staticlib
 QT     +=  sql xml widgets  printsupport
 
 INCLUDEPATH += .. ../tmp ../../common ../../../openrpt-build-desktop/MetaSQL/tmp  ../../../openrpt-build-desktop/common

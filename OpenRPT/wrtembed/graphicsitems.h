@@ -82,6 +82,7 @@ class ORGraphicsRectItem : public QGraphicsRectItem
 
     static QFont getDefaultEntityFont();
     static void  setDefaultEntityFont(const QFont &);
+	static void setFalse(){_readDefaultFont = false;}
 
     virtual void properties(QWidget * parent = 0);
     void borderProperties(QWidget * parent = 0);
@@ -169,10 +170,12 @@ class ORGraphicsLabelItem : public ORGraphicsRectItem
     void setText(const QString& text);
     void setFont(const QFont& font);
     void setTextFlags(int flags);
+	void setBuddy(const QString& buddy);
 
     QString text() const { return _txt; }
     QFont font() const { return _font; }
     int textFlags() const { return _flags; }
+	QString buddy() const { return _buddy; }
 
     virtual void properties(QWidget * parent = 0);
 
@@ -181,6 +184,7 @@ class ORGraphicsLabelItem : public ORGraphicsRectItem
     QString _txt;
     int     _flags;
     QFont   _font;
+	QString _buddy;
 };
 
 
