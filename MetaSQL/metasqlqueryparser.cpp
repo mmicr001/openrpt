@@ -174,7 +174,7 @@ class MetaSQLFunction : public MetaSQLOutput {
                     case FunctionReExists:
                         list = mif->enumerateNames();
                         for(strlit = list.begin(); strlit != list.end(); strlit++) {
-                            if(regex_match((*strlit), re)) {
+                            if(regex_search((*strlit), re)) {
                                 val = mif->trueValue();
                                 break;
                             }
