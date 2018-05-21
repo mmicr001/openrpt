@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
     QApplication app(argc, argv);
 
-    QSplashScreen * splash = new QSplashScreen(QPixmap(":/images/openrpt.png"));
+    QSplashScreen * splash = new QSplashScreen(QPixmap(":/images/openrpt_login.png"));
     splash->show();
 
     OpenRPT::databaseURL = "";
@@ -64,15 +64,6 @@ int main(int argc, char** argv) {
 
     app.addLibraryPath(".");
 
-    // Qt translations
-    QTranslator qtTranslator;
-    qtTranslator.load("qt_" + QLocale::system().name());
-    app.installTranslator(&qtTranslator);
-
-    OpenRPT::languages.addTranslationToDefault(":/common.qm");
-    OpenRPT::languages.addTranslationToDefault(":/wrtembed.qm");
-    OpenRPT::languages.addTranslationToDefault(":/renderer.qm");
-    OpenRPT::languages.addTranslationToDefault(":/writer.qm");
     OpenRPT::languages.installSelected();
 
     ReportWriterWindow rwf;

@@ -289,24 +289,35 @@ int gs1_verify(struct zint_symbol *symbol, uint8_t source[], const unsigned int 
 int ugs1_verify(struct zint_symbol *symbol, uint8_t source[], const unsigned int src_len, uint8_t reduced[])
 {
 	/* Only to keep the compiler happy */
-	// Check if compiler is MSVC 
-	#ifdef _MSC_VER
-		char* temp = malloc( (src_len + 5) * sizeof(char) );
-	#else
-		char temp[src_len + 5];
-	#endif
+	
+#ifdef _MSC_VER
+	char* temp = malloc( (src_len + 5) * sizeof(char) );
+#else
+	char temp[src_len + 5];
+#endif
 	
 	int error_number;
 
 	error_number = gs1_verify(symbol, source, src_len, temp);
-	if(error_number != 0) { free(temp); return error_number; }
+	if(error_number != 0) { 
+#ifdef _MSC_VER	
+		free(temp); 
+#endif	
+		return error_number; 
+	}
 
 	if (strlen(temp) < src_len + 5) {
 		ustrcpy(reduced, (uint8_t*)temp);
+#ifdef _MSC_VER
 		free(temp);
+#endif
 		return 0;
 	}
 	strcpy(symbol->errtxt, "ugs1_verify overflow");
+	
+#ifdef _MSC_VER
 	free(temp);
+#endif
+	
 	return ZERROR_INVALID_DATA;
 }

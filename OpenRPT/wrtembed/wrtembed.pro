@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -21,7 +21,7 @@
 include( ../../global.pri )
 
 TEMPLATE = lib
-CONFIG += qt warn_on
+CONFIG  += qt warn_on
 
 INCLUDEPATH = ../../common ../common ../../../openrpt-build-desktop/common ../renderer ../images .
 
@@ -148,8 +148,6 @@ SOURCES += reportgridoptions.cpp\
            qrconfig.cpp
 
 RESOURCES += ../images/OpenRPTWrtembed.qrc
-
-TRANSLATIONS    = wrtembed_fr.ts wrtembed_it.ts wrtembed_ru.ts wrtembed_es.ts wrtembed_ar.ts
 
 bundled_dmtx {
   INCLUDEPATH += ../Dmtx_Library

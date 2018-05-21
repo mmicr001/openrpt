@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2018 by OpenMFG, LLC
+ * Copyright (C) 2001-2014 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,19 +18,42 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
-#include "data.h"
+#include "buddycombobox.h"
 
-#include <QObject>
+BuddyComboBox::BuddyComboBox(QWidget *parent)
+  : QComboBox(parent)
+{
+}
 
-QString OpenRPT::build     = QObject::tr("%1 %2").arg(__DATE__, __TIME__);
-QString OpenRPT::copyright = QObject::tr("Copyright (c) 2002-2018, OpenMFG, LLC.");
-bool    OpenRPT::loggedIn  = false;
-QString OpenRPT::version   = QObject::tr("3.3.15");
+BuddyComboBox::~BuddyComboBox()
+{
+}
 
-LanguageOptions OpenRPT::languages(0);
+void BuddyComboBox::init(QStringList fields, QString buddy)
+{
+  // populate the combo item and set it to an appropriate value
+  clear();
+  
+  fields.sort();
+  if( !fields.isEmpty() ) 
+	addItems(fields);
+  else 
+    qDebug("QuerySourceList is null");
+  
+  insertItem(0,"-- Select Field/Textarea --");
+  setCurrentIndex(0);
+  for(int i=0; i<count(); i++)
+  { 
+	if(buddy == itemText(i))
+		setCurrentIndex(i);
+  }
+}
 
-/* set the values for these in each main() or
-   in the constructor for the primary UI of embedded components:
- */
-QString OpenRPT::databaseURL = QString::null;
-QString OpenRPT::name = QString::null;
+QString BuddyComboBox::currentField ()
+{
+  QString text = currentText();
+  if(text == tr("-- Select Field/Textarea --")) text = QString::null;
+
+  return text;
+}
+

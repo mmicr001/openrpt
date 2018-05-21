@@ -24,7 +24,7 @@
 # of the projects can be place.
 #
 
-CONFIG += release dll
+CONFIG += release dll c++11
 # TEMPORARY HACK
 win32 {
   CONFIG -= dll
@@ -43,7 +43,7 @@ win32-g++:LIBEXT = a
 win32-msvc*:LIBEXT = lib
 macx:LIBEXT      = a
 isEmpty( LIBEXT ) {
-  #win32:LIBEXT = lib
+  win32:LIBEXT	= a
   unix:LIBEXT  = so
 }
 

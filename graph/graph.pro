@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -21,19 +21,20 @@
 include( ../global.pri )
 
 TEMPLATE = app
+
 CONFIG += qt warn_on
 CONFIG -= staticlib
+
+QT +=  sql widgets
+
+DESTDIR     = ../bin
+MOC_DIR     = tmp
+OBJECTS_DIR = tmp
+UI_DIR      = tmp
+
 INCLUDEPATH += .
 
-# Input
+macx:RC_FILE = ../OpenRPT/images/OpenRPT-tools.icns
 HEADERS += graph.h graphwindow.h
 FORMS   += graphwindow.ui
 SOURCES += graph.cpp graphwindow.cpp main.cpp
-
-MOC_DIR = tmp
-UI_DIR = tmp
-OBJECTS_DIR = tmp
-
-DESTDIR = ../bin
-QT +=  sql widgets
-
