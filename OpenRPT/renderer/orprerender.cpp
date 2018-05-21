@@ -20,9 +20,6 @@
 
 #include <QtGui>
 
-#pragma comment(linker, "/SUBSYSTEM:CONSOLE")
-#include <iostream>
-
 #include "orprerender.h"
 #include "renderobjects.h"
 #include "orutils.h"
@@ -904,12 +901,10 @@ QList<ORObject *> ORPreRenderPrivate::sortObjects(QList<ORObject *> objects)
 	  }
 	}	 
   }  
-  std::cout << "\n";
   QList<ORObject *> ordered;
   for (int i=0; i<sorted.size(); ++i)
-	{ordered.push_back(objects.at(sorted.at(i).first));
-	std::cout << sorted.at(i).second << "|"; }
-  std::cout << "\n";
+	ordered.push_back(objects.at(sorted.at(i).first));
+  
   return ordered; 
 }
 
@@ -1033,8 +1028,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
           {
             QString colorStr = QString::null;
             QString text = evaluateField(elemThis->toField(), &colorStr);
-			if (text != NULL){
-			addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr); qDebug() << "\nField = " << text;}
+			if (text != NULL)
+			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr); 
 			else
 			{
 			  bool sameHeightObject = false;
@@ -1084,7 +1079,6 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
         textelem.append(QPair<ORObject*,qreal>(elemThis,_yOffset));
 	  else 
 	  {
-		std::cout << "\n 		*** text is null ***\n";
 		bool sameHeightObject = false;
 		int objCnt = 1;
 		for(int i = 0; i < objects.size(); ++i)

@@ -18,8 +18,6 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
- #pragma comment(linker, "/SUBSYSTEM:CONSOLE")
- #include <iostream>
  #include "orprerender.cpp"
  #include "parsexmlutils.h"
  #include "orutils.h" 
@@ -1138,16 +1136,16 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
     if (sectionElem.at(i).firstChild().nodeValue() == this->text())
 	  n = sectionElem.at(i).parentNode().parentNode();
   }
-   
+  
+  // collect all field/textarea names
   sec = n.toElement();
   sectionElem = sec.elementsByTagName("column");
   for (int i=0; i<sectionElem.size(); i++ )
   {
 	fieldItems << sectionElem.at(i).firstChild().nodeValue();
   }
-  
-
   // ************************************************************
+  
   le->cbBuddy->init(fieldItems,buddy());
   le->setFont(font());
   le->tbText->setText(text());

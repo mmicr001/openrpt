@@ -1473,7 +1473,6 @@ void ReportHandler::dbSaveDoc()
 //
 DocumentWindow * ReportHandler::activeDocumentWindow()
 {
-  //ORGraphicsRectItem::setDefaultEntityFont(dw->_scene->getFont());
   if(_mdiParentWindow)
   {
     // returns the topmost window, even if not active

@@ -19,10 +19,7 @@
  */
 
 #include "labeleditor.h"
-#include "parsexmlutils.h"
-#include "orutils.h" 
 #include "../../MetaSQL/metasql.h"
-#include "parameter.h"
 
 #include <QVariant>
 #include <QFontDialog>
@@ -146,18 +143,12 @@ QString LabelEditor::getQueryResult(QString str)
   
   MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
   xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
-  if(xqry.first()){
-	/* qDebug() << "###################################\n";
-	qDebug() << " query : " << xqry.executedQuery();
-	qDebug() << "\n query valid : " << xqry.isValid()
-			 << "\n query active : " << xqry.isActive()
-			 << "\n col count : " << xqry.count()
-			 << "\n query result : " << xqry.value(col).toString(); */  
+  if(xqry.first())
 	str = xqry.value(col).toString();
- }
   else
 	str = "";
-  return str; //xqry.value(col).toString();
+  
+  return str; 
 }
 
 void LabelEditor::setLabelFlags( int f )
