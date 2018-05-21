@@ -17,8 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  * Please contact info@openmfg.com with any questions on this license.
  */
-
-#include <iostream>
  
 #include "documentscene.h"
 #include "reporthandler.h"
@@ -2036,7 +2034,6 @@ void DocumentScene::loadDocument(const QDomElement &root, QWidget *parent, bool 
 			} else if(n == "defaultFont") { 
 				QString font = it.toElement().attribute("family");
 				QString size = it.toElement().attribute("size");
-				qDebug() << "Setting font from XML :" << it.toElement().attribute("family");
 				_font = (QFont(font,size.toInt()));
 				ORGraphicsRectItem::setDefaultEntityFont(_font);
             } else if(n == "parameter") {
