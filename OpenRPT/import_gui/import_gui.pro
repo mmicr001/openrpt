@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -21,17 +21,22 @@
 include( ../../global.pri )
 
 TEMPLATE = app
+TARGET   = importrptgui
+
 CONFIG += qt warn_on
+CONFIG -= staticlib
 INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common .
 
-TARGET=importrptgui
+QT += xml sql widgets
 
-OBJECTS_DIR = tmp
+DESTDIR     = ../../bin
 MOC_DIR     = tmp
+OBJECTS_DIR = tmp
 UI_DIR      = tmp
 
+INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common .
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -lopenrptcommon
+LIBS        += -lopenrptcommon
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/openrptcommon.$${LIBEXT}
@@ -39,9 +44,8 @@ win32-msvc* {
   PRE_TARGETDEPS += ../../lib/libopenrptcommon.$${LIBEXT}
 }
 
-DESTDIR = ../../bin
+macx:RC_FILE = ../images/OpenRPT-tools.icns
 
-# Input
 FORMS   += importwindow.ui
 
 HEADERS += importwindow.h \
@@ -50,7 +54,4 @@ HEADERS += importwindow.h \
 SOURCES += importwindow.cpp \
            ../common/builtinSqlFunctions.cpp \
            main.cpp
-
-#The following line was inserted by qt3to4
-QT += xml sql widgets
 

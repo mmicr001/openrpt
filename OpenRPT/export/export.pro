@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -22,22 +22,21 @@ include( ../../global.pri )
 
 TEMPLATE = app
 CONFIG += warn_on console
+CONFIG -= staticlib
+TARGET   = exportrpt
 
-TARGET = exportrpt
-DESTDIR = ../../bin
-MOC_DIR = tmp
+CONFIG += warn_on console
+
+QT += xml sql
+
+DESTDIR     = ../../bin
+MOC_DIR     = tmp
 OBJECTS_DIR = tmp
-UI_DIR = tmp
-
-# Input
-HEADERS = ../common/builtinSqlFunctions.h		# MANU
-
-SOURCES += main.cpp \
-           ../common/builtinSqlFunctions.cpp	# MANU
+UI_DIR      = tmp
 
 INCLUDEPATH += ../../common ../common
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -lopenrptcommon
+LIBS        += -lopenrptcommon
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/openrptcommon.$${LIBEXT}
@@ -45,4 +44,9 @@ win32-msvc* {
   PRE_TARGETDEPS += ../../lib/libopenrptcommon.$${LIBEXT}
 }
 
-QT += xml sql
+macx:RC_FILE = ../images/OpenRPT-tools.icns
+
+HEADERS = ../common/builtinSqlFunctions.h
+
+SOURCES += main.cpp \
+           ../common/builtinSqlFunctions.cpp

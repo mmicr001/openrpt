@@ -3,20 +3,26 @@
 #include <QApplication>
 #include <QStringList>
 #include <QFile>
+#include <QStandardPaths>
 
 #include "languageoptions.h"
+#include "xsqlquery.h"
 
 
 LanguageOptions::LanguageOptions(QObject *parent)
     : QObject(parent)
 {
-    _defaultLanguage = "default";
+    _defaultLanguage = "Default";
     addLanguage(_defaultLanguage, _defaultLanguage);
 
     QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenRPT");
     _selectedLanguage = settings.value("/OpenRPT/_selectedLanguage", _defaultLanguage).toString();
 
     addLanguage("en", "English");
+
+    QLocale sysl = QLocale::system();
+    if (sysl.language() != QLocale::C && sysl.language() != QLocale::English)
+      addTranslationToDefault("openrpt." + sysl.name().toLower());
 }
 
 
@@ -87,31 +93,79 @@ void LanguageOptions::installSelected(void)
 void LanguageOptions::addTranslationToDefault(QString file)
 
 {
-  /* check if we want a resource language translation */
-  if (file.startsWith(":")) {
-    /* check if have a lg_CO/file.qm file in the locales which would override resource */
-    QString base = QApplication::applicationDirPath() + "/locales/";
-    QString fname = file.right(file.length()-1);
-    QString locale = QLocale::system().name();
-    if (QFile::exists(base + locale + fname)) {
-      addTranslation(_defaultLanguage, base + locale + fname);
-    } else {
-      /* check if have a lg/file.qm file in the locales which would override resource */
-      locale = locale.left(2);
-      if (QFile::exists(base + locale +fname)) {
-        addTranslation(_defaultLanguage, base + locale + fname);
-      } else {
-        /* load default resource file */
-        addTranslation(_defaultLanguage, file);
-      }
-    }
-  } else {
-    /* load requested file */
-    addTranslation(_defaultLanguage, file);
+  QStringList paths;
+
+  paths << QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation)
+        << QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
+
+#if defined Q_OS_MAC
+  paths << QApplication::applicationDirPath() + "/../Resources";
+#else
+  paths << QApplication::applicationDirPath();
+#endif
+
+#if defined Q_OS_LINUX
+  paths << QApplication::applicationDirPath() + "/locales";
+#endif
+
+  (void)paths.removeDuplicates();
+
+  for (int i=0; i < paths.length(); i++)
+    paths[i] = paths[i] + "/dict";
+
+  foreach (QString testDir, paths)
+  {
+    QFile test(testDir + file + ".qm");
+    if (test.exists())
+      addTranslation(_defaultLanguage, testDir + file);
   }
 }
 
+void LanguageOptions::login()
+{
+  QStringList lang;
+  if (_languages[_defaultLanguage].length() > 1)
+  {
+    lang << _languages[_defaultLanguage][1].mid(8);
+    _languages[_defaultLanguage].removeLast();
+  }
 
+  XSqlQuery langq("SELECT lang_abbr2,   lang_qt_number,"
+                  "       country_abbr, country_qt_number"
+                  "  FROM usr"
+                  "  JOIN locale  ON usr_locale_id     = locale_id"
+                  "  JOIN lang    ON locale_lang_id    = lang_id"
+                  "  LEFT OUTER JOIN country ON locale_country_id = country_id"
+                  " WHERE usr_username = getEffectiveXtUser();");
+  if (langq.first())
+  {
+    QString langAbbr    = langq.value("lang_abbr2").toString();
+    QString countryAbbr = langq.value("country_abbr").toString().toUpper();
+
+    if (! langAbbr.isEmpty() && ! countryAbbr.isEmpty())
+      lang.append(langAbbr + "_" + countryAbbr.toLower());
+    else if (! langAbbr.isEmpty())
+      lang.append(langAbbr + "_" + countryAbbr.toLower());
+  }
+
+  QList<QPair<QString, QString> > transfile;
+  transfile << qMakePair(QString("openrpt"), QString());
+  XSqlQuery pkglist("SELECT pkghead_name, pkghead_version "
+                    "  FROM pkghead"
+                    " WHERE packageIsEnabled(pkghead_name);");
+  while (pkglist.next())
+    transfile << qMakePair(pkglist.value("pkghead_name").toString(), pkglist.value("pkghead_version").toString());
+
+  QPair<QString, QString> f;
+  foreach (f, transfile)
+  {
+    foreach (QString l, lang)
+    {
+      addTranslationToDefault((f.second.isEmpty() ? "" : f.first + "-" + f.second + "/") +
+                              f.first + "." + l);
+    }
+  }
+}
 
 QStringList LanguageOptions::languageTitlesList(void)
 {
