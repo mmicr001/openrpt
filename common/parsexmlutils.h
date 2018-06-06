@@ -270,7 +270,6 @@ class ORFieldData : public ORObject
   public:
     QFont font;
     int align;
-    //ORDataData data;
 
     bool trackTotal;
     bool sub_total;
@@ -293,7 +292,6 @@ class ORTextData : public ORObject
   public:
     QFont font;
     int align;
-    //ORDataData data;
     int bottompad;
 
     virtual bool isText();
@@ -305,7 +303,6 @@ class ORBarcodeData : public ORObject
   public:
     QString format;
     int maxlength;
-    //ORDataData data;
     int align; // 0 = left, 1 = center, 2 = right
     double narrowBarWidth;
 
@@ -336,8 +333,6 @@ class ORGraphData : public ORObject
   public:
 	  ~ORGraphData() {qDeleteAll(series);}
 
-    //ORDataData data;
-
     QFont font;
 
     ORTitleData title;
@@ -355,8 +350,6 @@ class ORGraphData : public ORObject
 class ORCrossTabData : public ORObject
 {
   public:
-    //ORDataData data;
-
     QFont font;
 
     // Table properties

@@ -19,7 +19,6 @@
  */
 
 // TODO: remove copyright() and version() methods
-#pragma comment(linker, "/SUBSYSTEM:CONSOLE")
 
 #include "reporthandler.h"
 #include "reportgridoptions.h"
