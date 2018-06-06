@@ -82,7 +82,7 @@ class ORPreRender {
     Qt::AspectRatioMode backgroundScaleMode() const;
 	
 	bool populateData(const ORDataData& dataSource, orData &dataTarget);
-	QString evalField(ORFieldData* f, QString* outColorStr);
+	QString evalField(ORFieldData* f, QString* outColorStr=0);
   protected:
 
   private:
