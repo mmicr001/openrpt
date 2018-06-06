@@ -224,6 +224,7 @@ class ORObject
     bool isStatic();
 	
 	QRect rect;
+	ORDataData data;
 
 private:
     QPen    _pen;
@@ -269,7 +270,7 @@ class ORFieldData : public ORObject
   public:
     QFont font;
     int align;
-    ORDataData data;
+    //ORDataData data;
 
     bool trackTotal;
     bool sub_total;
@@ -292,7 +293,7 @@ class ORTextData : public ORObject
   public:
     QFont font;
     int align;
-    ORDataData data;
+    //ORDataData data;
     int bottompad;
 
     virtual bool isText();
@@ -304,7 +305,7 @@ class ORBarcodeData : public ORObject
   public:
     QString format;
     int maxlength;
-    ORDataData data;
+    //ORDataData data;
     int align; // 0 = left, 1 = center, 2 = right
     double narrowBarWidth;
 
@@ -323,7 +324,7 @@ class ORImageData : public ORObject
     QString format;      // } 
     QString inline_data; // } INLINE
                          //     OR
-    ORDataData data;     // } FROM DB
+    //ORDataData data;     // } FROM DB
 
     virtual bool isImage();
     virtual ORImageData * toImage();
@@ -335,7 +336,7 @@ class ORGraphData : public ORObject
   public:
 	  ~ORGraphData() {qDeleteAll(series);}
 
-    ORDataData data;
+    //ORDataData data;
 
     QFont font;
 
@@ -354,7 +355,7 @@ class ORGraphData : public ORObject
 class ORCrossTabData : public ORObject
 {
   public:
-    ORDataData data;
+    //ORDataData data;
 
     QFont font;
 

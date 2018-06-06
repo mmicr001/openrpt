@@ -491,8 +491,8 @@
   <tabstop>rbVAlignMiddle</tabstop>
   <tabstop>rbVAlignBottom</tabstop>
   <tabstop>leXPos</tabstop>
-  <tabstop>leYPos</tabstop>
   <tabstop>leWidth</tabstop>
+  <tabstop>leYPos</tabstop>
   <tabstop>leHeight</tabstop>
   <tabstop>btnFont</tabstop>
   <tabstop>buttonOk</tabstop>

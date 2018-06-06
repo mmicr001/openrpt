@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -82,7 +82,7 @@ class ORGraphicsRectItem : public QGraphicsRectItem
 
     static QFont getDefaultEntityFont();
     static void  setDefaultEntityFont(const QFont &);
-	static void setFalse(){_readDefaultFont = false;}
+	static void setReadDefaultFontFalse(){_readDefaultFont = false;}
 
     virtual void properties(QWidget * parent = 0);
     void borderProperties(QWidget * parent = 0);

@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -1134,7 +1134,10 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
   for (int i=0; i<sectionElem.size(); i++ )
   {
     if (sectionElem.at(i).firstChild().nodeValue() == this->text())
+	{
 	  n = sectionElem.at(i).parentNode().parentNode();
+	  break;
+	}  
   }
   
   // collect all field/textarea names

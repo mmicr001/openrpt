@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -62,8 +62,7 @@ class ORPreRenderPrivate {
     OROPage*     _page;
     ORReportData* _reportData;
 
-	qreal _adjustment;   // How much we shifted up the contents of a section
-    qreal _yOffset;      // how far down the current page are we in inches. That way we can use dpi.
+	qreal _yOffset;      // how far down the current page are we in inches. That way we can use dpi.
     qreal _topMargin;    // value stored in the correct units
     qreal _bottomMargin; // -- same as above --
     qreal _leftMargin;   // -- same as above --
@@ -71,6 +70,7 @@ class ORPreRenderPrivate {
     qreal _maxHeight;    // -- same as above --
     qreal _maxWidth;     // -- same as above --
     int _pageCounter;    // what page are we currently on?
+	enum HStatus {hOverlap=-1, noOverlap=0, overlapButNull=1};
 
     QList<orQuery*> _lstQueries;
     QMap<QString, QColor> _colorMap;
@@ -120,13 +120,14 @@ class ORPreRenderPrivate {
     qreal maxDetailSectionY();
 
     void renderDetailSection(ORDetailSectionData &);
-    qreal renderSection(const ORSectionData &);
-    int checkHorizontal(QRect rect, ORObject * elemThis, ORObject * obj );
+	int checkHorizontal(ORObject * reference, ORObject * target);
+	bool ORPreRenderPrivate::queryReturnsNull(ORObject* obj);
 	bool allQueriesNull(const ORSectionData & sectionData);
 	QList<ORObject *> sortObjects(QList<ORObject *> objects);
+    qreal renderSection(const ORSectionData &);
 	qreal renderTextElements(QList<QPair<ORObject*,qreal>> elemList, qreal sectionHeight);
     void addTextPrimitive(ORObject *element, QPointF pos, QSizeF size, int align, QString text, QFont font = QFont(), QString color = QString());
-    QString evaluateField(ORFieldData* f, QString* outColorStr);
+    QString evaluateField(ORFieldData* f, QString* outColorStr=0);
     qreal renderSectionSize(const ORSectionData &, bool = false);
 
     // Calculate the remaining space on the page after printing the footers and applying the margins
@@ -473,7 +474,6 @@ void ORPreRenderPrivate::renderDetailSection(ORDetailSectionData & detailData)
   {
     orQuery *orqThis = getQuerySource(detailData.key.query);
     XSqlQuery *query;
-	_adjustment = 0;
 
     _subtotContextDetail = &detailData;
 
@@ -697,227 +697,89 @@ qreal ORPreRenderPrivate::renderSectionSize(const ORSectionData & sectionData, b
   return sectionHeight;
 }
 
-// Returning int lets the caller know if the ORObject is at the same 
-// height as the rect (belonging to a field or textarea) passed in. 
-// -1: same height, 0: not same height, 1: same height but NULL
-int ORPreRenderPrivate::checkHorizontal(QRect rect, ORObject * elemThis, ORObject * obj ){ 
-  QPointF targetPos = rect.topLeft();
-  QSizeF targetSize = rect.size();
+// Returning int lets the caller know if the target ORObject is at the same 
+// height as the reference ORObject (belonging to a field or textarea) passed in. 
+// hOverlap(-1): objects are at the same height, 
+// noOverlap(0): objects not at same height, 
+// overlapButNull(1): same height but referernce is NULL
+int ORPreRenderPrivate::checkHorizontal( ORObject * reference, ORObject * target){ 
+  bool elemIsEmpty = false;
+  bool overlap = false;
   
-  if (elemThis->isField())
+  if(queryReturnsNull(target) && !target->isLabel() && !target->isLine() && !target->isRect() )
+    elemIsEmpty = true; 
+  
+  if( reference->rect.top()<target->rect.bottom() && reference->rect.bottom()>target->rect.top() )
   {
-	ORFieldData * f = elemThis->toField();
-	QPointF pos = f->rect.topLeft();
-    QSizeF size = f->rect.size();
-	
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
+	if(target->isLabel())
 	{
-	  QString colorStr = QString::null;
-	  QString text = evaluateField(elemThis->toField(), &colorStr);
-	  if (text != NULL)
-	    return -1;
-	  else 
-	    return 1;
+		ORLabelData* l = target->toLabel();
+		if(reference->data.column == l->buddy){}
+		else
+		  overlap = true;
 	}
 	else 
-	  return 0;
+	  overlap = true;
   }
   
-  if (elemThis->isText())
-  {
-	orData       dataThis;
-	ORTextData * t = elemThis->toText();
-	QPointF pos = t->rect.topLeft();
-    QSizeF size = t->rect.size();
-	
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
-	{
-	  if(dataThis.getValue() != NULL)
-	    return -1;
-	  else 
-	    return 1;
-	}
-	else 
-	  return 0;
-  }
-
-  if (elemThis->isLabel()) 
-  {
-	ORLabelData * l = elemThis->toLabel();
-	QPointF pos = l->rect.topLeft();
-	QSizeF size = l->rect.size();
-
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
-	{	
-	  if(obj->isField())
-	  {
-	    if (obj->toField()->data.column == l->buddy)
-		  return 0;
-	    else
-		  return -1;
-	  }
-	  else if(obj->isText())
-	  {
-	    if (obj->toText()->data.column == l->buddy)
-		  return 0;
-	    else
-		  return -1;
-	  }
-	}
-	else 
-	  return 0;
-  }
-  
-  if (elemThis->isLine())
-  {
-	ORLineData * l = elemThis->toLine();
-	if( (targetPos.y() < l->yEnd)  && (l->yStart < targetPos.y()+targetSize.height()) )
-	  return -1;
-	else 
-	  return 0;
-  }
-  
-  if (elemThis->isRect())
-  {
-	ORRectData * r = elemThis->toRect();
-	if( (targetPos.y() < r->y + r->height)  && (r->y < targetPos.y()+targetSize.height()) )
-	  return -1;
-	else 
-	  return 0;
-  }
-  
-  if (elemThis->isBarcode())
-  {
-	ORBarcodeData * bc = elemThis->toBarcode();
-	QPointF pos = bc->rect.topLeft();
-	QSizeF size = bc->rect.size();
-	
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
-	  return -1;
-	else 
-	  return 0;
-  }
-  
-  if (elemThis->isImage())
-  {
-	ORImageData * im = elemThis->toImage();
-	QPointF pos = im->rect.topLeft();
-    QSizeF size = im->rect.size();
-	
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
-	  return -1;
-	else 
-	  return 0;
-  }
-  
-  if (elemThis->isGraph())
-  {
-	ORGraphData * gData = elemThis->toGraph();
-	QPointF pos = gData->rect.topLeft();
-	QSizeF size = gData->rect.size();
-	
-	if( (targetPos.y() < pos.y()+size.height())  && (pos.y() < targetPos.y()+targetSize.height()) )
-	  return -1;
-	else 
-	  return 0;
-  }
-  
-  return -1;
+  if(overlap==true && elemIsEmpty==false)
+	return hOverlap;
+  else if(overlap==true && elemIsEmpty==true)
+	return overlapButNull;
+  else 
+	return noOverlap;
 }
 
+bool ORPreRenderPrivate::queryReturnsNull(ORObject* obj)
+{
+  orData dataThis;
+  populateData(obj->data, dataThis);
+  return dataThis.getValue().isEmpty();
+}
+	
 // Returning bool lets the caller know if all the fields and textareas
 // of a section return NULL 
 bool ORPreRenderPrivate::allQueriesNull(const ORSectionData & sectionData)
 {
-  ORObject * elemThis;
-  bool allFieldsNull = true;
-  bool noFields = true;
-  bool allTextNull = true;
-  bool noTextareas = true;
-
-  for(int it = 0; it < sectionData.objects.size(); ++it)
+  foreach(ORObject * elemThis, sectionData.objects)
   {
-    elemThis = sectionData.objects.at(it);
-    if (elemThis->isField())
-	{
-      noFields = false;
-      QString colorStr = QString::null;
-      QString text = evaluateField(elemThis->toField(), &colorStr);
-      if (text != NULL)
-        allFieldsNull = false;
-    }
-    if (elemThis->isText())
-	{
-      noTextareas = false;
-      orData       dataThis;
-      ORTextData * t = elemThis->toText();
-
-      populateData(t->data, dataThis);
-      if (dataThis.getValue() != NULL)
-        allTextNull = false;     
-    } 
+	if(!queryReturnsNull(elemThis) || elemThis->isLabel())
+	  return false; 
   }
-
-  if (allFieldsNull == true && noFields == false && noTextareas == true)
-    return true;
-  if (allTextNull == true && noTextareas == false && noFields == true)
-    return true;
-  if (allTextNull == true && noTextareas == false && 
-      allFieldsNull == true && noFields == false)
-    return true;
-
-  return false;
+  return true;
 }
 
 QList<ORObject *> ORPreRenderPrivate::sortObjects(QList<ORObject *> objects)
 {
-  QList<QPair<int,double>> sorted;
-  QPair<int,double> p;
-  
-  for(int it = 0; it < objects.size(); ++it)
-  {
-	ORObject * elemThis = objects.at(it);
-	p = qMakePair(it,elemThis->rect.topLeft().y());
-	
-	if (elemThis->isLine())
-	{
-	  ORLineData * l = elemThis->toLine();
-	  p = qMakePair(it,l->yStart);
-	}
-	else if (elemThis->isRect())
-	{
-	  ORRectData * r = elemThis->toRect();
-	  p = qMakePair(it, r->y);
-	}
+  QList<ORObject *> ordered;  
+  QMap<double, ORObject*> map;
 
-	sorted.push_front(p);
-	int j = 0;
-	for (int i=0; i<sorted.size(); i++)
+  foreach (ORObject* elem, objects)
+  {
+	if(elem->isLine())
 	{
-	  if (p.second > sorted.at(i).second  )
-	  {
-		sorted.swap(i,j);
-		j = i;
-	  }
-	}	 
-  }  
-  QList<ORObject *> ordered;
-  for (int i=0; i<sorted.size(); ++i)
-	ordered.push_back(objects.at(sorted.at(i).first));
+	  ORLineData* l = elem->toLine();
+	  map.insertMulti(l->yStart, elem);
+	}
+	else
+	  map.insertMulti(elem->rect.top(), elem);
+  }
+  ordered << map.values();
   
-  return ordered; 
+  return ordered;
 }
 
 qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
-{
+{ 
   qreal intHeight = sectionData.height / 100.0;
-
+	
   if(sectionData.objects.count() == 0)
     return 0;
   if (allQueriesNull(sectionData))
 	return 0;
   QList<ORObject *> objects = sortObjects(sectionData.objects);
   
+
 
   ORObject * elemThis;
   QList<QPair<ORObject*,qreal>> textelem;
@@ -945,35 +807,23 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
       pos += QPointF(_leftMargin, _yOffset);
       size /= 100.0;
 
-	  if (l->buddy == NULL)
+	  if (l->buddy.isEmpty())
 		addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
 	  else //check if buddy field/textarea is null
 	  {
-		for(int i = 0; i < objects.size(); ++i)
+		bool buddyIsNull = true;
+		foreach(ORObject * elem, objects)
 		{
-		  ORObject * elem = objects.at(i);
-		  if (elem->isField())
+		  if(elem->data.column == l->buddy && (!queryReturnsNull(elem)))
 		  {
-			if (elem->toField()->data.column == l->buddy)
-			{
-			  QString colorStr = QString::null;
-		      QString text = evaluateField(elem->toField(), &colorStr);
-		      if (text != NULL)	
-			    addTextPrimitive(elem, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
-		    }
-		  }
-		  else if (elem->isText())
-		  {
-			if (elem->toText()->data.column == l->buddy)
-			{
-			  orData       dataThis;
-		      ORTextData * t = elem->toText();
-		      populateData(t->data, dataThis);
-		      if (dataThis.getValue() != NULL)
-			    addTextPrimitive(elem, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
-		    }
+			addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
+			buddyIsNull = false;
+			break;
 		  }
 		}
+		
+		if(buddyIsNull)
+		  _yOffset -= size.height()/100.0;
 	  }
 	}
     else if (elemThis->isField())
@@ -1026,31 +876,31 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
           if (xqry->isValid() || (nbOfCol == 1 && nbOfLines == 1))
           {
-            QString colorStr = QString::null;
-            QString text = evaluateField(elemThis->toField(), &colorStr);
-			if (text != NULL)
-			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font, colorStr); 
+            QString text = evaluateField(elemThis->toField());
+			if (!text.isEmpty())
+			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font); 
 			else
 			{
-			  bool sameHeightObject = false;
+			  int horizontalStatus = 0;
 			  int objCnt = 1;
 			  for(int i = 0; i < objects.size(); ++i)
 			  {
 			    if (i != it)
 				{
-				  ORObject* secObject = sectionData.objects.at(i); 
-				  if (checkHorizontal (f->rect, secObject, elemThis) == -1)
-					sameHeightObject = true; 
-				  objCnt += checkHorizontal (f->rect, secObject, elemThis);
-			    }
-				if (sameHeightObject == true)
+				  ORObject* secObject = objects.at(i); 
+				  horizontalStatus = checkHorizontal(elemThis, secObject);
+				  if (horizontalStatus == hOverlap)
 					break;
+				  if (horizontalStatus == overlapButNull)
+					objCnt ++;
+			    }
 			  }
-			  if (sameHeightObject == false)
+			  if (horizontalStatus != hOverlap )
+			  {
 				_yOffset -= size.height()/objCnt;
-				_adjustment += size.height()/objCnt;
 				startY -= size.height()/objCnt;
-			} 
+			  }
+			} 	
 		  }
           else 
             break;
@@ -1070,31 +920,28 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
     }
     else if (elemThis->isText())
-    {
-      orData       dataThis;
-      ORTextData * t = elemThis->toText();
-
-      populateData(t->data, dataThis);
-      if (dataThis.getValue() != NULL)
+    {	  
+      if (!queryReturnsNull(elemThis))
         textelem.append(QPair<ORObject*,qreal>(elemThis,_yOffset));
-	  else 
+	  else
 	  {
-		bool sameHeightObject = false;
+		int horizontalStatus = 0;
 		int objCnt = 1;
 		for(int i = 0; i < objects.size(); ++i)
 		{
-			if (i != it)
-			{
+		  if (i != it)
+		  {
 			ORObject* secObject = objects.at(i); 
-			if (checkHorizontal (t->rect, secObject, elemThis) == -1)
-				sameHeightObject = true; 
-			objCnt += checkHorizontal (t->rect, secObject, elemThis);
-			}
+			horizontalStatus = checkHorizontal(elemThis, secObject);
+			if (horizontalStatus == hOverlap)
+			  break;
+			if (horizontalStatus == overlapButNull)
+			  objCnt ++;
+	      }
 		}
-		if (sameHeightObject == false)
-			_yOffset -= (t->rect.size().height()/100.0)/objCnt;
-			_adjustment += (t->rect.size().height()/100.0)/objCnt;
-	  }      
+		if (horizontalStatus != hOverlap )
+		  _yOffset -= (elemThis->rect.size().height()/100.00)/objCnt;
+	  }
     }
     else if (elemThis->isLine())
     {
@@ -1479,7 +1326,6 @@ QString ORPreRenderPrivate::evaluateField(ORFieldData* f, QString* outColorStr)
     bool isFloat = false;
 
     if(f->trackTotal) {
-		qDebug() << "\n#### ORPRERENDER track total ####\n";
         XSqlQuery * xqry = getQuerySource(f->data.query)->getQuery();
         if(xqry)
         {
@@ -1512,7 +1358,8 @@ QString ORPreRenderPrivate::evaluateField(ORFieldData* f, QString* outColorStr)
     }
 
     // Field coloring as a result of data.
-    if (populateColorData(f->data, dataThis))
+	
+    if (populateColorData(f->data, dataThis) && outColorStr)
     {
       *outColorStr = dataThis.getValue();
     }

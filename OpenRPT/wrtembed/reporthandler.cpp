@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,6 +19,7 @@
  */
 
 // TODO: remove copyright() and version() methods
+#pragma comment(linker, "/SUBSYSTEM:CONSOLE")
 
 #include "reporthandler.h"
 #include "reportgridoptions.h"
@@ -717,7 +718,8 @@ DocumentWindow* ReportHandler::createDocument(bool newDoc)
   if(_placeToolbarsOnWindows)
     docToolBars(view);
 	
-  view->_scene->setFont(QFont()); 
+  QFont documentFont = QFont();
+  view->_scene->setFont(documentFont); 
   ORGraphicsRectItem::setDefaultEntityFont(view->_scene->getFont());
   
   addDocumentWindow(view);
@@ -1508,6 +1510,7 @@ void ReportHandler::removeReportWindow(QObject * obj)
   if(gw)
     gwList.removeAll(gw);
   
+  qDebug() << "\nremoved report window";
   // update the default font 
   gw = activeDocumentWindow();
   if (gwList.size()>0) 

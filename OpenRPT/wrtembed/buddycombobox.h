@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -30,7 +30,7 @@ class BuddyComboBox: public QComboBox
 
 public:
   BuddyComboBox(QWidget *parent);
-  ~BuddyComboBox();
+  virtual ~BuddyComboBox();
 
   void init(QStringList fields, QString buddy);
   QString currentField();

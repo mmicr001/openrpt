@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -41,19 +41,14 @@ void BuddyComboBox::init(QStringList fields, QString buddy)
     qDebug("QuerySourceList is null");
   
   insertItem(0,"-- Select Field/Textarea --");
-  setCurrentIndex(0);
-  for(int i=0; i<count(); i++)
-  { 
-	if(buddy == itemText(i))
-		setCurrentIndex(i);
-  }
+  if(findText(buddy)==-1)
+	setCurrentIndex(0);
+  else
+	setCurrentIndex(findText(buddy));
 }
 
 QString BuddyComboBox::currentField ()
 {
-  QString text = currentText();
-  if(text == tr("-- Select Field/Textarea --")) text = QString::null;
-
-  return text;
+  return (currentIndex() > 0) ? currentText() : QString::null;
 }
 

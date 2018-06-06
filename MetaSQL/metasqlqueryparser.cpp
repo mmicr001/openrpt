@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -174,7 +174,7 @@ class MetaSQLFunction : public MetaSQLOutput {
                     case FunctionReExists:
                         list = mif->enumerateNames();
                         for(strlit = list.begin(); strlit != list.end(); strlit++) {
-                            if(regex_match((*strlit), re)) {
+                            if(regex_search((*strlit), re)) {
                                 val = mif->trueValue();
                                 break;
                             }

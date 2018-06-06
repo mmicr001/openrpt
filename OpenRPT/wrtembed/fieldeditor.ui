@@ -200,7 +200,7 @@
           <item>
            <widget class="QComboBox" name="_cbBuiltinFormat">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">

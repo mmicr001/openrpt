@@ -1579,7 +1579,7 @@ QDomDocument DocumentScene::document()
     root.appendChild(_handler->databaseElt());
   }
   
-  ORGraphicsRectItem::setFalse();
+  ORGraphicsRectItem::setReadDefaultFontFalse();
 
   return doc;
 }

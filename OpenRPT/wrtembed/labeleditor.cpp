@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -114,7 +114,7 @@ QString LabelEditor::getQueryResult(QString str)
   QDomNode n;
   QDomElement sec;
   ParameterList plist;
-  QString qry, col;
+  QString qry, col, result;
   XSqlQuery xqry; 
   
   // get parameter list
@@ -133,22 +133,21 @@ QString LabelEditor::getQueryResult(QString str)
 	if  (sectionElem.at(i).firstChild().nodeValue() == str)
 	{
 	  col = sectionElem.at(i).firstChild().nodeValue();
-	  qDebug() << " column : " << col;
 	  qry = sectionElem.at(i).previousSibling().firstChild().nodeValue();
+	  break;
 	}
   }
+   
+  QSqlDatabase db = QSqlDatabase::database();
+  if (!qry.isEmpty() && db.isOpen())
+  {
+	MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
+	xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
+	xqry.first();
+	result = xqry.value(col).toString();
+  }
   
-  if (qry == "")
-	return "";  
-  
-  MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
-  xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
-  if(xqry.first())
-	str = xqry.value(col).toString();
-  else
-	str = "";
-  
-  return str; 
+  return result;
 }
 
 void LabelEditor::setLabelFlags( int f )

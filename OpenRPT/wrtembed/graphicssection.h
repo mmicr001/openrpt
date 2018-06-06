@@ -28,7 +28,6 @@
 #include <QList>
 
 #include <parsexmlutils.h>
-#include "graphicsitems.h"
 
 class ORGraphicsSectionItem;
 class DocumentScene;

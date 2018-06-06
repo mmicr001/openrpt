@@ -30,7 +30,7 @@ class QueryComboBox : public QComboBox
 
 public:
   QueryComboBox(QWidget *parent);
-  ~QueryComboBox();
+  virtual ~QueryComboBox();
 
   void init(QuerySourceList * qsl, const QString &query, bool paramAndContextQueries=true);
   QString currentQuery();
