@@ -18,54 +18,22 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
-#ifndef __REPORTWRITERWINDOW_H__
-#define __REPORTWRITERWINDOW_H__
+#ifndef BUDDYCOMBOBOX_H
+#define BUDDYCOMBOBOX_H
 
-#include <QMainWindow>
-#include <QTimerEvent>
-#include <QCloseEvent>
+#include <QComboBox>
+#include "graphicsitems.h"
 
-//
-// Prototypes
-//
-class QMdiArea;
-class QAction;
-class ReportHandler;
-class QMenu;
-class QString;
+class BuddyComboBox: public QComboBox
+{
+  Q_OBJECT
 
-//
-// Class: ReportWriterWindow
-//
-class ReportWriterWindow : public QMainWindow {
-    Q_OBJECT
-    public:
-        ReportWriterWindow();
-        ~ReportWriterWindow();
-		
+public:
+  BuddyComboBox(QWidget *parent);
+  virtual ~BuddyComboBox();
 
-    public slots:
-        virtual void setCaption();
-        virtual void openReportFile(const QString &);
-
-    protected:
-        virtual void closeEvent(QCloseEvent*);
-        virtual void timerEvent(QTimerEvent*);
-
-    private:
-        QMdiArea * ws;
-        int dbTimerId;
-
-        QAction * fileExitAction;
-
-        ReportHandler * handler;
-
-        QMenu *windowMenu;
-
-    private slots:
-        void appExit();
-        void sPrepareWindowMenu();
+  void init(QStringList fields, QString buddy);
+  QString currentField();
 };
 
-#endif
-
+#endif // BUDDYCOMBOBOX_H

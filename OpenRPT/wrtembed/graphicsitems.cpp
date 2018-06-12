@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,6 +18,12 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
+ #include "orprerender.cpp"
+ #include "parsexmlutils.h"
+ #include "orutils.h" 
+ #include "../../MetaSQL/metasql.h"
+ #include "parameter.h"
+ 
 #include "graphicsitems.h"
 
 #include "labeleditor.h"
@@ -713,6 +719,7 @@ QFont ORGraphicsRectItem::getDefaultEntityFont()
     QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
     _defaultFont.fromString(settings.value("/OpenMFG/rwDefaultEntityFont",_defaultFont.toString()).toString());
     _readDefaultFont = true;
+	QFontDatabase fdb;
   }
   return _defaultFont;
 }
@@ -1012,6 +1019,8 @@ ORGraphicsLabelItem::ORGraphicsLabelItem(const QDomNode & element, QGraphicsItem
     n = node.nodeName();
     if(n == "string") {
       _txt = node.firstChild().nodeValue();
+	}else if(n == "buddy") {
+      _buddy = node.firstChild().nodeValue();  
     } else if(n == "left") {
       _flags |= Qt::AlignLeft;
     } else if(n == "hcenter") {
@@ -1082,6 +1091,11 @@ void ORGraphicsLabelItem::buildXML(QDomDocument & doc, QDomElement & parent)
   QDomElement string = doc.createElement("string");
   string.appendChild(doc.createTextNode(text()));
   entity.appendChild(string);
+  
+  // the buddy string
+  QDomElement buddy = doc.createElement("buddy");
+  buddy.appendChild(doc.createTextNode(this->buddy()));
+  entity.appendChild(buddy);
 
   parent.appendChild(entity);
 }
@@ -1104,7 +1118,38 @@ void ORGraphicsLabelItem::paint(QPainter * painter, const QStyleOptionGraphicsIt
 
 void ORGraphicsLabelItem::properties(QWidget * parent)
 {
+  DocumentScene * ds = static_cast<DocumentScene*>(scene());
   LabelEditor * le = new LabelEditor(parent);
+  le->setDocScene(ds);
+
+  // ****************  buddy ComboBox prep work  ****************	
+  QStringList fieldItems;
+  QStringList result;
+  QDomNodeList sectionElem;
+  QDomNode n;
+  QDomElement sec;
+  
+  // find section(NodeList) that our label belongs to 
+  sectionElem = ds->document().elementsByTagName("string");
+  for (int i=0; i<sectionElem.size(); i++ )
+  {
+    if (sectionElem.at(i).firstChild().nodeValue() == this->text())
+	{
+	  n = sectionElem.at(i).parentNode().parentNode();
+	  break;
+	}  
+  }
+  
+  // collect all field/textarea names
+  sec = n.toElement();
+  sectionElem = sec.elementsByTagName("column");
+  for (int i=0; i<sectionElem.size(); i++ )
+  {
+	fieldItems << sectionElem.at(i).firstChild().nodeValue();
+  }
+  // ************************************************************
+  
+  le->cbBuddy->init(fieldItems,buddy());
   le->setFont(font());
   le->tbText->setText(text());
   le->setLabelFlags(textFlags());
@@ -1117,32 +1162,34 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
   double dh = rect().height() / 100.0;
   le->leHeight->setText(QString::number(dh,'g',3));
   if(le->exec() == QDialog::Accepted) {
-      setFont(le->font());
-      setText(le->text());
-      setTextFlags(le->alignment());
+	  setFont(le->font());
+	  setText(le->text());
+	  setTextFlags(le->alignment());
 
-      double dt;
-      bool ok;
-      dt = le->leXPos->text().toDouble(&ok);
-      if(ok) dx = dt * 100.0;
-      dt = le->leYPos->text().toDouble(&ok);
-      if(ok) dy = dt * 100.0;
-      dt = le->leWidth->text().toDouble(&ok);
-      if(ok) dw = dt * 100.0;
-      dt = le->leHeight->text().toDouble(&ok);
-      if(ok) dh = dt * 100.0;
+	  double dt;
+	  bool ok;
+	  dt = le->leXPos->text().toDouble(&ok);
+	  if(ok) dx = dt * 100.0;
+	  dt = le->leYPos->text().toDouble(&ok);
+	  if(ok) dy = dt * 100.0;
+	  dt = le->leWidth->text().toDouble(&ok);
+	  if(ok) dw = dt * 100.0;
+	  dt = le->leHeight->text().toDouble(&ok);
+	  if(ok) dh = dt * 100.0;
 
-      if(pos().x() != dx || pos().y() != dy)
-      {
-          setPos(dx, dy);
-          _setModified(scene(), true);
-      }
-      if(rect().width() != dw || rect().height() != dh) {
-          setRect(0, 0, dw, dh);
-          _setModified(scene(), true);
-      }
+	  if(pos().x() != dx || pos().y() != dy)
+	  {
+		  setPos(dx, dy);
+		  _setModified(scene(), true);
+	  }
+	  if(rect().width() != dw || rect().height() != dh) {
+		  setRect(0, 0, dw, dh);
+		  _setModified(scene(), true);
+	  }
+	  
+	  setBuddy(le->cbBuddy->currentField());
 
-      update();
+	  update();
   }
 }
 
@@ -1174,6 +1221,12 @@ void ORGraphicsLabelItem::setTextFlags(int tf)
     _flags = tf;
     _setModified(scene(), true);
   }
+  update();
+}
+
+void ORGraphicsLabelItem::setBuddy(const QString& buddy)
+{
+  _buddy = buddy;
   update();
 }
 
@@ -1430,6 +1483,7 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
   le->labelPreview->setFont(font());
   
   DocumentScene * ds = static_cast<DocumentScene*>(scene());
+  
   if(ds)
     le->cbQuery->init(ds->qsList,query());
 
@@ -1568,7 +1622,6 @@ void ORGraphicsFieldItem::setArray(int lines, int columns, double xSpacing, doub
     }
 }
 
-
 void ORGraphicsFieldItem::setTrackTotal(bool tt)
 {
   if(_trackTotal != tt)
@@ -1598,8 +1651,6 @@ void ORGraphicsFieldItem::setUseSubTotal(bool yes)
     _setModified(scene(), true);
   }
 }
-
-
 
 //
 //ORGraphicsTextItem

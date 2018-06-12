@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  * Please contact info@openmfg.com with any questions on this license.
  */
-
+ 
 #include "documentscene.h"
 #include "reporthandler.h"
 #include "reportpageoptions.h"
@@ -277,7 +277,7 @@ ORGraphicsSectionItem * DocumentScene::getSection(QPointF scenePos) const
     {
         if(list.at(i)->type() == ORGraphicsSectionItem::Type)
         {
-            section = qgraphicsitem_cast<ORGraphicsSectionItem*>(list.at(i));
+			section = qgraphicsitem_cast<ORGraphicsSectionItem*>(list.at(i));
             break;
         }
     }
@@ -1228,18 +1228,23 @@ QDomDocument DocumentScene::document()
   QDomElement root = doc.createElement("report");
   doc.appendChild(root);
 
-  //title
   QDomElement title = doc.createElement("title");
   title.appendChild(doc.createTextNode(reportTitle()));
   root.appendChild(title);
-
+  
   QDomElement rname = doc.createElement("name");
   rname.appendChild(doc.createTextNode(reportName()));
   root.appendChild(rname);
-
+	
   QDomElement rdesc = doc.createElement("description");
   rdesc.appendChild(doc.createTextNode(reportDescription()));
   root.appendChild(rdesc);
+  
+  QDomElement font = doc.createElement("defaultFont");
+  _font = ORGraphicsRectItem::getDefaultEntityFont();
+  font.setAttribute("family", _font.family());
+  font.setAttribute("size", _font.pointSize());
+  root.appendChild(font);
 
   for(QMap<QString,ORParameter>::iterator it = _definedParams.begin();
           it != _definedParams.end(); it++)
@@ -1617,6 +1622,8 @@ QDomDocument DocumentScene::document()
   {
     root.appendChild(_handler->databaseElt());
   }
+  
+  ORGraphicsRectItem::setReadDefaultFontFalse();
 
   return doc;
 }
@@ -2068,6 +2075,11 @@ void DocumentScene::loadDocument(const QDomElement &root, QWidget *parent, bool 
                 setReportName(it.firstChild().nodeValue());
             } else if(n == "description") {
                 setReportDescription(it.firstChild().nodeValue());
+			} else if(n == "defaultFont") { 
+				QString font = it.toElement().attribute("family");
+				QString size = it.toElement().attribute("size");
+				_font = (QFont(font,size.toInt()));
+				ORGraphicsRectItem::setDefaultEntityFont(_font);
             } else if(n == "parameter") {
                 ORParameter param;
                 param.name = it.toElement().attribute("name");

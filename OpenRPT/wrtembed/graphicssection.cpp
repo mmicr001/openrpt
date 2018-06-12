@@ -178,7 +178,7 @@ void ORGraphicsSectionItem::initFromXML(QDomNode & section)
     } else if(n == "label") {
       new ORGraphicsLabelItem(node, this);
     } else if(n == "field") {
-      new ORGraphicsFieldItem(node, this);
+	  new ORGraphicsFieldItem(node, this);
     } else if(n == "text") {
       new ORGraphicsTextItem(node, this);
     } else if(n == "line") {

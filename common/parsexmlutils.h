@@ -222,6 +222,9 @@ class ORObject
     void setBorder(QPen p) {_border = p;}
 
     bool isStatic();
+	
+	QRect rect;
+	ORDataData data;
 
 private:
     QPen    _pen;
@@ -253,10 +256,10 @@ public:
 class ORLabelData : public ORObject
 {
   public:
-    QRect rect;
     QFont font;
     int align;
     QString string;
+	QString buddy;
 
     virtual bool isLabel();
     virtual ORLabelData * toLabel();
@@ -265,10 +268,8 @@ class ORLabelData : public ORObject
 class ORFieldData : public ORObject
 {
   public:
-    QRect rect;
     QFont font;
     int align;
-    ORDataData data;
 
     bool trackTotal;
     bool sub_total;
@@ -289,10 +290,8 @@ class ORFieldData : public ORObject
 class ORTextData : public ORObject
 {
   public:
-    QRect rect;
     QFont font;
     int align;
-    ORDataData data;
     int bottompad;
 
     virtual bool isText();
@@ -302,10 +301,8 @@ class ORTextData : public ORObject
 class ORBarcodeData : public ORObject
 {
   public:
-    QRect rect;
     QString format;
     int maxlength;
-    ORDataData data;
     int align; // 0 = left, 1 = center, 2 = right
     double narrowBarWidth;
 
@@ -318,14 +315,13 @@ class ORBarcodeData : public ORObject
 class ORImageData : public ORObject
 {
   public:
-    QRect rect;
 
     QString mode;
 
     QString format;      // } 
     QString inline_data; // } INLINE
                          //     OR
-    ORDataData data;     // } FROM DB
+    //ORDataData data;     // } FROM DB
 
     virtual bool isImage();
     virtual ORImageData * toImage();
@@ -337,10 +333,7 @@ class ORGraphData : public ORObject
   public:
 	  ~ORGraphData() {qDeleteAll(series);}
 
-    ORDataData data;
-
     QFont font;
-    QRect rect;
 
     ORTitleData title;
     ORDataAxisData dataaxis;
@@ -354,14 +347,10 @@ class ORGraphData : public ORObject
     virtual ORGraphData * toGraph();
 };
 
-
 class ORCrossTabData : public ORObject
 {
   public:
-    ORDataData data;
-
     QFont font;
-    QRect rect;
 
     // Table properties
     ORCrossTabTablePropertiesData m_tableProperties;

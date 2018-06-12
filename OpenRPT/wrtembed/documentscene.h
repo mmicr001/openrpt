@@ -202,6 +202,9 @@ class DocumentScene : public QGraphicsScene
 	void highlightSections(ORGraphicsSectionItem::Highlight color);
 
     void checkValidity(QWidget * parent = 0);
+	
+	QFont getFont(){return _font;}
+	void setFont(QFont f){_font = f;}
 
   public slots:
     void setModified(bool = true);
@@ -282,6 +285,7 @@ class DocumentScene : public QGraphicsScene
     QGraphicsRectItem * _pageShadow;
     QGraphicsRectItem * _pageMargin;
     qreal               _scaledTo;
+	QFont 				_font;
 
 	ReportHandler * _handler;
 	QWidget * _parentWindow;

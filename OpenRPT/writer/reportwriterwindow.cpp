@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,6 +20,7 @@
 
 #include "reportwriterwindow.h" // The Primary MDI window
 #include "../wrtembed/reporthandler.h"       // The Report Window Child
+#include <QDebug>
 
 // common
 #include <dbtools.h>
@@ -138,6 +139,7 @@ void ReportWriterWindow::timerEvent(QTimerEvent * e) {
 
 void ReportWriterWindow::closeEvent(QCloseEvent * e) {
     QList<QMdiSubWindow *> wl = ws->subWindowList();
+	qDebug() << "\n$$$$$$$$$$$ close event";
     for(int i = 0; i < wl.size(); i++)
     {
       if(wl.at(i) && !(wl.at(i)->close()))

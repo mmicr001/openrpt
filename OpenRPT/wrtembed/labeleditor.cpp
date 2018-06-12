@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,6 +19,7 @@
  */
 
 #include "labeleditor.h"
+#include "../../MetaSQL/metasql.h"
 
 #include <QVariant>
 #include <QFontDialog>
@@ -36,6 +37,7 @@ LabelEditor::LabelEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
     connect(rbVAlignBottom, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(tbText, SIGNAL(textChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+	connect(cbBuddy, SIGNAL(currentTextChanged(const QString&)), this, SLOT(buddy_textChanged(const QString&)));
     connect(rbHAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignLeft, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignCenter, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
@@ -54,6 +56,11 @@ LabelEditor::LabelEditor(QWidget* parent, Qt::WindowFlags fl)
 LabelEditor::~LabelEditor()
 {
     // no need to delete child widgets, Qt does it all for us
+}
+
+void LabelEditor::setDocScene(DocumentScene * scene)
+{
+  ds = scene;
 }
 
 void LabelEditor::languageChange()
@@ -95,6 +102,54 @@ void LabelEditor::tbText_textChanged( const QString & Str )
     labelPreview->setText(_text);
 }
 
+void LabelEditor::buddy_textChanged( const QString & Str )
+{
+    // ok update the preview
+    queryPreview->setText(getQueryResult(Str));
+}
+
+QString LabelEditor::getQueryResult(QString str)
+{
+  QDomNodeList sectionElem;
+  QDomNode n;
+  QDomElement sec;
+  ParameterList plist;
+  QString qry, col, result;
+  XSqlQuery xqry; 
+  
+  // get parameter list
+  sectionElem = ds->document().elementsByTagName("parameter");
+  for (int i=0; i<sectionElem.size(); i++ )
+  {
+	sec = sectionElem.at(i).toElement();
+	plist.append(sec.attribute("name"),sec.attribute("default"));
+  }
+  
+  // find query of selected column and execute 
+  sectionElem = ds->document().elementsByTagName("column");
+  
+  for(int i=0; i<sectionElem.size(); i++)
+  {  
+	if  (sectionElem.at(i).firstChild().nodeValue() == str)
+	{
+	  col = sectionElem.at(i).firstChild().nodeValue();
+	  qry = sectionElem.at(i).previousSibling().firstChild().nodeValue();
+	  break;
+	}
+  }
+   
+  QSqlDatabase db = QSqlDatabase::database();
+  if (!qry.isEmpty() && db.isOpen())
+  {
+	MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
+	xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
+	xqry.first();
+	result = xqry.value(col).toString();
+  }
+  
+  return result;
+}
+
 void LabelEditor::setLabelFlags( int f )
 {
     // set the label flags
@@ -128,7 +183,6 @@ void LabelEditor::setLabelFlags( int f )
         rbVAlignNone->setChecked(true);
     }
 }
-
 
 void LabelEditor::rbHAlignNone_clicked()
 {

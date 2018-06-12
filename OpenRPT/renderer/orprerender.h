@@ -20,6 +20,9 @@
 #ifndef __ORPRERENDER_H__
 #define __ORPRERENDER_H__
 
+#include "parsexmlutils.h"
+#include "orutils.h"
+
 #include <QSqlDatabase>
 #include <QDomDocument>
 #include <QRectF>
@@ -77,8 +80,9 @@ class ORPreRender {
     int backgroundAlignment() const;
     bool backgroundScale() const;
     Qt::AspectRatioMode backgroundScaleMode() const;
-
-
+	
+	bool populateData(const ORDataData& dataSource, orData &dataTarget);
+	QString evalField(ORFieldData* f, QString* outColorStr=0);
   protected:
 
   private:

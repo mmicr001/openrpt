@@ -22,7 +22,7 @@
 #define LABELEDITOR_H
 
 #include <QDialog>
-
+#include "documentscene.h"
 #include "ui_labeleditor.h"
 
 class LabelEditor : public QDialog, public Ui::LabelEditor
@@ -35,11 +35,14 @@ public:
     inline virtual Qt::Alignment alignment()  { return _alignment; };
     inline virtual QString text()  { return _text; };
     inline virtual QFont font() { return _font; };
+	void setDocScene(DocumentScene * scene);
+	QString getQueryResult(QString str);
 
 public slots:
     virtual void rbAlign_changed();
     virtual void btnFont_clicked();
     virtual void tbText_textChanged(const QString & Str);
+	virtual void buddy_textChanged( const QString & Str );
     virtual void setLabelFlags(int f);
     virtual void rbHAlignNone_clicked();
     inline virtual void setAlignment(const Qt::Alignment& p)  { _alignment = p; };
@@ -54,6 +57,7 @@ protected slots:
     virtual void languageChange();
 
 private:
+	DocumentScene * ds;
     Qt::Alignment _alignment;
     QString _text;
     QFont _font;

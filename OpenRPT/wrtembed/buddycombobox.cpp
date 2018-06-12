@@ -18,54 +18,37 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
-#ifndef __REPORTWRITERWINDOW_H__
-#define __REPORTWRITERWINDOW_H__
+#include "buddycombobox.h"
 
-#include <QMainWindow>
-#include <QTimerEvent>
-#include <QCloseEvent>
+BuddyComboBox::BuddyComboBox(QWidget *parent)
+  : QComboBox(parent)
+{
+}
 
-//
-// Prototypes
-//
-class QMdiArea;
-class QAction;
-class ReportHandler;
-class QMenu;
-class QString;
+BuddyComboBox::~BuddyComboBox()
+{
+}
 
-//
-// Class: ReportWriterWindow
-//
-class ReportWriterWindow : public QMainWindow {
-    Q_OBJECT
-    public:
-        ReportWriterWindow();
-        ~ReportWriterWindow();
-		
+void BuddyComboBox::init(QStringList fields, QString buddy)
+{
+  // populate the combo item and set it to an appropriate value
+  clear();
+  
+  fields.sort();
+  if( !fields.isEmpty() ) 
+	addItems(fields);
+  else 
+    qDebug("QuerySourceList is null");
+  
+  insertItem(0,"-- Select Field/Textarea --");
+  if(findText(buddy)==-1)
+	setCurrentIndex(0);
+  else
+	setCurrentIndex(findText(buddy));
+}
 
-    public slots:
-        virtual void setCaption();
-        virtual void openReportFile(const QString &);
-
-    protected:
-        virtual void closeEvent(QCloseEvent*);
-        virtual void timerEvent(QTimerEvent*);
-
-    private:
-        QMdiArea * ws;
-        int dbTimerId;
-
-        QAction * fileExitAction;
-
-        ReportHandler * handler;
-
-        QMenu *windowMenu;
-
-    private slots:
-        void appExit();
-        void sPrepareWindowMenu();
-};
-
-#endif
+QString BuddyComboBox::currentField ()
+{
+  return (currentIndex() > 0) ? currentText() : QString::null;
+}
 

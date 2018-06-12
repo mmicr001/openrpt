@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2014 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -716,7 +716,11 @@ DocumentWindow* ReportHandler::createDocument(bool newDoc)
   }
   if(_placeToolbarsOnWindows)
     docToolBars(view);
-
+	
+  QFont documentFont = QFont();
+  view->_scene->setFont(documentFont); 
+  ORGraphicsRectItem::setDefaultEntityFont(view->_scene->getFont());
+  
   addDocumentWindow(view);
   view->showMaximized();
   return view;
@@ -793,6 +797,7 @@ DocumentWindow * ReportHandler::fileOpen(const QDomDocument & doc)
     rw->loadDocument(root, _parentWindow);
     __dosnap = true;
 
+
     return dv;
 }
 
@@ -821,6 +826,7 @@ void ReportHandler::fileClose()
   DocumentWindow * gw = activeDocumentWindow();
   if(gw)
     gw->close();
+	
 }
 
 //
@@ -1485,6 +1491,7 @@ DocumentWindow * ReportHandler::activeDocumentWindow()
         return gw;
     }
   }
+  
   return 0;
 }
 
@@ -1503,6 +1510,13 @@ void ReportHandler::removeReportWindow(QObject * obj)
   DocumentWindow * gw = static_cast<DocumentWindow *>(obj);
   if(gw)
     gwList.removeAll(gw);
+  
+  qDebug() << "\nremoved report window";
+  // update the default font 
+  gw = activeDocumentWindow();
+  if (gwList.size()>0) 
+	ORGraphicsRectItem::setDefaultEntityFont(gw->_scene->getFont());
+  
 }
 
 //
@@ -1650,6 +1664,12 @@ void ReportHandler::onWinChanged(QMdiSubWindow *w)
   grpGrid->setEnabled(show);
   grpDoc->setEnabled(show);
   grpFont->setEnabled(show);
+ 
+  DocumentWindow* dw;
+  dw = activeDocumentWindow();
+  if (gwList.size()>1) 
+	ORGraphicsRectItem::setDefaultEntityFont(dw->_scene->getFont());
+  
 }
 
 QString ReportHandler::name()
