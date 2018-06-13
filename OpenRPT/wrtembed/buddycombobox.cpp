@@ -39,11 +39,13 @@ void BuddyComboBox::init(QStringList fields, QString buddy)
 	addItems(fields);
   else 
     qDebug("QuerySourceList is null");
-  
+
   insertItem(0,"-- Select Field/Textarea --");
-  if(findText(buddy)==-1)
-	setCurrentIndex(0);
-  else
+  setCurrentIndex(0);
+  
+  if(buddy.isEmpty())
+	return;
+  if(findText(buddy)!=-1)
 	setCurrentIndex(findText(buddy));
 }
 

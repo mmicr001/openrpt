@@ -1147,6 +1147,7 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
   {
 	fieldItems << sectionElem.at(i).firstChild().nodeValue();
   }
+  
   // ************************************************************
   
   le->cbBuddy->init(fieldItems,buddy());

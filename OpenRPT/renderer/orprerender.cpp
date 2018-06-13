@@ -743,7 +743,7 @@ bool ORPreRenderPrivate::allQueriesNull(const ORSectionData & sectionData)
 {
   foreach(ORObject * elemThis, sectionData.objects)
   {
-	if(!queryReturnsNull(elemThis) || elemThis->isLabel())
+	if(!queryReturnsNull(elemThis)  || elemThis->isLabel() || elemThis->isLine())
 	  return false; 
   }
   return true;
@@ -821,9 +821,12 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 			break;
 		  }
 		}
-		
-		if(buddyIsNull)
-		  _yOffset -= size.height()/100.0;
+#pragma comment(linker, "/SUBSYSTEM:CONSOLE")		
+		if(buddyIsNull){
+		  _yOffset -= size.height();
+		  qDebug() << "reclaiming space : " << l->buddy;
+		  qDebug() << "height : " << size.height();
+ 		}  
 	  }
 	}
     else if (elemThis->isField())

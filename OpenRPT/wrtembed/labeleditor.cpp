@@ -137,6 +137,9 @@ QString LabelEditor::getQueryResult(QString str)
 	  break;
 	}
   }
+  
+  if(qry=="Context Query")
+	return NULL;
    
   QSqlDatabase db = QSqlDatabase::database();
   if (!qry.isEmpty() && db.isOpen())
