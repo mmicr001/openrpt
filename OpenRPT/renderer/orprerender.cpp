@@ -822,10 +822,9 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 		  }
 		}
 #pragma comment(linker, "/SUBSYSTEM:CONSOLE")		
-		if(buddyIsNull){
+		if(buddyIsNull)
+		{
 		  _yOffset -= size.height();
-		  qDebug() << "reclaiming space : " << l->buddy;
-		  qDebug() << "height : " << size.height();
  		}  
 	  }
 	}
@@ -1228,73 +1227,76 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
 qreal ORPreRenderPrivate::renderTextElements(QList<QPair<ORObject*,qreal>> elemList, qreal sectionHeight)
 {
-    QList<TextElementSplitter> splitters;
+  QList<TextElementSplitter> splitters;
 
-    for (int i=0; i<elemList.size(); i++)
+  for (int i=0; i<elemList.size(); i++)
+  {
+    orData       dataThis;
+    ORTextData * t = elemList[i].first->toText();
+
+    populateData(t->data, dataThis);
+
+    splitters.append(TextElementSplitter(elemList[i].first, dataThis.getValue(),
+                                        _leftMargin, elemList[i].second , maxDetailSectionY()));
+  }
+
+  while (!splitters.isEmpty())
+  {
+    bool newPageRequested = false;
+
+    for (int i = 0; i < splitters.size(); i++)
     {
-        orData       dataThis;
-        ORTextData * t = elemList[i].first->toText();
+      TextElementSplitter *splitter = &(splitters[i]);
+      while (!splitter->endOfText() && !splitter->endOfPage())
+      {
+        for (int j=i+1; j < splitters.size(); j++)
+        {
+          if(splitter->currentLineRect().intersects(splitters[j].currentLineRect()))
+            splitters[j].adjustElementHeight(splitter->textBottomRelativePos());
+        }
 
-        populateData(t->data, dataThis);
+        addTextPrimitive(splitter->element(),
+                          splitter->currentLineRect().topLeft(),
+                          splitter->currentLineRect().size(),
+                          splitter->element()->align,
+                          splitter->currentLine(),
+                          splitter->element()->font);			
+        splitter->nextLine();
+      }
 
-        splitters.append(TextElementSplitter(elemList[i].first, dataThis.getValue(),
-                                                 _leftMargin, elemList[i].second , maxDetailSectionY()));
+      if (splitter->textBottomRelativePos() > sectionHeight)
+        sectionHeight = splitter->textBottomRelativePos();
+
+      if(splitter->endOfText() || _subtotContextPageFooter)
+      {
+        splitters.removeAt(i);
+        i--;
+      }
+      else if (splitter->endOfPage())
+      {
+        newPageRequested = true;
+      }
     }
 
-    while (!splitters.isEmpty())
+    if(newPageRequested && !_subtotContextPageFooter)
     {
-        bool newPageRequested = false;
+        int l = _detailQuery ? _detailQuery->at() : 0;
+        if(l > 0)
+          _detailQuery->prev();
+        createNewPage();
+        if(l > 0)
+          _detailQuery->next();
 
         for (int i = 0; i < splitters.size(); i++)
         {
-            TextElementSplitter *splitter = &(splitters[i]);
-
-            while (!splitter->endOfText() && !splitter->endOfPage())
-            {
-                splitter->nextLine();
-
-                addTextPrimitive(splitter->element(),
-                                 splitter->currentLineRect().topLeft(),
-                                 splitter->currentLineRect().size(),
-                                 splitter->element()->align,
-                                 splitter->currentLine(),
-                                 splitter->element()->font);
-
-            }
-
-            if (splitter->textBottomRelativePos() > sectionHeight)
-                sectionHeight = splitter->textBottomRelativePos();
-
-            if(splitter->endOfText() || _subtotContextPageFooter)
-            {
-                splitters.removeAt(i);
-                i--;
-            }
-            else if (splitter->endOfPage())
-            {
-                newPageRequested = true;
-            }
+            splitters[i].newPage(_yOffset);
         }
 
-        if(newPageRequested && !_subtotContextPageFooter)
-        {
-            int l = _detailQuery ? _detailQuery->at() : 0;
-            if(l > 0)
-              _detailQuery->prev();
-            createNewPage();
-            if(l > 0)
-              _detailQuery->next();
-
-            for (int i = 0; i < splitters.size(); i++)
-            {
-                splitters[i].newPage(_yOffset);
-            }
-
-            sectionHeight = 0;
-        }
+        sectionHeight = 0;
     }
+  }
 
-    return sectionHeight;
+  return sectionHeight;
 }
 
 void ORPreRenderPrivate::addTextPrimitive(ORObject *element, QPointF pos, QSizeF size, int align, QString text, QFont font, QString colorStr)

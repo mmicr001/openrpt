@@ -13,13 +13,13 @@ public:
 
     void nextLine();
     void newPage(qreal offset);
+	void adjustElementHeight(qreal h);
     QString currentLine() const;
     QRectF currentLineRect() const;
     qreal textBottomRelativePos() const;
     ORTextData * element() const;
     bool endOfPage() const;
     bool endOfText() const;
-
 private:
 
     QString _text;
@@ -31,7 +31,8 @@ private:
     qreal _yOffset;
     qreal _pageBottom;
     QSharedPointer<QFontMetrics> _fm;
-    int _lineCounter;
+    int _lineCounter; 
+    
 };
 
 #endif // TEXTELEMENTSPLITTER_H
