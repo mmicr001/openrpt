@@ -821,7 +821,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 			break;
 		  }
 		}
-#pragma comment(linker, "/SUBSYSTEM:CONSOLE")		
+    
 		if(buddyIsNull)
 		{
 		  _yOffset -= size.height();
