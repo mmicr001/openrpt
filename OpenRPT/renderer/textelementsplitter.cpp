@@ -112,9 +112,7 @@ QString TextElementSplitter::currentLine() const
 
 void TextElementSplitter::adjustElementHeight(qreal p)
 {
-  qDebug() << "		_baselineRect: " << currentLineRect();
-  qDebug() << "		move to : " << p;  
-  _baseElementRect.moveTop(p);//-_yOffset);
+  _baseElementRect.moveTop(p);
 }
 
 QRectF TextElementSplitter::currentLineRect() const
