@@ -110,6 +110,11 @@ QString TextElementSplitter::currentLine() const
   return _currentLine;
 }
 
+void TextElementSplitter::adjustElementHeight(qreal p)
+{
+  _baseElementRect.moveTop(p);
+}
+
 QRectF TextElementSplitter::currentLineRect() const
 {
   return _baseElementRect.translated(0, _yOffset + _baseElementRect.height()*(_lineCounter-1));
