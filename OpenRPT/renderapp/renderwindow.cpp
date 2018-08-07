@@ -92,10 +92,14 @@ QString RenderWindow::name()
 void RenderWindow::helpAbout()
 {
   QMessageBox::about(this, tr("About %1").arg(RenderWindow::name()),
-                     tr("%1 version %2\n%3, All Rights Reserved\nBuild: %4\n"
-                        "\n%5 is a tool for printing reports from a database.")
+                     tr("%1 version %2<br/>%3, All Rights Reserved<br/>Build: %4<br/>"
+                        "<br/>%5 is a tool for printing reports from a database."
+                        "<p>Open Source Acknowledgements:</p><ul>"
+                        "<li>Qt %6 (%7) - see http://doc.qt.io/qt-5/licenses-used-in-qt.html for details</li>"
+                        "<li>libdmtx - Copyright 2005-2016 Mike Laughton, Vadim A. Misbakh-Soloviov and others</li>"
+                        "<li>ZINT - Copyright 2004 Grandzebu, 2008 Robin Stuart and others</li>")
                      .arg(RenderWindow::name(), OpenRPT::version, OpenRPT::copyright,
-                          OpenRPT::build, RenderWindow::name()));
+                          OpenRPT::build, RenderWindow::name(), QT_VERSION_STR, qVersion()));
 
 }
 
