@@ -121,7 +121,7 @@ class ORPreRenderPrivate {
 
     void renderDetailSection(ORDetailSectionData &);
 	int checkHorizontal(ORObject * reference, ORObject * target);
-	bool ORPreRenderPrivate::queryReturnsNull(ORObject* obj);
+	bool queryReturnsNull(ORObject* obj);
 	bool allQueriesNull(const ORSectionData & sectionData);
 	QList<ORObject *> sortObjects(QList<ORObject *> objects);
     qreal renderSection(const ORSectionData &);
