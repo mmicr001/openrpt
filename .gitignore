@@ -21,3 +21,4 @@ unix.pri
 win32.pri
 lib/
 *vcxproj*
+*tmp/

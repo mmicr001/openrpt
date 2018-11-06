@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QString>
-#include "dmatrixpreview.h"
 
 namespace Ui {
     class DMatrixRectConfig;
@@ -26,7 +25,6 @@ public slots:
     void setIndexValue(int index);
 
 private slots:
-    void on__previewButton_clicked();
     void capacityRefresh(int i);
     void indexType(int index);
 
@@ -36,7 +34,6 @@ signals:
 private:
 
     Ui::DMatrixRectConfig *ui;
-    DMatrixPreview *_preview;
 
     //capacité à titre indicatif, possible erreur d'écriture
     static QString capacite[];

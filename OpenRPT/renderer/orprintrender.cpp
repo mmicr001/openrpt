@@ -474,7 +474,7 @@ void ORPrintRender::renderPage(ORODocument * pDocument, int pageNb, QPainter *pa
         else if(bc->format() == "upc-e")
           renderCodeUPCE(painter, xDpi, rc, bc->data(), bc);
         else if(bc->format().contains("datamatrix"))
-          renderCodeDatamatrix(painter, rc, bc->data(), bc);
+          renderDataMatrix(painter, rc, bc->data(), bc);
         else if(bc->format().contains("PDF417"))
           renderPDF417(painter, xDpi, rc, bc->data(), bc);
         else if(bc->format().contains("QR"))

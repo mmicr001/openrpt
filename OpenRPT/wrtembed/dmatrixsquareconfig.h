@@ -3,13 +3,10 @@
 
 #include <QWidget>
 #include <QString>
-#include "dmatrixpreview.h"
 
 namespace Ui {
     class DMatrixSquareConfig;
 }
-
-
 
 class DMatrixSquareConfig : public QWidget
 {
@@ -31,7 +28,6 @@ public slots:
     void setCursorValue(int i);
 
 private slots:
-    void on__previewButton_clicked();
     void formatRefresh(int i);
     void capacityRefresh(int i);
 
@@ -41,7 +37,6 @@ signals:
 private:
 
     Ui::DMatrixSquareConfig *ui;
-    DMatrixPreview *_preview;
 
     static QString dimension[];
     static QString capacity[];

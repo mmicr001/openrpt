@@ -36,7 +36,7 @@ UI_DIR      = tmp
 
 INCLUDEPATH += ../../common ../common ../images
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS        += -lwrtembed -lopenrptcommon -lrenderer -ldmtx -lMetaSQL -lqzint
+LIBS        += -lwrtembed -lopenrptcommon -lrenderer -lMetaSQL -lqzint
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/wrtembed.$${LIBEXT}       \
