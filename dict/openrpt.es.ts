@@ -564,11 +564,6 @@ Por favor especifique un único nombre para este color.</translation>
 <context>
     <name>DMatrixPreview</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/dmatrixpreview.cpp" line="14"/>
-        <source>Preview</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../OpenRPT/wrtembed/dmatrixpreview.ui" line="14"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
@@ -672,6 +667,19 @@ Por favor especifique un único nombre para este color.</translation>
     <message>
         <location filename="../OpenRPT/wrtembed/dmatrixsquareconfig.ui" line="88"/>
         <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DataMatrixConfig</name>
+    <message>
+        <location filename="../OpenRPT/wrtembed/datamatrixconfig.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/datamatrixconfig.ui" line="22"/>
+        <source>&amp;Size:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
