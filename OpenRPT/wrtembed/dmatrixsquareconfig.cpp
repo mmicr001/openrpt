@@ -7,25 +7,16 @@ DMatrixSquareConfig::DMatrixSquareConfig(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->_preview = new DMatrixPreview(this);
-    this->_preview->generePreview(this->ui->_Format->value());
-    this->_preview->setVisible(false);
-
     connect(this->ui->_Format,  SIGNAL(sliderMoved(int)),   this,           SLOT(capacityRefresh(int)));
     connect(this->ui->_Format,  SIGNAL(sliderMoved(int)),   this,           SLOT(formatRefresh(int)));
-    connect(this->ui->_Format,  SIGNAL(sliderMoved(int)),   this->_preview, SLOT(generePreview(int)));
 
     connect(this,               SIGNAL(refreshWidget(int)), this,           SLOT(capacityRefresh(int)));
     connect(this,               SIGNAL(refreshWidget(int)), this,           SLOT(formatRefresh(int)));
-    connect(this,               SIGNAL(refreshWidget(int)), this->_preview, SLOT(generePreview(int)));
-
-    connect(this->_preview,     SIGNAL(escapeSignal(bool)), this->ui->_previewButton,   SLOT(setChecked(bool)));
 }
 
 DMatrixSquareConfig::~DMatrixSquareConfig()
 {
     delete ui;
-    delete this->_preview;
 }
 
 void DMatrixSquareConfig::languageChange()
@@ -60,23 +51,6 @@ void DMatrixSquareConfig::capacityRefresh(int i)
 void DMatrixSquareConfig::setVisible2(bool visible)
 {
     this->setVisible(visible);
-
-    if(this->_preview->isVisible())
-    {
-        this->_preview->setVisible(visible);
-    }
-}
-
-void DMatrixSquareConfig::on__previewButton_clicked()
-{
-    if(this->ui->_previewButton->isChecked())
-    {
-        this->_preview->setVisible(true);
-    }
-    else
-    {
-        this->_preview->setVisible(false);
-    }
 }
 
 void DMatrixSquareConfig::setCursorValue(int i)

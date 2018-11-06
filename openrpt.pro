@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,9 +20,6 @@
 
 include( global.pri )
 
-bundled_dmtx {
-  DMTX_SRC = OpenRPT/Dmtx_Library
-}
 
 TEMPLATE = subdirs
 SUBDIRS = common \
@@ -30,7 +27,6 @@ SUBDIRS = common \
           MetaSQL \
           MetaSQL/metasql_gui \
           MetaSQL/importmql_gui \
-          $$DMTX_SRC \
           OpenRPT/qzint \
           OpenRPT/renderer \
           OpenRPT/wrtembed \

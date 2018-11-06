@@ -39,7 +39,7 @@ UI_DIR      = tmp
 
 INCLUDEPATH += ../common ../../common ../../../openrpt-build-desktop/common ../renderer
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS        += -lrenderer -lopenrptcommon -ldmtx -lMetaSQL -lqzint
+LIBS        += -lrenderer -lopenrptcommon -lMetaSQL -lqzint
 
 win32-msvc* {
   PRE_TARGETDEPS += ../../lib/renderer.$${LIBEXT} \

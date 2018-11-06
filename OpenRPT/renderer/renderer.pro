@@ -1,6 +1,6 @@
 #
 # OpenRPT report writer and rendering engine
-# Copyright (C) 2001-2016 by OpenMFG, LLC
+# Copyright (C) 2001-2018 by OpenMFG, LLC
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -32,7 +32,7 @@ UI_DIR = tmp
 INCLUDEPATH += ../common ../../common ../qzint
 
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
-LIBS += -ldmtx -lopenrptcommon -lMetaSQL -lqzint
+LIBS += -lopenrptcommon -lMetaSQL -lqzint
 
 HEADERS = openreports.h \
           barcodes.h \
@@ -64,6 +64,7 @@ SOURCES = openreports.cpp \
           code128.cpp \
           codeean.cpp \
           crosstab.cpp \
+          dmatrixbc.cpp \
           graph.cpp \
           orutils.cpp \
           orprerender.cpp \
@@ -82,12 +83,7 @@ SOURCES = openreports.cpp \
           ../common/builtinSqlFunctions.cpp \
           ../common/labelsizeinfo.cpp \
           ../common/pagesizeinfo.cpp \ 
-          datamatrix.cpp \
           pdf417bc.cpp \
           qrbc.cpp
 
 QT += xml sql gui network printsupport core
-
-bundled_dmtx {
-  INCLUDEPATH += ../Dmtx_Library
-}
