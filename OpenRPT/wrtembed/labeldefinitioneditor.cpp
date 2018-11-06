@@ -1,6 +1,6 @@
 /*
  * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2011 by OpenMFG, LLC
+ * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
  * This file (C) 2011 by Paladin Logic, Ltd.
  *

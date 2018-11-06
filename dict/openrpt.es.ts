@@ -3651,7 +3651,7 @@ El nodo raíz no es &apos;report&apos;.</translation>
     <message>
         <location filename="../common/data.cpp" line="26"/>
         <source>Copyright (c) 2002-2018, OpenMFG, LLC.</source>
-        <translation type="unfinished">Copyright (c) 2002-2011, OpenMFG, LLC. {2002-2017,?} {2002-2018,?}</translation>
+        <translation type="unfinished">Copyright (c) 2002-2018, OpenMFG, LLC. {2002-2017,?} {2002-2018,?}</translation>
     </message>
     <message>
         <location filename="../common/data.cpp" line="28"/>
