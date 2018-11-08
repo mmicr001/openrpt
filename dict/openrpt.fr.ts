@@ -564,10 +564,6 @@ Veuillez spécifier un nom UNIQUE pour cette couleur.</translation>
 <context>
     <name>DMatrixPreview</name>
     <message>
-        <source>Preview</source>
-        <translation type="vanished">Aperçu</translation>
-    </message>
-    <message>
         <location filename="../OpenRPT/wrtembed/dmatrixpreview.ui" line="14"/>
         <source>Form</source>
         <translation>Formulaire</translation>
