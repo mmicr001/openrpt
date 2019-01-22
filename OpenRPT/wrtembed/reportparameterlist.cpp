@@ -52,6 +52,8 @@ void ReportParameterList::languageChange()
 void ReportParameterList::sAdd()
 {
     ReportParameter rp(this);
+    rp.setQueryList(qsList);
+    rp.setMode("new");
     if(rp.exec() == QDialog::Accepted) {
 	QString n = rp.paramName();
 	ORParameter d = rp.paramData();
@@ -93,6 +95,8 @@ void ReportParameterList::sEdit(QListWidgetItem * item)
            ORParameter d;
            if(_map) d = (*_map)[n];
            ReportParameter rp(this);
+           rp.setMode("edit");
+           rp.setQueryList(qsList);
            rp.setParamName(n);
            rp.setParamData(d);
            if(rp.exec() == QDialog::Accepted) {
@@ -119,5 +123,10 @@ void ReportParameterList::setList(QMap<QString, ORParameter> * m)
             _lbParameters->addItem(it.key());
         }
     }
+}
+
+void ReportParameterList::setQueryList( QuerySourceList* qlist )
+{
+  qsList = qlist;
 }
 

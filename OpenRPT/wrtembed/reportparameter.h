@@ -25,6 +25,7 @@
 
 #include "ui_reportparameter.h"
 #include "parsexmlutils.h"
+#include "querysource.h"
 
 class ReportParameter : public QDialog, public Ui::ReportParameter
 {
@@ -33,6 +34,9 @@ class ReportParameter : public QDialog, public Ui::ReportParameter
 public:
     ReportParameter(QWidget* parent = 0, Qt::WindowFlags fl = 0);
     ~ReportParameter();
+private:
+  QuerySourceList* qsList;
+  QString _mode;
 
 public slots:
     virtual QString paramName();
@@ -43,6 +47,10 @@ public slots:
     virtual void sAdd();
     virtual void sEdit();
     virtual void sRemove();
+    virtual void setQueryList( QuerySourceList* qlist );
+    virtual void setMode(QString mode);
+    virtual void populateMqlParams();
+    virtual void sUpdateName();
 
 protected slots:
     virtual void languageChange();

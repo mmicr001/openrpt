@@ -1829,6 +1829,7 @@ void DocumentScene::addDefinedParameter(const QString & n, const ORParameter & d
 void DocumentScene::editDefinedParameters(QWidget * parent)
 {
   ReportParameterList rlist(parent);
+  rlist.setQueryList(qsList);
   rlist.setList(&_definedParams);
   rlist.exec();
 }

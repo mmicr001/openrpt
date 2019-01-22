@@ -581,5 +581,6 @@ bool parseReportDetailSection(const QDomElement &, ORDetailSectionData &);
 bool parseReport(const QDomElement &, ORReportData &, QSqlDatabase db);
 
 bool parseReportParameter(const QDomElement &, ORReportData &);
+QStringList getParamsFromText(const QString p);
 
 #endif

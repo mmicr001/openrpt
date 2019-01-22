@@ -246,6 +246,11 @@ QuerySource *QuerySourceList::get(const QString & name)
   return 0;
 }
 
+int QuerySourceList::getSize()
+{
+  return _srcList.size();
+}
+
 void QuerySourceList::childUpdated(QuerySource * /*qs */ )
 {
   // one of the items in our list has been updated

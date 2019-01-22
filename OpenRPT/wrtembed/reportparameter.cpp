@@ -42,6 +42,7 @@ ReportParameter::ReportParameter(QWidget* parent, Qt::WindowFlags fl)
     connect(_add, SIGNAL(clicked()), this, SLOT(sAdd()));
     connect(_edit, SIGNAL(clicked()), this, SLOT(sEdit()));
     connect(_remove, SIGNAL(clicked()), this, SLOT(sRemove()));
+    connect(_mqlParams, SIGNAL(currentIndexChanged(int)), this, SLOT(sUpdateName()));
 }
 
 ReportParameter::~ReportParameter()
@@ -166,3 +167,38 @@ void ReportParameter::sRemove()
     delete item;
 }
 
+void ReportParameter::setQueryList( QuerySourceList* qlist )
+{
+  qsList = qlist;
+}
+
+void ReportParameter::setMode(QString mode)
+{
+  _mode=mode;
+  if (_mode=="new")
+  {
+    this->populateMqlParams();
+    _leName->setReadOnly(true);
+  }
+  else if (_mode=="edit")
+  {
+    _mqlParams->setEnabled(false);
+  }
+}
+
+void ReportParameter::populateMqlParams()
+{
+  QStringList params; params << "Select a MetaSQL parameter ...";
+  for(int i=0; i < qsList->getSize(); i++)
+    params << getParamsFromText(qsList->get(i)->query());
+
+  params.removeDuplicates();
+  foreach(QString param, params)
+    _mqlParams->addItem(param);
+}
+
+void ReportParameter::sUpdateName()
+{
+  if(_mqlParams->currentIndex()!=0)
+    _leName->setText(_mqlParams->currentText());
+}
