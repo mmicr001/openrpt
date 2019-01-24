@@ -465,8 +465,12 @@ void ORGraphicsRectItem::paint(QPainter * painter, const QStyleOptionGraphicsIte
   {
     const qreal pad = 0.5;
     QRectF r = rect().adjusted(pad, pad, -pad, -pad);
-    painter->setBrush(Qt::NoBrush);
-    painter->setPen(QPen(Qt::white, 0, Qt::SolidLine));
+    if(type()-UserType == 101)
+      painter->setBrush(QBrush(QColor::fromHsv(60,128,255,128), Qt::SolidPattern));
+    else if(type()-UserType == 102)
+      painter->setBrush(QBrush(QColor::fromHsv(240,128,255,128), Qt::SolidPattern));
+    else if(type()-UserType == 103)
+      painter->setBrush(QBrush(QColor::fromHsv(0,128,255,128), Qt::SolidPattern));
     painter->drawRect(r);
     painter->setPen(QPen(Qt::black, 0, Qt::DashLine));
     painter->drawRect(r);
@@ -1109,7 +1113,7 @@ void ORGraphicsLabelItem::paint(QPainter * painter, const QStyleOptionGraphicsIt
 
   painter->setFont(_font);
   painter->setPen(pen());
-  painter->setBrush(brush());
+  painter->setBrush(QBrush(QColor::fromHsv(0,128,255,128), Qt::SolidPattern));
   painter->drawText(rect(), _flags, _txt);
 
   painter->restore();
@@ -1441,15 +1445,16 @@ void ORGraphicsFieldItem::buildXML(QDomDocument & doc, QDomElement & parent)
 
 void ORGraphicsFieldItem::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
+  #pragma comment(linker,"/SUBSYSTEM:CONSOLE")
   // let the base class draw the selection and box
   ORGraphicsRectItem::paint(painter, option, widget);
 
   painter->save();
 
   painter->setFont(_font);
-  painter->setPen(pen());
+  painter->setPen(QColor(0,0,255,255));
   painter->setBrush(brush());
-  QString text = _clmn+QObject::tr(":")+_qry+(_trackTotal? QObject::tr(" field total"):QObject::tr(" field"));
+  QString text = _clmn;
   painter->drawText(rect(), _flags, text);
 
   QColor colorForOtherCells(pen().color());
@@ -1787,8 +1792,9 @@ void ORGraphicsTextItem::paint(QPainter * painter, const QStyleOptionGraphicsIte
 
   painter->setFont(_font);
   painter->setPen(pen());
+  painter->setPen(QColor(255,0,0,255));
   painter->setBrush(brush());
-  painter->drawText(rect(), _flags, _clmn+QObject::tr(":")+_qry+QObject::tr(" textarea"));
+  painter->drawText(rect(), _flags, _clmn);
 
   painter->restore();
 }
