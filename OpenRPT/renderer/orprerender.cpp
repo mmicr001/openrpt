@@ -121,6 +121,7 @@ class ORPreRenderPrivate {
 
     void renderDetailSection(ORDetailSectionData &);
 	int checkHorizontal(ORObject * reference, ORObject * target);
+  double checkHorizontal( ORObject * reference, QList<ORObject *> objects);
 	bool queryReturnsNull(ORObject* obj);
 	bool allQueriesNull(const ORSectionData & sectionData);
 	QList<ORObject *> sortObjects(QList<ORObject *> objects);
@@ -705,10 +706,8 @@ qreal ORPreRenderPrivate::renderSectionSize(const ORSectionData & sectionData, b
 int ORPreRenderPrivate::checkHorizontal( ORObject * reference, ORObject * target){ 
   bool elemIsEmpty = false;
   bool overlap = false;
-  
   if(queryReturnsNull(target) && !target->isLabel() && !target->isLine() && !target->isRect() )
     elemIsEmpty = true; 
-  
   if( reference->rect.top()<target->rect.bottom() && reference->rect.bottom()>target->rect.top() )
   {
 	if(target->isLabel())
@@ -728,6 +727,23 @@ int ORPreRenderPrivate::checkHorizontal( ORObject * reference, ORObject * target
 	return overlapButNull;
   else 
 	return noOverlap;
+}
+
+double ORPreRenderPrivate::checkHorizontal( ORObject * reference, QList<ORObject *> objects)
+{ 
+  int horizontalStatus = 0;
+  int objCnt = 1;
+  foreach(ORObject * object, objects)
+  {
+    horizontalStatus = checkHorizontal(reference, object);
+    if (horizontalStatus == hOverlap)
+      break;
+    if (horizontalStatus == overlapButNull)
+      objCnt ++;
+  }
+  if (horizontalStatus != hOverlap )  
+    return reference->rect.size().height()/objCnt;
+  return 0;
 }
 
 bool ORPreRenderPrivate::queryReturnsNull(ORObject* obj)
@@ -807,27 +823,29 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
       pos += QPointF(_leftMargin, _yOffset);
       size /= 100.0;
 
-	  if (l->buddy.isEmpty())
-		addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
-	  else //check if buddy field/textarea is null
-	  {
-		bool buddyIsNull = true;
-		foreach(ORObject * elem, objects)
-		{
-		  if(elem->data.column == l->buddy && (!queryReturnsNull(elem)))
-		  {
-			addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
-			buddyIsNull = false;
-			break;
-		  }
-		}
-    
-		if(buddyIsNull)
-		{
-		  _yOffset -= size.height();
- 		}  
+      if (l->buddy.isEmpty())
+       addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
+      else //check if buddy field/textarea is null
+      {
+        bool buddyIsNull = true;
+        ORObject* buddy;
+        foreach(ORObject * elem, objects)
+        {
+          if(elem->data.column == l->buddy )
+          {
+            buddy = elem;
+            if(!queryReturnsNull(elem))
+            {
+              addTextPrimitive(elemThis, pos, size, l->align, qApp->translate(_reportData->name.toUtf8().data(), l->string.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8), l->font);
+              buddyIsNull = false;
+            }
+            break;
+          }
+        }
+        if(buddyIsNull)
+          _yOffset -= checkHorizontal(buddy, objects);  
+      }
 	  }
-	}
     else if (elemThis->isField())
     {
         ORFieldData *f = elemThis->toField();
@@ -883,25 +901,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font); 
 			else
 			{
-			  int horizontalStatus = 0;
-			  int objCnt = 1;
-			  for(int i = 0; i < objects.size(); ++i)
-			  {
-			    if (i != it)
-				{
-				  ORObject* secObject = objects.at(i); 
-				  horizontalStatus = checkHorizontal(elemThis, secObject);
-				  if (horizontalStatus == hOverlap)
-					break;
-				  if (horizontalStatus == overlapButNull)
-					objCnt ++;
-			    }
-			  }
-			  if (horizontalStatus != hOverlap )
-			  {
-				_yOffset -= size.height()/objCnt;
-				startY -= size.height()/objCnt;
-			  }
+				_yOffset -= checkHorizontal(elemThis, objects);
+				startY -= checkHorizontal(elemThis, objects); 
 			} 	
 		  }
           else 
@@ -925,25 +926,8 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
     {	  
       if (!queryReturnsNull(elemThis))
         textelem.append(QPair<ORObject*,qreal>(elemThis,_yOffset));
-	  else
-	  {
-		int horizontalStatus = 0;
-		int objCnt = 1;
-		for(int i = 0; i < objects.size(); ++i)
-		{
-		  if (i != it)
-		  {
-			ORObject* secObject = objects.at(i); 
-			horizontalStatus = checkHorizontal(elemThis, secObject);
-			if (horizontalStatus == hOverlap)
-			  break;
-			if (horizontalStatus == overlapButNull)
-			  objCnt ++;
-	      }
-		}
-		if (horizontalStatus != hOverlap )
-		  _yOffset -= (elemThis->rect.size().height()/100.00)/objCnt;
-	  }
+      else
+        _yOffset -= checkHorizontal(elemThis, objects);
     }
     else if (elemThis->isLine())
     {

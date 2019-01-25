@@ -466,11 +466,11 @@ void ORGraphicsRectItem::paint(QPainter * painter, const QStyleOptionGraphicsIte
     const qreal pad = 0.5;
     QRectF r = rect().adjusted(pad, pad, -pad, -pad);
     if(type()-UserType == 101)
-      painter->setBrush(QBrush(QColor::fromHsv(60,128,255,128), Qt::SolidPattern));
+      painter->setBrush(QBrush(QColor::fromHsv(60,128,255,30), Qt::SolidPattern));
     else if(type()-UserType == 102)
-      painter->setBrush(QBrush(QColor::fromHsv(240,128,255,128), Qt::SolidPattern));
+      painter->setBrush(QBrush(QColor::fromHsv(240,128,255,30), Qt::SolidPattern));
     else if(type()-UserType == 103)
-      painter->setBrush(QBrush(QColor::fromHsv(0,128,255,128), Qt::SolidPattern));
+      painter->setBrush(QBrush(QColor::fromHsv(0,128,255,30), Qt::SolidPattern));
     painter->drawRect(r);
     painter->setPen(QPen(Qt::black, 0, Qt::DashLine));
     painter->drawRect(r);
