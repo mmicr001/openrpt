@@ -42,7 +42,6 @@ private:
 public slots:
     virtual QString paramName();
     virtual ORParameter paramData();
-    //virtual void setParamName( const QString & text );
     virtual void setParamData( const ORParameter & param );
     virtual void sSelectionChanged();
     virtual void sAdd();
