@@ -95,7 +95,6 @@ ReportWriterWindow::ReportWriterWindow()
             statusBar(), SLOT(clearMessage()));
     handler->onWinChanged(NULL);
     connect(ws, SIGNAL(subWindowActivated(QMdiSubWindow*)), handler, SLOT(onWinChanged(QMdiSubWindow*)));
-    handler->dbConnect();
 }
 
 //

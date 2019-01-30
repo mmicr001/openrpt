@@ -52,6 +52,7 @@ void ReportParameterList::languageChange()
 void ReportParameterList::sAdd()
 {
     ReportParameter rp(this);
+    rp.setMap(_map);
     rp.setQueryList(qsList);
     rp.setMode("new");
     if(rp.exec() == QDialog::Accepted) {
@@ -85,7 +86,6 @@ void ReportParameterList::sDelete()
     }
 }
 
-
 void ReportParameterList::sEdit(QListWidgetItem * item)
 {
     if(item) {
@@ -95,9 +95,9 @@ void ReportParameterList::sEdit(QListWidgetItem * item)
            ORParameter d;
            if(_map) d = (*_map)[n];
            ReportParameter rp(this);
-           rp.setMode("edit");
+           rp.setMap(_map);
            rp.setQueryList(qsList);
-           rp.setParamName(n);
+           rp.setMode("edit");
            rp.setParamData(d);
            if(rp.exec() == QDialog::Accepted) {
                if(rp.paramName() != n) {

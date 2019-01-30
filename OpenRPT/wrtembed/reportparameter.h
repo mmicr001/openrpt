@@ -37,17 +37,19 @@ public:
 private:
   QuerySourceList* qsList;
   QString _mode;
+  QMap<QString,ORParameter> *_map;
 
 public slots:
     virtual QString paramName();
     virtual ORParameter paramData();
-    virtual void setParamName( const QString & text );
+    //virtual void setParamName( const QString & text );
     virtual void setParamData( const ORParameter & param );
     virtual void sSelectionChanged();
     virtual void sAdd();
     virtual void sEdit();
     virtual void sRemove();
     virtual void setQueryList( QuerySourceList* qlist );
+    virtual void setMap(QMap<QString,ORParameter> *map);
     virtual void setMode(QString mode);
     virtual void populateMqlParams();
     virtual void sUpdateName();

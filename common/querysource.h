@@ -79,7 +79,6 @@ class QuerySourceList : public QObject
 
     QuerySource * get(int i);
     QuerySource * get(const QString & name);
-    int getSize();
 
   signals:
     void updated();

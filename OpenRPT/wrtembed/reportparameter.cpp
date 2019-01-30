@@ -59,7 +59,7 @@ static const char* types[] = { "string", "integer", "double", "bool", NULL };
 
 QString ReportParameter::paramName()
 {
-    return _leName->text();
+    return _mqlParams->currentText();
 }
 
 
@@ -67,7 +67,7 @@ ORParameter ReportParameter::paramData()
 {
   ORParameter param;
 
-  param.name = _leName->text();
+  param.name = _mqlParams->currentText();
   param.type = QString(types[_cbType->currentIndex()]);
   param.defaultValue = _leDefault->text();
   param.description = _tbDescrip->toPlainText();
@@ -90,13 +90,6 @@ ORParameter ReportParameter::paramData()
   return param;
 }
 
-
-void ReportParameter::setParamName( const QString & text)
-{
-    _leName->setText(text);
-}
-
-
 void ReportParameter::setParamData( const ORParameter & param)
 {
   for(int i = 0; types[i] != NULL; i++)
@@ -107,9 +100,12 @@ void ReportParameter::setParamData( const ORParameter & param)
       break;
     }
   }
-  _leDefault->setText(param.defaultValue);
+  if(_mqlParams->count()==0)
+    _mqlParams->addItem(param.name);
+
   _tbDescrip->setText(param.description);
   _active->setChecked(param.active);
+  _leDefault->setText(param.defaultValue);
   if(param.listtype == "static")
   {
     _staticList->setChecked(true);
@@ -172,13 +168,17 @@ void ReportParameter::setQueryList( QuerySourceList* qlist )
   qsList = qlist;
 }
 
+void ReportParameter::setMap(QMap<QString,ORParameter> *map)
+{
+  _map = map;
+}
+
 void ReportParameter::setMode(QString mode)
 {
   _mode=mode;
   if (_mode=="new")
   {
     this->populateMqlParams();
-    _leName->setReadOnly(true);
   }
   else if (_mode=="edit")
   {
@@ -188,9 +188,15 @@ void ReportParameter::setMode(QString mode)
 
 void ReportParameter::populateMqlParams()
 {
-  QStringList params; params << "Select a MetaSQL parameter ...";
-  for(int i=0; i < qsList->getSize(); i++)
-    params << getParamsFromText(qsList->get(i)->query());
+  QStringList params; 
+  for(int i=0; i < qsList->size(); i++)
+  {
+    foreach(QString p,getParamsFromText(qsList->get(i)->query()) )
+    {
+      if (!_map->contains(p))
+        params << p;    
+    }
+  }
 
   params.removeDuplicates();
   foreach(QString param, params)
@@ -200,5 +206,8 @@ void ReportParameter::populateMqlParams()
 void ReportParameter::sUpdateName()
 {
   if(_mqlParams->currentIndex()!=0)
-    _leName->setText(_mqlParams->currentText());
+  {
+    if(_map->contains(_mqlParams->currentText()))
+      setParamData(_map->value(_mqlParams->currentText()));
+  }
 }

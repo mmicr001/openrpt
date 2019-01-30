@@ -46,6 +46,7 @@ class MQLEdit : public QWidget, public Ui::MQLEdit
     Q_INVOKABLE        QString       getMetaSQLText();
     Q_INVOKABLE        ParameterEdit*getParameterEdit();
     Q_INVOKABLE        QStringList   getParamsFromMetaSQLText();
+    Q_INVOKABLE static QStringList   getParamsFromMetaSQLText(const QString p);
 
   public slots:
     virtual void clear();

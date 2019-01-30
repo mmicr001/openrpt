@@ -23,8 +23,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
-    <height>362</height>
+    <width>551</width>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,71 +48,9 @@
    </property>
    <item>
     <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
      <item>
       <layout class="QGridLayout">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <item row="5" column="0">
-        <widget class="QLabel" name="_lblDefault">
-         <property name="text">
-          <string>Default:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>_leDefault</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="_lblName">
-         <property name="text">
-          <string>Name:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>_leName</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="_leDefault"/>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="_leName"/>
-       </item>
-       <item row="4" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="_lblType">
          <property name="text">
           <string>Type:</string>
@@ -125,74 +63,69 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <layout class="QHBoxLayout">
-         <property name="spacing">
-          <number>6</number>
+       <item row="3" column="0">
+        <widget class="QLabel" name="_lblDefault">
+         <property name="text">
+          <string>Default:</string>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="topMargin">
-          <number>0</number>
+         <property name="buddy">
+          <cstring>_leDefault</cstring>
          </property>
-         <property name="rightMargin">
-          <number>0</number>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="_lblName">
+         <property name="text">
+          <string>Name:</string>
          </property>
-         <property name="bottomMargin">
-          <number>0</number>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <item>
-          <widget class="QComboBox" name="_cbType">
-           <item>
-            <property name="text">
-             <string>String</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Integer</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Double</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Bool</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="_active">
-           <property name="text">
-            <string>Active</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="_leDefault"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QCheckBox" name="_active">
+         <property name="text">
+          <string>Active</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QComboBox" name="_mqlParams"/>
+        <widget class="QComboBox" name="_cbType">
+         <item>
+          <property name="text">
+           <string>String</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Integer</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Double</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bool</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="_mqlParams">
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -521,9 +454,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>_leName</tabstop>
-  <tabstop>_cbType</tabstop>
-  <tabstop>_active</tabstop>
   <tabstop>_leDefault</tabstop>
   <tabstop>_tbDescrip</tabstop>
   <tabstop>_tab</tabstop>
