@@ -38,6 +38,10 @@ QueryList::QueryList(QWidget* parent, Qt::WindowFlags fl)
   connect(btnEdit, SIGNAL(clicked()), this, SLOT(btnEdit_clicked()));
   connect(btnDelete, SIGNAL(clicked()), this, SLOT(btnDelete_clicked()));
   connect(btnAdd, SIGNAL(clicked()), this, SLOT(btnAdd_clicked()));
+  connect(lbQuerys, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(sEnableButtons()));
+  
+  btnEdit->setEnabled(false);
+  btnDelete->setEnabled(false);
 }
 
 QueryList::~QueryList()
@@ -161,3 +165,8 @@ void QueryList::init( QuerySourceList * qsl )
   }
 }
 
+void QueryList::sEnableButtons()
+{
+  btnEdit->setEnabled(true);
+  btnDelete->setEnabled(true);
+}
