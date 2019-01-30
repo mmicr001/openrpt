@@ -598,9 +598,6 @@ QAction * ReportHandler::populateMenuBar(QMenuBar * menubar, QAction * exitActio
 
   QAction * sid = menubar->addSeparator();
 
-
-  /*QMenu * mHelp =*/ menubar->addMenu(tr("&Help"));
-
   return sid;
 }
 
