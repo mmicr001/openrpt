@@ -167,6 +167,9 @@ class ReportHandler : public QObject {
         void setFontWeight(bool v);
         void setFontStyle(bool v);
 
+        void sAbout();
+        void sRefGuide();
+
     signals:
         void messageChanged(const QString & message);
         void messageCleared();
@@ -262,6 +265,10 @@ class ReportHandler : public QObject {
         QAction * fillAction;
         QAction * borderAction;
         QAction * rotationAction;
+
+        QAction * helpAbout;
+        QAction * helpRefGuide;
+        
 
 		QList<QAction*> m_SectionActions;
 

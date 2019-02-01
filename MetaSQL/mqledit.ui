@@ -55,10 +55,10 @@
       <property name="title">
        <string>&amp;Help</string>
       </property>
-      <addaction name="helpContentsAction"/>
-      <addaction name="helpIndexAction"/>
-      <addaction name="separator"/>
       <addaction name="helpAboutAction"/>
+      <addaction name="separator"/>
+      <addaction name="helpMqlEditorAction"/>
+      <addaction name="helpMqlSyntaxAction"/>
      </widget>
      <widget class="QMenu" name="ViewMenu">
       <property name="title">
@@ -312,23 +312,23 @@
     <string>Ctrl+F</string>
    </property>
   </action>
-  <action name="helpContentsAction">
+  <action name="helpMqlEditorAction">
    <property name="text">
-    <string>&amp;Contents...</string>
+    <string>&amp;MetaSQL Syntax Reference</string>
    </property>
    <property name="iconText">
-    <string>Contents</string>
+    <string>MetaSQL Syntax Reference</string>
    </property>
    <property name="shortcut">
     <string/>
    </property>
   </action>
-  <action name="helpIndexAction">
+  <action name="helpMqlSyntaxAction">
    <property name="text">
-    <string>&amp;Index...</string>
+    <string>&amp;MetaSQL Editor reference</string>
    </property>
    <property name="iconText">
-    <string>Index</string>
+    <string>MetaSQL Editor reference</string>
    </property>
    <property name="shortcut">
     <string/>
