@@ -180,31 +180,19 @@
     <property name="title" >
      <string>&amp;Help</string>
     </property>
-    <addaction name="helpContentsAction" />
-    <addaction name="helpIndexAction" />
+    <addaction name="helpRefGuideAction" />
     <addaction name="separator" />
     <addaction name="helpAboutAction" />
    </widget>
    <addaction name="unnamed" />
    <addaction name="helpMenu" />
   </widget>
-  <action name="helpContentsAction" >
+  <action name="helpRefGuideAction" >
    <property name="text" >
-    <string>&amp;Contents...</string>
+    <string>&amp;Reference Guide</string>
    </property>
    <property name="iconText" >
-    <string>Contents</string>
-   </property>
-   <property name="shortcut" >
-    <string/>
-   </property>
-  </action>
-  <action name="helpIndexAction" >
-   <property name="text" >
-    <string>&amp;Index...</string>
-   </property>
-   <property name="iconText" >
-    <string>Index</string>
+    <string>Reference Guide</string>
    </property>
    <property name="shortcut" >
     <string/>

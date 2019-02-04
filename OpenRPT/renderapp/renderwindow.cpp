@@ -33,6 +33,7 @@
 #include <QFileDialog>
 #include <QPrintDialog>
 #include <QInputDialog>
+#include <QDesktopServices>
 
 #include <openreports.h>
 #include <xsqlquery.h>
@@ -64,6 +65,7 @@ RenderWindow::RenderWindow(QWidget* parent, Qt::WindowFlags fl)
   connect(filePrintAction, SIGNAL(triggered()), this, SLOT(filePrint()));
   connect(filePrintToPDFAction, SIGNAL(triggered()), this, SLOT(filePrintToPDF()));
   connect(fileExitAction, SIGNAL(triggered()), this, SLOT(fileExit()));
+  connect(helpRefGuideAction, SIGNAL(triggered()), this, SLOT(helpRefGuide()));
   connect(helpAboutAction, SIGNAL(triggered()), this, SLOT(helpAbout()));
   connect(_delete, SIGNAL(clicked()), this, SLOT(sDelete()));
   connect(_edit, SIGNAL(clicked()), this, SLOT(sEdit()));
@@ -88,6 +90,10 @@ QString RenderWindow::name()
   return tr("OpenRPT Renderer");
 }
 
+void RenderWindow::helpRefGuide()
+{
+  QDesktopServices::openUrl(QUrl("https://xtupleuniversity.xtuple.com/sites/default/files/prodguide/openrpt/ch03s03.html"));
+}
 
 void RenderWindow::helpAbout()
 {

@@ -290,6 +290,8 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="helpRefGuideAction"/>
+    <addaction name="separator"/>
     <addaction name="helpAboutAction"/>
    </widget>
    <widget class="QMenu" name="fileMenu">
@@ -345,6 +347,17 @@
    </property>
    <property name="iconText">
     <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="helpRefGuideAction">
+   <property name="text">
+    <string>&amp;Reference Guide</string>
+   </property>
+   <property name="iconText">
+    <string>Reference Guide</string>
    </property>
    <property name="shortcut">
     <string/>
