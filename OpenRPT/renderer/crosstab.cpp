@@ -806,8 +806,8 @@ void CrossTab::Draw(QPainter & paint)
       paint.setPen(Qt::SolidLine);
 
       // Skip margins: Adjust rectangle for data insertion
-      sampleRect.setX(sampleRect.x() + m_cellLeftMargin);
-      sampleRect.setY(sampleRect.y() + m_cellTopMargin);
+      sampleRect.setX(sampleRect.x() + m_cellLeftMargin/10.0);
+      sampleRect.setY(sampleRect.y() + m_cellTopMargin/10.0);
       sampleRect.setWidth  (columnIt.value().m_columnMaxWidth);
       sampleRect.setHeight (rowIt.value().m_rowMaxHeight);
 

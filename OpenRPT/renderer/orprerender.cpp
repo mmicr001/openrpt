@@ -732,9 +732,12 @@ int ORPreRenderPrivate::checkHorizontal( ORObject * reference, ORObject * target
 
 bool ORPreRenderPrivate::queryReturnsNull(ORObject* obj)
 {
-  orData dataThis;
-  populateData(obj->data, dataThis);
-  return dataThis.getValue().isEmpty();
+  if(obj->data.query.isNull()) return true;
+  XSqlQuery* xqry = getQuerySource(obj->data.query)->getQuery();
+  
+  if(xqry->first())
+    return false;
+  return true;
 }
 	
 // Returning bool lets the caller know if all the fields and textareas

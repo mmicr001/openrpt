@@ -33,7 +33,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>Properties (Field)</string>
+   <string>Properties (CrossTab)</string>
   </property>
   <property name="sizeGripEnabled" >
    <bool>true</bool>

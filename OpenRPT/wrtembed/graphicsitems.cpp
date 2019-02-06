@@ -1145,7 +1145,8 @@ void ORGraphicsLabelItem::properties(QWidget * parent)
   sectionElem = sec.elementsByTagName("column");
   for (int i=0; i<sectionElem.size(); i++ )
   {
-	fieldItems << sectionElem.at(i).firstChild().nodeValue();
+    if(sectionElem.at(i).parentNode().nodeValue()=="data") // avoid collecting crosstabs
+      fieldItems << sectionElem.at(i).firstChild().nodeValue();
   }
   
   // ************************************************************
