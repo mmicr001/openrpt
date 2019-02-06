@@ -1228,7 +1228,6 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 qreal ORPreRenderPrivate::renderTextElements(QList<QPair<ORObject*,qreal>> elemList, qreal sectionHeight)
 {
   QList<TextElementSplitter> splitters;
-
   for (int i=0; i<elemList.size(); i++)
   {
     orData       dataThis;
@@ -1243,25 +1242,24 @@ qreal ORPreRenderPrivate::renderTextElements(QList<QPair<ORObject*,qreal>> elemL
   while (!splitters.isEmpty())
   {
     bool newPageRequested = false;
-
     for (int i = 0; i < splitters.size(); i++)
     {
       TextElementSplitter *splitter = &(splitters[i]);
       while (!splitter->endOfText() && !splitter->endOfPage())
       {
+        
         for (int j=i+1; j < splitters.size(); j++)
         {
           if(splitter->currentLineRect().intersects(splitters[j].currentLineRect()))
             splitters[j].adjustElementHeight(splitter->textBottomRelativePos());
-        }
-
+        }    
+        splitter->nextLine();
         addTextPrimitive(splitter->element(),
                           splitter->currentLineRect().topLeft(),
                           splitter->currentLineRect().size(),
                           splitter->element()->align,
                           splitter->currentLine(),
-                          splitter->element()->font);			
-        splitter->nextLine();
+                          splitter->element()->font);			 
       }
 
       if (splitter->textBottomRelativePos() > sectionHeight)
