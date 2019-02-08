@@ -38,6 +38,7 @@ public:
 public slots:
   QString getSearchTerm();
   void setWarningVisible(bool set);
+  void sClose();
     
 protected slots:
     

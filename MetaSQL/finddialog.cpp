@@ -33,6 +33,7 @@ FindDialog::FindDialog(QWidget* parent)
   _lbWarning->setVisible(false);
   connect(_btnFind,     SIGNAL(clicked()),           this->parent(),   SLOT(sFind()));
   connect(_leSearch,    SIGNAL(editingFinished()),   this->parent(),   SLOT(sFind()));
+  connect(_btnClose,    SIGNAL(clicked()),           this,             SLOT(sClose()));
 }
 
 FindDialog::~FindDialog()
@@ -53,4 +54,9 @@ QString FindDialog::getSearchTerm()
 void FindDialog::setWarningVisible(bool value)
 {
   return _lbWarning->setVisible(value);
+}
+
+void FindDialog::sClose()
+{
+  reject();
 }
