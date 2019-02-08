@@ -1259,6 +1259,7 @@ void ReportHandler::editProperties()
         case ORGraphicsTextItem::Type:
         case ORGraphicsBarcodeItem::Type:
         case ORGraphicsImageItem::Type:
+        case ORGraphicsCrossTabItem::Type:
         case ORGraphicsGraphItem::Type:
           (static_cast<ORGraphicsRectItem*>(list.at(i)))->properties(gw);
           break;
