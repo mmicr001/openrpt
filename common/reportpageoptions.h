@@ -62,6 +62,8 @@ class ReportPageOptions : public QObject
     void setLabelType(const QString &);
     const QString & getLabelType() const;
 
+    void setSystemDefaults();
+
   signals:
     void pageOptionsChanged();
 

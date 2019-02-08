@@ -1211,12 +1211,23 @@ void ReportHandler::editPreferences()
     dlgPref->setGridSize(gridOptions->xInterval() ,gridOptions->yInterval());
     if(dlgPref->exec() == QDialog::Accepted)
     {
+      //report level 
       ORGraphicsRectItem::setDefaultEntityFont(dlgPref->defaultFont());
       gridShowAction->setChecked(dlgPref->showGrid());
       gridSnapAction->setChecked(dlgPref->snapGrid());
       gridOptions->setXInterval(dlgPref->gridSizeX());
       gridOptions->setYInterval(dlgPref->gridSizeY());
       QString newLanguage = dlgPref->selectedLanguage();
+
+      //system level
+      QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
+      settings.setValue("/OpenMFG/rptPageSize", dlgPref->_cbPageSize->currentText());
+      if(dlgPref->_rbPortrait->isChecked())
+        settings.setValue("/OpenMFG/rptOrientation", "portrait");
+      if(dlgPref->_rbLandscape->isChecked())
+        settings.setValue("/OpenMFG/rptOrientation", "landscape");
+
+
       if(newLanguage != OpenRPT::languages.selectedTitle())
       {
         QMessageBox::information(dlgPref, QString(tr("Language: %1").arg(newLanguage)), tr("The language change will take effect the next time the report writer will be run."));

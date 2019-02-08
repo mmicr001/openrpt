@@ -117,8 +117,9 @@ void DocumentScene::initData()
     _pageMargin->setZValue(-1);
 
     if(!_pageOptions) {
-        _pageOptions = new ReportPageOptions;
-        connect(_pageOptions, SIGNAL(pageOptionsChanged()), this, SLOT(pageOptionsChanged()));
+      _pageOptions = new ReportPageOptions;
+      _pageOptions->setSystemDefaults();
+      connect(_pageOptions, SIGNAL(pageOptionsChanged()), this, SLOT(pageOptionsChanged()));
     }
 }
 

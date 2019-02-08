@@ -23,6 +23,7 @@
 #include <QVariant>
 #include <QValidator>
 #include <QFontDialog>
+#include <QSettings>
 #include "data.h"
 
 EditPreferences::EditPreferences(QWidget* parent, Qt::WindowFlags fl)
@@ -50,6 +51,28 @@ EditPreferences::EditPreferences(QWidget* parent, Qt::WindowFlags fl)
             _cbLanguage->setCurrentIndex(i);
             break;
         }
+    }
+
+    //initialize combobox
+    _cbPageSize->clear();
+    _cbPageSize->addItem(tr("Letter"), "Letter");
+    _cbPageSize->addItem(tr("Legal"), "Legal");
+    _cbPageSize->addItem(tr("A4"), "A4");
+    _cbPageSize->addItem(tr("Custom"), "Custom");
+    _cbPageSize->addItem(tr("Label"), "Label");
+
+    _rbPortrait->setChecked(false);
+    _rbLandscape->setChecked(false);
+
+    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
+    if(!settings.value("/OpenMFG/rptPageSize").toString().isEmpty())
+      _cbPageSize->setCurrentText(settings.value("/OpenMFG/rptPageSize").toString());
+    if(!settings.value("/OpenMFG/rptOrientation").toString().isEmpty())
+    {
+      if(settings.value("/OpenMFG/rptOrientation").toString()=="portrait")
+        _rbPortrait->setChecked(true);
+      if(settings.value("/OpenMFG/rptOrientation").toString()=="landscape")
+        _rbLandscape->setChecked(true);
     }
 }
 
