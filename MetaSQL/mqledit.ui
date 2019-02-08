@@ -463,7 +463,7 @@
  <connections>
   <connection>
    <sender>editUndoAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>_text</receiver>
    <slot>undo()</slot>
    <hints>
@@ -479,7 +479,7 @@
   </connection>
   <connection>
    <sender>editRedoAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>_text</receiver>
    <slot>redo()</slot>
    <hints>
@@ -495,7 +495,7 @@
   </connection>
   <connection>
    <sender>editCutAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>_text</receiver>
    <slot>cut()</slot>
    <hints>
@@ -511,7 +511,7 @@
   </connection>
   <connection>
    <sender>editCopyAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>_text</receiver>
    <slot>copy()</slot>
    <hints>
@@ -527,7 +527,7 @@
   </connection>
   <connection>
    <sender>editPasteAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>_text</receiver>
    <slot>paste()</slot>
    <hints>
