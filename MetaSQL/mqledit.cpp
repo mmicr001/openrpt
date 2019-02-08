@@ -33,6 +33,9 @@
 #include <QTextDocument>
 #include <QTextStream>
 #include <QSettings>
+#include <QInputDialog>
+#include <QTextCursor>
+#include <QDebug>
 
 #include <parameter.h>
 #include <xsqlquery.h>
@@ -45,6 +48,7 @@
 #include "mqlutil.h"
 #include "parameteredit.h"
 #include "resultsoutput.h"
+#include "finddialog.h"
 
 #define DEBUG false
 
@@ -84,6 +88,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   connect(viewLog_OutputAction,        SIGNAL(triggered()), this, SLOT(showLog()));
   connect(viewParameter_ListAction,    SIGNAL(triggered()), this, SLOT(showParamList()));
   connect(viewResultsAction,           SIGNAL(triggered()), this, SLOT(showResults()));
+  /* connect(_find->_btnFind,             SIGNAL(clicked()),   this, SLOT(sFind()));
+  connect(_find->_leSearch,    SIGNAL(editingFinished()),   this, SLOT(sFind())); */
 
   QSqlDatabase db = QSqlDatabase().database();
   if(db.isValid() && db.isOpen())
@@ -265,8 +271,10 @@ void MQLEdit::clear()
 
 void MQLEdit::editFind()
 {
-  QMessageBox::information(this, tr("Not Yet Implemented"),
-             tr("This function has not been implemented."));
+  sMoveCursorToStart();
+  _find = new FindDialog(this);
+  _find->show();
+ 
 }
 
 void MQLEdit::helpIndex()
@@ -915,4 +923,23 @@ void MQLEdit::forceTestMode(bool p)
 {
   toolsTest_ModeAction->setChecked(true);
   toolsTest_ModeAction->setDisabled(p);
+}
+
+void MQLEdit::sFind()
+{
+  _find->setWarningVisible(false);
+  QString term = _find->getSearchTerm();
+  if(!_text->find(term))
+  {
+    _find->setWarningVisible(true);
+     //move cursor to start
+    
+  }
+}
+
+void MQLEdit::sMoveCursorToStart()
+{
+  QTextCursor c = _text->textCursor();
+  c.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor,1);
+  _text->setTextCursor(c);
 }
