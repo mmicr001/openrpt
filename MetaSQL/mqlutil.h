@@ -39,5 +39,6 @@ QString mqlLastError();
 void    mqlClearLastError();
 MetaSQLQuery mqlLoad(const QString &name, bool *valid = 0);
 MetaSQLQuery mqlLoad(const QString &group, const QString &name, bool *valid = 0);
+Q_INVOKABLE static QStringList getParamsFromMetaSQLText(const QString p);
 
 #endif

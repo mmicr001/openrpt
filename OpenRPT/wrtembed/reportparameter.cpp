@@ -19,6 +19,7 @@
  */
 
 #include "reportparameter.h"
+#include "mqlutil.h"
 
 #include <QButtonGroup>
 #include <QVariant>

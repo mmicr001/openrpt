@@ -23,7 +23,7 @@ include( ../../global.pri )
 TEMPLATE = lib
 CONFIG  += qt warn_on
 
-INCLUDEPATH = ../../common ../common ../../../openrpt-build-desktop/common ../renderer ../images .
+INCLUDEPATH = ../../common ../common ../../../openrpt-build-desktop/common ../renderer ../images ../../MetaSQL .
 
 DESTDIR = ../../lib
 MOC_DIR = tmp

@@ -25,6 +25,7 @@
 
 #include "ui_reportparameter.h"
 #include "parsexmlutils.h"
+#include "mqlutil.h"
 #include "querysource.h"
 
 class ReportParameter : public QDialog, public Ui::ReportParameter

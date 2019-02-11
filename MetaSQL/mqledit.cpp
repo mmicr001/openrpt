@@ -788,14 +788,10 @@ QString MQLEdit::getMetaSQLText()
 
 QStringList MQLEdit::getParamsFromMetaSQLText()
 {
-  return getParamsFromMetaSQLText(getMetaSQLText());
+  return getParamsFromText(getMetaSQLText());
 }
 
-// TODO: It would be better to alter the metasql parser to do this for us
-QStringList MQLEdit::getParamsFromMetaSQLText(const QString p)
-{
-  return getParamsFromText(p);
-}
+
 
 void MQLEdit::populateParameterEdit()
 {
