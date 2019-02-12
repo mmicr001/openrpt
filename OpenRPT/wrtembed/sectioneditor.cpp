@@ -56,7 +56,7 @@ SectionEditor::SectionEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(cbFootOdd, SIGNAL(toggled(bool)), this, SLOT(cbFootOdd_toggled(bool)));
     connect(cbHeadAny, SIGNAL(toggled(bool)), this, SLOT(cbHeadAny_toggled(bool)));
     connect(cbFootAny, SIGNAL(toggled(bool)), this, SLOT(cbFootAny_toggled(bool)));
-    connect(lbSections, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(sEnableButtons()));
+    connect(lbSections, SIGNAL(itemSelectionChanged()), this, SLOT(sEnableButtons()));
 
     btnEdit->setEnabled(false);
     btnRemove->setEnabled(false);
@@ -364,6 +364,6 @@ void SectionEditor::cbFootAny_toggled( bool yes )
 
 void SectionEditor::sEnableButtons()
 {
-  btnEdit->setEnabled(true);
-  btnRemove->setEnabled(true);
+  btnEdit->setEnabled(!lbSections->selectedItems().isEmpty());
+  btnRemove->setEnabled(!lbSections->selectedItems().isEmpty());
 }

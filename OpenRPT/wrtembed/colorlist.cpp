@@ -36,7 +36,7 @@ ColorList::ColorList(QWidget* parent, Qt::WindowFlags fl)
     connect(_btnEdit, SIGNAL(clicked()), this, SLOT(_btnEdit_clicked()));
     connect(_btnDelete, SIGNAL(clicked()), this, SLOT(_btnDelete_clicked()));
     connect(_lbColors, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(_lbColors_dblClick(QListWidgetItem*)));
-    connect(_lbColors, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(sEnableButtons()));
+    connect(_lbColors, SIGNAL(itemSelectionChanged()), this, SLOT(sEnableButtons()));
 
     _btnEdit->setEnabled(false);
     _btnDelete->setEnabled(false);
@@ -166,6 +166,6 @@ void ColorList::init( QMap<QString, QColor> * cmap)
 
 void ColorList::sEnableButtons()
 {
-  _btnEdit->setEnabled(true);
-  _btnDelete->setEnabled(true);
+  _btnEdit->setEnabled(!_lbColors->selectedItems().isEmpty());
+  _btnDelete->setEnabled(!_lbColors->selectedItems().isEmpty());
 }

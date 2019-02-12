@@ -43,7 +43,7 @@ LabelDefinitions::LabelDefinitions(QWidget* parent, Qt::WindowFlags fl)
   connect(btnDelete, SIGNAL(clicked()), this, SLOT(btnDelete_clicked()));
   connect(btnAdd, SIGNAL(clicked()), this, SLOT(btnAdd_clicked()));
   connect(btnClose, SIGNAL(clicked()), this, SLOT(close()));
-  connect(ldList, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(sEnableButtons()));
+  connect(ldList, SIGNAL(itemSelectionChanged()), this, SLOT(sEnableButtons()));
 
   btnEdit->setEnabled(false);
   btnDelete->setEnabled(false);
@@ -199,7 +199,7 @@ void LabelDefinitions::init( )
 
 void LabelDefinitions::sEnableButtons()
 {
-  btnEdit->setEnabled(true);
-  btnDelete->setEnabled(true);
+  btnEdit->setEnabled(!ldList->selectedItems().isEmpty());
+  btnDelete->setEnabled(!ldList->selectedItems().isEmpty());
 }
 
