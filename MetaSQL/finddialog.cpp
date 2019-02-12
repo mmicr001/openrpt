@@ -41,10 +41,10 @@ FindDialog::~FindDialog()
   // no need to delete child widgets, Qt does it all for us
 }
 
-/* void FindDialog::languageChange()
+void FindDialog::languageChange()
 {
   retranslateUi(this);
-} */
+}
 
 QString FindDialog::getSearchTerm()
 {

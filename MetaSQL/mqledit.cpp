@@ -88,8 +88,6 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   connect(viewLog_OutputAction,        SIGNAL(triggered()), this, SLOT(showLog()));
   connect(viewParameter_ListAction,    SIGNAL(triggered()), this, SLOT(showParamList()));
   connect(viewResultsAction,           SIGNAL(triggered()), this, SLOT(showResults()));
-  /* connect(_find->_btnFind,             SIGNAL(clicked()),   this, SLOT(sFind()));
-  connect(_find->_leSearch,    SIGNAL(editingFinished()),   this, SLOT(sFind())); */
 
   QSqlDatabase db = QSqlDatabase().database();
   if(db.isValid() && db.isOpen())
@@ -931,9 +929,7 @@ void MQLEdit::sFind()
   QString term = _find->getSearchTerm();
   if(!_text->find(term))
   {
-    _find->setWarningVisible(true);
-     //move cursor to start
-    
+    _find->setWarningVisible(true);    
   }
 }
 

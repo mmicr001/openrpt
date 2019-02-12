@@ -36,6 +36,7 @@ public:
 
 
 public slots:
+void languageChange();
   QString getSearchTerm();
   void setWarningVisible(bool set);
   void sClose();
