@@ -46,6 +46,7 @@ protected slots:
     virtual void sEdit();
     virtual void sDelete();
     virtual void sEdit( QListWidgetItem * );
+    virtual void sEnableButtons();
 
 };
 
