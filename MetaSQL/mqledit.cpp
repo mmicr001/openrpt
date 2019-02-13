@@ -269,10 +269,9 @@ void MQLEdit::clear()
 
 void MQLEdit::editFind()
 {
-  sMoveCursorToStart();
   _find = new FindDialog(this);
+  _find->setTextEdit(_text);
   _find->show();
- 
 }
 
 void MQLEdit::helpIndex()
@@ -921,21 +920,4 @@ void MQLEdit::forceTestMode(bool p)
 {
   toolsTest_ModeAction->setChecked(true);
   toolsTest_ModeAction->setDisabled(p);
-}
-
-void MQLEdit::sFind()
-{
-  _find->setWarningVisible(false);
-  QString term = _find->getSearchTerm();
-  if(!_text->find(term))
-  {
-    _find->setWarningVisible(true);    
-  }
-}
-
-void MQLEdit::sMoveCursorToStart()
-{
-  QTextCursor c = _text->textCursor();
-  c.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor,1);
-  _text->setTextCursor(c);
 }

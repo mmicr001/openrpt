@@ -76,8 +76,6 @@ class MQLEdit : public QWidget, public Ui::MQLEdit
     virtual void showExecutedSQL();
     virtual void showLog();
     virtual void showResults();
-    virtual void sFind();
-    virtual void sMoveCursorToStart();
 
   protected:
     enum DestType { MQLUnknown, MQLFile, MQLDatabase }; // Report, Widget, ???

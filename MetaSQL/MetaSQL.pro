@@ -49,7 +49,6 @@ FORMS   += logoutput.ui \
            mqledit.ui \
            resultsoutput.ui \
            selectmql.ui \
-           finddialog.ui \
 
 HEADERS += logoutput.h \
            metasql.h \
@@ -60,7 +59,6 @@ HEADERS += logoutput.h \
            mqlutil.h \
            resultsoutput.h \
            selectmql.h \
-           finddialog.h \
 
 SOURCES += logoutput.cpp \
            metasql.cpp \
@@ -71,6 +69,5 @@ SOURCES += logoutput.cpp \
            mqlutil.cpp \
            resultsoutput.cpp \
            selectmql.cpp \
-           finddialog.cpp \
 
 RESOURCES += ../OpenRPT/images/OpenRPTMetaSQL.qrc

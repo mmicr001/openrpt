@@ -50,6 +50,7 @@ SOURCES = data.cpp \
           querysource.cpp \
           reportpageoptions.cpp \
           memdbloader.cpp \
+          finddialog.cpp \
           ../OpenRPT/common/builtinSqlFunctions.cpp
 
           
@@ -69,6 +70,7 @@ HEADERS = data.h \
           querysource.h \
           reportpageoptions.h \
           memdbloader.h \
+          finddialog.h \
           ../OpenRPT/common/builtinSqlFunctions.h
 
           
@@ -76,6 +78,7 @@ FORMS   =  parameterproperties.ui \
            paramlistedit.ui \
            login.ui \
            loginOptions.ui \
-           parameteredit.ui
+           parameteredit.ui \
+           finddialog.ui \
 
 RESOURCES += ../OpenRPT/images/OpenRPTCommon.qrc
