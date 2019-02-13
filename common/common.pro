@@ -79,6 +79,6 @@ FORMS   =  parameterproperties.ui \
            login.ui \
            loginOptions.ui \
            parameteredit.ui \
-           finddialog.ui \
+           finddialog.ui
 
 RESOURCES += ../OpenRPT/images/OpenRPTCommon.qrc
