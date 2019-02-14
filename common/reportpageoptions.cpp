@@ -18,7 +18,6 @@
  * Please contact info@openmfg.com with any questions on this license.
  */
 
-#include <QSettings>
 #include "reportpageoptions.h"
 
 ReportPageOptions::ReportPageOptions()
@@ -188,15 +187,4 @@ void ReportPageOptions::setLabelType(const QString & type)
 
   _labelType = type;
   emit pageOptionsChanged();
-}
-
-void ReportPageOptions::setSystemDefaults()
-{
-  QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-  if(!settings.value("/OpenMFG/rptPageSize").toString().isEmpty())
-    setPageSize(settings.value("/OpenMFG/rptPageSize").toString());
-  if(settings.value("/OpenMFG/rptOrientation").toString()=="portrait" )
-    setPortrait(true);
-  if(settings.value("/OpenMFG/rptOrientation").toString()=="landscape" )
-    setPortrait(false);
 }

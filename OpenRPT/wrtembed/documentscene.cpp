@@ -115,10 +115,13 @@ void DocumentScene::initData()
     p.setColor(QColor("blue"));
     _pageMargin = addRect(0, 0, 0, 0, p);
     _pageMargin->setZValue(-1);
+    _font = handler()->sysFont(); //use system font. will be overwriten if report has a default font
+    ORGraphicsRectItem::setDefaultEntityFont(_font);
 
     if(!_pageOptions) {
       _pageOptions = new ReportPageOptions;
-      _pageOptions->setSystemDefaults();
+      _pageOptions->setPageSize(handler()->sysPageSize());
+      _pageOptions->setPortrait(handler()->sysPageOrientation() == "portrait");
       connect(_pageOptions, SIGNAL(pageOptionsChanged()), this, SLOT(pageOptionsChanged()));
     }
 }
@@ -1624,8 +1627,6 @@ QDomDocument DocumentScene::document()
     root.appendChild(_handler->databaseElt());
   }
   
-  ORGraphicsRectItem::setReadDefaultFontFalse();
-
   return doc;
 }
 

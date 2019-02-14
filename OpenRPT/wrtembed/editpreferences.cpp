@@ -23,7 +23,6 @@
 #include <QVariant>
 #include <QValidator>
 #include <QFontDialog>
-#include <QSettings>
 #include "data.h"
 
 EditPreferences::EditPreferences(QWidget* parent, Qt::WindowFlags fl)
@@ -63,17 +62,6 @@ EditPreferences::EditPreferences(QWidget* parent, Qt::WindowFlags fl)
 
     _rbPortrait->setChecked(false);
     _rbLandscape->setChecked(false);
-
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    if(!settings.value("/OpenMFG/rptPageSize").toString().isEmpty())
-      _cbPageSize->setCurrentText(settings.value("/OpenMFG/rptPageSize").toString());
-    if(!settings.value("/OpenMFG/rptOrientation").toString().isEmpty())
-    {
-      if(settings.value("/OpenMFG/rptOrientation").toString()=="portrait")
-        _rbPortrait->setChecked(true);
-      if(settings.value("/OpenMFG/rptOrientation").toString()=="landscape")
-        _rbLandscape->setChecked(true);
-    }
 }
 
 EditPreferences::~EditPreferences()
@@ -177,5 +165,18 @@ QFont EditPreferences::defaultFont()
 void EditPreferences::selLanguage( QString sel )
 {
     _selectedLanguage = sel;
+}
+
+void EditPreferences::setPageSize(QString ps)
+{
+   _cbPageSize->setCurrentText(ps);
+}
+
+void  EditPreferences::setPageOrientation(QString po)
+{
+  if(po=="portrait")
+    _rbPortrait->setChecked(true);
+  else
+    _rbLandscape->setChecked(true);
 }
 
