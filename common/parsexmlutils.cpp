@@ -24,7 +24,6 @@
 
 #include <QDomDocument>
 
-#define DEBUG false
 
 //
 // Class ORObject 

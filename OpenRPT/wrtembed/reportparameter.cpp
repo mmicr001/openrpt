@@ -192,7 +192,7 @@ void ReportParameter::populateMqlParams()
   QStringList params; 
   for(int i=0; i < qsList->size(); i++)
   {
-    foreach(QString p,getParamsFromText(qsList->get(i)->query()) )
+    foreach(QString p,MQLUtil::getParamsFromText(qsList->get(i)->query()) )
     {
       if (!_map->contains(p))
         params << p;    

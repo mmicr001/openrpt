@@ -180,25 +180,8 @@ QString MQLUtil::mqlLoad(const QString &group, const QString &name, QString &err
   return fsrc;
 }
 
-// backwards compatibility for xtuple application sources /////////////////////
-
-static QString _lastError;
-
-QString mqlLastError() { return _lastError; }
-void    mqlClearLastError() { _lastError = QString::null; }
-
-MetaSQLQuery mqlLoad(const QString &name, bool *valid)
-{
-  return MetaSQLQuery(MQLUtil::mqlLoad(name, _lastError, valid));
-}
-
-MetaSQLQuery mqlLoad(const QString &group, const QString &name, bool *valid)
-{
-  return MetaSQLQuery(MQLUtil::mqlLoad(group, name, _lastError, valid));
-}
-
 // TODO: It would be better to alter the metasql parser to do this for us
-QStringList getParamsFromText(const QString p)
+QStringList MQLUtil::getParamsFromText(const QString p)
 {
   QStringList result;
 
@@ -223,4 +206,21 @@ QStringList getParamsFromText(const QString p)
   result.removeDuplicates();
 
   return result;
+}
+
+// backwards compatibility for xtuple application sources /////////////////////
+
+static QString _lastError;
+
+QString mqlLastError() { return _lastError; }
+void    mqlClearLastError() { _lastError = QString::null; }
+
+MetaSQLQuery mqlLoad(const QString &name, bool *valid)
+{
+  return MetaSQLQuery(MQLUtil::mqlLoad(name, _lastError, valid));
+}
+
+MetaSQLQuery mqlLoad(const QString &group, const QString &name, bool *valid)
+{
+  return MetaSQLQuery(MQLUtil::mqlLoad(group, name, _lastError, valid));
 }

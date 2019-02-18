@@ -788,7 +788,7 @@ QString MQLEdit::getMetaSQLText()
 
 QStringList MQLEdit::getParamsFromMetaSQLText()
 {
-  return getParamsFromText(getMetaSQLText());
+  return MQLUtil::getParamsFromText(getMetaSQLText());
 }
 
 
