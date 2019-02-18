@@ -33,8 +33,6 @@
 #include <QTextDocument>
 #include <QTextStream>
 #include <QSettings>
-#include <QInputDialog>
-#include <QTextCursor>
 #include <QDebug>
 
 #include <parameter.h>
@@ -138,6 +136,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   clear();
 
   setDestType(MQLUnknown);
+
+  _find = new FindDialog(this);
 }
 
 MQLEdit::~MQLEdit()
@@ -269,7 +269,6 @@ void MQLEdit::clear()
 
 void MQLEdit::editFind()
 {
-  _find = new FindDialog(this);
   _find->setTextEdit(_text);
   _find->show();
 }

@@ -24,9 +24,6 @@
 #include <QPushButton>
 #include <QComboBox>
 
-#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
-#include <QDebug>
-
 FindDialog::FindDialog(QWidget* parent)
     : QDialog(parent)
 {
@@ -52,6 +49,7 @@ void FindDialog::languageChange()
 void FindDialog::setTextEdit(QTextEdit* t)
 {
   _text = t;
+  _leSearch->setText(_text->textCursor().selectedText()); //populate search lineedit if user has highlighted text
 }
 
 void FindDialog::setWarningVisible(bool value)
@@ -64,12 +62,8 @@ void FindDialog::sClose()
   reject();
 }
 
-
-
-int i=0;
 void FindDialog::sFind()
 {
-  qDebug() << "find " << i++; 
   if (_lbWarning->isVisible())
   {
     setWarningVisible(false);
