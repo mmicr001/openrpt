@@ -72,9 +72,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="tbColumn"/>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="TextLabel1_3">
          <property name="text">
@@ -84,6 +81,19 @@
        </item>
        <item row="0" column="1">
         <widget class="QueryComboBox" name="cbQuery"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cbColumn">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -729,7 +739,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>cbQuery</tabstop>
-  <tabstop>tbColumn</tabstop>
   <tabstop>_cbRTotal</tabstop>
   <tabstop>_rbStringFormat</tabstop>
   <tabstop>_leRTotalFormat</tabstop>

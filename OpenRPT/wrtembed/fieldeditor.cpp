@@ -19,10 +19,12 @@
  */
 
 #include "fieldeditor.h"
+#include "../../MetaSQL/metasql.h"
 
 #include <QVariant>
 #include <QFontDialog>
 #include <QValidator>
+#include <QSqlRecord>
 
 #include <builtinformatfunctions.h>
 
@@ -37,7 +39,8 @@ FieldEditor::FieldEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
     connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
     connect(rbVAlignBottom, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(tbColumn, SIGNAL(textChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+    connect(cbColumn, SIGNAL(currentTextChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+    connect(cbQuery, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(populateColumns()));
     connect(rbHAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignLeft, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignCenter, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
@@ -154,3 +157,41 @@ void FieldEditor::rbHAlignNone_clicked()
 
 }
 
+void FieldEditor::setDocScene(DocumentScene * scene)
+{
+  ds = scene;
+}
+
+void FieldEditor::populateColumns()
+{
+  QDomNodeList sectionElem;
+  QDomNode n;
+  QDomElement sec;
+  ParameterList plist;
+  QString qry, col, result;
+  XSqlQuery xqry; 
+  
+  // get parameter list
+  sectionElem = ds->document().elementsByTagName("parameter");
+
+  for (int i=0; i<sectionElem.size(); i++ )
+  {
+	sec = sectionElem.at(i).toElement();
+	plist.append(sec.attribute("name"),sec.attribute("default"));
+  }
+
+  qry= cbQuery->currentText();
+  if(qry=="Context Query" || qry=="Parameter Query" || qry=="-- Select Query --")
+	return;
+  
+  QSqlDatabase db = QSqlDatabase::database();
+  if (!qry.isEmpty() && db.isOpen())
+  {
+	MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
+	xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
+	QSqlRecord rec = xqry.record();
+    for(int i=0; i<rec.count(); i++)
+      cbColumn->addItem(rec.fieldName(i));
+  }
+  
+}

@@ -1484,11 +1484,14 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
   le->labelPreview->setFont(font());
   
   DocumentScene * ds = static_cast<DocumentScene*>(scene());
-  
+  le->setDocScene(ds);
   if(ds)
     le->cbQuery->init(ds->qsList,query());
-
-  le->tbColumn->setText(column());
+  if(QSqlDatabase::database().isOpen()) 
+    le->populateColumns();
+  else
+    le->cbColumn->setEditable(true);
+  le->cbColumn->setCurrentText(column());
   le->_cbRTotal->setChecked(_trackTotal);
   if(_trackBuiltinFormat) {
     le->_rbBuiltinFormat->setChecked(true);
@@ -1519,7 +1522,7 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
   {
     setFont(le->labelPreview->font());
     setQuery(le->cbQuery->currentQuery());
-    setColumn(le->tbColumn->text());
+    setColumn(le->cbColumn->currentText());
     setTrackTotal(le->_cbRTotal->isChecked());
     if(trackTotal()) {
       setUseSubTotal(le->_cbSubTotal->isChecked());
