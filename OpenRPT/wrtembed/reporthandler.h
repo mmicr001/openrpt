@@ -167,6 +167,13 @@ class ReportHandler : public QObject {
         void setFontWeight(bool v);
         void setFontStyle(bool v);
 
+        //system pref functions
+        void    getSysPreferences(); //reads from QSettings
+        void    setSysPreferences(); //saves to QSettings
+        QFont   sysFont(){return _sysFont;}
+        QString sysPageSize(){return _sysPageSize;}
+        QString sysPageOrientation(){return _sysPageOrientation;}
+
         void sAbout();
         void sRefGuide();
 
@@ -177,8 +184,15 @@ class ReportHandler : public QObject {
         void reportsChanged(int, bool);
 
     protected:
-        ReportGridOptions * gridOptions;
         ReportWriterSectionData * sectionData;
+        
+        // system preferences
+        ReportGridOptions * gridOptions;
+        QString             _sysPageSize;
+        QString             _sysPageOrientation;
+        QFont               _sysFont;
+
+        //report preferences
 
         unsigned int selectionCount();
 

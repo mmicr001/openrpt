@@ -218,6 +218,7 @@ ReportHandler::ReportHandler(QObject * parent, const char * name)
   gridOptions = new ReportGridOptions(qApp->desktop()->logicalDpiX(),
                                       qApp->desktop()->logicalDpiY(),
                                       this, "grid options");
+  getSysPreferences();
   sectionData = new ReportWriterSectionData();
 
   grpDoc = new QActionGroup(this);
@@ -434,6 +435,7 @@ ReportHandler::ReportHandler(QObject * parent, const char * name)
 
 ReportHandler::~ReportHandler()
 {
+    setSysPreferences();
     if (sectionData != 0)
         delete sectionData;
 }
@@ -1215,18 +1217,36 @@ void ReportHandler::editPreferences()
   EditPreferences * dlgPref = new EditPreferences(0);
   if(dlgPref)
   {
-    dlgPref->setDefaultFont(QFont(ORGraphicsRectItem::getDefaultEntityFont()));
+    if(gwList.count()>0)
+    {
+      DocumentWindow * gw = activeDocumentWindow();
+      dlgPref->setDefaultFont(gw->_scene->getFont()); 
+    }
+    else
+      dlgPref->setDefaultFont(_sysFont); 
+    dlgPref->setPageSize(_sysPageSize);
+    dlgPref->setPageOrientation(_sysPageOrientation);
     dlgPref->setShowGrid(gridOptions->isVisible());
     dlgPref->setSnapGrid(gridOptions->isSnap());
     dlgPref->setGridSize(gridOptions->xInterval() ,gridOptions->yInterval());
     if(dlgPref->exec() == QDialog::Accepted)
     {
+      //report level 
       ORGraphicsRectItem::setDefaultEntityFont(dlgPref->defaultFont());
       gridShowAction->setChecked(dlgPref->showGrid());
       gridSnapAction->setChecked(dlgPref->snapGrid());
       gridOptions->setXInterval(dlgPref->gridSizeX());
       gridOptions->setYInterval(dlgPref->gridSizeY());
       QString newLanguage = dlgPref->selectedLanguage();
+
+      //system level
+      _sysPageSize = dlgPref->_cbPageSize->currentText();
+      if(dlgPref->_rbPortrait->isChecked())
+        _sysPageOrientation = "portrait";
+      if(dlgPref->_rbLandscape->isChecked())
+        _sysPageOrientation = "landscape";
+
+
       if(newLanguage != OpenRPT::languages.selectedTitle())
       {
         QMessageBox::information(dlgPref, QString(tr("Language: %1").arg(newLanguage)), tr("The language change will take effect the next time the report writer will be run."));
@@ -1522,7 +1542,6 @@ void ReportHandler::removeReportWindow(QObject * obj)
   if(gw)
     gwList.removeAll(gw);
   
-  qDebug() << "\nremoved report window";
   // update the default font 
   gw = activeDocumentWindow();
   if (gwList.size()>0) 
@@ -2487,6 +2506,36 @@ void ReportHandler::setFontStyle(bool v)
   
   if(o)
     o->setChecked(v);
+}
+
+void  ReportHandler::getSysPreferences()
+{
+  QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
+  _sysPageSize = settings.value("/OpenMFG/rptPageSize","Letter").toString();
+  _sysPageOrientation = settings.value("/OpenMFG/rptOrientation","portrait").toString();
+  if(settings.value("/OpenMFG/defaultFont").toString().isEmpty())
+    _sysFont = QFont();
+  else
+    QFont(settings.value("/OpenMFG/defaultFont").toString());
+
+  gridOptions->setVisible(settings.value("/OpenMFG/rwShowGrid", false).toBool());
+  gridOptions->setSnap(settings.value("/OpenMFG/rwSnapGrid", false).toBool());
+  gridOptions->setXInterval(settings.value("/OpenMFG/rwXGridInterval",0.05).toDouble());
+  gridOptions->setYInterval(settings.value("/OpenMFG/rwYGridInterval",0.05).toDouble());
+}
+
+void  ReportHandler::setSysPreferences()
+{
+  QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
+  settings.setValue("/OpenMFG/rptPageSize", _sysPageSize);
+  settings.setValue("/OpenMFG/rptOrientation", _sysPageOrientation);
+  settings.setValue("/OpenMFG/defaultFont", _sysFont);
+
+  settings.setValue("/OpenMFG/rwShowGrid", gridOptions->isVisible());
+  settings.setValue("/OpenMFG/rwSnapGrid", gridOptions->isSnap());
+  settings.setValue("/OpenMFG/rwXGridInterval", gridOptions->xInterval());
+  settings.setValue("/OpenMFG/rwYGridInterval", gridOptions->yInterval());
+
 }
 
 void ReportHandler::sAbout()
