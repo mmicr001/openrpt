@@ -739,11 +739,19 @@
  </customwidgets>
  <tabstops>
   <tabstop>cbQuery</tabstop>
+  <tabstop>cbColumn</tabstop>
   <tabstop>_cbRTotal</tabstop>
+  <tabstop>_cbSubTotal</tabstop>
   <tabstop>_rbStringFormat</tabstop>
   <tabstop>_leRTotalFormat</tabstop>
   <tabstop>_rbBuiltinFormat</tabstop>
   <tabstop>_cbBuiltinFormat</tabstop>
+  <tabstop>leLines</tabstop>
+  <tabstop>leColumns</tabstop>
+  <tabstop>leXSpacing</tabstop>
+  <tabstop>leYSpacing</tabstop>
+  <tabstop>_cbPageBreak</tabstop>
+  <tabstop>_cbLeftToRight</tabstop>
   <tabstop>rbHAlignNone</tabstop>
   <tabstop>rbHAlignLeft</tabstop>
   <tabstop>rbHAlignCenter</tabstop>
@@ -752,9 +760,10 @@
   <tabstop>rbVAlignTop</tabstop>
   <tabstop>rbVAlignMiddle</tabstop>
   <tabstop>rbVAlignBottom</tabstop>
+  <tabstop>_cbWordWrap</tabstop>
   <tabstop>leXPos</tabstop>
-  <tabstop>leWidth</tabstop>
   <tabstop>leYPos</tabstop>
+  <tabstop>leWidth</tabstop>
   <tabstop>leHeight</tabstop>
   <tabstop>btnFont</tabstop>
   <tabstop>buttonOk</tabstop>
