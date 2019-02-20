@@ -186,36 +186,11 @@
     <property name="title" >
      <string>&amp;Help</string>
     </property>
-    <addaction name="helpContentsAction" />
-    <addaction name="helpIndexAction" />
-    <addaction name="separator" />
     <addaction name="helpAboutAction" />
    </widget>
    <addaction name="unnamed" />
    <addaction name="helpMenu" />
   </widget>
-  <action name="helpContentsAction" >
-   <property name="text" >
-    <string>&amp;Contents...</string>
-   </property>
-   <property name="iconText" >
-    <string>Contents</string>
-   </property>
-   <property name="shortcut" >
-    <string/>
-   </property>
-  </action>
-  <action name="helpIndexAction" >
-   <property name="text" >
-    <string>&amp;Index...</string>
-   </property>
-   <property name="iconText" >
-    <string>Index</string>
-   </property>
-   <property name="shortcut" >
-    <string/>
-   </property>
-  </action>
   <action name="helpAboutAction" >
    <property name="text" >
     <string>&amp;About</string>

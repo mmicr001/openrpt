@@ -39,6 +39,7 @@ public slots:
     virtual void _btnEdit_clicked();
     virtual void _btnDelete_clicked();
     virtual void init( QMap<QString, QColor> * cmap );
+    virtual void sEnableButtons();
 
 protected:
     QMap<QString, QColor>* _colorMap;

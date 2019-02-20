@@ -41,6 +41,7 @@ public:
     static QString name();
 
 public slots:
+    virtual void helpRefGuide();
     virtual void helpAbout();
     virtual void fileOpen();
     virtual void fileOpen( const QString & filename );

@@ -65,8 +65,8 @@ class MQLEdit : public QWidget, public Ui::MQLEdit
     virtual void fileSaveAs();
     virtual void forceTestMode(bool p);
     virtual void helpAbout();
-    virtual void helpContents();
-    virtual void helpIndex();
+    virtual void helpMqlSyntax();
+    virtual void helpMqlEditor();
     virtual bool isReadOnly();
     virtual void parseQuery();
     virtual void populateParameterEdit();

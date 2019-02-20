@@ -75,6 +75,7 @@
 #include <QColorDialog>
 #include <QMdiArea>
 #include <QMdiSubWindow>
+#include <QDesktopServices>
 
 extern bool __dosnap;
 
@@ -321,6 +322,9 @@ ReportHandler::ReportHandler(QObject * parent, const char * name)
   docColorListAction       = new QAction(tr("Color Definitions..."),  grpDoc);
   docDefinedParamsAction   = new QAction(tr("Defined Parameters..."), grpDoc);
 
+  helpAbout                = new QAction(tr("About"),this);
+  helpRefGuide             = new QAction(tr("Reference Guide"),this);
+
   // Added label definitions action
   docLabelDefinitionsAction = new QAction(tr("Label Definitions..."), grpDoc);
 
@@ -423,6 +427,10 @@ ReportHandler::ReportHandler(QObject * parent, const char * name)
   connect(fillAction, SIGNAL(triggered()), this, SLOT(fill()));
   connect(borderAction, SIGNAL(triggered()), this, SLOT(border()));
   connect(rotationAction, SIGNAL(triggered()), this, SLOT(rotation()));
+  connect(helpAbout, SIGNAL(triggered()), this, SLOT(sAbout()));
+  connect(helpRefGuide, SIGNAL(triggered()), this, SLOT(sRefGuide()));
+
+  
 }
 
 ReportHandler::~ReportHandler()
@@ -601,7 +609,9 @@ QAction * ReportHandler::populateMenuBar(QMenuBar * menubar, QAction * exitActio
   QAction * sid = menubar->addSeparator();
 
 
-  /*QMenu * mHelp =*/ menubar->addMenu(tr("&Help"));
+  QMenu * mHelp = menubar->addMenu(tr("&Help"));
+  mHelp->addAction(helpAbout);
+  mHelp->addAction(helpRefGuide);
 
   return sid;
 }
@@ -1279,6 +1289,7 @@ void ReportHandler::editProperties()
         case ORGraphicsTextItem::Type:
         case ORGraphicsBarcodeItem::Type:
         case ORGraphicsImageItem::Type:
+        case ORGraphicsCrossTabItem::Type:
         case ORGraphicsGraphItem::Type:
           (static_cast<ORGraphicsRectItem*>(list.at(i)))->properties(gw);
           break;
@@ -2527,6 +2538,19 @@ void  ReportHandler::setSysPreferences()
 
 }
 
+void ReportHandler::sAbout()
+{
+  QMessageBox::about(_parentWindow, tr("About %1").arg(OpenRPT::name),
+                     tr("%1 version %2\n%3\nBuild: %4\n"
+                        )
+                     .arg(OpenRPT::name, OpenRPT::version, OpenRPT::copyright,
+                          OpenRPT::build));
+}
+
+void ReportHandler::sRefGuide()
+{
+  QDesktopServices::openUrl(QUrl("http://www.xtuple.org/sites/default/files/refguide/current/index.html"));
+}
 
 void ReportHandler::loadMemDB(const QString &filename, const QDomNode &it)
 {

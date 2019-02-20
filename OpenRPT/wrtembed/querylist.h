@@ -42,6 +42,7 @@ public slots:
     virtual void btnDelete_clicked();
     virtual void btnAdd_clicked();
     virtual void init( QuerySourceList * );
+    virtual void sEnableButtons();
 
 protected:
     QuerySourceList * qsList;

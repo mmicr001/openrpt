@@ -56,6 +56,10 @@ SectionEditor::SectionEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(cbFootOdd, SIGNAL(toggled(bool)), this, SLOT(cbFootOdd_toggled(bool)));
     connect(cbHeadAny, SIGNAL(toggled(bool)), this, SLOT(cbHeadAny_toggled(bool)));
     connect(cbFootAny, SIGNAL(toggled(bool)), this, SLOT(cbFootAny_toggled(bool)));
+    connect(lbSections, SIGNAL(itemSelectionChanged()), this, SLOT(sEnableButtons()));
+
+    btnEdit->setEnabled(false);
+    btnRemove->setEnabled(false);
 }
 
 SectionEditor::~SectionEditor()
@@ -356,4 +360,10 @@ void SectionEditor::cbFootAny_toggled( bool yes )
     else
       scene->removePageFootAny();
   }
+}
+
+void SectionEditor::sEnableButtons()
+{
+  btnEdit->setEnabled(!lbSections->selectedItems().isEmpty());
+  btnRemove->setEnabled(!lbSections->selectedItems().isEmpty());
 }

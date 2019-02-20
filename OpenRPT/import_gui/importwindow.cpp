@@ -28,6 +28,7 @@
 #include <QMessageBox>
 #include <QStringList>
 #include <QDomNode>
+#include <QDesktopServices>
 
 #include "xsqlquery.h"
 #include "data.h"
@@ -42,8 +43,7 @@ ImportWindow::ImportWindow(QWidget* parent, Qt::WindowFlags fl)
   (void)statusBar();
 
   // signals and slots connections
-  connect(helpIndexAction, SIGNAL(triggered()), this, SLOT(helpIndex()));
-  connect(helpContentsAction, SIGNAL(triggered()), this, SLOT(helpContents()));
+  connect(helpRefGuideAction, SIGNAL(triggered()), this, SLOT(helpRefGuide()));
   connect(helpAboutAction, SIGNAL(triggered()), this, SLOT(helpAbout()));
   connect(fileExitAction, SIGNAL(triggered()), this, SLOT(fileExit()));
   connect(fileOpenAction, SIGNAL(triggered()), this, SLOT(sAdd()));
@@ -75,15 +75,9 @@ void ImportWindow::languageChange()
     retranslateUi(this);
 }
 
-void ImportWindow::helpIndex()
+void ImportWindow::helpRefGuide()
 {
-  QMessageBox::information(this, tr("Not Yet Implemented"), tr("This function has not been implemented."));
-}
-
-
-void ImportWindow::helpContents()
-{
-  QMessageBox::information(this, tr("Not Yet Implemented"), tr("This function has not been implemented."));
+  QDesktopServices::openUrl(QUrl("https://xtupleuniversity.xtuple.com/sites/default/files/prodguide/openrpt/ch05s02s01.html"));
 }
 
 
