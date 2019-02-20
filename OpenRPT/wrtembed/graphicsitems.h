@@ -82,7 +82,6 @@ class ORGraphicsRectItem : public QGraphicsRectItem
 
     static QFont getDefaultEntityFont();
     static void  setDefaultEntityFont(const QFont &);
-	static void setReadDefaultFontFalse(){_readDefaultFont = false;}
 
     virtual void properties(QWidget * parent = 0);
     void borderProperties(QWidget * parent = 0);
@@ -116,7 +115,6 @@ class ORGraphicsRectItem : public QGraphicsRectItem
     QPen            _border;
 
 	bool			_moved;
-    static bool _readDefaultFont;
     static QFont _defaultFont;
 };
 

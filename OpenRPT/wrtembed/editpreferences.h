@@ -25,6 +25,7 @@
 
 #include "ui_editpreferences.h"
 
+
 class EditPreferences : public QDialog, public Ui::EditPreferences
 {
     Q_OBJECT
@@ -45,6 +46,8 @@ public slots:
     virtual void setSnapGrid( bool snap );
     virtual void setDefaultFont( QFont fnt );
     virtual QFont defaultFont();
+    virtual void setPageSize(QString ps);
+    virtual void setPageOrientation(QString po);
 
 protected slots:
     virtual void languageChange();

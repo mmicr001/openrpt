@@ -23,7 +23,6 @@
 // qt
 #include <QPoint>
 #include <QPointF>
-#include <QSettings>
 #include <QDebug>
 
 #include <math.h>
@@ -37,20 +36,13 @@ extern int dpiY;
 ReportGridOptions::ReportGridOptions(int rdx, int rdy, QObject * parent, const char * name)
   : QObject(parent) {
     if(name)
-      setObjectName(name);
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    show_grid = settings.value("/OpenMFG/rwShowGrid", false).toBool();
-    snap_grid = settings.value("/OpenMFG/rwSnapGrid", false).toBool();
+    setObjectName(name);
     _realDpiX = rdx;
     _realDpiY = rdy;
-    setXInterval(settings.value("/OpenMFG/rwXGridInterval",0.05).toDouble());
-    setYInterval(settings.value("/OpenMFG/rwYGridInterval",0.05).toDouble());
 }
 
 void ReportGridOptions::setVisible(bool v) {
     show_grid = v;
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    settings.setValue("/OpenMFG/rwShowGrid", show_grid);
     emit gridOptionsChanged();
 }
 
@@ -60,8 +52,6 @@ bool ReportGridOptions::isVisible() {
 
 void ReportGridOptions::setSnap(bool yes) {
     snap_grid = yes;
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    settings.setValue("/OpenMFG/rwSnapGrid", snap_grid);
     emit gridOptionsChanged();
 }
 
@@ -104,8 +94,6 @@ void ReportGridOptions::hide() {
 
 void ReportGridOptions::setXInterval(double i) {
     x_interval = i;
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    settings.setValue("/OpenMFG/rwXGridInterval", x_interval);
     double d = _realDpiX * x_interval;
     double di = ((d - floor(d)) < 0.5 ? floor(d) : (floor(d) + 1.0) );
     dpiX = (int)((di / x_interval) + 0.01);
@@ -116,8 +104,6 @@ double ReportGridOptions::xInterval() {
 }
 void ReportGridOptions::setYInterval(double i) {
     y_interval = i;
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    settings.setValue("/OpenMFG/rwYGridInterval", y_interval);
     double d = _realDpiY * y_interval;
     double di = ((d - floor(d)) < 0.5 ? floor(d) : floor(d) + 1.0 );
     dpiY = (int)((di / y_interval) + 0.01);
