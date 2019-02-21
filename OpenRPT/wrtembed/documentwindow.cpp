@@ -103,3 +103,8 @@ void DocumentWindow::closeEvent(QCloseEvent * e)
   }
   e->accept();
 }
+
+void DocumentWindow::updateSceneQueryColumns()
+{
+  _scene->updateColumnNames();
+}

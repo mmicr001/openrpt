@@ -163,35 +163,9 @@ void FieldEditor::setDocScene(DocumentScene * scene)
 }
 
 void FieldEditor::populateColumns()
-{
-  QDomNodeList sectionElem;
-  QDomNode n;
-  QDomElement sec;
-  ParameterList plist;
-  QString qry, col, result;
-  XSqlQuery xqry; 
-  
-  // get parameter list
-  sectionElem = ds->document().elementsByTagName("parameter");
-
-  for (int i=0; i<sectionElem.size(); i++ )
-  {
-	sec = sectionElem.at(i).toElement();
-	plist.append(sec.attribute("name"),sec.attribute("default"));
-  }
-
-  qry= cbQuery->currentText();
-  if(qry=="Context Query" || qry=="Parameter Query" || qry=="-- Select Query --")
-	return;
-  
-  QSqlDatabase db = QSqlDatabase::database();
-  if (!qry.isEmpty() && db.isOpen())
-  {
-	MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
-	xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
-	QSqlRecord rec = xqry.record();
-    for(int i=0; i<rec.count(); i++)
-      cbColumn->addItem(rec.fieldName(i));
-  }
-  
+{ 
+  QStringList cols;
+  if(ds->qsList->contains(cbQuery->currentText()))
+    cols = ds->qsList->get(cbQuery->currentText())->colNames();
+  cbColumn->addItems(cols);
 }

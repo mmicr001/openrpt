@@ -107,6 +107,16 @@ void QuerySource::setMetaSqlName(const QString & g)
   }
 }
 
+void QuerySource::setColNames(const QStringList & colNames)
+{
+  _colNames =  colNames;
+}
+
+QStringList QuerySource::colNames() const
+{
+  return _colNames;
+}
+
 void QuerySource::updated()
 {
   if (_inList != 0)
@@ -244,6 +254,16 @@ QuerySource *QuerySourceList::get(const QString & name)
     }
   }
   return 0;
+}
+
+bool QuerySourceList::contains(QString name)
+{
+  foreach(QuerySource* qs, _srcList)
+  {
+    if(qs->name()==name)
+      return true;
+  }
+  return false;
 }
 
 void QuerySourceList::childUpdated(QuerySource * /*qs */ )

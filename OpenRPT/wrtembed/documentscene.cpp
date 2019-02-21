@@ -35,6 +35,7 @@
 #include "reportgridoptions.h"
 #include "fontutils.h"
 #include "labeldefinitions.h"
+#include "../../MetaSQL/metasql.h"
 
 
 #include <xsqlquery.h>
@@ -43,6 +44,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QMenu>
+#include <QSqlRecord>
 
 DocumentScene::DocumentScene(bool newDoc, ReportHandler *handler, QObject * parent)
   : QGraphicsScene(parent), _undoIndex(0), _handler(handler), _loadingInProgress(false)
@@ -595,6 +597,46 @@ void DocumentScene::querySourceList(QWidget * parent)
   ql->init(qsList);
   ql->exec();
   delete ql;
+
+  // update column names
+  updateColumnNames();
+  
+}
+
+void DocumentScene::updateColumnNames()
+{
+  for(int j=0; j<int(this->qsList->size()); j++)
+  {
+    QDomNodeList sectionElem;
+    QDomElement sec;
+    ParameterList plist;
+    QString qry;
+    QStringList cols;
+    XSqlQuery xqry; 
+
+    // get parameter list
+    sectionElem = document().elementsByTagName("parameter");
+    for (int i=0; i<sectionElem.size(); i++ )
+    {
+      sec = sectionElem.at(i).toElement();
+      plist.append(sec.attribute("name"),sec.attribute("default"));
+    }
+    
+    qry = qsList->get(j)->name();
+    if(qry=="Context Query" || qry=="Parameter Query" || qry=="-- Select Query --")
+      return;
+      
+    QSqlDatabase db = QSqlDatabase::database();
+    if (!qry.isEmpty() && db.isOpen())
+    {
+      MetaSQLQuery mql = MetaSQLQuery(qsList->get(qry)->query());
+      xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
+      QSqlRecord rec = xqry.record();
+      for(int i=0; i<rec.count(); i++)
+        cols << rec.fieldName(i);
+      qsList->get(j)->setColNames(cols);
+    }
+  }
 }
 
 // Edit Label Definitions
@@ -2338,6 +2380,7 @@ void DocumentScene::loadDocument(const QDomElement &root, QWidget *parent, bool 
         }
     }
 
+    updateColumnNames();
     pageOptionsChanged();
     if(loadFromfile) { // init stack with a first snapshot to allow undoing of first modification
         _snapshots.clear();

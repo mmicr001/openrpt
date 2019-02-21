@@ -1436,6 +1436,8 @@ void ReportHandler::dbConnect() {
 
         if(newdlg.exec() == QDialog::Accepted) {
           OpenRPT::databaseURL = newdlg._databaseURL;
+          for(int i=0; i<gwList.length(); i++)
+            gwList.at(i)->updateSceneQueryColumns();
 
   // The following is code that works specifically with the xTuple ERP database
   // This should be expanded to be usefull when not connecting to an xTuple ERP
