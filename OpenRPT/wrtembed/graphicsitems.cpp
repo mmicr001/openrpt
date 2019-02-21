@@ -1476,10 +1476,7 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
   le->setDocScene(ds);
   if(ds)
     le->cbQuery->init(ds->qsList,query());
-  if(QSqlDatabase::database().isOpen()) 
-    le->populateColumns();
-  else
-    le->cbColumn->setEditable(true);
+  le->populateColumns();
   le->cbColumn->setCurrentText(column());
   le->_cbRTotal->setChecked(_trackTotal);
   if(_trackBuiltinFormat) {

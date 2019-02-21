@@ -164,8 +164,12 @@ void FieldEditor::setDocScene(DocumentScene * scene)
 
 void FieldEditor::populateColumns()
 { 
+  cbColumn->clear();
   QStringList cols;
+
   if(ds->qsList->contains(cbQuery->currentText()))
     cols = ds->qsList->get(cbQuery->currentText())->colNames();
+
+  cols.sort();
   cbColumn->addItems(cols);
 }
