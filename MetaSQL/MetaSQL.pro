@@ -33,16 +33,16 @@ UI_DIR      = tmp
 MOC_DIR     = tmp
 OBJECTS_DIR = tmp
 
-INCLUDEPATH += ../common ../../openrpt-build-desktop/common
-DEPENDPATH += ../common ../../openrpt-build-desktop/common
+INCLUDEPATH += ../common ../common/tmp ../../openrpt-build-desktop/common
+DEPENDPATH  += ../common ../common/tmp ../../openrpt-build-desktop/common
 
 QMAKE_LIBDIR += ../lib
 LIBS         += -lopenrptcommon
 
 # override CONFIG warn_on for C files but not C++
-macx: QMAKE_CFLAGS_WARN_ON  = -Wno-missing-braces
+macx:      QMAKE_CFLAGS_WARN_ON  = -Wno-missing-braces
 win32-g++: QMAKE_CFLAGS_WARN_ON  = -Wno-missing-braces
-unix: QMAKE_CFLAGS_WARN_ON  = -Wno-missing-braces
+unix:      QMAKE_CFLAGS_WARN_ON  = -Wno-missing-braces
 
 FORMS   += logoutput.ui \
            metasqlsaveparameters.ui \
