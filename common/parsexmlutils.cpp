@@ -1854,4 +1854,3 @@ bool parseReportParameter(const QDomElement & elemSource, ORReportData & reportT
 
   return true;
 }
-

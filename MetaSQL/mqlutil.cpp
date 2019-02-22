@@ -25,8 +25,11 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QVariant>
+#include <QDebug>
 
 #include "xsqlquery.h"
+
+#define DEBUG false
 
 static QRegExp groupRE    = QRegExp("(^\\s*--\\s*GROUP:\\s*)(.*)",Qt::CaseInsensitive);
 static QRegExp nameRE     = QRegExp("(^\\s*--\\s*NAME:\\s*)(.*)", Qt::CaseInsensitive);
@@ -175,6 +178,34 @@ QString MQLUtil::mqlLoad(const QString &group, const QString &name, QString &err
   }
 
   return fsrc;
+}
+
+// TODO: It would be better to alter the metasql parser to do this for us
+QStringList MQLUtil::getParamsFromText(const QString p)
+{
+  QStringList result;
+
+  QRegExp tagre("(<\\?[^?]*\\?>)");
+  for (int i = 0; (i = tagre.indexIn(p, i)) != -1; i += tagre.matchedLength())
+  {
+    QString tag = tagre.cap(1);
+    if (DEBUG)
+      qDebug("getParamsFromMetaSQLText looking at %s", qPrintable(tag));
+
+    QRegExp paramre("(['\\\"])([^'\\\"]+)\\1");
+    for (int j = 0; (j = paramre.indexIn(tag, j)) != -1; j += paramre.matchedLength())
+    {
+      QString param = paramre.cap(2);   // the \w+, not the ['"]
+      if (DEBUG)
+        qDebug("getParamsFromMetaSQLText found %s", qPrintable(param));
+      result.append(param);
+    }
+  }
+
+  result.sort();
+  result.removeDuplicates();
+
+  return result;
 }
 
 // backwards compatibility for xtuple application sources /////////////////////

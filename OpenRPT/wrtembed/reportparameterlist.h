@@ -25,6 +25,8 @@
 
 #include "ui_reportparameterlist.h"
 #include "parsexmlutils.h"
+#include "mqlutil.h"
+#include "querylist.h"
 
 class ReportParameterList : public QDialog, public Ui::ReportParameterList
 {
@@ -35,9 +37,11 @@ public:
     ~ReportParameterList();
 
     virtual void setList( QMap<QString, ORParameter> * m );
+    virtual void setQueryList( QuerySourceList* qlist );
 
 protected:
     QMap<QString,ORParameter> *_map;
+    QuerySourceList* qsList;
 
 protected slots:
     virtual void languageChange();

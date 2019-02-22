@@ -1,4 +1,4 @@
-/*
+  /*
  * OpenRPT report writer and rendering engine
  * Copyright (C) 2001-2018 by OpenMFG, LLC
  *
@@ -32,6 +32,7 @@ class MQLUtil {
 
     static QString mqlLoad(const QString &name, QString &errmsg, bool *valid);
     static QString mqlLoad(const QString &group, const QString &name, QString &errmsg, bool *valid);
+    Q_INVOKABLE static QStringList getParamsFromText(const QString p);
 };
 
 // backwards compatibility functions for xtuple sources

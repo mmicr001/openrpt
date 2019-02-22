@@ -19,6 +19,7 @@
  */
 
 #include "reportparameter.h"
+#include "mqlutil.h"
 
 #include <QButtonGroup>
 #include <QVariant>
@@ -42,6 +43,7 @@ ReportParameter::ReportParameter(QWidget* parent, Qt::WindowFlags fl)
     connect(_add, SIGNAL(clicked()), this, SLOT(sAdd()));
     connect(_edit, SIGNAL(clicked()), this, SLOT(sEdit()));
     connect(_remove, SIGNAL(clicked()), this, SLOT(sRemove()));
+    connect(_mqlParams, SIGNAL(currentIndexChanged(int)), this, SLOT(sUpdateName()));
 }
 
 ReportParameter::~ReportParameter()
@@ -58,7 +60,7 @@ static const char* types[] = { "string", "integer", "double", "bool", NULL };
 
 QString ReportParameter::paramName()
 {
-    return _leName->text();
+    return _mqlParams->currentText();
 }
 
 
@@ -66,7 +68,7 @@ ORParameter ReportParameter::paramData()
 {
   ORParameter param;
 
-  param.name = _leName->text();
+  param.name = _mqlParams->currentText();
   param.type = QString(types[_cbType->currentIndex()]);
   param.defaultValue = _leDefault->text();
   param.description = _tbDescrip->toPlainText();
@@ -89,13 +91,6 @@ ORParameter ReportParameter::paramData()
   return param;
 }
 
-
-void ReportParameter::setParamName( const QString & text)
-{
-    _leName->setText(text);
-}
-
-
 void ReportParameter::setParamData( const ORParameter & param)
 {
   for(int i = 0; types[i] != NULL; i++)
@@ -106,9 +101,12 @@ void ReportParameter::setParamData( const ORParameter & param)
       break;
     }
   }
-  _leDefault->setText(param.defaultValue);
+  if(_mqlParams->count()==0)
+    _mqlParams->addItem(param.name);
+
   _tbDescrip->setText(param.description);
   _active->setChecked(param.active);
+  _leDefault->setText(param.defaultValue);
   if(param.listtype == "static")
   {
     _staticList->setChecked(true);
@@ -166,3 +164,51 @@ void ReportParameter::sRemove()
     delete item;
 }
 
+void ReportParameter::setQueryList( QuerySourceList* qlist )
+{
+  qsList = qlist;
+}
+
+void ReportParameter::setMap(QMap<QString,ORParameter> *map)
+{
+  _map = map;
+}
+
+void ReportParameter::setMode(QString mode)
+{
+  _mode=mode;
+  if (_mode=="new")
+  {
+    this->populateMqlParams();
+  }
+  else if (_mode=="edit")
+  {
+    _mqlParams->setEnabled(false);
+  }
+}
+
+void ReportParameter::populateMqlParams()
+{
+  QStringList params; 
+  for(int i=0; i < qsList->size(); i++)
+  {
+    foreach(QString p,MQLUtil::getParamsFromText(qsList->get(i)->query()) )
+    {
+      if (!_map->contains(p))
+        params << p;    
+    }
+  }
+
+  params.removeDuplicates();
+  foreach(QString param, params)
+    _mqlParams->addItem(param);
+}
+
+void ReportParameter::sUpdateName()
+{
+  if(_mqlParams->currentIndex()!=0)
+  {
+    if(_map->contains(_mqlParams->currentText()))
+      setParamData(_map->value(_mqlParams->currentText()));
+  }
+}

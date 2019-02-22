@@ -39,6 +39,7 @@
 #include <parameter.h>
 #include <xsqlquery.h>
 #include <login.h>
+#include <parsexmlutils.h>
 
 #include "data.h"
 #include "logoutput.h"
@@ -790,36 +791,10 @@ QString MQLEdit::getMetaSQLText()
 
 QStringList MQLEdit::getParamsFromMetaSQLText()
 {
-  return getParamsFromMetaSQLText(getMetaSQLText());
+  return MQLUtil::getParamsFromText(getMetaSQLText());
 }
 
-// TODO: It would be better to alter the metasql parser to do this for us
-QStringList MQLEdit::getParamsFromMetaSQLText(const QString p)
-{
-  QStringList result;
 
-  QRegExp tagre("(<\\?[^?]*\\?>)");
-  for (int i = 0; (i = tagre.indexIn(p, i)) != -1; i += tagre.matchedLength())
-  {
-    QString tag = tagre.cap(1);
-    if (DEBUG)
-      qDebug("getParamsFromMetaSQLText looking at %s", qPrintable(tag));
-
-    QRegExp paramre("(['\\\"])([^'\\\"]+)\\1");
-    for (int j = 0; (j = paramre.indexIn(tag, j)) != -1; j += paramre.matchedLength())
-    {
-      QString param = paramre.cap(2);   // the \w+, not the ['"]
-      if (DEBUG)
-        qDebug("getParamsFromMetaSQLText found %s", qPrintable(param));
-      result.append(param);
-    }
-  }
-
-  result.sort();
-  result.removeDuplicates();
-
-  return result;
-}
 
 void MQLEdit::populateParameterEdit()
 {
