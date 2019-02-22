@@ -55,6 +55,7 @@ public slots:
     virtual void cbFootOdd_toggled( bool yes );
     virtual void cbHeadAny_toggled( bool yes );
     virtual void cbFootAny_toggled( bool yes );
+    virtual void sEnableButtons();
 
 protected:
     DocumentScene * scene;

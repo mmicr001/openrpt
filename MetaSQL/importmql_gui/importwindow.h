@@ -34,8 +34,6 @@ class ImportWindow : public QMainWindow, public Ui::ImportWindow
     ~ImportWindow();
 
   public slots:
-    virtual void helpIndex();
-    virtual void helpContents();
     virtual void helpAbout();
     virtual void fileExit();
     virtual void sAdd();
