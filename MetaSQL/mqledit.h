@@ -33,6 +33,7 @@ class QTextDocument;
 
 #include "metasqlhighlighter.h"
 #include "selectmql.h"
+#include "finddialog.h"
 
 class MQLEdit : public QWidget, public Ui::MQLEdit
 {
@@ -109,6 +110,7 @@ class MQLEdit : public QWidget, public Ui::MQLEdit
     QTextDocument      *_document;
     MetaSQLHighlighter *_highlighter;
     DestType            _dest;
+    FindDialog         *_find;
 };
 
 #endif // MQLEDIT_H

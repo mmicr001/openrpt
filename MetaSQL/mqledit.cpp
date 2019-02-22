@@ -33,6 +33,7 @@
 #include <QTextDocument>
 #include <QTextStream>
 #include <QSettings>
+#include <QDebug>
 #include <QDesktopServices>
 
 #include <parameter.h>
@@ -46,6 +47,7 @@
 #include "mqlutil.h"
 #include "parameteredit.h"
 #include "resultsoutput.h"
+#include "finddialog.h"
 
 #define DEBUG false
 
@@ -135,6 +137,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   clear();
 
   setDestType(MQLUnknown);
+
+  _find = new FindDialog(this);
 }
 
 MQLEdit::~MQLEdit()
@@ -266,8 +270,8 @@ void MQLEdit::clear()
 
 void MQLEdit::editFind()
 {
-  QMessageBox::information(this, tr("Not Yet Implemented"),
-             tr("This function has not been implemented."));
+  _find->setTextEdit(_text);
+  _find->show();
 }
 
 void MQLEdit::helpMqlEditor()
