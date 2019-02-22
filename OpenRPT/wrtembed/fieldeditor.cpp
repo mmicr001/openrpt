@@ -19,12 +19,10 @@
  */
 
 #include "fieldeditor.h"
-#include "../../MetaSQL/metasql.h"
 
 #include <QVariant>
 #include <QFontDialog>
 #include <QValidator>
-#include <QSqlRecord>
 
 #include <builtinformatfunctions.h>
 
