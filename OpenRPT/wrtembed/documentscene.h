@@ -56,7 +56,6 @@ class DocumentScene : public QGraphicsScene
     void docInfoEditor(QWidget * parent = 0);
     void docPageSetup(QWidget * parent = 0);
     void querySourceList(QWidget * parent = 0);
-    void updateColumnNames();    
 
     // Label Definitions
     void editLabelDefinitions(QWidget * parent = 0);
@@ -212,6 +211,7 @@ class DocumentScene : public QGraphicsScene
     void deleteSelected();
     void refreshFontToolBox();
     void onSelChanged();
+    void updateColumnNames();
 
   signals:
     void modified();

@@ -43,7 +43,6 @@ class DocumentWindow : public QMainWindow
 
   public slots:
     virtual void setCaption();
-    void updateSceneQueryColumns();
 
   protected:
     virtual void closeEvent(QCloseEvent * e);

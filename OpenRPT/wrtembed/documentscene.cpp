@@ -63,6 +63,7 @@ DocumentScene::DocumentScene(bool newDoc, ReportHandler *handler, QObject * pare
   }
 
   connect(this, SIGNAL(selectionChanged()), this, SLOT(onSelChanged()));
+  connect(_handler, SIGNAL(dbOpenClosed()), this, SLOT(updateColumnNames()) );
 
   _loadingInProgress = false;
 }
@@ -605,6 +606,7 @@ void DocumentScene::querySourceList(QWidget * parent)
 
 void DocumentScene::updateColumnNames()
 {
+  qDebug() << "updateColumnNames";
   for(int j=0; j<int(this->qsList->size()); j++)
   {
     QDomNodeList sectionElem;
