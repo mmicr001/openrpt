@@ -25,7 +25,7 @@
 #include <QString>
 #include <QTextEdit>
 
-#include "ui_finddialog.h"
+#include "tmp/ui_finddialog.h"
 
 class FindDialog : public QDialog, public Ui::Find
 {

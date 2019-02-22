@@ -32,8 +32,8 @@ MOC_DIR     = tmp
 OBJECTS_DIR = tmp
 UI_DIR      = tmp
 
-INCLUDEPATH += .. ../tmp ../../common ../../common/tmp ../../../openrpt-build-desktop/MetaSQL/tmp  ../../../openrpt-build-desktop/common
-DEPENDPATH  += .. ../tmp ../../common ../../common/tmp ../../../openrpt-build-desktop/MetaSQL/tmp  ../../../openrpt-build-desktop/common
+INCLUDEPATH += .. ../tmp ../../common  ../../../openrpt-build-desktop/MetaSQL/tmp  ../../../openrpt-build-desktop/common
+DEPENDPATH  += .. ../tmp ../../common  ../../../openrpt-build-desktop/MetaSQL/tmp  ../../../openrpt-build-desktop/common
 
 QMAKE_LIBDIR = ../../lib $$QMAKE_LIBDIR
 LIBS        += -lMetaSQL -lopenrptcommon
