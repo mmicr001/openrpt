@@ -51,6 +51,17 @@ EditPreferences::EditPreferences(QWidget* parent, Qt::WindowFlags fl)
             break;
         }
     }
+
+    //initialize combobox
+    _cbPageSize->clear();
+    _cbPageSize->addItem(tr("Letter"), "Letter");
+    _cbPageSize->addItem(tr("Legal"), "Legal");
+    _cbPageSize->addItem(tr("A4"), "A4");
+    _cbPageSize->addItem(tr("Custom"), "Custom");
+    _cbPageSize->addItem(tr("Label"), "Label");
+
+    _rbPortrait->setChecked(false);
+    _rbLandscape->setChecked(false);
 }
 
 EditPreferences::~EditPreferences()
@@ -154,5 +165,18 @@ QFont EditPreferences::defaultFont()
 void EditPreferences::selLanguage( QString sel )
 {
     _selectedLanguage = sel;
+}
+
+void EditPreferences::setPageSize(QString ps)
+{
+   _cbPageSize->setCurrentText(ps);
+}
+
+void  EditPreferences::setPageOrientation(QString po)
+{
+  if(po=="portrait")
+    _rbPortrait->setChecked(true);
+  else
+    _rbLandscape->setChecked(true);
 }
 

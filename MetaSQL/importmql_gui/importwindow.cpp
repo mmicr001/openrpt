@@ -30,6 +30,7 @@
 #include <QMessageBox>
 #include <QStringList>
 #include <QDomNode>
+#include <QDesktopServices>
 
 #include "data.h"
 
@@ -44,8 +45,6 @@ ImportWindow::ImportWindow(QWidget* parent, Qt::WindowFlags fl)
   (void)statusBar();
 
   // signals and slots connections
-  connect(helpIndexAction, SIGNAL(triggered()), this, SLOT(helpIndex()));
-  connect(helpContentsAction, SIGNAL(triggered()), this, SLOT(helpContents()));
   connect(helpAboutAction, SIGNAL(triggered()), this, SLOT(helpAbout()));
   connect(fileExitAction, SIGNAL(triggered()), this, SLOT(fileExit()));
   connect(fileOpenAction, SIGNAL(triggered()), this, SLOT(sAdd()));
@@ -81,17 +80,6 @@ ImportWindow::~ImportWindow()
 void ImportWindow::languageChange()
 {
     retranslateUi(this);
-}
-
-void ImportWindow::helpIndex()
-{
-  QMessageBox::information(this, tr("Not Yet Implemented"), tr("This function has not been implemented."));
-}
-
-
-void ImportWindow::helpContents()
-{
-  QMessageBox::information(this, tr("Not Yet Implemented"), tr("This function has not been implemented."));
 }
 
 

@@ -34,6 +34,7 @@
 #include <QTextStream>
 #include <QSettings>
 #include <QDebug>
+#include <QDesktopServices>
 
 #include <parameter.h>
 #include <xsqlquery.h>
@@ -77,8 +78,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   connect(fileSaveAction,              SIGNAL(triggered()), this, SLOT(fileSave()));
   connect(fileSaveAsAction,            SIGNAL(triggered()), this, SLOT(fileSaveAs()));
   connect(helpAboutAction,             SIGNAL(triggered()), this, SLOT(helpAbout()));
-  connect(helpContentsAction,          SIGNAL(triggered()), this, SLOT(helpContents()));
-  connect(helpIndexAction,             SIGNAL(triggered()), this, SLOT(helpIndex()));
+  connect(helpMqlSyntaxAction,         SIGNAL(triggered()), this, SLOT(helpMqlSyntax()));
+  connect(helpMqlEditorAction,         SIGNAL(triggered()), this, SLOT(helpMqlEditor()));
   connect(searchForParametersAction,   SIGNAL(triggered()), this, SLOT(populateParameterEdit()));
   connect(toolsExecute_QueryAction,    SIGNAL(triggered()), this, SLOT(execQuery()));
   connect(toolsParse_QueryAction,      SIGNAL(triggered()), this, SLOT(parseQuery()));
@@ -273,16 +274,14 @@ void MQLEdit::editFind()
   _find->show();
 }
 
-void MQLEdit::helpIndex()
+void MQLEdit::helpMqlEditor()
 {
-  QMessageBox::information(this, tr("Not Yet Implemented"),
-             tr("This function has not been implemented."));
+  QDesktopServices::openUrl(QUrl("https://xtupleuniversity.xtuple.com/sites/default/files/prodguide/openrpt/ch03s01s01.html"));
 }
 
-void MQLEdit::helpContents()
+void MQLEdit::helpMqlSyntax()
 {
-  QMessageBox::information(this, tr("Not Yet Implemented"),
-             tr("This function has not been implemented."));
+  QDesktopServices::openUrl(QUrl("https://xtupleuniversity.xtuple.com/sites/default/files/prodguide/openrpt/ch03s02.html"));
 }
 
 void MQLEdit::helpAbout()

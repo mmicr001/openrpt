@@ -709,27 +709,16 @@ void ORGraphicsRectItem::buildXMLCommon(QDomDocument & doc, QDomElement & entity
 }
 
 
-bool ORGraphicsRectItem::_readDefaultFont = false;
 QFont ORGraphicsRectItem::_defaultFont = QFont();
 
 QFont ORGraphicsRectItem::getDefaultEntityFont()
 {
-  if(!_readDefaultFont)
-  {
-    QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-    _defaultFont.fromString(settings.value("/OpenMFG/rwDefaultEntityFont",_defaultFont.toString()).toString());
-    _readDefaultFont = true;
-	QFontDatabase fdb;
-  }
   return _defaultFont;
 }
 
 void ORGraphicsRectItem::setDefaultEntityFont(const QFont & f)
 {
   _defaultFont = f;
-  QSettings settings(QSettings::UserScope, "OpenMFG.com", "OpenReports");
-  settings.setValue("/OpenMFG/rwDefaultEntityFont", _defaultFont.toString());
-  _readDefaultFont = true;
 }
 
 void ORGraphicsRectItem::setRotation(qreal angle) 

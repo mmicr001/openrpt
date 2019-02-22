@@ -35,8 +35,11 @@ ReportParameterList::ReportParameterList(QWidget* parent, Qt::WindowFlags fl)
     connect(_btnEdit, SIGNAL(clicked()), this, SLOT(sEdit()));
     connect(_btnDelete, SIGNAL(clicked()), this, SLOT(sDelete()));
     connect(_lbParameters, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(sEdit(QListWidgetItem*)));
+    connect(_lbParameters, SIGNAL(itemSelectionChanged()), this, SLOT(sEnableButtons()));
 
     _map = 0;
+    _btnEdit->setEnabled(false);
+    _btnDelete->setEnabled(false);
 }
 
 ReportParameterList::~ReportParameterList()
@@ -121,3 +124,8 @@ void ReportParameterList::setList(QMap<QString, ORParameter> * m)
     }
 }
 
+void ReportParameterList::sEnableButtons()
+{
+  _btnEdit->setEnabled(!_lbParameters->selectedItems().isEmpty());
+  _btnDelete->setEnabled(!_lbParameters->selectedItems().isEmpty());
+}
