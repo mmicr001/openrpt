@@ -24,6 +24,7 @@
 #include <QDialog>
 
 #include "ui_fieldeditor.h"
+#include "documentscene.h"
 
 class FieldEditor : public QDialog, public Ui::FieldEditor
 {
@@ -39,10 +40,14 @@ public slots:
     virtual void tbText_textChanged(const QString & Str);
     virtual void setLabelFlags(int f);
     virtual void rbHAlignNone_clicked();
+    virtual void setDocScene(DocumentScene * scene);
+    virtual void populateColumns();
 
 protected slots:
     virtual void languageChange();
 
+private:
+  DocumentScene * ds;
 };
 
 #endif // FIELDEDITOR_H

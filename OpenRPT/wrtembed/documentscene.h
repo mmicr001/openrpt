@@ -211,6 +211,7 @@ class DocumentScene : public QGraphicsScene
     void deleteSelected();
     void refreshFontToolBox();
     void onSelChanged();
+    void updateColumnNames();
 
   signals:
     void modified();

@@ -45,6 +45,8 @@ class QuerySource
     QString metaSqlGroup() const;
     void setMetaSqlName(const QString &);
     QString metaSqlName() const;
+    void setColNames(const QStringList &);
+    QStringList colNames() const;
 
     // This is a special overload that will return the loaded query
     // if that is what is needed or the specified query otherwise.
@@ -56,6 +58,7 @@ class QuerySource
     bool    _loadFromDb;
     QString _mqlGroup;
     QString _mqlName;
+    QStringList _colNames;
 
     friend class QuerySourceList;
     QuerySourceList *_inList;
@@ -79,6 +82,7 @@ class QuerySourceList : public QObject
 
     QuerySource * get(int i);
     QuerySource * get(const QString & name);
+    bool contains(QString name);
 
   signals:
     void updated();

@@ -37,7 +37,8 @@ FieldEditor::FieldEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
     connect(btnFont, SIGNAL(clicked()), this, SLOT(btnFont_clicked()));
     connect(rbVAlignBottom, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
-    connect(tbColumn, SIGNAL(textChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+    connect(cbColumn, SIGNAL(currentTextChanged(const QString&)), this, SLOT(tbText_textChanged(const QString&)));
+    connect(cbQuery, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(populateColumns()));
     connect(rbHAlignNone, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignLeft, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
     connect(rbHAlignCenter, SIGNAL(clicked()), this, SLOT(rbAlign_changed()));
@@ -154,3 +155,19 @@ void FieldEditor::rbHAlignNone_clicked()
 
 }
 
+void FieldEditor::setDocScene(DocumentScene * scene)
+{
+  ds = scene;
+}
+
+void FieldEditor::populateColumns()
+{ 
+  cbColumn->clear();
+  QStringList cols;
+
+  if(ds->qsList->contains(cbQuery->currentText()))
+    cols = ds->qsList->get(cbQuery->currentText())->colNames();
+
+  cols.sort();
+  cbColumn->addItems(cols);
+}
