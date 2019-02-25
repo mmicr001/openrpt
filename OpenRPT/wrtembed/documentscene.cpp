@@ -35,7 +35,7 @@
 #include "reportgridoptions.h"
 #include "fontutils.h"
 #include "labeldefinitions.h"
-#include "../../MetaSQL/metasql.h"
+#include "metasql.h"
 
 
 #include <xsqlquery.h>
@@ -606,8 +606,7 @@ void DocumentScene::querySourceList(QWidget * parent)
 
 void DocumentScene::updateColumnNames()
 {
-  qDebug() << "updateColumnNames";
-  for(int j=0; j<int(this->qsList->size()); j++)
+  for(unsigned int j=0; j<this->qsList->size(); j++)
   {
     QDomNodeList sectionElem;
     QDomElement sec;
@@ -626,7 +625,7 @@ void DocumentScene::updateColumnNames()
     
     qry = qsList->get(j)->name();
     if(qry=="Context Query" || qry=="Parameter Query" || qry=="-- Select Query --")
-      return;
+      continue;
       
     QSqlDatabase db = QSqlDatabase::database();
     if (!qry.isEmpty() && db.isOpen())
