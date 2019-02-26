@@ -46,12 +46,12 @@ SOURCES = data.cpp \
           parameterproperties.cpp \
           paramlistedit.cpp \
           parameteredit.cpp \
-          parsexmlutils.cpp \
-          querysource.cpp \
           reportpageoptions.cpp \
           memdbloader.cpp \
           finddialog.cpp \
-          ../OpenRPT/common/builtinSqlFunctions.cpp
+          ../OpenRPT/common/builtinSqlFunctions.cpp \
+          ../OpenRPT/common/querysource.cpp \
+          ../OpenRPT/common/parsexmlutils.cpp \
 
           
 HEADERS = data.h \
@@ -66,12 +66,12 @@ HEADERS = data.h \
           parameterproperties.h \
           paramlistedit.h \
           parameteredit.h \
-          parsexmlutils.h \
-          querysource.h \
           reportpageoptions.h \
           memdbloader.h \
           finddialog.h \
-          ../OpenRPT/common/builtinSqlFunctions.h
+          ../OpenRPT/common/builtinSqlFunctions.h \
+          ../OpenRPT/common/querysource.h \
+          ../OpenRPT/common/parsexmlutils.h \
 
           
 FORMS   =  parameterproperties.ui \
