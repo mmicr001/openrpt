@@ -234,38 +234,38 @@
 <context>
     <name>ColorList</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="54"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="89"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="138"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="58"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="93"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="142"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="54"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="89"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="138"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="58"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="93"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="142"/>
         <source>This dialog was not properly setup and cannot perform the requested action!</source>
         <translation>Этот диалог не был правильно настроен и не может исполнить необходимое действие!</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="67"/>
         <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="71"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="104"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="75"/>
         <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="108"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="112"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="68"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="105"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="72"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="109"/>
         <source>No color name was specified!
 Please specify a name for this color.</source>
         <translation>Не указано название цвета!
 Пожалуйста укажите название этого цвета.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="72"/>
-        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="109"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="76"/>
+        <location filename="../OpenRPT/wrtembed/colorlist.cpp" line="113"/>
         <source>The color name you specified is already in use!
 Please specify a UNIQUE name for this color.</source>
         <translation>Указанное Вами название цвета уже используется!
@@ -820,82 +820,82 @@ Please specify a UNIQUE name for this color.</source>
 <context>
     <name>DocumentScene</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="380"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="387"/>
         <source>No Section</source>
         <translation>Без Секции</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="381"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="388"/>
         <source>You must place an object inside a section on the report.</source>
         <translation>Вы должны поместить обьект внутри секции отчета.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="682"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="729"/>
         <source>Report Header</source>
         <translation>Верхний Колонтитул</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="707"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="754"/>
         <source>Report Footer</source>
         <translation>Нижний Колонтитул</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="732"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="779"/>
         <source>Page Header (First)</source>
         <translation>Верх.Колонт. Стр. (Перв)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="757"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="804"/>
         <source>Page Header (Odd)</source>
         <translation>Верх.Колонт. Стр. (Нечет)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="782"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="829"/>
         <source>Page Header (Even)</source>
         <translation>Верх.Колонт. Стр.  (Чет)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="807"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="854"/>
         <source>Page Header (Last)</source>
         <translation>Верх.Колонт. Стр. (Посл)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="832"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="879"/>
         <source>Page Header (Any)</source>
         <translation>Верх.Колонт. Стр. (Все)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="857"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="904"/>
         <source>Page Footer (First)</source>
         <translation>Верх.Колонт. Стр. (Перв.)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="882"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="929"/>
         <source>Page Footer (Odd)</source>
         <translation>Нижн.Колонт. Стр. (Нечет)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="907"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="954"/>
         <source>Page Footer (Even)</source>
         <translation>Нижн.Колонт. Стр. (Чет)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="932"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="979"/>
         <source>Page Footer (Last)</source>
         <translation>Нижн.Колонт. Стр. (Посл)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="957"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1004"/>
         <source>Page Footer (Any)</source>
         <translation>Нижн.Колонт. Стр. (Все)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1077"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1124"/>
         <source>Report Writer</source>
         <translation>Редактор Отчетов</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1078"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1125"/>
         <source>Unable to open/create file for writing!
 Save Failed! Check to make sure that you have
 permissions to the file you are trying to save to.</source>
@@ -904,37 +904,37 @@ permissions to the file you are trying to save to.</source>
 привилегий для файла в который Вы хотите сохранить.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1081"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1128"/>
         <source>Ok</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1091"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1138"/>
         <source>Choose filename to save</source>
         <translation>Выберите название файла</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1091"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1138"/>
         <source>XML (*.xml)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1112"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1159"/>
         <source>Save Report to Database</source>
         <translation>Сохранить Отчет в Базу Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1219"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="1266"/>
         <source>Error saving to database</source>
         <translation>Ошибка Сохранения в Базу Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="2423"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="2470"/>
         <source>Invalid Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="2424"/>
+        <location filename="../OpenRPT/wrtembed/documentscene.cpp" line="2471"/>
         <source>The detail section %1 is not valid because no query is specified.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -982,69 +982,129 @@ Do you want to save the changes before closing?</source>
 <context>
     <name>EditPreferences</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="36"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="37"/>
         <source>Preferences</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="69"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="65"/>
+        <source>Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="106"/>
         <source>Default Font</source>
         <translation>Шрифт по Умолчанию</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="100"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="137"/>
         <source>&amp;Font...</source>
         <translation>&amp;Шрифт...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="110"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="147"/>
         <source>Grid Options</source>
         <translation>Опции Сетки</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="131"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="168"/>
         <source>Show grid</source>
         <translation>Показать сетку</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="138"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="175"/>
         <source>Snap to grid</source>
         <translation>Подвести к сетке</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="151"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="188"/>
         <source>Grid Size Interval</source>
         <translation>Интервал Размера Сетки</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="175"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="251"/>
         <source>X Interval:</source>
         <translation>Интервал X:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="188"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="232"/>
         <source>Y Interval:</source>
         <translation>Интервал Y:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="207"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="225"/>
         <source>Symetrical values</source>
         <translation>Симметричные значения</translation>
     </message>
     <message>
         <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="273"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="281"/>
+        <source>Page Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="296"/>
+        <source>Portrait</source>
+        <translation type="unfinished">Портрет</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="306"/>
+        <source>Page Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="313"/>
+        <source>Orientation</source>
+        <translation type="unfinished">Ориентация</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="320"/>
+        <source>Landscape</source>
+        <translation type="unfinished">Альбом</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="360"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="280"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="367"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="51"/>
+        <location filename="../OpenRPT/wrtembed/editpreferences.ui" line="75"/>
         <source>Language :</source>
         <translation>Язык :</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.cpp" line="57"/>
+        <source>Letter</source>
+        <translation type="unfinished">Письмо</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.cpp" line="58"/>
+        <source>Legal</source>
+        <translation type="unfinished">Стандарт</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.cpp" line="59"/>
+        <source>A4</source>
+        <translation type="unfinished">A4</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.cpp" line="60"/>
+        <source>Custom</source>
+        <translation type="unfinished">Другой</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/editpreferences.cpp" line="61"/>
+        <source>Label</source>
+        <translation type="unfinished">Метка</translation>
     </message>
 </context>
 <context>
@@ -1055,7 +1115,7 @@ Do you want to save the changes before closing?</source>
         <translation>Параметры (Поле)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="81"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="78"/>
         <source>Query Source:</source>
         <translation>Источник Запроса:</translation>
     </message>
@@ -1065,209 +1125,233 @@ Do you want to save the changes before closing?</source>
         <translation>Колонка:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="93"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="103"/>
         <source>Display as Running Total</source>
         <translation>Отобразить как Итог Выполнения</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="148"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="158"/>
         <source>String Format </source>
         <translation>Формат Строки</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="167"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="177"/>
         <source>Example: %0.2f</source>
         <translation>Пример: %0.2f</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="196"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="206"/>
         <source>Built-in Locale Format</source>
         <translation>Встроенный Формат Локали</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="103"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="113"/>
         <source>Use Subtotal Value</source>
         <translation>Использовать Значение Вместе</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="110"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="120"/>
         <source>Format</source>
         <translation>Формат:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="221"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="231"/>
         <source>Array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="248"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="275"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="258"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="285"/>
         <source>1</source>
         <translation type="unfinished">1</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="255"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="265"/>
         <source>Columns:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="262"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="272"/>
         <source>Lines:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="295"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="305"/>
         <source>H spacing:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="302"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="312"/>
         <source>V spacing:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="315"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="328"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="325"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="338"/>
         <source>0</source>
         <translation type="unfinished">0</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="335"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="345"/>
         <source>Page break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="342"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="352"/>
         <source>Fill columns first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="388"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="398"/>
         <source>HAlign</source>
         <translation>Горизонтально</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="394"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="452"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="404"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="462"/>
         <source>None</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="401"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="411"/>
         <source>Left</source>
         <translation>Слева</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="408"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="418"/>
         <source>Center</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="415"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="425"/>
         <source>Right</source>
         <translation>Справа</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="431"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="441"/>
         <source>VAlign</source>
         <translation>Вертикально</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="459"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="469"/>
         <source>Top</source>
         <translation>Вверху</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="466"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="476"/>
         <source>Middle</source>
         <translation>В середине</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="473"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="483"/>
         <source>Bottom</source>
         <translation>Bas</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="485"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="495"/>
         <source>Word wrap</source>
         <translation>Окантовка Слова</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="492"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="502"/>
         <source>Position/Size</source>
         <translation>Позиция/Размер</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="520"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="527"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="530"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="537"/>
         <source>0.01</source>
         <translation>0.01</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="513"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="523"/>
         <source>Y:</source>
         <translation>Y:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="534"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="544"/>
         <source>Height:</source>
         <translation>Высота:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="548"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="558"/>
         <source>X:</source>
         <translation>X:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="562"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="572"/>
         <source>Width:</source>
         <translation>Ширина:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="580"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="590"/>
         <source>in inches</source>
         <translation>в дюймах</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="541"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="555"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="551"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="565"/>
         <source>0.00</source>
         <translation>0.00</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="615"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="625"/>
         <source>Preview:</source>
         <translation>Предпросмотр:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="640"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="650"/>
         <source>Preview Area</source>
         <translation>Зона Предпросмотра</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="669"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="679"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="672"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="682"/>
         <source>Alt+O</source>
         <translation>Alt+O</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="685"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="695"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="688"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="698"/>
         <source>Alt+C</source>
         <translation>Alt+C</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="714"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="724"/>
         <source>&amp;Font...</source>
         <translation>&amp;Шрифт...</translation>
+    </message>
+</context>
+<context>
+    <name>Find</name>
+    <message>
+        <location filename="../common/finddialog.ui" line="14"/>
+        <location filename="../common/finddialog.ui" line="39"/>
+        <source>Find</source>
+        <translation type="unfinished">Найти</translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="27"/>
+        <source>Search for :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="49"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="74"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;No matches found&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1769,7 +1853,7 @@ Do you want to save the changes before closing?</source>
     <name>ImportWindow</name>
     <message>
         <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="30"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="100"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="88"/>
         <source>MetaSQL Import Tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1785,11 +1869,11 @@ Do you want to save the changes before closing?</source>
     </message>
     <message>
         <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="85"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="240"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="243"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="215"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="218"/>
         <location filename="../OpenRPT/import_gui/importwindow.ui" line="74"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="234"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="237"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="222"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="225"/>
         <source>&amp;Add</source>
         <translation type="unfinished">&amp;Добавить</translation>
     </message>
@@ -1842,51 +1926,27 @@ Do you want to save the changes before closing?</source>
         <translation type="unfinished">&amp;Помощь</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="199"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="193"/>
-        <source>&amp;Contents...</source>
-        <translation type="unfinished">&amp;Содержимое...</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="202"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="196"/>
-        <source>Contents</source>
-        <translation type="unfinished">Содержимое</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="210"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="204"/>
-        <source>&amp;Index...</source>
-        <translation type="unfinished">&amp;Индекс...</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="213"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="207"/>
-        <source>Index</source>
-        <translation type="unfinished">Индекс</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="221"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="215"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="196"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="203"/>
         <source>&amp;About</source>
         <translation type="unfinished">&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="224"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="218"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="199"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="206"/>
         <source>About</source>
         <translation type="unfinished">О программе</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="232"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="235"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="226"/>
-        <location filename="../OpenRPT/import_gui/importwindow.ui" line="229"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="207"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.ui" line="210"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="214"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="217"/>
         <source>E&amp;xit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="63"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="62"/>
         <source>&lt;font color=red&gt;The following error was encountered retrieving available schemas:
 	%1
 	%2
@@ -1894,23 +1954,7 @@ Do you want to save the changes before closing?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="88"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="94"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="80"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="86"/>
-        <source>Not Yet Implemented</source>
-        <translation type="unfinished">Еще не Разработано</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="88"/>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="94"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="80"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="86"/>
-        <source>This function has not been implemented.</source>
-        <translation type="unfinished">Эта функция еще не доступна в этой версии.</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="101"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="89"/>
         <source>%1 version %2
 %3, All Rights Reserved
 Build: %4
@@ -1919,33 +1963,33 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="116"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="104"/>
         <source>Select one or more MetaSQL files to open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="117"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="105"/>
         <source>MetSQL (*.mql)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="137"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="130"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="125"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="124"/>
         <source>Import Started...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="141"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="129"/>
         <source>No Reports Selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="142"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="130"/>
         <source>You have not selected any reports to import. Would you like to select all loaded reports now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="154"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="142"/>
         <source>&lt;font color=red&gt;The following error was encountered disabling the trigger:
 	%1
 	%2
@@ -1953,8 +1997,8 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="198"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="234"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="186"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="228"/>
         <source>&lt;font color=red&gt;The following error was encountered while trying to import %1 into the database:
 	%2
 	%3
@@ -1962,42 +2006,42 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="211"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="199"/>
         <source>The saveMetasql stored procedure failed for %1, returning %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="215"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="241"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="203"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="235"/>
         <source>Import successful of %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="218"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="206"/>
         <source>No results returned from query for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="222"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="210"/>
         <source>&lt;font color=orange&gt;The document %1 does not have a name and/or group defined
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="226"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="214"/>
         <source>&lt;font color=red&gt;Error reading file %1 or file was empty
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="230"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="256"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="218"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="250"/>
         <source>&lt;font color=red&gt;Could not open the specified file: %1
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="239"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="227"/>
         <source>&lt;font color=red&gt;The following error was encountered re-enabling the trigger:
 	%1
 	%2
@@ -2005,8 +2049,8 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="244"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="262"/>
+        <location filename="../MetaSQL/importmql_gui/importwindow.cpp" line="232"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="256"/>
         <source>Import complete!
 
 
@@ -2015,7 +2059,7 @@ Build: %4
     </message>
     <message>
         <location filename="../OpenRPT/import_gui/importwindow.ui" line="30"/>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="92"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="86"/>
         <source>Report Import Tool</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2030,7 +2074,17 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="93"/>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="192"/>
+        <source>&amp;Reference Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/import_gui/importwindow.ui" line="195"/>
+        <source>Reference Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="87"/>
         <source>%1 version %2
 %3, All Rights Reserved
 Build: %4
@@ -2039,40 +2093,40 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="109"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="103"/>
         <source>Select one or more reports to open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="110"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="104"/>
         <source>Report Definitions (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="244"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="238"/>
         <source>&lt;font color=orange&gt;The document %1 does not have a report name defined
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="248"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="242"/>
         <source>&lt;font color=red&gt;XML Document %1 does not have root node of report
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="252"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="246"/>
         <source>&lt;font color=red&gt;Error parsing file %1: %2 on line %3 column %4
 &lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="286"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="280"/>
         <source>Edit Grade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="286"/>
+        <location filename="../OpenRPT/import_gui/importwindow.cpp" line="280"/>
         <source>Grade: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2184,12 +2238,12 @@ Build: %4
         <translation type="unfinished">Удалить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/labeldefinitions.cpp" line="121"/>
+        <location filename="../OpenRPT/wrtembed/labeldefinitions.cpp" line="126"/>
         <source>Delete Label Definition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/labeldefinitions.cpp" line="122"/>
+        <location filename="../OpenRPT/wrtembed/labeldefinitions.cpp" line="127"/>
         <source>Really delete this label definition?  This cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2359,56 +2413,42 @@ Build: %4
 <context>
     <name>MQLEdit</name>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="268"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="274"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="280"/>
-        <source>Not Yet Implemented</source>
-        <translation>Еще не Разработано</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="269"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="275"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="281"/>
-        <source>This function has not been implemented.</source>
-        <translation>Эта функция еще не доступна в этой версии.</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="105"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="109"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="161"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="167"/>
         <source>Open File</source>
         <translation type="unfinished">Открыть Файл</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="162"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="168"/>
         <source>MetaSQL (*.mql)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="207"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="213"/>
         <source>Database only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="208"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="214"/>
         <source>File only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="209"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="215"/>
         <source>Database and File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="286"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="290"/>
         <source>About %1</source>
         <translation type="unfinished">Обо %1</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="287"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="291"/>
         <source>%1 version %2
 %3
 Build: %4
@@ -2417,176 +2457,176 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="306"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="310"/>
         <source>Document Modified!</source>
         <translation>Документ Изменен!</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="307"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="311"/>
         <source>Would you like to save your changes before continuing?</source>
         <translation>Вы хотите сохранить изменения перед продолжением?</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="320"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="324"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="321"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="325"/>
         <source>Encountered an unknown response. No action will be taken.</source>
         <translation>Обнаружен неизвестный ответ. Действия не будут применены.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="338"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="342"/>
         <source>No file Specified</source>
         <translation>Файл не Указан</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="339"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="343"/>
         <source>No file was specified to save to.</source>
         <translation>Не был указан файл для сохранения.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="357"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="361"/>
         <source>Error Saving file</source>
         <translation>Ошибка Сохранения Файла</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="358"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="362"/>
         <source>There was an error while trying to save the file.</source>
         <translation>Возникла ошибка при сохранении файла.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="378"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="382"/>
         <source>Save MetaSQL File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="382"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="386"/>
         <source>MetaSQL Files (*.mql);;Text Files (*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="389"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="900"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="393"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="878"/>
         <source>[*]%1 - File: %2 (%3)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="496"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="582"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="649"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="500"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="586"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="653"/>
         <source>Database Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="497"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="501"/>
         <source>&lt;p&gt;Trying to read the MetaSQL statement, the database server returned an error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="504"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="508"/>
         <source>Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="505"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="509"/>
         <source>&lt;p&gt;Could not find the MetaSQL statement with id %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="583"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="587"/>
         <source>&lt;p&gt;There was a problem saving the MetaSQL statement. Only database administrators may change grade 0 statements. Either %1 and choose a different grade or log in as a database administrator to make your changes.&lt;/p&gt;&lt;pre&gt;%2&lt;/pre&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="623"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="627"/>
         <source>Save to %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="624"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="628"/>
         <source>&lt;p&gt;Do you also want to save this MetaSQL statement to %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="634"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="640"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="638"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="644"/>
         <source>Could not save MetaSQL statement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="635"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="639"/>
         <source>&lt;p&gt;Trying to save the MetaSQL statement, saveMetasql returned the error code %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="641"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="645"/>
         <source>&lt;p&gt;Trying to save the MetaSQL statement, the database server returned an error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="650"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="654"/>
         <source>&lt;p&gt;There was a problem resetting triggers.Please manually enable the %1 trigger on the %2 table.&lt;/p&gt;&lt;pre&gt;%3&lt;/pre&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="676"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="702"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="680"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="706"/>
         <source>---- Parsing Query ----
 </source>
         <translation>---- Анализ Запроса ----
 </translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="680"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="707"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="684"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="711"/>
         <source>Query parsed.</source>
         <translation>Запрос разобран.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="682"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="745"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="686"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="749"/>
         <source>ERROR: Invalid query!</source>
         <translation>ОШИБКА: Неверный Запрос!</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="691"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="695"/>
         <source>Not Connected</source>
         <translation>Нет Соединения</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="692"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="696"/>
         <source>You must be connected to a database in order to execute a query.</source>
         <translation>Вы должны быть соединены с базой даных для запуска запроса.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="708"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="712"/>
         <source>---- Executing Query ----</source>
         <translation>---- Запуск Запроса ----</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="735"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="739"/>
         <source>Failed to execute query.</source>
         <translation>Ошибка запуска запроса.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="879"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="857"/>
         <source>Save (File)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="883"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="861"/>
         <source>Save (Database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="904"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="882"/>
         <source>[*]%1 - Group: %2 Name: %3 Grade: %4 (%5)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="59"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="63"/>
         <source>MetaSQL Editor</source>
         <translation>Редактор MetaSQL</translation>
     </message>
@@ -2618,6 +2658,26 @@ Build: %4
     <message>
         <location filename="../MetaSQL/mqledit.ui" line="194"/>
         <source>Save &amp;As... (File)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MetaSQL/mqledit.ui" line="317"/>
+        <source>&amp;MetaSQL Syntax Reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MetaSQL/mqledit.ui" line="320"/>
+        <source>MetaSQL Syntax Reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MetaSQL/mqledit.ui" line="328"/>
+        <source>&amp;MetaSQL Editor reference</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MetaSQL/mqledit.ui" line="331"/>
+        <source>MetaSQL Editor reference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2668,8 +2728,8 @@ Build: %4
     </message>
     <message>
         <location filename="../MetaSQL/mqledit.ui" line="186"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="866"/>
         <location filename="../MetaSQL/mqledit.cpp" line="888"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="910"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
@@ -2797,26 +2857,6 @@ Build: %4
         <location filename="../MetaSQL/mqledit.ui" line="312"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.ui" line="317"/>
-        <source>&amp;Contents...</source>
-        <translation>&amp;Содержимое...</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.ui" line="320"/>
-        <source>Contents</source>
-        <translation>Содержимое</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.ui" line="328"/>
-        <source>&amp;Index...</source>
-        <translation>&amp;Индекс...</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.ui" line="331"/>
-        <source>Index</source>
-        <translation>Индекс</translation>
     </message>
     <message>
         <location filename="../MetaSQL/mqledit.ui" line="343"/>
@@ -3656,26 +3696,26 @@ The root node is not &apos;report&apos;.</source>
     </message>
     <message>
         <location filename="../common/data.cpp" line="28"/>
-        <source>3.4.0-alpha</source>
+        <source>3.4.0-beta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="768"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="772"/>
         <source>MQLEdit for Windows</source>
         <translation>MQLEdit для Windows</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="770"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="774"/>
         <source>MQLEdit for Linux</source>
         <translation>MQLEdit для Linux</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="772"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="776"/>
         <source>MQLEdit for OS X</source>
         <translation>MQLEdit для OS X</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="774"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="778"/>
         <source>MQLEdit</source>
         <translation>MQLEdit</translation>
     </message>
@@ -3729,40 +3769,40 @@ The root node is not &apos;report&apos;.</source>
         <translation type="unfinished">Невозможно соединится с базой данных согласно предоставленой информации.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqlutil.cpp" line="140"/>
+        <location filename="../MetaSQL/mqlutil.cpp" line="143"/>
         <source>Could not open file &apos;%1&apos;: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1678"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1708"/>
         <source>OpenRPT Report Writer for Windows</source>
         <translation>OpenRPT Редактор Отчетов для Windows</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1680"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1710"/>
         <source>OpenRPT Report Writer for Linux</source>
         <translation>OpenRPT Редактор Отчетов для Linux</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1682"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1712"/>
         <source>OpenRPT Report Writer for OS X</source>
         <translation>OpenRPT Редактор Отчетов для OS X</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1684"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1714"/>
         <source>OpenRPT Report Writer</source>
         <translation>OpenRPT Редактор Отчетов</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1000"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="989"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1452"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1791"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2023"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2358"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1780"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2012"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2347"/>
         <source>:</source>
         <translation>:</translation>
     </message>
@@ -3772,48 +3812,48 @@ The root node is not &apos;report&apos;.</source>
         <translation>-- Выберите запрос --</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1791"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1780"/>
         <source> textarea</source>
         <translation>текст</translation>
     </message>
     <message>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1896"/>
         <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1907"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1918"/>
         <source>3of9</source>
         <translation>3of9</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2023"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2012"/>
         <source> barcode</source>
         <translation>штрихкод</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2358"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2347"/>
         <source> image</source>
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2673"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2662"/>
         <source> graph</source>
         <translation>график</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="211"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="212"/>
         <source>Connect to Database</source>
         <translation>Соединится с Базой Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="212"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="213"/>
         <source>Disconnect from Database</source>
         <translation>Отключится от Базы Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1452"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
         <source> field total</source>
         <translation>итоговое поле</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1452"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
         <source> field</source>
         <translation>поле</translation>
     </message>
@@ -4397,12 +4437,12 @@ Please contact your Systems Administrator and report this issue.</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/querylist.cpp" line="90"/>
+        <location filename="../OpenRPT/wrtembed/querylist.cpp" line="94"/>
         <source>Duplicate Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/querylist.cpp" line="90"/>
+        <location filename="../OpenRPT/wrtembed/querylist.cpp" line="94"/>
         <source>The name you specified already exists in the list of query names.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4410,27 +4450,27 @@ Please contact your Systems Administrator and report this issue.</source>
 <context>
     <name>RenderWindow</name>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="94"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="100"/>
         <source>About %1</source>
         <translation>Обо %1</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="95"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="101"/>
         <source>%1 version %2&lt;br/&gt;%3, All Rights Reserved&lt;br/&gt;Build: %4&lt;br/&gt;&lt;br/&gt;%5 is a tool for printing reports from a database.&lt;p&gt;Open Source Acknowledgements:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Qt %6 (%7) - see http://doc.qt.io/qt-5/licenses-used-in-qt.html for details&lt;/li&gt;&lt;li&gt;libdmtx - Copyright 2005-2016 Mike Laughton, Vadim A. Misbakh-Soloviov and others&lt;/li&gt;&lt;li&gt;ZINT - Copyright 2004 Grandzebu, 2008 Robin Stuart and others&lt;/li&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="109"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="115"/>
         <source>XML (*.xml);;All Files (*)</source>
         <translation>XML (*.xml);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="124"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="130"/>
         <source>Error Loading File</source>
         <translation>Ошибка Загрузки Файла</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="125"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="131"/>
         <source>There was an error opening the file %1.
 
 %2 on line %3 column %4.</source>
@@ -4439,14 +4479,14 @@ Please contact your Systems Administrator and report this issue.</source>
 %2 в строке %3 столбец %4.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="134"/>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="274"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="140"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="280"/>
         <source>Not a Valid File</source>
         <translation>Неверный Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="135"/>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="275"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="141"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="281"/>
         <source>The file %1 does not appear to be a valid file.
 
 The root node is not &apos;report&apos;.</source>
@@ -4455,12 +4495,12 @@ The root node is not &apos;report&apos;.</source>
 Родительская ветка не есть &apos;отчет&apos;.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="155"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="161"/>
         <source>Not a Valid Report</source>
         <translation>Неверный Отчет</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="156"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="162"/>
         <source>The report definition does not appear to be a valid report.
 
 The root node is not &apos;report&apos;.</source>
@@ -4469,23 +4509,23 @@ The root node is not &apos;report&apos;.</source>
 Родительская ветка не есть &apos;отчет&apos;.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="238"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="244"/>
         <source>Load Report from Database</source>
         <translation>Загрузить Отчет с Базы Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="254"/>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="264"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="260"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="270"/>
         <source>Error Loading Report</source>
         <translation>Ошибка Загрузки Отчета</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="255"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="261"/>
         <source>There was an error loading the report from the database.</source>
         <translation>Erreur au chargement du rapport depuis la base.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="265"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="271"/>
         <source>There was an error opening the report %1.
 
 %2 on line %3 column %4.</source>
@@ -4494,28 +4534,28 @@ The root node is not &apos;report&apos;.</source>
 %2 à la ligne %3 colonne %4.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="352"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="358"/>
         <source>Choose filename to save</source>
         <translation>Choisissez le nom du fichier à sauvegarder</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="352"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="358"/>
         <source>print.pdf</source>
         <translation>print.pdf</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="352"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="358"/>
         <source>Pdf (*.pdf)</source>
         <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="400"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="406"/>
         <source>Name already exists</source>
         <translation>Название уже существует</translation>
     </message>
     <message>
         <location filename="../OpenRPT/renderapp/renderwindow.ui" line="31"/>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="88"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="90"/>
         <source>OpenRPT Renderer</source>
         <translation>Рендерер OpenRPT</translation>
     </message>
@@ -4595,72 +4635,82 @@ The root node is not &apos;report&apos;.</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="297"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="299"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="318"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="320"/>
         <source>&amp;Open...</source>
         <translation>&amp;Открыть...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="321"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="323"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="324"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="326"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="333"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="335"/>
         <source>&amp;Print...</source>
         <translation>&amp;Печать...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="336"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="338"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="339"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="341"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="344"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="346"/>
         <source>E&amp;xit</source>
         <translation>Вы&amp;ход</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="347"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="349"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="355"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="357"/>
+        <source>&amp;Reference Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="360"/>
+        <source>Reference Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="368"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="358"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="371"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="366"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="379"/>
         <source>Print to PDF...</source>
         <translation>Печать в PDF...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="371"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="384"/>
         <source>Load from Database...</source>
         <translation>Загрузить с Базы Данных...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="376"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.ui" line="389"/>
         <source>Print Preview...</source>
         <translation>Предпросмотр...</translation>
     </message>
@@ -4685,7 +4735,7 @@ The root node is not &apos;report&apos;.</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="401"/>
+        <location filename="../OpenRPT/renderapp/renderwindow.cpp" line="407"/>
         <source>&lt;p&gt;The name for the parameter you specified already exists in the list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4693,305 +4743,328 @@ The root node is not &apos;report&apos;.</source>
 <context>
     <name>ReportHandler</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="225"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="227"/>
         <source>&amp;New File</source>
         <translation>&amp;Новый Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="228"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="230"/>
         <source>&amp;Open File...</source>
         <translation>&amp;Открыть Файл...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="231"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="233"/>
         <source>&amp;Save File</source>
         <translation>&amp;Сохранить Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="233"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="235"/>
         <source>Save &amp;As...</source>
         <translation>Сохранить &amp;Как...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="234"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="236"/>
         <source>&amp;Close</source>
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="241"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="243"/>
         <source>E&amp;xit</source>
         <translation>Вы&amp;ход</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="247"/>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="850"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="249"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="862"/>
         <source>Undo</source>
         <translation type="unfinished">Назад</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="249"/>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="860"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="251"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="872"/>
         <source>Redo</source>
         <translation type="unfinished">Вперед</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="253"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="255"/>
         <source>Cu&amp;t</source>
         <translation>В&amp;ырезать</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="256"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="258"/>
         <source>&amp;Copy</source>
         <translation>&amp;Копировать</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="259"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="261"/>
         <source>&amp;Paste</source>
         <translation>&amp;Вставить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="262"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="264"/>
         <source>&amp;Delete</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="265"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="267"/>
         <source>Preferences</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="269"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="271"/>
         <source>Zoom In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="271"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="273"/>
         <source>Zoom Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="282"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="284"/>
         <source>Snap to Grid</source>
         <translation>Подвести к сетке</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="289"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="291"/>
         <source>Insert Label</source>
         <translation>Вставить Метку</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="291"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="293"/>
         <source>Insert Field</source>
         <translation>Вставить Поле</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="293"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="295"/>
         <source>Insert Text</source>
         <translation>Вставить Текст</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="295"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="297"/>
         <source>Insert Line</source>
         <translation>Вставить Строку</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="301"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="303"/>
         <source>Insert Bar Code</source>
         <translation>Вставить Штрихкод</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="303"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="305"/>
         <source>Insert Image</source>
         <translation>Вставить Изображение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="305"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="307"/>
         <source>Insert Chart/Graph</source>
         <translation>Вставить Диаграму/График</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="312"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="314"/>
         <source>Load from Database</source>
         <translation>Загрузить с Базы Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="314"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="316"/>
         <source>Save to Database</source>
         <translation>Сохоанить в Базу Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="324"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="325"/>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="326"/>
+        <source>Reference Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="329"/>
         <source>Label Definitions...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="333"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="338"/>
         <source>Even Horizontal Spacing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="334"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="339"/>
         <source>Even Vertical Spacing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="368"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="373"/>
         <source>Border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="369"/>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2358"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="374"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2388"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="441"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="451"/>
         <source>File Operations</source>
         <translation>Операции с Файлом</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="450"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="460"/>
         <source>Database Operations</source>
         <translation>Операции Базы Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="457"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="467"/>
         <source>Edit Operations</source>
         <translation>Изменить Операции</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="465"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="475"/>
         <source>Layout Options</source>
         <translation>Опции Размещения</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="472"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="482"/>
         <source>Report Elements</source>
         <translation>Элементы Отчета</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="530"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="540"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="550"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="560"/>
         <source>Data&amp;base</source>
         <translation>&amp;База Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="561"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="571"/>
         <source>&amp;Edit</source>
         <translation>&amp;Изменить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="577"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="587"/>
         <source>&amp;Insert</source>
         <translation>&amp;Вставить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="588"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="598"/>
         <source>&amp;Document</source>
         <translation>&amp;Документ</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1326"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1357"/>
         <source>Warning</source>
         <translation type="unfinished">Предупреждение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1326"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1357"/>
         <source>You must connect to a database with a &apos;labeldef&apos; table to edit label definitions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1800"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1830"/>
         <source>Section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2359"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2389"/>
         <source>Angle (0-360) :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="316"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2543"/>
+        <source>About %1</source>
+        <translation type="unfinished">Обо %1</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="2544"/>
+        <source>%1 version %2
+%3
+Build: %4
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="318"/>
         <source>Properties...</source>
         <translation>Параметры...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="317"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="319"/>
         <source>&amp;Page Setup...</source>
         <translation>&amp;Параметры Страницы...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="318"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="320"/>
         <source>Query &amp;Sources...</source>
         <translation>&amp;Источники Запросов...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="319"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="321"/>
         <source>Section Editor...</source>
         <translation>Редактор Секции...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="320"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="322"/>
         <source>Color Definitions...</source>
         <translation>Параметры Цвета...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="321"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="323"/>
         <source>Defined Parameters...</source>
         <translation>Определенные Параметры...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="602"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="612"/>
         <source>&amp;Help</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="267"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="269"/>
         <source>Properties</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="648"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="660"/>
         <source>Position [X: %1, Y: %2]    Size [W: %3, H: %4]</source>
         <translation>Позиция [X: %1, Y: %2]    Размер [L: %3, H: %4]</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="663"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="675"/>
         <source>Start Point [X: %1, Y: %2]    End Point [X: %3, Y: %4]</source>
         <translation>Начальная Точка [X: %1, Y: %2]    Конечная Точка [X: %3, Y: %4]</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="670"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="682"/>
         <source>Unknown Entity Type</source>
         <translation>Неизвестный Тип Обьекта</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="674"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="686"/>
         <source>Group Selection</source>
         <translation>Групповой Выбор</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="733"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="745"/>
         <source>Open File</source>
         <translation>Открыть Файл</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="734"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="746"/>
         <source>XML (*.xml)</source>
         <translation>XML (*.xml)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="761"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="773"/>
         <source>Failed read on Open File</source>
         <translation>Ошибка Чтения Открытого Файла</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="762"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="774"/>
         <source>Encountered and error while parsing %s
 
 	%s (Line %d Column %d)</source>
@@ -5000,170 +5073,170 @@ The root node is not &apos;report&apos;.</source>
 	%s (Строка %d Колонка %d)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="850"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="862"/>
         <source>Nothing to undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="860"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="872"/>
         <source>Nothing to redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1424"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1455"/>
         <source>Load Report from Database</source>
         <translation>Загрузить Отчет с Базы Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1444"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1475"/>
         <source>Error Loading Report</source>
         <translation>Ошибка Загрузки Отчета</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1445"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1476"/>
         <source>ReportWriterWindow::dbLoadDoc() : ERROR on setContent()
 	%s (Line %d Column %d)</source>
         <translation>ReportWriterWindow::dbLoadDoc() : ОШИБКА в setContent()
 	%s (Строка %d Колонка %d)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1449"/>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1468"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1480"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1499"/>
         <source>No Database Connection</source>
         <translation>Нет Связи с Базой Данных</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1450"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1481"/>
         <source>There is no database connection that can be used to load a document.</source>
         <translation>Нет соединения с базой данных что может быть изпользовано для загрузки документа.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1469"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1500"/>
         <source>There is no database connection that can be used to save this document.</source>
         <translation>Нет соединения с базой данных что может быть изпользовано для сохранения документа.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="277"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="279"/>
         <source>Show Grid</source>
         <translation>Показать Сетку</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1222"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1252"/>
         <source>Language: %1</source>
         <translation>Язык: %1</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1222"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1252"/>
         <source>The language change will take effect the next time the report writer will be run.</source>
         <translation>Изменение языка будет применено после следующей загрузки Редактора Отчетов.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="237"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="239"/>
         <source>Print Preview...</source>
         <translation>Предпросмотр...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="238"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="240"/>
         <source>Print...</source>
         <translation>Печать...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="240"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="242"/>
         <source>Print to PDF...</source>
         <translation>Печать в PDF...</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1620"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1650"/>
         <source>Choose filename to save</source>
         <translation>Выберите название файла для сохранения</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1620"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1650"/>
         <source>print.pdf</source>
         <translation>print.pdf</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1620"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1650"/>
         <source>Pdf (*.pdf)</source>
         <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="297"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="299"/>
         <source>Insert Rectangle</source>
         <translation>Вставить Прямоугольник</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1071"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1083"/>
         <source>No Section Found</source>
         <translation>Секция не Найдена</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1071"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="1083"/>
         <source>Items must be pasted into a section.</source>
         <translation>Значения должны быть вставлены в секцию.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="266"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="268"/>
         <source>Select All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="299"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="301"/>
         <source>Insert CrossTab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="327"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="332"/>
         <source>Align Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="328"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="333"/>
         <source>Align V. Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="329"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="334"/>
         <source>Align Bottom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="330"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="335"/>
         <source>Align Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="331"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="336"/>
         <source>Align H. Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="332"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="337"/>
         <source>Align Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="498"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="508"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="506"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="516"/>
         <source>i</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="366"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="371"/>
         <source>Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="367"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="372"/>
         <source>Fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="519"/>
+        <location filename="../OpenRPT/wrtembed/reporthandler.cpp" line="529"/>
         <source>Font</source>
         <translation type="unfinished">Шрифт</translation>
     </message>
@@ -5171,67 +5244,67 @@ The root node is not &apos;report&apos;.</source>
 <context>
     <name>ReportParameter</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="30"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="31"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="58"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="82"/>
         <source>Name:</source>
         <translation>Название:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="71"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="56"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="96"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="103"/>
         <source>String</source>
         <translation>Строка</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="101"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="108"/>
         <source>Integer</source>
         <translation>Integer</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="106"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="113"/>
         <source>Double</source>
         <translation>Двойное</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="111"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="118"/>
         <source>Bool</source>
         <translation>Bool</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="119"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="95"/>
         <source>Active</source>
         <translation>Активно</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="147"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="69"/>
         <source>Default:</source>
         <translation>По умолчанию:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="170"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="152"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="177"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="159"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="214"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="196"/>
         <source>Description</source>
         <translation>Описание:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="230"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="221"/>
         <source>Defined List</source>
         <translation>Список</translation>
     </message>
@@ -5241,47 +5314,47 @@ The root node is not &apos;report&apos;.</source>
         <translation>Список Типов</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="254"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="263"/>
         <source>Static</source>
         <translation>Статический</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="264"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="273"/>
         <source>Dynamic</source>
         <translation>Динамический</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="293"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="311"/>
         <source>Static List Values:</source>
         <translation>Список Статических Значений:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="312"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="339"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="317"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="344"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="333"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="369"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="343"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="379"/>
         <source>Edit</source>
         <translation>Изменить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="369"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="405"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="390"/>
+        <location filename="../OpenRPT/wrtembed/reportparameter.ui" line="435"/>
         <source>Dynamic List Query:</source>
         <translation>Запрос Динамического Списка:</translation>
     </message>
@@ -5645,22 +5718,22 @@ The root node is not &apos;report&apos;.</source>
         <translation>&amp;Окна</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="157"/>
+        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="156"/>
         <source>Version</source>
         <translation>Версия</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="176"/>
+        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="175"/>
         <source>%1 - %2 on %3/%4 AS %5</source>
         <translation>%1 - %2 в %3/%4 как %5</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="192"/>
+        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="191"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Каскадом</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="193"/>
+        <location filename="../OpenRPT/writer/reportwriterwindow.cpp" line="192"/>
         <source>&amp;Tile</source>
         <translation>&amp;Плиткой</translation>
     </message>
@@ -5681,19 +5754,19 @@ The root node is not &apos;report&apos;.</source>
 <context>
     <name>SectionEditor</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="83"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="92"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="126"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="87"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="96"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="130"/>
         <source>Error Encountered</source>
         <translation>Обнаружена Ошибка</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="83"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="87"/>
         <source>Unable to add a new section because a non-unique name could be generated.</source>
         <translation>Невозможно добавить новую секцию потому что может быть сгенерировано неуникальное название.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="127"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="131"/>
         <source>Tried to add a new Detail section with a non-unique name.</source>
         <translation>Попытка добавить новую секцию Деталей с неуникальным названием.</translation>
     </message>
@@ -5801,13 +5874,13 @@ The root node is not &apos;report&apos;.</source>
         <translation>Alt+C</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="73"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="80"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="77"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="84"/>
         <source>unnamed</source>
         <translation>без_имени</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="92"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="96"/>
         <source>No document was set</source>
         <translation>Не указан документ</translation>
     </message>
