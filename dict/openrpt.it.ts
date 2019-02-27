@@ -3651,8 +3651,8 @@ La nodo radice non è &apos;report&apos;.</translation>
     </message>
     <message>
         <location filename="../common/data.cpp" line="26"/>
-        <source>Copyright (c) 2002-2018, OpenMFG, LLC.</source>
-        <translation type="unfinished">Copyright (c) 2002-2018, OpenMFG, LLC. {2002-2017,?} {2002-2018,?}</translation>
+        <source>Copyright (c) 2002-2019, OpenMFG, LLC.</source>
+        <translation type="unfinished">Copyright (c) 2002-2019, OpenMFG, LLC. {2002-2017,?} {2002-2018,?}</translation>
     </message>
     <message>
         <location filename="../common/data.cpp" line="28"/>
