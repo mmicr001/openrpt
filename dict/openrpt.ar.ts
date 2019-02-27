@@ -3643,7 +3643,7 @@ The root node is not &apos;report&apos;.</source>
     </message>
     <message>
         <location filename="../common/data.cpp" line="26"/>
-        <source>Copyright (c) 2002-2018, OpenMFG, LLC.</source>
+        <source>Copyright (c) 2002-2019, OpenMFG, LLC.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
