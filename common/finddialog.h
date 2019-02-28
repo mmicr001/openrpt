@@ -39,7 +39,6 @@ public:
 public slots:
   void languageChange();
   void setTextEdit(QTextEdit* t);
-  void setWarningVisible(bool set);
   void sClose();
   void sFind();
   void sMoveCursorToStart();

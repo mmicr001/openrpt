@@ -52,11 +52,6 @@ void FindDialog::setTextEdit(QTextEdit* t)
   _leSearch->setText(_text->textCursor().selectedText()); //populate search lineedit if user has highlighted text
 }
 
-void FindDialog::setWarningVisible(bool value)
-{
-  return _lbWarning->setVisible(value);
-}
-
 void FindDialog::sClose()
 {
   reject();
@@ -64,15 +59,9 @@ void FindDialog::sClose()
 
 void FindDialog::sFind()
 {
-  if (_lbWarning->isVisible())
-  {
-    setWarningVisible(false);
-    sMoveCursorToStart();
-  }
-  
   QString term = _leSearch->text();
   if(!_text->find(term))
-    setWarningVisible(true);    
+    sMoveCursorToStart();    
 }
 
 void FindDialog::sMoveCursorToStart()
