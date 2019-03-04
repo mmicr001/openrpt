@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>294</width>
-    <height>80</height>
+    <width>461</width>
+    <height>225</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,78 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="_cbMatchWord">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QCheckBox" name="_cbRegex">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="4">
+      <widget class="QPushButton" name="_btnClose">
+       <property name="text">
+        <string>Close</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QCheckBox" name="_cbMatchCase">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="_lbMatchCase">
+       <property name="text">
+        <string>Match Case</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="_lbMatchWord">
+       <property name="text">
+        <string>Match whole word</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="_lbRegex">
+       <property name="text">
+        <string>Use regex</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="_lbWrapAround">
+       <property name="text">
+        <string>Wrap around</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QCheckBox" name="_cbWrapAround">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5" rowspan="2">
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLineEdit" name="_leSearch"/>
+     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="_lbSearch">
        <property name="font">
@@ -28,32 +100,12 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="_leSearch"/>
-     </item>
-     <item row="0" column="4" rowspan="2">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="_btnFind">
-         <property name="text">
-          <string>Find</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="_btnClose">
-         <property name="text">
-          <string>Close</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+     <item row="1" column="2">
+      <widget class="QLabel" name="_lbWarning">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;End of Document&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
      <item row="0" column="3">
       <spacer name="horizontalSpacer">
@@ -68,10 +120,17 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="_lbWarning">
+     <item row="0" column="4">
+      <widget class="QPushButton" name="_btnNext">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;No matches found&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Next</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QPushButton" name="_btnPrev">
+       <property name="text">
+        <string>Prev</string>
        </property>
       </widget>
      </item>
@@ -94,8 +153,6 @@
  </widget>
  <tabstops>
   <tabstop>_leSearch</tabstop>
-  <tabstop>_btnFind</tabstop>
-  <tabstop>_btnClose</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -30,7 +30,8 @@ FindDialog::FindDialog(QWidget* parent)
   setupUi(this);
 
   _lbWarning->setVisible(false);
-  connect(_btnFind,     SIGNAL(clicked()),           this,   SLOT(sFind()));
+  connect(_btnNext,     SIGNAL(clicked()),           this,   SLOT(sFind()));
+  connect(_btnPrev,     SIGNAL(clicked()),           this,   SLOT(sFindPrev()));
   connect(_leSearch,    SIGNAL(returnPressed()),     this,   SLOT(sFind()));
   connect(_btnClose,    SIGNAL(clicked()),           this,   SLOT(sClose()));
 }
@@ -57,11 +58,46 @@ void FindDialog::sClose()
   reject();
 }
 
-void FindDialog::sFind()
+void FindDialog::sFindPrev()
 {
-  QString term = _leSearch->text();
-  if(!_text->find(term))
-    sMoveCursorToStart();    
+  sFind(true);
+}
+#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
+void FindDialog::sFind(bool backwards)
+{
+  sSetWarning();
+  _leSearch->setStyleSheet( QString( "background-color: white"));
+  // determine flags
+  QTextDocument::FindFlags flags ;
+  if(_cbMatchCase->isChecked())
+    flags = flags | QTextDocument::FindCaseSensitively;
+  if(_cbMatchWord->isChecked())
+    flags = flags | QTextDocument::FindWholeWords;
+  if(backwards)
+    flags = flags | QTextDocument::FindBackward;
+  
+  if(_cbRegex->isChecked())
+  {
+    QRegExp term = QRegExp(_leSearch->text());
+    if(!_text->find(term,flags))
+      _leSearch->setStyleSheet( QString( "background-color: red"));
+  }
+  else
+  {
+    QString term = _leSearch->text();
+     if(!_text->find(term,flags))
+     {
+       _leSearch->setStyleSheet( QString( "background-color: red"));
+     }
+  }  
+  if( _text->textCursor().atEnd())
+  {
+    sSetWarning(true);
+    if(_cbWrapAround->isChecked())
+      sMoveCursorToStart();
+  }
+     
+     
 }
 
 void FindDialog::sMoveCursorToStart()
@@ -69,4 +105,9 @@ void FindDialog::sMoveCursorToStart()
   QTextCursor c = _text->textCursor();
   c.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor,1);
   _text->setTextCursor(c);
+}
+
+void FindDialog::sSetWarning(bool set)
+{
+  _lbWarning->setVisible(set);
 }

@@ -40,9 +40,10 @@ public slots:
   void languageChange();
   void setTextEdit(QTextEdit* t);
   void sClose();
-  void sFind();
+  void sFindPrev();
+  void sFind(bool backwards = 0);
   void sMoveCursorToStart();
-    
+  void sSetWarning(bool set = 0);  
 protected slots:
     
 private:
