@@ -126,6 +126,10 @@ void FindDialog::sFind()
     _lbCount->setText("No matches");
     return;
   }
+
+  /* There is a special case in which backwards search skips matches. This is seen in: 
+  https://bugreports.qt.io/browse/QTBUG-48035
+  This seems like a rare case to fall into */
   
   if(_cbRegex->isChecked())
   {
