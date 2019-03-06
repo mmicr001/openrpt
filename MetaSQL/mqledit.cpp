@@ -65,6 +65,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
   _document = _text->document();
   _document->setDefaultFont(QFont("Courier"));
 
+  editFindAction->setShortcut(QKeySequence::Find);
+
   connect(_document,     SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
   connect(editFindAction,              SIGNAL(triggered()), this, SLOT(editFind()));
   connect(fileDatabaseConnectAction,   SIGNAL(triggered()), this, SLOT(fileDatabaseConnect()));

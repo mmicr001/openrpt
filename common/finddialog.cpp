@@ -29,11 +29,16 @@ FindDialog::FindDialog(QWidget* parent)
 {
   setupUi(this);
 
+  connect(_btnNext,     SIGNAL(clicked()),                   this,   SLOT(sFind()));
+  connect(_btnPrev,     SIGNAL(clicked()),                   this,   SLOT(sFindPrev()));
+  connect(_leSearch,    SIGNAL(textChanged(const QString&)), this,   SLOT(sSearchChanged()));
+  connect(_btnClose,    SIGNAL(clicked()),                   this,   SLOT(sClose()));
+  connect(_cbMatchCase, SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
+  connect(_cbMatchWord, SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
+  connect(_cbRegex,     SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
+
   _lbWarning->setVisible(false);
-  connect(_btnNext,     SIGNAL(clicked()),           this,   SLOT(sFind()));
-  connect(_btnPrev,     SIGNAL(clicked()),           this,   SLOT(sFindPrev()));
-  connect(_leSearch,    SIGNAL(returnPressed()),     this,   SLOT(sFind()));
-  connect(_btnClose,    SIGNAL(clicked()),           this,   SLOT(sClose()));
+  _searchChanged=false;
 }
 
 
@@ -47,6 +52,12 @@ void FindDialog::languageChange()
   retranslateUi(this);
 }
 
+void FindDialog::show()
+{
+  QDialog::show();
+  _leSearch->setFocus(); //allow user to start typing without clicking on the lineedit
+}
+
 void FindDialog::setTextEdit(QTextEdit* t)
 {
   _text = t;
@@ -55,59 +66,139 @@ void FindDialog::setTextEdit(QTextEdit* t)
 
 void FindDialog::sClose()
 {
+  bool _matchCase = _cbMatchCase->isChecked();
+  bool _matchWord = _cbMatchWord->isChecked();
+  bool _regex = _cbRegex->isChecked();
+  bool _wrapAround = _cbWrapAround->isChecked();
+
+  sSetWarning();
+  _lbCount->clear();
+  
   reject();
+}
+
+void FindDialog::sCountMatches()
+{
+  int currCursorPos = _text->textCursor().position();
+  bool direction = _reverseSearch;
+
+  //do forward search from the top of the doc
+  _reverseSearch = false;  sSetFlags();
+  sMoveCursorTo(0);
+ 
+  if(_cbRegex->isChecked())
+  {
+    QRegExp term = QRegExp(_leSearch->text());
+    while(_text->find(term,flags))
+      _matches.append(_text->textCursor().position());
+  }
+  else
+  {
+    QString term = _leSearch->text();
+    while(_text->find(term,flags))
+      _matches.append(_text->textCursor().position());
+  }
+  
+  sMoveCursorTo(currCursorPos); // put cursor back where it was
+  _reverseSearch = direction;   // return search direction to what it was
+  _searchChanged=false;
 }
 
 void FindDialog::sFindPrev()
 {
-  sFind(true);
+  _reverseSearch = true;
+  sFind();
+  _reverseSearch = false;
 }
-#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
-void FindDialog::sFind(bool backwards)
+
+void FindDialog::sFind()
 {
-  sSetWarning();
+  sSetWarning(false);
+  sSetFlags();
   _leSearch->setStyleSheet( QString( "background-color: white"));
-  // determine flags
-  QTextDocument::FindFlags flags ;
-  if(_cbMatchCase->isChecked())
-    flags = flags | QTextDocument::FindCaseSensitively;
-  if(_cbMatchWord->isChecked())
-    flags = flags | QTextDocument::FindWholeWords;
-  if(backwards)
-    flags = flags | QTextDocument::FindBackward;
+
+  if(_searchChanged)
+    sCountMatches();
+  
+  if(!_matches.count())
+  {
+    _leSearch->setStyleSheet( QString( "background-color: red"));
+    _lbCount->setText("No matches");
+    return;
+  }
   
   if(_cbRegex->isChecked())
   {
     QRegExp term = QRegExp(_leSearch->text());
     if(!_text->find(term,flags))
-      _leSearch->setStyleSheet( QString( "background-color: red"));
+    {
+      sSetWarning(true);
+      if(_cbWrapAround->isChecked())
+      {
+        if(!_reverseSearch)
+          sMoveCursorTo(0);
+        else
+          sMoveCursorTo(_text->document()->characterCount()-1);
+      }
+    }
   }
   else
   {
     QString term = _leSearch->text();
-     if(!_text->find(term,flags))
-     {
-       _leSearch->setStyleSheet( QString( "background-color: red"));
-     }
-  }  
-  if( _text->textCursor().atEnd())
-  {
-    sSetWarning(true);
-    if(_cbWrapAround->isChecked())
-      sMoveCursorToStart();
+    if(!_text->find(term,flags))
+    {
+      sSetWarning(true);
+      if(_cbWrapAround->isChecked())
+      {
+        if(!_reverseSearch)
+          sMoveCursorTo(0);
+        else
+          sMoveCursorTo(_text->document()->characterCount()-1);
+      }
+    }
   }
-     
-     
+  
+  // update counter on dialog label
+  if(_matches.contains(_text->textCursor().position()))
+  {
+    int current = _matches.indexOf(_text->textCursor().position())+1; 
+    QString count = "Match " + QString::number(current) + " of " +  QString::number(_matches.count());
+    _lbCount->setText(count);
+  }
+
+  _leSearch->selectAll();
 }
 
-void FindDialog::sMoveCursorToStart()
+void FindDialog::sMoveCursorTo(int pos)
 {
   QTextCursor c = _text->textCursor();
-  c.movePosition(QTextCursor::Start, QTextCursor::MoveAnchor,1);
+  c.setPosition(pos, QTextCursor::MoveAnchor);
   _text->setTextCursor(c);
+}
+
+void FindDialog::sSetFlags()
+{
+  flags = 0;
+  if(_cbMatchCase->isChecked())
+    flags = flags | QTextDocument::FindCaseSensitively;
+  if(_cbMatchWord->isChecked())
+    flags = flags | QTextDocument::FindWholeWords;
+  if(_reverseSearch)
+    flags = flags | QTextDocument::FindBackward;
 }
 
 void FindDialog::sSetWarning(bool set)
 {
   _lbWarning->setVisible(set);
+}
+
+void FindDialog::sSearchChanged()
+{
+  _searchChanged = true;
+  _matches.clear();
+  _lbCount->clear();
+  _leSearch->setStyleSheet( QString( "background-color: white"));
+
+  //update search paramters
+  sSetFlags();
 }

@@ -34,20 +34,33 @@ class FindDialog : public QDialog, public Ui::Find
 public:
     FindDialog(QWidget* parent = 0);
     ~FindDialog();
-
+    void show();
 
 public slots:
   void languageChange();
   void setTextEdit(QTextEdit* t);
   void sClose();
+  void sCountMatches();
   void sFindPrev();
-  void sFind(bool backwards = 0);
-  void sMoveCursorToStart();
-  void sSetWarning(bool set = 0);  
+  void sFind();
+  void sMoveCursorTo(int pos);
+  void sSetFlags();
+  void sSetWarning(bool set = 0); 
+  void sSearchChanged(); 
 protected slots:
+
+protected:
+  static bool _matchCase;
+  static bool _matchWord;
+  static bool _regex;
+  static bool _wrapAround;
     
 private:
   QTextEdit* _text;
+  bool _searchChanged;
+  bool _reverseSearch;
+  QList<int> _matches;
+  QTextDocument::FindFlags flags;
     
 };
 
