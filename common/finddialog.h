@@ -39,7 +39,6 @@ public:
 public slots:
   void languageChange();
   void setTextEdit(QTextEdit* t);
-  void sClose();
   void sCountMatches();
   void sFindPrev();
   void sFind();

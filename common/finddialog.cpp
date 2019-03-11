@@ -32,7 +32,7 @@ FindDialog::FindDialog(QWidget* parent)
   connect(_btnNext,     SIGNAL(clicked()),                   this,   SLOT(sFind()));
   connect(_btnPrev,     SIGNAL(clicked()),                   this,   SLOT(sFindPrev()));
   connect(_leSearch,    SIGNAL(textChanged(const QString&)), this,   SLOT(sSearchChanged()));
-  connect(_btnClose,    SIGNAL(clicked()),                   this,   SLOT(sClose()));
+  connect(_btnClose,    SIGNAL(clicked()),                   this,   SLOT(reject()));
   connect(_cbMatchCase, SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
   connect(_cbMatchWord, SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
   connect(_cbRegex,     SIGNAL(clicked()),                   this,   SLOT(sSearchChanged()));
@@ -62,19 +62,6 @@ void FindDialog::setTextEdit(QTextEdit* t)
 {
   _text = t;
   _leSearch->setText(_text->textCursor().selectedText()); //populate search lineedit if user has highlighted text
-}
-
-void FindDialog::sClose()
-{
-  bool _matchCase = _cbMatchCase->isChecked();
-  bool _matchWord = _cbMatchWord->isChecked();
-  bool _regex = _cbRegex->isChecked();
-  bool _wrapAround = _cbWrapAround->isChecked();
-
-  sSetWarning();
-  _lbCount->clear();
-  
-  reject();
 }
 
 void FindDialog::sCountMatches()
@@ -131,34 +118,27 @@ void FindDialog::sFind()
   https://bugreports.qt.io/browse/QTBUG-48035
   This seems like a rare case to fall into */
   
+  bool found = false;
   if(_cbRegex->isChecked())
   {
     QRegExp term = QRegExp(_leSearch->text());
-    if(!_text->find(term,flags))
-    {
-      sSetWarning(true);
-      if(_cbWrapAround->isChecked())
-      {
-        if(!_reverseSearch)
-          sMoveCursorTo(0);
-        else
-          sMoveCursorTo(_text->document()->characterCount()-1);
-      }
-    }
+    found = _text->find(term,flags);  
   }
   else
   {
     QString term = _leSearch->text();
-    if(!_text->find(term,flags))
+    found = !_text->find(term,flags);
+  }
+
+  if(!found)
+  {
+    sSetWarning(true);
+    if(_cbWrapAround->isChecked())
     {
-      sSetWarning(true);
-      if(_cbWrapAround->isChecked())
-      {
-        if(!_reverseSearch)
-          sMoveCursorTo(0);
-        else
-          sMoveCursorTo(_text->document()->characterCount()-1);
-      }
+      if(!_reverseSearch)
+        sMoveCursorTo(0);
+      else
+        sMoveCursorTo(_text->document()->characterCount()-1);
     }
   }
   
@@ -166,7 +146,7 @@ void FindDialog::sFind()
   if(_matches.contains(_text->textCursor().position()))
   {
     int current = _matches.indexOf(_text->textCursor().position())+1; 
-    QString count = "Match " + QString::number(current) + " of " +  QString::number(_matches.count());
+    QString count = tr("Match  %1  of %2").arg(current).arg(_matches.count());
     _lbCount->setText(count);
   }
 
@@ -176,7 +156,7 @@ void FindDialog::sFind()
 void FindDialog::sMoveCursorTo(int pos)
 {
   QTextCursor c = _text->textCursor();
-  c.setPosition(pos, QTextCursor::MoveAnchor);
+  c.setPosition(pos, QTextCursor::MoveAnchor);  // QTextEdit::moveCursor() was considered but limits us to specific move operations, and not any position on the document
   _text->setTextCursor(c);
 }
 
@@ -205,4 +185,10 @@ void FindDialog::sSearchChanged()
 
   //update search paramters
   sSetFlags();
+
+  //save checkboxes
+  bool _matchCase  = _cbMatchCase->isChecked();
+  bool _matchWord  = _cbMatchWord->isChecked();
+  bool _regex      = _cbRegex->isChecked();
+  bool _wrapAround = _cbWrapAround->isChecked();
 }
