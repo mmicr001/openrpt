@@ -58,7 +58,8 @@ MQLEdit::MQLEdit(QWidget* parent, Qt::WindowFlags fl)
     : QWidget(parent, fl)
 {
   setupUi(this);
-
+  Q_INIT_RESOURCE(OpenRPTMetaSQL);
+  
   if (OpenRPT::name.isEmpty())
     OpenRPT::name = tr("MetaSQL Editor");
 
