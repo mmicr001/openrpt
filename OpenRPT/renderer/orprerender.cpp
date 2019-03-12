@@ -976,7 +976,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
       orData       dataThis;
       populateData(bc->data, dataThis);
       bool format = (bc->format == "ean8") || (bc->format == "ean13") || (bc->format == "upc-a") || (bc->format == "upc-e");
-      if(dataThis.getValue()=="" && format)
+      if(dataThis.getValue().isNull() && format)
         addTextPrimitive(elemThis, pos, size, 0, bc->format + ": NULL", QFont(), "red");
       else
       {
