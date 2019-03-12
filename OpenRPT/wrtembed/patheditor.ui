@@ -23,30 +23,74 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>248</width>
-    <height>161</height>
+    <width>448</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Stroke properties</string>
   </property>
   <layout class="QHBoxLayout">
-   <property name="margin">
-    <number>11</number>
-   </property>
    <item>
     <layout class="QVBoxLayout">
      <item>
-      <layout class="QHBoxLayout">
-       <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="1">
+        <widget class="QSpinBox" name="_sbWidth"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="_lbXend">
+         <property name="text">
+          <string>X end:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
         <widget class="QLabel" name="_lblWidth">
          <property name="text">
           <string>Width:</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QSpinBox" name="_sbWidth"/>
+       <item row="1" column="2">
+        <widget class="QLabel" name="_lbYend">
+         <property name="text">
+          <string>Y end:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="_leXend"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="_leYstart"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="_leXstart"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="_lbYstart">
+         <property name="text">
+          <string>Y start:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="_lbXstart">
+         <property name="text">
+          <string>X start:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="_leYend"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:6pt; font-style:italic;&quot;&gt;in inches &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -56,7 +100,16 @@
         <string>Style</string>
        </property>
        <layout class="QGridLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>11</number>
+        </property>
+        <property name="topMargin">
+         <number>11</number>
+        </property>
+        <property name="rightMargin">
+         <number>11</number>
+        </property>
+        <property name="bottomMargin">
          <number>11</number>
         </property>
         <item row="0" column="0">
@@ -113,6 +166,19 @@
        </layout>
       </widget>
      </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
    </item>
    <item>
@@ -160,6 +226,14 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
+  <tabstop>_leXstart</tabstop>
+  <tabstop>_leYstart</tabstop>
+  <tabstop>_leXend</tabstop>
+  <tabstop>_leYend</tabstop>
+  <tabstop>_sbWidth</tabstop>
+  <tabstop>_rbSolidStyle</tabstop>
+  <tabstop>_rbDashedStyle</tabstop>
+  <tabstop>_rbDottedStyle</tabstop>
   <tabstop>_btnColor</tabstop>
   <tabstop>_btnAccept</tabstop>
   <tabstop>_btnCancel</tabstop>
