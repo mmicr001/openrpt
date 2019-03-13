@@ -916,9 +916,25 @@ void ORGraphicsLineItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent * event)
 void ORGraphicsLineItem::properties(QWidget * parent)
 {
   PathEditor* dlg = new PathEditor(parent, pen());
+  dlg->_leXstart->setText(QString::number(this->line().p1().x()/100.0,'g',3 ) );
+  dlg->_leYstart->setText(QString::number(this->line().p1().y()/100.0,'g',3 ) );
+  dlg->_leXend->setText(QString::number(this->line().p2().x()/100.0,'g',3 ) );
+  dlg->_leYend->setText(QString::number(this->line().p2().y()/100.0,'g',3 ) );
+
   if(dlg->exec() == QDialog::Accepted)
   {
     setPen(dlg->pen());
+    QLineF line;
+    line.setP1(QPointF(dlg->_leXstart->text().toDouble()*100 ,
+                       dlg->_leYstart->text().toDouble()*100 ));
+    line.setP2(QPointF(dlg->_leXend->text().toDouble()*100 ,
+                       dlg->_leYend->text().toDouble()*100));
+    if(this->line()!=line)
+    {
+      this->setLine(line);
+      _setModified(scene(), true);
+    }
+    
   }
 }
 
