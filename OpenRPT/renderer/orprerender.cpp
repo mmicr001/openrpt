@@ -975,15 +975,20 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
 
       orData       dataThis;
       populateData(bc->data, dataThis);
-
-      bcPrimitive->setPosition(pos);
-      bcPrimitive->setSize(size);
-      bcPrimitive->setData(dataThis.getValue());
-      bcPrimitive->setFormat(bc->format);
-      bcPrimitive->setNarrowBarWidth(bc->narrowBarWidth);
-      bcPrimitive->setAlign(bc->align);
-      bcPrimitive->setRotation(bc->rotation());
-      _page->addPrimitive(bcPrimitive);
+      bool format = (bc->format == "ean8") || (bc->format == "ean13") || (bc->format == "upc-a") || (bc->format == "upc-e");
+      if(dataThis.getValue().isNull() && format)
+        addTextPrimitive(elemThis, pos, size, 0, bc->format + ": NULL", QFont(), "red");
+      else
+      {
+        bcPrimitive->setPosition(pos);
+        bcPrimitive->setSize(size);
+        bcPrimitive->setData(dataThis.getValue());
+        bcPrimitive->setFormat(bc->format);
+        bcPrimitive->setNarrowBarWidth(bc->narrowBarWidth);
+        bcPrimitive->setAlign(bc->align);
+        bcPrimitive->setRotation(bc->rotation());
+        _page->addPrimitive(bcPrimitive);
+      }
     }
     else if (elemThis->isImage())
     {
