@@ -308,9 +308,7 @@
    <property name="iconText">
     <string>Find</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+F</string>
-   </property>
+   
   </action>
   <action name="helpMqlEditorAction">
    <property name="text">
