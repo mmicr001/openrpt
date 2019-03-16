@@ -54,8 +54,8 @@ GraphEditor::GraphEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(_cbSeriesStylePoints, SIGNAL(toggled(bool)), this, SLOT(_cbSeriesStylePoints_toggled(bool)));
     connect(_leSeriesColumn, SIGNAL(textChanged(const QString&)), this, SLOT(_leSeriesColumn_textChanged(const QString&)));
     connect(_leSeriesName, SIGNAL(textChanged(const QString&)), this, SLOT(_leSeriesName_textChanged(const QString&)));
-    connect(_cbSeries, SIGNAL(activated(const QString&)), this, SLOT(_cbSeries_activated(const QString&)));
-    connect(_cbColors, SIGNAL(activated(const QString&)), this, SLOT(_cbColors_activated(const QString&)));
+    connect(_cbSeries, SIGNAL(triggered(const QString&)), this, SLOT(_cbSeries_activated(const QString&)));
+    connect(_cbColors, SIGNAL(triggered(const QString&)), this, SLOT(_cbColors_activated(const QString&)));
 
     _colorMap = 0;
     _seriesData = 0;
