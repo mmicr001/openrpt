@@ -53,8 +53,8 @@ BarcodeEditor::BarcodeEditor(QWidget* parent, Qt::WindowFlags fl)
 
     //this->cbFormat_ViewConfig(0);
     // signals and slots connections
-    connect(cbFormat,       SIGNAL(activated(int)),     this,               SLOT(cbFormat_activated(int)));
-    connect(cbFormat,       SIGNAL(activated(int)),     this,               SLOT(cbFormat_ViewConfig(int)));
+    connect(cbFormat,       SIGNAL(triggered(int)),     this,               SLOT(cbFormat_activated(int)));
+    connect(cbFormat,       SIGNAL(triggered(int)),     this,               SLOT(cbFormat_ViewConfig(int)));
 //    connect(sliderMaxVal,   SIGNAL(valueChanged(int)),  labelMaxVal,    SLOT(setNum(int)));
 //    connect(sliderMaxVal,   SIGNAL(sliderMoved(int)),   this,           SLOT(sliderMaxVal_sliderMoved(int)));
     connect(buttonOk,       SIGNAL(clicked()),          this,               SLOT(accept()));

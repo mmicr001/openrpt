@@ -53,7 +53,7 @@ SelectMQL::SelectMQL(QWidget* parent, Qt::WindowFlags fl)
 
   if (fl == Qt::Widget)
   {
-    connect(_list, SIGNAL(activated(const QModelIndex&)), this, SLOT(sAccepted()));
+    connect(_list, SIGNAL(triggered(const QModelIndex&)), this, SLOT(sAccepted()));
     _buttons->setVisible(false);
   }
 
