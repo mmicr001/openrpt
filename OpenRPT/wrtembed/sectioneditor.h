@@ -42,7 +42,7 @@ public slots:
     virtual void btnEdit_clicked();
     virtual void btnRemove_clicked();
     virtual void btnMoveUp_clicked();
-    virtual void brnMoveDown_clicked();
+    virtual void btnMoveDown_clicked();
     virtual void cbReportHeader_toggled( bool yes );
     virtual void cbReportFooter_toggled( bool yes );
     virtual void cbHeadFirst_toggled( bool yes );

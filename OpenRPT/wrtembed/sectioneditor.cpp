@@ -43,7 +43,7 @@ SectionEditor::SectionEditor(QWidget* parent, Qt::WindowFlags fl)
     connect(btnEdit, SIGNAL(clicked()), this, SLOT(btnEdit_clicked()));
     connect(btnRemove, SIGNAL(clicked()), this, SLOT(btnRemove_clicked()));
     connect(btnMoveUp, SIGNAL(clicked()), this, SLOT(btnMoveUp_clicked()));
-    connect(brnMoveDown, SIGNAL(clicked()), this, SLOT(brnMoveDown_clicked()));
+    connect(btnMoveDown, SIGNAL(clicked()), this, SLOT(btnMoveDown_clicked()));
     connect(cbReportHeader, SIGNAL(toggled(bool)), this, SLOT(cbReportHeader_toggled(bool)));
     connect(cbReportFooter, SIGNAL(toggled(bool)), this, SLOT(cbReportFooter_toggled(bool)));
     connect(cbHeadFirst, SIGNAL(toggled(bool)), this, SLOT(cbHeadFirst_toggled(bool)));
@@ -60,6 +60,8 @@ SectionEditor::SectionEditor(QWidget* parent, Qt::WindowFlags fl)
 
     btnEdit->setEnabled(false);
     btnRemove->setEnabled(false);
+    btnMoveUp->setEnabled(false);
+    btnMoveDown->setEnabled(false);
 }
 
 SectionEditor::~SectionEditor()
@@ -181,7 +183,7 @@ void SectionEditor::btnMoveUp_clicked()
   }
 }
 
-void SectionEditor::brnMoveDown_clicked()
+void SectionEditor::btnMoveDown_clicked()
 {
   // get the selectged item and move it down in the list
   int idx = lbSections->currentRow();
@@ -366,4 +368,6 @@ void SectionEditor::sEnableButtons()
 {
   btnEdit->setEnabled(!lbSections->selectedItems().isEmpty());
   btnRemove->setEnabled(!lbSections->selectedItems().isEmpty());
+  btnMoveUp->setEnabled(!lbSections->selectedItems().isEmpty());
+  btnMoveDown->setEnabled(!lbSections->selectedItems().isEmpty());
 }
