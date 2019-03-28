@@ -1333,24 +1333,61 @@ Voulez-vous les enregistrer avant de quitter ?</translation>
 <context>
     <name>Find</name>
     <message>
-        <location filename="../common/finddialog.ui" line="14"/>
-        <location filename="../common/finddialog.ui" line="39"/>
+        <location filename="../common/finddialog.ui" line="17"/>
         <source>Find</source>
         <translation type="unfinished">Rechercher</translation>
     </message>
     <message>
-        <location filename="../common/finddialog.ui" line="27"/>
+        <location filename="../common/finddialog.ui" line="25"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="35"/>
+        <source>Prev</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="65"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;End of Document&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="72"/>
+        <source>Use regex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="93"/>
+        <source>Match whole word</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="100"/>
+        <source>Match Case</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="112"/>
         <source>Search for :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/finddialog.ui" line="49"/>
+        <location filename="../common/finddialog.ui" line="133"/>
+        <source>Wrap around</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/finddialog.ui" line="175"/>
         <source>Close</source>
         <translation type="unfinished">Fermer</translation>
     </message>
+</context>
+<context>
+    <name>FindDialog</name>
     <message>
-        <location filename="../common/finddialog.ui" line="74"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;No matches found&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../common/finddialog.cpp" line="149"/>
+        <source>Match  %1  of %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2413,42 +2450,42 @@ Build: %4
 <context>
     <name>MQLEdit</name>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="109"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="112"/>
         <source>Close</source>
         <translation type="unfinished">Fermer</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="167"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="170"/>
         <source>Open File</source>
         <translation type="unfinished">Ouvrir un fichier</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="168"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="171"/>
         <source>MetaSQL (*.mql)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="213"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="216"/>
         <source>Database only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="214"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="217"/>
         <source>File only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="215"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="218"/>
         <source>Database and File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="290"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="293"/>
         <source>About %1</source>
         <translation type="unfinished">A propos de %1</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="291"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="294"/>
         <source>%1 version %2
 %3
 Build: %4
@@ -2457,176 +2494,176 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="310"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="313"/>
         <source>Document Modified!</source>
         <translation>Document modifié!</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="311"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="314"/>
         <source>Would you like to save your changes before continuing?</source>
         <translation>Voulez-vous enregistrer vos modifications avant de continuer ?</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="324"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="327"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="325"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="328"/>
         <source>Encountered an unknown response. No action will be taken.</source>
         <translation>J&apos;ai rencontré une réponse inconnue. Aucune action ne sera effectuée.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="342"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="345"/>
         <source>No file Specified</source>
         <translation>Pas de fichier spécifié</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="343"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="346"/>
         <source>No file was specified to save to.</source>
         <translation>Pas de fichier spécifié pour l&apos;enregistrement.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="361"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="364"/>
         <source>Error Saving file</source>
         <translation>Erreur à l&apos;enregistrement du fichier</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="362"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="365"/>
         <source>There was an error while trying to save the file.</source>
         <translation>Erreur à l&apos;enregistrement du fichier.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="382"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="385"/>
         <source>Save MetaSQL File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="386"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="389"/>
         <source>MetaSQL Files (*.mql);;Text Files (*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="393"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="878"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="396"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="881"/>
         <source>[*]%1 - File: %2 (%3)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="500"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="586"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="653"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="503"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="589"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="656"/>
         <source>Database Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="501"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="504"/>
         <source>&lt;p&gt;Trying to read the MetaSQL statement, the database server returned an error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="508"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="511"/>
         <source>Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="509"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="512"/>
         <source>&lt;p&gt;Could not find the MetaSQL statement with id %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="587"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="590"/>
         <source>&lt;p&gt;There was a problem saving the MetaSQL statement. Only database administrators may change grade 0 statements. Either %1 and choose a different grade or log in as a database administrator to make your changes.&lt;/p&gt;&lt;pre&gt;%2&lt;/pre&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="627"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="630"/>
         <source>Save to %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="628"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="631"/>
         <source>&lt;p&gt;Do you also want to save this MetaSQL statement to %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="638"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="644"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="641"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="647"/>
         <source>Could not save MetaSQL statement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="639"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="642"/>
         <source>&lt;p&gt;Trying to save the MetaSQL statement, saveMetasql returned the error code %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="645"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="648"/>
         <source>&lt;p&gt;Trying to save the MetaSQL statement, the database server returned an error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="654"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="657"/>
         <source>&lt;p&gt;There was a problem resetting triggers.Please manually enable the %1 trigger on the %2 table.&lt;/p&gt;&lt;pre&gt;%3&lt;/pre&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="680"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="706"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="683"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="709"/>
         <source>---- Parsing Query ----
 </source>
         <translation>---- Evaluation de la requête ----
 </translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="684"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="711"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="687"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="714"/>
         <source>Query parsed.</source>
         <translation>Requête évaluée.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="686"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="749"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="689"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="752"/>
         <source>ERROR: Invalid query!</source>
         <translation>ERREUR: Requête invalide!</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="695"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="698"/>
         <source>Not Connected</source>
         <translation>Non connecté</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="696"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="699"/>
         <source>You must be connected to a database in order to execute a query.</source>
         <translation>Vous devez être connecté à la base pour pouvoir exécuter une requête.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="712"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="715"/>
         <source>---- Executing Query ----</source>
         <translation>---- Exécution de la requête ----</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="739"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="742"/>
         <source>Failed to execute query.</source>
         <translation>Echec à l&apos;exécution de la requête.</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="857"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="860"/>
         <source>Save (File)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="861"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="864"/>
         <source>Save (Database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="882"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="885"/>
         <source>[*]%1 - Group: %2 Name: %3 Grade: %4 (%5)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="63"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="64"/>
         <source>MetaSQL Editor</source>
         <translation>Editeur MetaSQL</translation>
     </message>
@@ -2661,28 +2698,28 @@ Build: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="317"/>
+        <location filename="../MetaSQL/mqledit.ui" line="315"/>
         <source>&amp;MetaSQL Syntax Reference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="320"/>
+        <location filename="../MetaSQL/mqledit.ui" line="318"/>
         <source>MetaSQL Syntax Reference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="328"/>
+        <location filename="../MetaSQL/mqledit.ui" line="326"/>
         <source>&amp;MetaSQL Editor reference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="331"/>
+        <location filename="../MetaSQL/mqledit.ui" line="329"/>
         <source>MetaSQL Editor reference</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="354"/>
-        <location filename="../MetaSQL/mqledit.ui" line="357"/>
+        <location filename="../MetaSQL/mqledit.ui" line="352"/>
+        <location filename="../MetaSQL/mqledit.ui" line="355"/>
         <source>Database</source>
         <translation>Base de données</translation>
     </message>
@@ -2728,8 +2765,8 @@ Build: %4
     </message>
     <message>
         <location filename="../MetaSQL/mqledit.ui" line="186"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="866"/>
-        <location filename="../MetaSQL/mqledit.cpp" line="888"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="869"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="891"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
@@ -2854,99 +2891,94 @@ Build: %4
         <translation>Rechercher</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="312"/>
-        <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
-    </message>
-    <message>
-        <location filename="../MetaSQL/mqledit.ui" line="343"/>
+        <location filename="../MetaSQL/mqledit.ui" line="341"/>
         <source>&amp;About</source>
         <translation>&amp;A Propos</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="346"/>
+        <location filename="../MetaSQL/mqledit.ui" line="344"/>
         <source>About</source>
         <translation>A propos</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="362"/>
+        <location filename="../MetaSQL/mqledit.ui" line="360"/>
         <source>Connect to Database...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="365"/>
+        <location filename="../MetaSQL/mqledit.ui" line="363"/>
         <source>Connect...</source>
         <translation>Connecter...</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="370"/>
+        <location filename="../MetaSQL/mqledit.ui" line="368"/>
         <source>Disconnect From Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="373"/>
+        <location filename="../MetaSQL/mqledit.ui" line="371"/>
         <source>Disconnect</source>
         <translation>Déconnecter</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="378"/>
-        <location filename="../MetaSQL/mqledit.ui" line="381"/>
+        <location filename="../MetaSQL/mqledit.ui" line="376"/>
+        <location filename="../MetaSQL/mqledit.ui" line="379"/>
         <source>Unnamed</source>
         <translation>Sans nom</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="386"/>
-        <location filename="../MetaSQL/mqledit.ui" line="389"/>
+        <location filename="../MetaSQL/mqledit.ui" line="384"/>
+        <location filename="../MetaSQL/mqledit.ui" line="387"/>
         <source>Parameter List...</source>
         <translation>Liste de paramètres...</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="394"/>
-        <location filename="../MetaSQL/mqledit.ui" line="397"/>
+        <location filename="../MetaSQL/mqledit.ui" line="392"/>
+        <location filename="../MetaSQL/mqledit.ui" line="395"/>
         <source>Log Output...</source>
         <translation>Journal...</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="402"/>
-        <location filename="../MetaSQL/mqledit.ui" line="405"/>
+        <location filename="../MetaSQL/mqledit.ui" line="400"/>
+        <location filename="../MetaSQL/mqledit.ui" line="403"/>
         <source>Results...</source>
         <translation>Resultats...</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="410"/>
-        <location filename="../MetaSQL/mqledit.ui" line="413"/>
+        <location filename="../MetaSQL/mqledit.ui" line="408"/>
+        <location filename="../MetaSQL/mqledit.ui" line="411"/>
         <source>Parse Query</source>
         <translation>Evaluer la requête</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="418"/>
-        <location filename="../MetaSQL/mqledit.ui" line="421"/>
+        <location filename="../MetaSQL/mqledit.ui" line="416"/>
+        <location filename="../MetaSQL/mqledit.ui" line="419"/>
         <source>Execute Query</source>
         <translation>Exécuter la requête</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="426"/>
-        <location filename="../MetaSQL/mqledit.ui" line="429"/>
+        <location filename="../MetaSQL/mqledit.ui" line="424"/>
+        <location filename="../MetaSQL/mqledit.ui" line="427"/>
         <source>Executed SQL...</source>
         <translation>SQL exécuté...</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="434"/>
+        <location filename="../MetaSQL/mqledit.ui" line="432"/>
         <source>Open... (Database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="439"/>
+        <location filename="../MetaSQL/mqledit.ui" line="437"/>
         <source>Save As... (Database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="450"/>
+        <location filename="../MetaSQL/mqledit.ui" line="448"/>
         <source>Test Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.ui" line="455"/>
+        <location filename="../MetaSQL/mqledit.ui" line="453"/>
         <source>Search For Parameters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3627,26 +3659,51 @@ Le noeud racine n&apos;est pas &apos;report&apos;.</translation>
     </message>
     <message>
         <location filename="../OpenRPT/wrtembed/patheditor.ui" line="44"/>
+        <source>X end:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="51"/>
         <source>Width:</source>
         <translation>Largeur:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="56"/>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="58"/>
+        <source>Y end:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="74"/>
+        <source>Y start:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="81"/>
+        <source>X start:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="91"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:6pt; font-style:italic;&quot;&gt;in inches &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="100"/>
         <source>Style</source>
         <translation>Style</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="123"/>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="177"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="130"/>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="184"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="153"/>
+        <location filename="../OpenRPT/wrtembed/patheditor.ui" line="207"/>
         <source>Color...</source>
         <translation>Couleur...</translation>
     </message>
@@ -3696,26 +3753,26 @@ Le noeud racine n&apos;est pas &apos;report&apos;.</translation>
     </message>
     <message>
         <location filename="../common/data.cpp" line="28"/>
-        <source>3.4.0-beta</source>
+        <source>3.4.0-rc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="772"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="775"/>
         <source>MQLEdit for Windows</source>
         <translation>MQLEdit pour Windows</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="774"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="777"/>
         <source>MQLEdit for Linux</source>
         <translation>MQLEdit pour Linux</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="776"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="779"/>
         <source>MQLEdit for OS X</source>
         <translation>MQLEdit pour OS X</translation>
     </message>
     <message>
-        <location filename="../MetaSQL/mqledit.cpp" line="778"/>
+        <location filename="../MetaSQL/mqledit.cpp" line="781"/>
         <source>MQLEdit</source>
         <translation>MQLEdit</translation>
     </message>
@@ -3794,15 +3851,15 @@ Le noeud racine n&apos;est pas &apos;report&apos;.</translation>
         <translation>OpenRPT - Editeur de rapports</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="989"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1005"/>
         <source>Label</source>
         <translation>Etiquette</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1780"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2012"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2347"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1796"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2028"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2363"/>
         <source>:</source>
         <translation>:</translation>
     </message>
@@ -3812,28 +3869,28 @@ Le noeud racine n&apos;est pas &apos;report&apos;.</translation>
         <translation>-- Sélectionnez une requête --</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1780"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1796"/>
         <source> textarea</source>
         <translation> zone de texte</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1896"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1907"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1912"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1923"/>
         <source>3of9</source>
         <translation>3of9</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2012"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2028"/>
         <source> barcode</source>
         <translation>Code barres</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2347"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2363"/>
         <source> image</source>
         <translation> image</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2662"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2678"/>
         <source> graph</source>
         <translation> graphique</translation>
     </message>
@@ -3848,12 +3905,12 @@ Le noeud racine n&apos;est pas &apos;report&apos;.</translation>
         <translation>Déconnexion de la base</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
         <source> field total</source>
         <translation> total</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1441"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
         <source> field</source>
         <translation> champ</translation>
     </message>
@@ -5748,133 +5805,133 @@ Build: %4
 <context>
     <name>SectionEditor</name>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="87"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="96"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="130"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="89"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="98"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="132"/>
         <source>Error Encountered</source>
         <translation>Erreur rencontrée</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="87"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="89"/>
         <source>Unable to add a new section because a non-unique name could be generated.</source>
         <translation>Impossible d&apos;ajouter une section parce qu&apos;un nom dupliqué pourrait être généré.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="131"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="133"/>
         <source>Tried to add a new Detail section with a non-unique name.</source>
         <translation>Tentative d&apos;ajout d&apos;une section de détail avec un nom dupliqué.</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="30"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="31"/>
         <source>Section Editor</source>
         <translation>Editeur de section</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="53"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="72"/>
         <source>Report Header</source>
         <translation>Entête du rapport</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="60"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="79"/>
         <source>Page Footer</source>
         <translation>Pied de page</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="72"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="100"/>
         <source>Even Page(s)</source>
         <translation>Pages paires</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="79"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="143"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="107"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="180"/>
         <source>First Page</source>
         <translation>Première page</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="86"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="129"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="114"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="166"/>
         <source>Last Page</source>
         <translation>Dernière page</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="93"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="136"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="121"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="173"/>
         <source>Odd Page(s)</source>
         <translation>Pages impaires</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="100"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="128"/>
         <source>Any Page(s)</source>
         <translation>Toutes les pages</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="110"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="138"/>
         <source>Report Footer</source>
         <translation>Empied de rapport</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="117"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="145"/>
         <source>Page Header</source>
         <translation>Entête de page</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="150"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="187"/>
         <source>Even Pages(s)</source>
         <translation>Pages paires</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="157"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="194"/>
         <source>Any Pages(s)</source>
         <translation>Toutes les pages</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="169"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="206"/>
         <source>Detail Sections</source>
         <translation>Section de détail</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="192"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="247"/>
         <source>&amp;Add</source>
         <translation>&amp;Ajouter</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="199"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="254"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editer</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="206"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="261"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="213"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="268"/>
         <source>Move &amp;Up</source>
         <translation>&amp;Monter</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="220"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="275"/>
         <source>Move &amp;Down</source>
         <translation>&amp;Descendre</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="256"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="320"/>
         <source>&amp;Close</source>
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="259"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.ui" line="323"/>
         <source>Alt+C</source>
         <translation>Alt+C</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="77"/>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="84"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="79"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="86"/>
         <source>unnamed</source>
         <translation>sans_nom</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="96"/>
+        <location filename="../OpenRPT/wrtembed/sectioneditor.cpp" line="98"/>
         <source>No document was set</source>
         <translation>Pas de document</translation>
     </message>
@@ -6101,7 +6158,17 @@ System Error &apos;%1&apos;
       </translation>
     </message>
     <message>
+        <location filename="../common/login.cpp" line="216"/>
+        <source>Inadequate Priviliges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../common/login.cpp" line="217"/>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/login.cpp" line="223"/>
         <source>Logging into the Database</source>
         <translation>Connexion à la base</translation>
     </message>
