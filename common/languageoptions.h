@@ -27,6 +27,7 @@ public:
 	QStringList languageTitlesList(void);
 	QString selectedTitle();
 	void selectFromTitle(QString title);
+	
 private:
 	QString _defaultLanguage;
 	QString _selectedLanguage;
@@ -34,5 +35,7 @@ private:
 	QList<QTranslator *> _translators;
 public:
 };
+
+QString translationFile(const QString localestr, const QString component, QString &version);
 
 #endif // LANGUAGEOPTIONS_H

@@ -48,3 +48,14 @@ TRANSLATIONS = dict/openrpt.ar.ts \
 macx {
   QMAKE_INFO_PLIST = Info.plist
 }
+
+INSTALLS = translations
+DESTDIR = bin
+
+translations.path = $$absolute_path($${DESTDIR})/dict
+translations.files = $$replace(TRANSLATIONS, ts, qm)
+translations.extra =  $$dirname(QMAKE_QMAKE)/lrelease xtuple.pro
+msvc{
+  translations.extra =  for %i IN ($${TRANSLATIONS}) DO $$dirname(QMAKE_QMAKE)/lrelease %i
+}
+translations.CONFIG = no_check_exist
