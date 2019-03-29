@@ -48,3 +48,7 @@ TRANSLATIONS = dict/openrpt.ar.ts \
 macx {
   QMAKE_INFO_PLIST = Info.plist
 }
+
+msvc{
+  translations.extra =  for %i IN ($${TRANSLATIONS}) DO $$dirname(QMAKE_QMAKE)/lrelease %i
+}
