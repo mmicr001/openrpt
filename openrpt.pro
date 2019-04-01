@@ -49,6 +49,11 @@ macx {
   QMAKE_INFO_PLIST = Info.plist
 }
 
+INSTALLS = translations
+
+translations.path = bin/dict
+translations.files = $$replace(TRANSLATIONS, ts, qm)
+translations.extra = cd share/dict && $$dirname(QMAKE_QMAKE)/lrelease openrpt*.ts
 msvc{
   translations.extra =  for %i IN ($${TRANSLATIONS}) DO $$dirname(QMAKE_QMAKE)/lrelease %i
 }
