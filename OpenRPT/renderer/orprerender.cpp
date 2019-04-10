@@ -1259,14 +1259,14 @@ qreal ORPreRenderPrivate::renderTextElements(QList<QPair<ORObject*,qreal>> elemL
           if(splitter->currentLineRect().intersects(splitters[j].currentLineRect()))
             splitters[j].adjustElementHeight(splitter->textBottomRelativePos());
         }
-
+        splitter->nextLine();
         addTextPrimitive(splitter->element(),
                           splitter->currentLineRect().topLeft(),
                           splitter->currentLineRect().size(),
                           splitter->element()->align,
                           splitter->currentLine(),
                           splitter->element()->font);			
-        splitter->nextLine();
+        
       }
 
       if (splitter->textBottomRelativePos() > sectionHeight)
