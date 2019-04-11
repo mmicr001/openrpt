@@ -127,7 +127,7 @@ void FindDialog::sFind()
   else
   {
     QString term = _leSearch->text();
-    found = !_text->find(term,flags);
+    found = _text->find(term,flags);
   }
 
   if(!found)
