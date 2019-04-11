@@ -68,6 +68,7 @@ void FindDialog::sCountMatches()
 {
   int currCursorPos = _text->textCursor().position();
   bool direction = _reverseSearch;
+  cursors.clear();
 
   //do forward search from the top of the doc
   _reverseSearch = false;  sSetFlags();
@@ -82,13 +83,17 @@ void FindDialog::sCountMatches()
   else
   {
     QString term = _leSearch->text();
-    while(_text->find(term,flags))
+    while(_text->find(term,flags)){
       _matches.append(_text->textCursor().position());
+      cursors.append(_text->textCursor());
+    }
   }
   
   sMoveCursorTo(currCursorPos); // put cursor back where it was
   _reverseSearch = direction;   // return search direction to what it was
   _searchChanged=false;
+
+  highlightMatches(QColor("yellow"));
 }
 
 void FindDialog::sFindPrev()
@@ -183,6 +188,7 @@ void FindDialog::sSearchChanged()
   _lbCount->clear();
   _leSearch->setStyleSheet( QString( "background-color: white"));
 
+  highlightMatches(QColor("white"));
   //update search paramters
   sSetFlags();
 
@@ -191,4 +197,14 @@ void FindDialog::sSearchChanged()
   bool _matchWord  = _cbMatchWord->isChecked();
   bool _regex      = _cbRegex->isChecked();
   bool _wrapAround = _cbWrapAround->isChecked();
+}
+
+void FindDialog::highlightMatches(QColor color)
+{
+  foreach(QTextCursor c,cursors)
+  {
+    QTextCharFormat tfc;
+    tfc.setBackground(QBrush(color));
+    c.setCharFormat(tfc);
+  }
 }

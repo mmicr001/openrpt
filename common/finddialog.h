@@ -46,6 +46,7 @@ public slots:
   void sSetFlags();
   void sSetWarning(bool set = 0); 
   void sSearchChanged(); 
+  void highlightMatches(QColor color);
 protected slots:
 
 protected:
@@ -60,6 +61,7 @@ private:
   bool _reverseSearch;
   QList<int> _matches;
   QTextDocument::FindFlags flags;
+  QList<QTextCursor> cursors;
     
 };
 
