@@ -78,12 +78,16 @@ void FindDialog::sCountMatches()
   {
     QRegExp term = QRegExp(_leSearch->text());
     while(_text->find(term,flags))
+    {
       _matches.append(_text->textCursor().position());
+      cursors.append(_text->textCursor());
+    }
   }
   else
   {
     QString term = _leSearch->text();
-    while(_text->find(term,flags)){
+    while(_text->find(term,flags))
+    {
       _matches.append(_text->textCursor().position());
       cursors.append(_text->textCursor());
     }
@@ -92,7 +96,6 @@ void FindDialog::sCountMatches()
   sMoveCursorTo(currCursorPos); // put cursor back where it was
   _reverseSearch = direction;   // return search direction to what it was
   _searchChanged=false;
-
   highlightMatches(QColor("yellow"));
 }
 
