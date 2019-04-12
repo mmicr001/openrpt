@@ -62,6 +62,7 @@ void FindDialog::setTextEdit(QTextEdit* t)
 {
   _text = t;
   _leSearch->setText(_text->textCursor().selectedText()); //populate search lineedit if user has highlighted text
+  backgroundColor = _text->palette().color(QPalette::Base); 
 }
 
 void FindDialog::sCountMatches()
@@ -191,7 +192,7 @@ void FindDialog::sSearchChanged()
   _lbCount->clear();
   _leSearch->setStyleSheet( QString( "background-color: white"));
 
-  highlightMatches(QColor("white"));
+  highlightMatches(backgroundColor);
   //update search paramters
   sSetFlags();
 

@@ -62,6 +62,7 @@ private:
   QList<int> _matches;
   QTextDocument::FindFlags flags;
   QList<QTextCursor> cursors;
+  QColor backgroundColor;
     
 };
 
