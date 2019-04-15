@@ -213,8 +213,8 @@ void login::sLogin()
   QSqlQuery q(getSqlFromTag("fmt05", db.driverName()));
   if(q.lastError().isValid())
   {
-    QMessageBox::warning( this, tr("Inadequate Priviliges"),
-                          tr( "%1"  ).arg(q.lastError().databaseText()));
+    QMessageBox::warning( this, tr("Unable to log in correctly"),
+                          q.lastError().databaseText());
     return;
   }
 
