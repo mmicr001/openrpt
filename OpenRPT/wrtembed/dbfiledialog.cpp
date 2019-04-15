@@ -22,6 +22,7 @@
 #include "builtinSqlFunctions.h"
 
 #include <QSqlDatabase>
+#include <QSqlError>
 #include <QVariant>
 #include <QMessageBox>
 #include <xsqlquery.h>
@@ -55,6 +56,12 @@ DBFileDialog::DBFileDialog(QWidget* parent, Qt::WindowFlags fl)
       QTreeWidgetItem * item = new QTreeWidgetItem(_list, QStringList() << qry.value("report_name").toString() << qry.value("report_grade").toString() << qry.value("package").toString());
       item->setData(0, Qt::UserRole, qry.value("report_id"));
     }
+    if (qry.lastError().isValid())
+    {
+      QMessageBox::warning( this, tr("Unable to list reports correctly"),
+                            qry.lastError().databaseText());
+      return;
+    }
 
     _package->addItem("");
 
@@ -62,6 +69,12 @@ DBFileDialog::DBFileDialog(QWidget* parent, Qt::WindowFlags fl)
     while(qry.next())
     {
       _package->addItem(qry.value("package").toString());
+    }
+    if (qry.lastError().isValid())
+    {
+      QMessageBox::warning( this, tr("Unable to get schemas containing reports"),
+                            qry.lastError().databaseText());
+      return;
     }
 }
 
