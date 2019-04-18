@@ -881,7 +881,7 @@ qreal ORPreRenderPrivate::renderSection(const ORSectionData & sectionData)
             QString text = evaluateField(elemThis->toField());
 			if (!text.isEmpty())
 			  addTextPrimitive(elemThis, QPointF(x, y), size, f->align, text, f->font); 
-			else
+			else if(!f->doNotCollapse)
 			{
 			  int horizontalStatus = 0;
 			  int objCnt = 1;

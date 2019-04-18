@@ -588,6 +588,8 @@ bool parseReportField(const QDomElement & elemSource, ORFieldData & fieldTarget)
       if(!fieldTarget.format.isEmpty())
         fieldTarget.trackTotal = true;
     }
+    else if(elemParam.tagName() == "doNotCollapse")
+      fieldTarget.doNotCollapse = (elemParam.text()=="true"? true : false);
     else
      qDebug("Tag not Parsed at <field>:%s\n", elemParam.tagName().toLatin1().data());
   }

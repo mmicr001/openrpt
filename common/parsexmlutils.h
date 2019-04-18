@@ -282,6 +282,7 @@ class ORFieldData : public ORObject
     qreal ySpacing;
     bool triggerPageBreak;
     bool leftToRight;
+    bool doNotCollapse;
 
     virtual bool isField();
     virtual ORFieldData * toField();

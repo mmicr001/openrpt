@@ -115,6 +115,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="_cbDoNotCollapse">
+       <property name="text">
+        <string>Do Not Collapse</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QGroupBox" name="_gbFormat">
        <property name="title">
         <string>Format</string>
