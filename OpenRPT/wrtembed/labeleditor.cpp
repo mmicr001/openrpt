@@ -144,6 +144,8 @@ QString LabelEditor::getQueryResult(QString str)
   QSqlDatabase db = QSqlDatabase::database();
   if (!qry.isEmpty() && db.isOpen())
   {
+    if(ds->qsList->get(qry)==0) //check if querysource name is valid
+      return 0;
 	MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
 	xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
 	xqry.first();
