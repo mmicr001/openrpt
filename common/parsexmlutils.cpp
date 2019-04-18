@@ -535,6 +535,7 @@ bool parseReportField(const QDomElement & elemSource, ORFieldData & fieldTarget)
   fieldTarget.ySpacing = 0;
   fieldTarget.triggerPageBreak = false;
   fieldTarget.leftToRight = false;
+  fieldTarget.collapse = false;
 
   for (int paramCounter = 0; paramCounter < params.count(); paramCounter++)
   {
@@ -588,6 +589,8 @@ bool parseReportField(const QDomElement & elemSource, ORFieldData & fieldTarget)
       if(!fieldTarget.format.isEmpty())
         fieldTarget.trackTotal = true;
     }
+    else if(elemParam.tagName() == "collapse")
+      fieldTarget.collapse = true;
     else
      qDebug("Tag not Parsed at <field>:%s\n", elemParam.tagName().toLatin1().data());
   }

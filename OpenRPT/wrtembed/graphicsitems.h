@@ -218,6 +218,7 @@ class ORGraphicsFieldItem : public ORGraphicsRectItem
     bool trackBuiltinFormat() const { return _trackBuiltinFormat; }
     bool useSubTotal() const { return _useSubTotal; }
     QString format() const { return _format; }
+    bool collapse() const {return _collapse;}
 
     int textFlags() const { return _flags; }
 
@@ -246,6 +247,7 @@ class ORGraphicsFieldItem : public ORGraphicsRectItem
     qreal   _ySpacing;
     bool    _triggerPageBreak;
     bool    _leftToRight;
+    bool    _collapse;
 };
 
 

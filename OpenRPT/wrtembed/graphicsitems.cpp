@@ -1254,6 +1254,7 @@ ORGraphicsFieldItem::ORGraphicsFieldItem(QGraphicsItem * parent)
   _ySpacing = 0;
   _triggerPageBreak = false;
   _leftToRight = false;
+  _collapse = false;
 }
 
 ORGraphicsFieldItem::ORGraphicsFieldItem(const QDomNode & element, QGraphicsItem * parent)
@@ -1352,7 +1353,9 @@ ORGraphicsFieldItem::ORGraphicsFieldItem(const QDomNode & element, QGraphicsItem
         if(!node.firstChild().nodeValue().isEmpty())
             _format = node.firstChild().nodeValue();
         if(_format.length() > 0) _trackTotal = true;
-    } else {
+    } else if(n == "collapse"){
+        _collapse = true;
+    }else {
       qDebug("while parsing field element encountered unknow element: %s",n.toLatin1().data());
     }
   }
@@ -1440,6 +1443,8 @@ void ORGraphicsFieldItem::buildXML(QDomDocument & doc, QDomElement & parent)
   if(_leftToRight) {
       entity.appendChild(doc.createElement("leftToRight"));
   }
+  if(_collapse)
+    entity.appendChild(doc.createElement("collapse"));
 
   parent.appendChild(entity);
 }
@@ -1519,6 +1524,7 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
   le->leYSpacing->setText(QString::number(_ySpacing));
   le->_cbPageBreak->setChecked(_triggerPageBreak);
   le->_cbLeftToRight->setChecked(_leftToRight);
+  le->_cbCollapse->setChecked(_collapse);
 
   if(le->exec() == QDialog::Accepted)
   {
@@ -1565,7 +1571,7 @@ void ORGraphicsFieldItem::properties(QWidget * parent)
       setRect(0, 0, dw, dh);
       _setModified(scene(), true);
     }
-
+    _collapse = le->_cbCollapse->isChecked();
     update();
   }
 }

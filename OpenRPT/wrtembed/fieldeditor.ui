@@ -115,6 +115,16 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="_cbCollapse">
+       <property name="toolTip">
+        <string>If the field returns NULL reclaim the space</string>
+       </property>
+       <property name="text">
+        <string>Collapse if NULL</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QGroupBox" name="_gbFormat">
        <property name="title">
         <string>Format</string>
