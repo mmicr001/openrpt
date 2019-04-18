@@ -62,12 +62,14 @@ void FindDialog::setTextEdit(QTextEdit* t)
 {
   _text = t;
   _leSearch->setText(_text->textCursor().selectedText()); //populate search lineedit if user has highlighted text
+  backgroundColor = _text->palette().color(QPalette::Base); 
 }
 
 void FindDialog::sCountMatches()
 {
   int currCursorPos = _text->textCursor().position();
   bool direction = _reverseSearch;
+  cursors.clear();
 
   //do forward search from the top of the doc
   _reverseSearch = false;  sSetFlags();
@@ -77,18 +79,25 @@ void FindDialog::sCountMatches()
   {
     QRegExp term = QRegExp(_leSearch->text());
     while(_text->find(term,flags))
+    {
       _matches.append(_text->textCursor().position());
+      cursors.append(_text->textCursor());
+    }
   }
   else
   {
     QString term = _leSearch->text();
     while(_text->find(term,flags))
+    {
       _matches.append(_text->textCursor().position());
+      cursors.append(_text->textCursor());
+    }
   }
   
   sMoveCursorTo(currCursorPos); // put cursor back where it was
   _reverseSearch = direction;   // return search direction to what it was
   _searchChanged=false;
+  highlightMatches(QColor("yellow"));
 }
 
 void FindDialog::sFindPrev()
@@ -127,7 +136,7 @@ void FindDialog::sFind()
   else
   {
     QString term = _leSearch->text();
-    found = !_text->find(term,flags);
+    found = _text->find(term,flags);
   }
 
   if(!found)
@@ -183,6 +192,7 @@ void FindDialog::sSearchChanged()
   _lbCount->clear();
   _leSearch->setStyleSheet( QString( "background-color: white"));
 
+  highlightMatches(backgroundColor);
   //update search paramters
   sSetFlags();
 
@@ -191,4 +201,14 @@ void FindDialog::sSearchChanged()
   bool _matchWord  = _cbMatchWord->isChecked();
   bool _regex      = _cbRegex->isChecked();
   bool _wrapAround = _cbWrapAround->isChecked();
+}
+
+void FindDialog::highlightMatches(QColor color)
+{
+  foreach(QTextCursor c,cursors)
+  {
+    QTextCharFormat tfc;
+    tfc.setBackground(QBrush(color));
+    c.setCharFormat(tfc);
+  }
 }
