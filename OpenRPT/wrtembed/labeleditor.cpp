@@ -139,12 +139,12 @@ QString LabelEditor::getQueryResult(QString str)
   }
   
   if(qry=="Context Query")
-	return QString("");
+	return QString();
    
   QSqlDatabase db = QSqlDatabase::database();
   if (!qry.isEmpty() && db.isOpen())
   {
-    if(!ds->qsList->get(qry)) //check if querysource name is valid
+    if(ds->qsList->get(qry)) //check if querysource name is valid
     {
       MetaSQLQuery mql = MetaSQLQuery(ds->qsList->get(qry)->query());
       xqry = mql.toQuery(plist,QSqlDatabase::database(),true);
@@ -152,7 +152,7 @@ QString LabelEditor::getQueryResult(QString str)
       result = xqry.value(col).toString();
     }
     else 
-      return QString("");
+      return QString();
   }
   
   return result;
