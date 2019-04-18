@@ -116,6 +116,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="_cbDoNotCollapse">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the field returns NULL do not reclaaim the space&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Do Not Collapse</string>
        </property>
