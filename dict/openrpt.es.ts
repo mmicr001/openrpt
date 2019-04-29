@@ -491,13 +491,13 @@ Por favor especifique un único nombre para este color.</translation>
     <name>DBFileDialog</name>
     <message>
         <location filename="../OpenRPT/wrtembed/dbfiledialog.ui" line="42"/>
-        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="46"/>
+        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="47"/>
         <source>Name</source>
         <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../OpenRPT/wrtembed/dbfiledialog.ui" line="47"/>
-        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="46"/>
+        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="47"/>
         <source>Grade</source>
         <translation>Grado</translation>
     </message>
@@ -508,7 +508,7 @@ Por favor especifique un único nombre para este color.</translation>
     </message>
     <message>
         <location filename="../OpenRPT/wrtembed/dbfiledialog.ui" line="52"/>
-        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="46"/>
+        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="47"/>
         <source>Package</source>
         <translation type="unfinished"></translation>
     </message>
@@ -541,6 +541,16 @@ Por favor especifique un único nombre para este color.</translation>
         <location filename="../OpenRPT/wrtembed/dbfiledialog.ui" line="136"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="61"/>
+        <source>Unable to list reports correctly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/dbfiledialog.cpp" line="75"/>
+        <source>Unable to get schemas containing reports</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1130,17 +1140,17 @@ Quiere guardar los cambios antes de cerrar?</translation>
         <translation>Mostrar como total</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="158"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="168"/>
         <source>String Format </source>
         <translation>Formato de cadena</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="177"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="187"/>
         <source>Example: %0.2f</source>
         <translation>Ejemplo. %0.2f</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="206"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="216"/>
         <source>Built-in Locale Format</source>
         <translation>Incorporado en el formato local</translation>
     </message>
@@ -1151,181 +1161,191 @@ Quiere guardar los cambios antes de cerrar?</translation>
     </message>
     <message>
         <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="120"/>
+        <source>If the field returns NULL reclaim the space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="123"/>
+        <source>Collapse if NULL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="130"/>
         <source>Format</source>
         <translation>Formato:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="231"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="241"/>
         <source>Array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="258"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="285"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="268"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="295"/>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="265"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="275"/>
         <source>Columns:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="272"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="282"/>
         <source>Lines:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="305"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="315"/>
         <source>H spacing:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="312"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="322"/>
         <source>V spacing:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="325"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="338"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="335"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="348"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="345"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="355"/>
         <source>Page break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="352"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="362"/>
         <source>Fill columns first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="398"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="408"/>
         <source>HAlign</source>
         <translation>Halineación</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="404"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="462"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="414"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="472"/>
         <source>None</source>
         <translation>Ninguno</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="411"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="421"/>
         <source>Left</source>
         <translation>Izquierda</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="418"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="428"/>
         <source>Center</source>
         <translation>Centro</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="425"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="435"/>
         <source>Right</source>
         <translation>Derecha</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="441"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="451"/>
         <source>VAlign</source>
         <translation>Valineación</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="469"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="479"/>
         <source>Top</source>
         <translation>Superior</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="476"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="486"/>
         <source>Middle</source>
         <translation>Medio</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="483"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="493"/>
         <source>Bottom</source>
         <translation>Inferior</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="495"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="505"/>
         <source>Word wrap</source>
         <translation>Ajuste de línea</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="502"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="512"/>
         <source>Position/Size</source>
         <translation>Posición/Tamaño</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="530"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="537"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="540"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="547"/>
         <source>0.01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="523"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="533"/>
         <source>Y:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="544"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="554"/>
         <source>Height:</source>
         <translation>Altura:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="558"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="568"/>
         <source>X:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="572"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="582"/>
         <source>Width:</source>
         <translation>Anchura:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="590"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="600"/>
         <source>in inches</source>
         <translation>en pulgadas</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="551"/>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="565"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="561"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="575"/>
         <source>0.00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="625"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="635"/>
         <source>Preview:</source>
         <translation>Vista previa:</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="650"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="660"/>
         <source>Preview Area</source>
         <translation>Área de vista previa</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="679"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="689"/>
         <source>&amp;OK</source>
         <translation>&amp;Aceptar</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="682"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="692"/>
         <source>Alt+O</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="695"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="705"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="698"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="708"/>
         <source>Alt+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="724"/>
+        <location filename="../OpenRPT/wrtembed/fieldeditor.ui" line="734"/>
         <source>&amp;Font...</source>
         <translation>&amp;Fuente...</translation>
     </message>
@@ -1386,7 +1406,7 @@ Quiere guardar los cambios antes de cerrar?</translation>
 <context>
     <name>FindDialog</name>
     <message>
-        <location filename="../common/finddialog.cpp" line="149"/>
+        <location filename="../common/finddialog.cpp" line="158"/>
         <source>Match  %1  of %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3752,7 +3772,7 @@ El nodo raíz no es &apos;report&apos;.</translation>
     </message>
     <message>
         <location filename="../common/data.cpp" line="28"/>
-        <source>3.4.0-rc</source>
+        <source>3.4.0-rc.2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3835,46 +3855,46 @@ El nodo raíz no es &apos;report&apos;.</translation>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1796"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2028"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2363"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1462"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1802"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2034"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2369"/>
         <source>:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1462"/>
         <source> field total</source>
         <translation>Campo total</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1457"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1462"/>
         <source> field</source>
         <translation>campo</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1796"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1802"/>
         <source> textarea</source>
         <translation>área de texto</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1912"/>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1923"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1918"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="1929"/>
         <source>3of9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2028"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2034"/>
         <source> barcode</source>
         <translation>Código de barra</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2363"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2369"/>
         <source> image</source>
         <translation>imagen</translation>
     </message>
     <message>
-        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2678"/>
+        <location filename="../OpenRPT/wrtembed/graphicsitems.cpp" line="2684"/>
         <source> graph</source>
         <translation>gráfico</translation>
     </message>
@@ -6166,12 +6186,7 @@ Error de Sistema &apos;%1&apos;
     </message>
     <message>
         <location filename="../common/login.cpp" line="216"/>
-        <source>Inadequate Priviliges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/login.cpp" line="217"/>
-        <source>%1</source>
+        <source>Unable to log in correctly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
