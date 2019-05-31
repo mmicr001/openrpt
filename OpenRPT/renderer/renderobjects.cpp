@@ -268,13 +268,12 @@ QString OROTextBox::textForcedToWrap(QPainter *p)
                  size().height() * p->device()->logicalDpiY());
   QString result = text();
   QFont   origfont = p->font();
+  QFontMetrics fm = p->fontMetrics();
 
   p->setFont(_font);
-
-  if (p->boundingRect(tbrect, _flags, result).width() >= tbrect.width())
+  if (fm.width(result) >= tbrect.width())
   {
     QRegExp wordre("(\\S+)");
-    QFontMetrics fm = p->fontMetrics();
 
     int wordstart = 0;
     while (wordre.indexIn(result, wordstart) != -1)
