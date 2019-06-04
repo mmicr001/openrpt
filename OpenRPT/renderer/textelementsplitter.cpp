@@ -43,58 +43,59 @@ TextElementSplitter::TextElementSplitter(ORObject *textelem, QString text, qreal
   _lineClipWidth = (int)(_baseElementRect.width() * prnt.logicalDpiX()) - CLIPMARGIN;
 
   _fm = QSharedPointer<QFontMetrics>(new QFontMetrics(_element->font, &prnt));
-
-  // insert spaces into text to allow it to wrap
-  QPainter imagepainter(&prnt);
-  OROTextBox tmpbox(textelem);
-  tmpbox.setPosition(_baseElementRect.topLeft());
-  tmpbox.setSize(_baseElementRect.size());
-  tmpbox.setFont(_element->font);
-  tmpbox.setText(_text);
-  tmpbox.setFlags(_element->align | Qt::TextWordWrap);
-  tmpbox.setRotation(_element->rotation());
-  _text = tmpbox.textForcedToWrap(&imagepainter);
 }
 
 void TextElementSplitter::nextLine()
-{
-  QRegExp re("\\s");
-  int currentPos = 0;
-  bool endOfLine = false;
+{  
   _currentLine.clear();
+  int currentPos = 0;
+  bool textShouldWrap = false;
 
-  while(!endOfLine)
+  if(_fm->boundingRect(_text).width() > _lineClipWidth)
+    textShouldWrap = true;
+
+  if(!textShouldWrap)
   {
-    int idx = re.indexIn(_text, currentPos);
-    bool endOfText = (idx == -1);
-    if(idx >=0 && _text[idx] == '\n')
+    _currentLine = _text;
+    
+    //check for newline character
+    QRegExp re("(\r\n|\n)");
+    int newline = re.indexIn(_text);
+    if (newline !=-1)
     {
-      currentPos = idx + 1;
-      endOfLine = true;
+      _text.replace(newline,re.matchedLength(),"");
+      currentPos = newline; 
     }
-    else {
-      endOfLine = _fm->boundingRect(_text.left(idx)).width() > _lineClipWidth;
-    }
-    if(endOfText && !endOfLine)
-    {
-      currentPos = _text.length() + 1;
-      endOfLine = true;
-    }
-    if(endOfLine && currentPos==0)
-    {
-      currentPos = _text.length() + 1;
-    }
-    if(endOfLine)
-    {
-      _currentLine = _text.left(currentPos - 1);
-      _text = _text.mid(currentPos, _text.length());
-    }
-    else
-    {
-      currentPos = idx + 1;
-    }
-
+    else currentPos = _text.length();
   }
+  else
+  { 
+    // calculate where to split text and wrap
+    int i = _text.length() * _lineClipWidth / _fm->width(_text);
+    while (_fm->width(_text.left(i)) >= _lineClipWidth)
+      i--;
+    while (i < _text.length() && _fm->width(_text.left(i)) < _lineClipWidth)
+      i++;
+    currentPos = i;
+    
+    //check for newline character
+    QRegExp re("(\r\n|\n)");
+    int newline = re.indexIn(_text.left(currentPos));
+    if (newline !=-1)
+    {
+      _text.replace(newline,re.matchedLength(),"");
+      currentPos = newline; 
+    }
+    else //wrap text at the last space
+    {
+      re.setPattern("\\s");
+      newline = re.lastIndexIn(_text.left(currentPos),-1);
+      if(newline>0)
+        currentPos = newline+1; 
+    }
+  }
+  _currentLine = _text.left(currentPos);
+  _text = _text.mid(currentPos, _text.length());
 
   _lineCounter++;
 }
