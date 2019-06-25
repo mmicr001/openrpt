@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=MetaSQL Import
-Icon=/usr/share/openrpt/OpenRPT/images/OpenReportsIcon128.png
-Exec=importmqlgui
-Terminal=false
-Categories=Office;

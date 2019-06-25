@@ -1,0 +1,206 @@
+xTuple End-User License Agreement (EULA)
+
+The full text of the xTuple License, which governs the use of the commercial
+xTuple software by an end-user (typically a manufacturing or distribution
+company), is found below. xTuple's partner programs, covered under a separate
+agreement, offer generous incentives for value-added resellers, consultants,
+systems integrators, and other technology solution providers to resell and
+modify xTuple products.
+
+This license is between you and xTuple and applies to the Software (as defined
+below). This license explains your rights to use and modify the Software. By
+signing — either electronically or manually — you accept this license and agree
+to comply with its terms and conditions.
+
+1. Definitions. The following definitions apply to this license:
+
+1.1. “Contribution” means any work derived from the Software by a Contributor,
+including, without limitation, any modification, addition, or deletion made to
+the Software by xTuple, another Contributor, or you.
+
+1.2. “Contributor” means any party that develops a Contribution to the Software
+and includes, but is not limited to, xTuple and you.
+
+1.3. “xTuple” means OpenMFG, LLC, d/b/a “xTuple,” a Virginia limited liability
+company and owner of the Software.
+
+1.4. “Software” means the xTuple ERP Suite, the xTupleCommerce website, and/or
+xTuple Packages which are loaded into the xTuple ERP Suite, including all
+accompanying tools and documentation, and any Contributions added to the xTuple
+Software, tools, or documentation.
+
+
+2. Rights Granted. xTuple licenses you to do the following with the Software:
+
+2.1. Copy, install, and modify the source code version of the Software;
+
+2.2. Use the Software for your own internal business purposes as an end-user of
+the Software.
+
+This license is worldwide, non-exclusive, perpetual or annual, depending on the
+license fee paid, (unless terminated for breach), and non-transferable.
+
+
+3. License and Maintenance Fees.
+
+3.1. Number of Users. This license is for ______ concurrent users of the
+Software, and is licensed under either an Annual License or a Perpetual License
+(as defined below). If you elect to purchase additional users, convert this
+license from Annual to Perpetual, or from Perpetual to Annual, at a later date,
+all other terms of this license will continue to apply.
+
+xTuple reserves the right to audit your usage of the Software, and if you exceed
+this specified number of concurrent users on more than three occasions, you
+agree that this license will be amended to add such additional users as xTuple
+deems required by the audit. Such additional users will be added via Attachment
+A to this license, and will be billed to you at xTuple’s then-current published
+rates. If you determine independent of any xTuple audit that you require
+additional user licenses, you may notify xTuple via electronic mail, and such
+additional users will be billed to you at xTuple’s then-current published rates,
+less a courtesy discount of 10%.
+
+3.2. Annual License. In exchange for the license granted in Section 2, you agree
+to pay to xTuple an initial annual license fee in the amount specified in your
+xTuple invoice.
+
+You must pay the annual license fee upon execution of this license and each
+subsequent anniversary thereof (provided that you are not in breach). Software
+Maintenance (as defined in section 3.5 below) is included in the Annual License.
+Renewal pricing of the Annual License shall be at xTuple’s then-current
+published rates (including any published discounts) unless you hold a multi-year
+license agreement; xTuple will invoice you for the amount due, thirty days
+before the due date. If you do not wish to renew your Annual License, you must
+notify xTuple in writing at least sixty days prior to the anniversary date of
+this Agreement.
+
+3.3. Perpetual License. In exchange for the license granted in Section 2, you
+agree to pay to xTuple a Perpetual License Fee, plus the first year’s Software
+Maintenance Fee, in the amount specified in your xTuple invoice. You must pay
+both fees upon execution of this license.
+
+3.4. Monthly Billing Option. For either the Annual or Perpetual License, you may
+optionally choose to pay to xTuple a monthly Fee in the amount specified in your
+xTuple invoice. Payment for monthly billing is only by pre-authorized ACH bank
+account draft; you hereby authorize xTuple to debit your account the monthly
+Fee, with the first three months’ payment due on the Effective Date, and monthly
+payments on the same day of the month as the Effective Date, starting three
+months following the Effective Date. You acknowledge that this does not
+constitute a month-to-month contract, and represents a commitment for a full
+twelve months following the Effective Date, subject to all the other terms
+contained in this license. In the event that your account debit is declined, a
+$50 fee will be assessed, and you must provide alternate billing information
+within 72 hours of being notified by xTuple, or be subject to the Termination
+clause in section 11 below.
+
+3.5. Software Maintenance. Customers who are current on their Annual License
+payments or current in the first year of their Perpetual License payment as
+defined above shall be entitled to receive all updates and enhancements to the
+Software released by xTuple. Updates and enhancements will be provided
+electronically. Software Maintenance payments are due and payable each year on
+the anniversary date of the Perpetual License Fee, at xTuple’s then-current
+published rates, unless you hold a multi-year maintenance agreement. If you do
+not wish to renew your Software Maintenance, you must notify xTuple in writing
+at least sixty days prior to the anniversary date of this Agreement. If more
+than twelve months have passed since a customer’s most recent Software
+Maintenance Fee payment, the customer will be deemed to be “Out of Maintenance,”
+and xTuple reserves the right to treat any further updates to the Software as
+entirely new license sales, subject to additional penalties and fees as
+explained on the xTuple website. Installation of updates and enhancements is not
+covered under this License Agreement (see section 6, below).
+
+
+4. Licensee Obligations. You are required to do the following when using or
+modifying the Software:
+
+4.1. Include all original copyright and trademark notices and disclaimers;
+
+4.2. Include the text of this license; and
+
+4.3. Deliver to xTuple or its authorized reseller in digital or electronic
+format all Contributions that you make to the Software.
+
+Assuming you are satisfied with the Software, you agree to provide a positive
+statement, including your company name, about your experience, either written or
+in video format, and/or case study for xTuple marketing purposes. Once provided,
+you grant us a worldwide, perpetual, royalty-free license to use and incorporate
+such statements or case studies for the purposes of marketing and promotion.
+
+
+5. Prohibitions. You are not permitted to do any of the following with the
+Software:
+
+5.1. Distribute a source code version of the Software containing your
+Contributions;
+
+5.2. Distribute your Contributions to any party other than xTuple or its
+authorized reseller;
+
+5.3. Distribute or redistribute a compiled binary version of the Software in its
+original or modified form;
+
+5.4. Process or permit to be processed any other partyís data for a fee or other
+consideration;
+
+5.5. Use the Software in the operation of a service bureau;
+
+5.6. Provide consulting services related to developing, installing,
+implementing, or training for the use, modification, or distribution of the
+Software to any party outside of your business for a fee;
+
+5.7. Develop or contribute to the development of a software application that
+competes with the Software.
+
+Parties interested in reselling the Software, or providing services related to
+the Software, are encouraged to contact xTuple about a reseller or consultant
+arrangement, which would include a separate agreement and license.
+
+
+6. No Additional Services. Under the terms of this license, xTuple is not
+responsible for installing, supporting, maintaining, or updating the Software
+(except in the case of Software Maintenance as defined above), for training you
+to install, use, support, maintain, update, or modify the Software, or for
+converting, entering, or verifying any data. xTuple and its authorized partners
+provide installation, support, hosting, training, and consulting services for a
+fee under separate written agreements.
+
+
+7. Ownership. xTuple owns all right, title, interest, copyright, and patent
+rights in and to the original and all modified versions of the Software,
+including, without limitation, all Contributions made by you or any other party.
+To the extent that xTuple does not own your Contributions, you hereby transfer
+to xTuple all right, title, interest, copyright, and patent rights in and to
+your Contributions. xTuple reserves the right to sell or license for a fee the
+Software and any Contributions in connection with a license to use the Software
+and the Contributions in connection with support, maintenance, or consulting
+services.
+
+
+8. Limitations on Liability. In no event will xTuple or any other Contributor be
+liable for any damages whatsoever, including, but not limited to, lost revenue
+or profits or other direct, indirect, special, incidental, or consequential
+damages, even if they have been advised of the possibility of such damages,
+except to the extent any applicable law prohibits this disclaimer.
+
+
+9. NO WARRANTIES. The Software and this license document are provided AS IS with
+NO EXPRESS OR IMPLIED WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN,
+TITLE, ACCURACY, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR
+PURPOSE. In no event will xTuple refund the purchase of the Software.
+
+
+10. Choice of Law. This license is governed by the laws of Virginia, including
+the Virginia Uniform Computer Information Transactions Act. Disputes must be
+settled in the state or federal courts located in Norfolk, Virginia.
+
+
+11. Termination. If you breach any term or condition of this license or fail to
+perform any of your obligations under this license, then this license will
+automatically terminate, unless you have cured your breach or failure to
+xTuple's satisfaction within 30 days after xTuple or its authorized reseller has
+notified you of it. Upon termination, you must immediately stop using,
+modifying, and distributing the Software, deliver to xTuple or its authorized
+reseller all of your Contributions (whether or not completed), and delete all
+versions of the Software and Contributions from your systems. xTuple may seek
+injunctive relief and money damages against you if you breach this license or
+fail to perform your obligations.
+
