@@ -208,7 +208,6 @@ class OROTextBox : public OROPrimitive
 
     QString text() const { return _text; };
     void setText(const QString &);
-    QString textForcedToWrap(QPainter *p);
 
     QFont font() const { return _font; };
     void setFont(const QFont &);
