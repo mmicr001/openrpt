@@ -1211,7 +1211,7 @@ void ReportHandler::editPaste(const QPointF & pos)
     }
   }
 }
-#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
+
 void ReportHandler::editPreferences()
 {
   EditPreferences * dlgPref = new EditPreferences(0);
