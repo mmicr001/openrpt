@@ -1218,10 +1218,7 @@ void ReportHandler::editPreferences()
   if(dlgPref)
   {
     if(gwList.count()>0)
-    {
-      DocumentWindow * gw = activeDocumentWindow();
-      dlgPref->setDefaultFont(gw->_scene->getFont()); 
-    }
+      dlgPref->setDefaultFont(activeDocumentWindow()->_scene->getFont()); 
     else
       dlgPref->setDefaultFont(_sysFont); 
     dlgPref->setPageSize(_sysPageSize);
@@ -1232,7 +1229,8 @@ void ReportHandler::editPreferences()
     if(dlgPref->exec() == QDialog::Accepted)
     {
       //report level 
-      ORGraphicsRectItem::setDefaultEntityFont(dlgPref->defaultFont());
+      if(gwList.count()>0)
+        activeDocumentWindow()->_scene->setFont(dlgPref->defaultFont());
       gridShowAction->setChecked(dlgPref->showGrid());
       gridSnapAction->setChecked(dlgPref->snapGrid());
       gridOptions->setXInterval(dlgPref->gridSizeX());
