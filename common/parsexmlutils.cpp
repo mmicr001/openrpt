@@ -353,10 +353,14 @@ bool parseReportFont(const QDomElement & elemSource, QFont & fontTarget)
               qDebug("Text not Parsed at <font>:%s\n", elemThis.text().toLatin1().data());
           }
         }
-		else if (elemThis.tagName() == "italic")
-		{
-			fontTarget.setItalic(true);
-		}
+        else if (elemThis.tagName() == "italic")
+        {
+          fontTarget.setItalic(true);
+        }
+        else if(elemThis.tagName()=="strikeOut")
+          fontTarget.setStrikeOut(true);
+        else if(elemThis.tagName()=="underline")
+          fontTarget.setUnderline(true);
         else
         {
           // we have encountered a tag that we don't understand.
