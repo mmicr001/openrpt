@@ -643,6 +643,16 @@ void ORGraphicsRectItem::buildXMLFont(QDomDocument & doc, QDomElement & entity, 
 	  element.appendChild(italic);
   }
 
+  if(font.strikeOut()){
+	  QDomElement strikeOut = doc.createElement("strikeOut");
+	  element.appendChild(strikeOut);
+  }
+
+  if(font.underline()){
+	  QDomElement underline = doc.createElement("underline");
+	  element.appendChild(underline);
+  }
+
   entity.appendChild(element);
 }
 
