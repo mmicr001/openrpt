@@ -1,21 +1,12 @@
 /*
- * OpenRPT report writer and rendering engine
- * Copyright (C) 2001-2019 by OpenMFG, LLC
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * Please contact info@openmfg.com with any questions on this license.
+ * This file is part of the OpenRPT report writer and rendering engine,
+ * and is Copyright (c) 2001-2019 by OpenMFG LLC, d/b/a xTuple.  It
+ * is licensed to you under the xTuple End-User License Agreement ("the
+ * EULA"), the full text of which is available at www.xtuple.com/EULA.
+ * While the EULA gives you access to source code and encourages your
+ * involvement in the development process, this Package is not free
+ * software.  By using this software, you agree to be bound by the
+ * terms of the EULA.
  */
 
 #ifndef __RENDERER_ORCROSSTAB_H__

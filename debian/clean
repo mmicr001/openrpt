@@ -1,5 +1,0 @@
-lib/*
-Makefile .DS_Store
-*/Makefile */.DS_Store */*.qm
-*/*/Makefile */*/.DS_Store */*/tmp/* */*/*.qm
-OpenRPT/images/*/*.db

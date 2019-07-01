@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=OpenRPT Import
-Icon=/usr/share/openrpt/OpenRPT/images/OpenReportsIcon128.png
-Exec=importrptgui
-Terminal=false
-Categories=Office;
